@@ -4,7 +4,7 @@
 (function(){
   var units=[
     {id:1,title:"My favourite things",pl:"Moje ulubione rzeczy",desc:"Zabawki, gry i wielkie odkrycia",icon:"🚀",extra1:"🎮",extra2:"⭐",words:[
-      ["bat","kij do gry","🏏"],["bike","rower","🚲"],["computer","komputer","💻"],["computer game","gra komputerowa","🎮"],["robot","robot","🤖"],["scooter","hulajnoga","🛴"],["spaceship","statek kosmiczny","🚀"],["TV","telewizor","📺"],["watch","zegarek","⌚"]
+      ["bat","rakietka do tenisa stołowego","🏓"],["bike","rower","🚲"],["computer","komputer","💻"],["computer game","gra komputerowa","🎮"],["robot","robot","🤖"],["scooter","hulajnoga","🛴"],["spaceship","statek kosmiczny","🚀"],["TV","telewizor","📺"],["watch","zegarek","⌚"]
     ]},
     {id:2,title:"My family",pl:"Moja rodzina",desc:"Poznaj angielską rodzinkę",icon:"🏡",extra1:"💛",extra2:"🌼",words:[
       ["aunt","ciocia","👩"],["baby sister","młodsza siostrzyczka","👶"],["big brother","starszy brat","🧑"],["brother","brat","👦"],["cousin","kuzyn lub kuzynka","🧒"],["dad","tata","👨"],["granddad","dziadek","👴"],["grandma","babcia","👵"],["mum","mama","👩"],["sister","siostra","👧"],["uncle","wujek","👨‍🦱"]
@@ -37,6 +37,7 @@
   var currentUnit=null;
   var currentIndex=0;
   var quizQuestions=[];
+  var quizPool=[];
   var quizIndex=0;
   var quizScore=0;
   var quizAnswered=false;
@@ -81,7 +82,7 @@
       btn.setAttribute("aria-label","Odkryj krainę "+u.id+": "+u.title+" — "+u.words.length+" słówek");
       btn.innerHTML='<div class="world-scene u'+u.id+'"><span class="world-number">KRAINA 0'+u.id+'</span><span class="world-floating one" aria-hidden="true">'+u.extra1+'</span><span class="world-emoji" aria-hidden="true">'+u.icon+'</span><span class="world-floating two" aria-hidden="true">'+u.extra2+'</span></div>'+
         '<div class="world-detail"><span class="world-tag">UNIT '+u.id+'</span><h3>'+u.title+'</h3><p>'+u.pl+' · '+u.desc+'</p><div class="world-card-footer"><span class="word-count">✦ '+u.words.length+' słówek <span aria-hidden="true">·</span> <span data-learned-count="'+u.id+'">0/'+u.words.length+'</span></span><span class="world-cta" aria-hidden="true">↗</span></div><div class="world-progress"><span data-progress="'+u.id+'"></span></div></div>';
-      btn.addEventListener("click",function(){openUnit(u.id)});
+      btn.addEventListener("click",function(){if(u.id===1){window.location.href="unit-1/index.html"}else{openUnit(u.id)}});
       grid.appendChild(btn)
     });
     updateProgress()
@@ -139,7 +140,10 @@
     return arr
   }
   function startQuiz(){
-    quizQuestions=shuffle(allWords).slice(0,5);
+    var pool=allWords.filter(function(w){return learned.has(wordKey(w.unit,w.en))});
+    if(pool.length<3){window.location.href="unit-1/index.html";return}
+    quizPool=pool;
+    quizQuestions=shuffle(pool).slice(0,Math.min(5,pool.length));
     quizIndex=0;quizScore=0;quizAnswered=false;
     $("quiz-finished").hidden=true;$("quiz-playing").hidden=false;
     openDialog($("quiz-dialog"));renderQuestion()
@@ -152,7 +156,7 @@
     $("quiz-heading").textContent=current.en;
     $("quiz-feedback").textContent="";$("quiz-feedback").className="quiz-feedback";
     $("quiz-next").hidden=true;
-    var decoys=shuffle(allWords.filter(function(w){return w.pl!==current.pl && w.en!==current.en})).slice(0,2);
+    var decoys=shuffle(quizPool.filter(function(w){return w.pl!==current.pl && w.en!==current.en})).slice(0,2);
     var options=shuffle([current].concat(decoys));
     var root=$("quiz-options");root.textContent="";
     options.forEach(function(w,i){
