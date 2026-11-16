@@ -80,7 +80,7 @@
     units.forEach(function(u){
       var btn=document.createElement("button");btn.type="button";btn.className="world-card";
       btn.setAttribute("aria-label","Odkryj krainę "+u.id+": "+u.title+" — "+u.words.length+" słówek");
-      btn.innerHTML='<div class="world-scene u'+u.id+'"><span class="world-number">KRAINA 0'+u.id+'</span><span class="world-floating one" aria-hidden="true">'+u.extra1+'</span><span class="world-emoji" aria-hidden="true">'+u.icon+'</span><span class="world-floating two" aria-hidden="true">'+u.extra2+'</span></div>'+
+      btn.innerHTML='<div class="world-scene u'+u.id+'"><span class="world-number">KRAINA 0'+u.id+'</span>'+(u.id===1?'<span class="world-feature">NOWA PRZYGODA ✨</span>':'')+'<span class="world-floating one" aria-hidden="true">'+u.extra1+'</span><span class="world-emoji" aria-hidden="true">'+u.icon+'</span><span class="world-floating two" aria-hidden="true">'+u.extra2+'</span></div>'+
         '<div class="world-detail"><span class="world-tag">UNIT '+u.id+'</span><h3>'+u.title+'</h3><p>'+u.pl+' · '+u.desc+'</p><div class="world-card-footer"><span class="word-count">✦ '+u.words.length+' słówek <span aria-hidden="true">·</span> <span data-learned-count="'+u.id+'">0/'+u.words.length+'</span></span><span class="world-cta" aria-hidden="true">↗</span></div><div class="world-progress"><span data-progress="'+u.id+'"></span></div></div>';
       btn.addEventListener("click",function(){if(u.id===1){window.location.href="unit-1/index.html"}else{openUnit(u.id)}});
       grid.appendChild(btn)
