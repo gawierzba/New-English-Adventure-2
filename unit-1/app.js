@@ -117,7 +117,7 @@ function weakItems(arr,n){
 function makeTask(type){
  const known=needs(type==="number"?0:type==="favourite"?1:3);
  if(!known&&type!=="number"){task.list=[];return false}
- task={type,list:[],index:0,choices:[],misses:0,hint:0,done:false,wrong:null,assisted:false};
+ task={type,list:[],index:0,choices:[],misses:0,hint:0,done:false,wrong:null,assisted:false,intro:type==="number"};
  if(type==="find"){
    task.list=weakItems(known,Math.min(4,known.length));
  }else if(type==="ask"){
@@ -143,7 +143,7 @@ function prepareChoices(){
 function renderTask(){
  if(task.type==="find")renderFind();
  if(task.type==="ask")renderAsk();
- if(task.type==="number")renderNumber()
+ if(task.type==="number"){if(task.intro)renderNumberIntro();else renderNumber()}
 }
 function renderFind(){
  const w=task.list[task.index];
@@ -196,6 +196,14 @@ function answerAsk(v,force=false){
  if(!force&&(v==="yes")!==q.same){task.misses++;task.wrong=v;renderAsk();return}
  task.done=true;task.assisted=force||task.misses>0||task.hint>0;
  touch(q.shown,task.assisted?"helps":"ask");renderAsk();speak(q.same?"Yes, it is.":"No, it isn't.")
+}
+function renderNumberIntro(){
+ const cards=nums.map(x=>'<button type="button" class="number-intro-item" data-action="num-speak" data-value="'+x.en+'"><strong>'+x.n+'</strong><span lang="en">'+x.en+'</span><small>♫ Posłuchaj</small></button>').join("");
+ show(title("⭐ LICZBY · ODKRYWANIE","Najpierw <em>poznajmy liczby!</em>","Jedenaście, dwanaście, trzynaście, czternaście, piętnaście. Dotykaj kart i słuchaj, jak brzmią po angielsku.")+
+ '<div class="number-intro-grid">'+cards+'</div>'+
+ '<div class="soft-box"><span class="section-label">JAK SIĘ UCZYMY?</span><p>Posłuchaj nowych liczb. Możesz powtarzać je za Robim. Dopiero kiedy zechcesz, przejdziemy do gwiazdkowej zabawy.</p></div>'+
+ '<div class="stage-actions">'+btn("start-counting","Teraz policzmy gwiazdki →")+btn("begin","Wrócę do zabawek","btn btn-outline")+'</div>',
+ "Najpierw razem powiemy liczby od jedenastu do piętnastu. Dopiero potem będziemy zgadywać.");
 }
 function renderNumber(){
  const q=task.list[task.index];
@@ -259,6 +267,8 @@ root.addEventListener("click",e=>{
  case "find-hint":if(task.hint<2){task.hint++;touch(task.list[task.index],"helps");renderFind()}else answerFind(task.list[task.index].en,true);break;
  case "ask-answer":answerAsk(v);break;
  case "ask-hint":if(task.hint<2){task.hint++;touch(task.list[task.index].shown,"helps");renderAsk()}else answerAsk("",true);break;
+ case "num-speak":speak(v);break;
+ case "start-counting":task.intro=false;renderNumber();break;
  case "number-answer":answerNumber(v);break;
  case "number-help":answerNumber(task.list[task.index].n,true);break;
  case "task-next":nextTask();break;
