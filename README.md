@@ -2,6 +2,22 @@
 
 Autorska, interaktywna strona do nauki angielskiego w klasie 2, uporządkowana według tematów *New English Adventure 2*.
 
+## Nowość: Kraina 01 — pełna przygoda
+
+**https://gawierzba.github.io/New-English-Adventure-2/unit-1/**
+
+Pierwsza kraina **My favourite things** jest już osobną interaktywną lekcją z własnym robotem Robim i mechaniką uczenia:
+
+- pięć słów podczas krótkiej wyprawy (ze słownika 9 wyrazów z Unit 1),
+- poznawanie i wymowa słówek, odnajdywanie zabawek oraz dialogi \`Is it a…?\`,
+- samodzielnie wybierana ulubiona rzecz i zdanie \`My favourite thing is a…\`,
+- liczby 11–15: najpierw pokaz i wymowa, później losowane zadania z gwiazdkami,
+- podpowiedzi w kilku krokach, bez ocen i kar; pomyłka lub podpowiedź nie jest zaliczana jako samodzielna odpowiedź,
+- losowanie zadań tylko spośród poznanych rzeczy i dobór słabiej ćwiczonych słów przy następnej wizycie,
+- lokalny zapis postępów, obsługa urządzeń mobilnych, dostępny tryb oszczędnego druku.
+
+**Ważne:** pozostałe siedem krain nadal udostępnia fiszki na stronie głównej; nie są jeszcze pełnymi interaktywnymi przygodami. Pierwsza kraina jest wzorem do dalszych etapów. Projekt zasad edukacyjnych i testów znajduje się w pliku **LEARNING_BLUEPRINT.md**.
+
 ## Co działa
 - kolorowa, responsywna mapa **8 krain** odpowiadających rozdziałom kursu,
 - **93 autorskie fiszki** ze słowem angielskim, polskim tłumaczeniem i ilustracją emoji,
