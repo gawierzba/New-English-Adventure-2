@@ -18,6 +18,22 @@ Pierwsza kraina **My favourite things** jest już osobną interaktywną lekcją 
 
 **Ważne:** pozostałe siedem krain nadal udostępnia fiszki na stronie głównej; nie są jeszcze pełnymi interaktywnymi przygodami. Pierwsza kraina jest wzorem do dalszych etapów. Projekt zasad edukacyjnych i testów znajduje się w pliku **LEARNING_BLUEPRINT.md**.
 
+## Kraina 02 — My family: zaczarowany album
+
+**https://gawierzba.github.io/New-English-Adventure-2/unit-2/**
+
+Druga kraina ma odmienną oprawę i własną historię o lisiczce Pipi. W oparciu o Unit 2 dziecko poznaje **11 słów**: aunt, baby sister, big brother, brother, cousin, dad, granddad, grandma, mum, sister, uncle.
+
+- Stopniowo poznaje fotografie i angielskie nazwy członków fikcyjnej rodziny.
+- Otwiera interaktywne drzewo genealogiczne Neli (oryginalna opowieść).
+- Rozpoznaje osoby w zabawie foto-detektywa; może prosić o kolejne podpowiedzi.
+- Prowadzi **fikcyjne wywiady**, ćwicząc **Have you got a/an...?**, **I've got...** i **I haven't got...**.
+- Tworzy własny, wymyślony album i wypowiada generowane z poprawną gramatyką zdania; aplikacja nie nagrywa i nie ocenia jego głosu.
+- Kolejna wizyta w pierwszej kolejności dobiera jeszcze niepoznane słówka, następnie słabiej przećwiczone.
+- Postęp jest lokalny, bez kont, ocen, liczników czasu czy porównań między dziećmi.
+
+Bardzo ważne: ćwiczenia nie wymagają opisywania rzeczywistej rodziny dziecka; role są przypisane wymyślonym postaciom, więc każda sytuacja rodzinna jest traktowana z szacunkiem.
+
 ## Co działa
 - kolorowa, responsywna mapa **8 krain** odpowiadających rozdziałom kursu,
 - **93 autorskie fiszki** ze słowem angielskim, polskim tłumaczeniem i ilustracją emoji,
