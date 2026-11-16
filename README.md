@@ -18,7 +18,7 @@ https://gawierzba.github.io/New-English-Adventure-2/
 Strona nie wymaga frameworków, serwera, konta ani instalowania zależności — wystarczy index.html, style.css i app.js.
 
 ## Publikacja
-Repozytorium zawiera workflow .github/workflows/pages.yml do publikowania wersji z gałęzi main poprzez GitHub Pages. Jeżeli to pierwsza publikacja w repozytorium, w **Settings → Pages** wybierz **Build and deployment → Source: GitHub Actions**. Następnie uruchom workflow „Publish English Adventure 2” lub wprowadź nowy commit.
+W repozytorium wybierz **Settings → Pages → Build and deployment**. Ustaw **Source: Deploy from a branch**, **Branch: main**, **Folder: /(root)** i kliknij **Save**. To jednorazowy krok administracyjny wykonywany przez właściciela repozytorium. Od tej chwili GitHub Pages publikuje zmiany automatycznie przy każdym zapisie na gałęzi main. Nie jest potrzebny własny workflow.
 
 ## Materiały i prawa
 Strona jest **nieoficjalnym, niezależnym projektem edukacyjnym**. Nie zawiera skanów podręcznika, wydawniczych grafik ani nagrań. Zakres 93 słów wynika z list kart wyrazowych przekazanych przez właściciela projektu; ilustracje w interfejsie są emoji, a tłumaczenia i ćwiczenia opracowano na nowo. Nie jest to projekt powiązany z Pearson ani innymi właścicielami znaków lub materiałów kursowych.
