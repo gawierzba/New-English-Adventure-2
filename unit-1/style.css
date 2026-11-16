@@ -30,3 +30,12 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;overflow-x:hid
 @media(max-width:360px){.top-title{font-size:12px}.top-progress{font-size:8px}.hero h1{font-size:39px}.hero-actions .btn{width:100%}.journey-intro h2{font-size:26px}.stage-root{padding-inline:13px}.atlas-art{width:39px;height:44px;font-size:25px}.atlas-name strong{font-size:12px}.atlas-name small{font-size:8px}.atlas-audio{width:25px;height:25px}.side-panel{grid-template-columns:1fr}.side-note{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 @media print{@page{size:A4;margin:15mm}html,body{background:white!important;color:black!important;font-family:Arial,sans-serif!important}.topbar,.hero,.journey,.atlas-section,.parent-section,.footer,#toast,.sky-confetti{display:none!important}.print-only{display:block!important}.print-only h1{font-size:19pt;margin:0 0 10px}.print-only p{font-size:10pt}.print-only h2{font-size:13pt}.print-only table{border-collapse:collapse;width:100%;font-size:11pt;margin-top:20px}.print-only th,.print-only td{border-bottom:1px solid #aaa;padding:9px 7px;text-align:left}.print-only th{border-bottom:2px solid #333}.print-only td:last-child{text-align:center}}
+/* Numbers first: a discoverable teaching step before any counting choices. */
+.number-intro-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:26px 0 21px}
+.number-intro-item{border:2px solid #e4edf1;border-radius:20px;min-height:155px;background:linear-gradient(155deg,#fffef9,#edf9fd);color:#37738e;padding:16px 7px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:transform .2s,border-color .2s}
+.number-intro-item:hover{transform:translateY(-5px);border-color:#7acbd7}
+.number-intro-item strong{font-size:40px;letter-spacing:-1.7px;color:#328ba7}
+.number-intro-item span{font-weight:1000;font-size:13px}
+.number-intro-item small{font-size:10px;color:#829eb0}
+@media(max-width:650px){.number-intro-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.number-intro-item{min-height:115px;padding:10px 3px;border-radius:15px}.number-intro-item strong{font-size:31px}.number-intro-item span{font-size:11px}.number-intro-item small{font-size:9px}}
+@media(max-width:360px){.number-intro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
