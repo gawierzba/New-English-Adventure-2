@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6554df">
+  <meta name="description" content="English Adventure 2 — kolorowa mapa angielskich przygód dla klasy drugiej. Poznawaj słówka w ośmiu krainach, słuchaj wymowy, graj i powtarzaj.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="English Adventure 2 — Twoja wielka przygoda ze słówkami">
+  <meta property="og:description" content="Osiem krain, 93 słówka, fiszki i krótkie misje. Angielski, który chce się odkrywać!">
+  <meta property="og:image" content="https://gawierzba.github.io/New-English-Adventure-2/preview.svg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+  <title>English Adventure 2 — Wielka przygoda zaczyna się tutaj!</title>
+</head>
+<body>
+  <a class="skip-link" href="#mapa">Przejdź do mapy przygód</a>
+  <div class="page-speckles" aria-hidden="true"></div>
+  <header class="site-header" id="poczatek">
+    <div class="nav-shell">
+      <a class="brand" href="#poczatek" aria-label="English Adventure 2 — strona główna">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 60 60" fill="none"><path d="M13 37 30 7l17 30-17-7-17 7Z" fill="#fff" stroke="#293162" stroke-width="3" stroke-linejoin="round"/><path d="m30 30 0 17" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="m30 30 0 17" stroke="#293162" stroke-width="2" stroke-linecap="round"/><path d="M20 45c5-7 15-7 20 0" stroke="#fff" stroke-width="4" stroke-linecap="round"/><circle cx="30" cy="23" r="4" fill="#ffb96e"/></svg>
+        </span>
+        <span class="brand-text"><strong>English<span>Adventure</span></strong><small>LEVEL 2 <span aria-hidden="true">✦</span> LEARN & PLAY</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Nawigacja główna">
+        <a href="#mapa">Mapa przygód</a>
+        <a href="#jak-to-dziala">Jak to działa?</a>
+        <a href="#dla-rodzica">Dla rodzica</a>
+      </nav>
+      <div class="header-actions">
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="true" aria-label="Wyłącz odczytywanie słówek" title="Wymowa angielska"><span aria-hidden="true">♫</span><span class="sound-label">Dźwięk</span></button>
+        <button class="header-play" type="button" data-quiz> <span aria-hidden="true">✦</span> Szybka misja</button>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Nawigacja mobilna" hidden>
+      <a href="#mapa">Mapa przygód</a><a href="#jak-to-dziala">Jak to działa?</a><a href="#dla-rodzica">Dla rodzica</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-cloud cloud-one" aria-hidden="true"></div>
+      <div class="hero-cloud cloud-two" aria-hidden="true"></div>
+      <div class="hero-inner container">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-spark" aria-hidden="true">✦</span> TWOJA PRZYGODA Z ANGIELSKIM <span aria-hidden="true">✦</span></div>
+          <h1 id="hero-heading">Małe słowa.<br><span>Wielkie</span><br>przygody<span class="period">!</span></h1>
+          <p>Wskocz na pokład! Przed Tobą <strong>8 niezwykłych krain</strong>, pełnych słówek, odkryć i małych zwycięstw. Ucz się po swojemu — przez zabawę.</p>
+          <div class="hero-cta">
+            <a href="#mapa" class="btn btn-primary"><span aria-hidden="true">🧭</span> Odkryj mapę przygód <span class="btn-arrow" aria-hidden="true">↗</span></a>
+            <button class="btn btn-ghost" type="button" data-quiz><span class="play-disc" aria-hidden="true">▶</span> Zagraj teraz</button>
+          </div>
+          <div class="hero-mini-note"><span class="mini-avatar" aria-hidden="true">🌟</span><span>Każdy odkrywca zaczyna od jednego słowa. <b>Let's go!</b></span></div>
+        </div>
+        <div class="hero-scene" aria-label="Bajkowa ilustracja rakiety wśród kolorowych planet, książek i gwiazd">
+          <div class="scene-glow" aria-hidden="true"></div>
+          <svg class="hero-art" viewBox="0 0 660 570" role="img" aria-labelledby="scene-title">
+            <title id="scene-title">Wesoła rakieta leci na przygodę przez świat słówek</title>
+            <defs>
+              <linearGradient id="planetPurple" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9f8bfa"/><stop offset="1" stop-color="#6457db"/></linearGradient>
+              <linearGradient id="rocket" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#dcdffa"/></linearGradient>
+              <linearGradient id="ground" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c2f4c5"/><stop offset="1" stop-color="#64d4af"/></linearGradient>
+              <linearGradient id="pinkPlanet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffa6c1"/><stop offset="1" stop-color="#fa6ca5"/></linearGradient>
+              <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#6c64ad" flood-opacity=".2"/></filter>
+            </defs>
+            <g class="art-orbit" opacity=".6"><ellipse cx="350" cy="300" rx="248" ry="172" fill="none" stroke="#aaa5ef" stroke-width="2" stroke-dasharray="6 12" transform="rotate(-24 350 300)"/><ellipse cx="355" cy="299" rx="203" ry="250" fill="none" stroke="#c6bdfa" stroke-width="2" stroke-dasharray="3 14" transform="rotate(32 355 299)"/></g>
+            <g class="art-float-slow" filter="url(#shadow)"><ellipse cx="340" cy="443" rx="226" ry="69" fill="#a8c8fb" opacity=".28"/><path d="M112 401c9-45 84-79 199-77 110 3 213 39 233 89 22 58-67 108-210 108-147 0-244-49-222-120Z" fill="url(#ground)"/><path d="M113 426c55 69 367 87 431-5-1 60-84 103-216 103-129 0-213-40-215-98Z" fill="#5bbba8"/><path d="M149 386c28-38 105-64 183-61" fill="none" stroke="#e4ffe2" stroke-width="11" stroke-linecap="round"/><circle cx="178" cy="435" r="7" fill="#ffce71"/><circle cx="477" cy="458" r="8" fill="#fd90aa"/><circle cx="494" cy="398" r="6" fill="#ffce71"/></g>
+            <g class="art-float-fast" filter="url(#shadow)"><circle cx="495" cy="145" r="58" fill="url(#pinkPlanet)"/><ellipse cx="495" cy="145" rx="87" ry="20" transform="rotate(-26 495 145)" fill="none" stroke="#ffd56e" stroke-width="19"/><circle cx="477" cy="126" r="10" fill="#ffd1df" opacity=".7"/></g>
+            <g class="art-float-slow"><circle cx="143" cy="169" r="34" fill="#fbc764"/><circle cx="132" cy="157" r="10" fill="#ffe6ad"/></g>
+            <g class="art-float-mid"><path d="M492 318q22-36 47 0 24-21 40 9-16 27-39 18-28 11-48-27Z" fill="#fff" opacity=".94"/><path d="M71 290q14-27 35-4 20-14 37 9-21 21-46 11-19 9-26-16Z" fill="#fff" opacity=".9"/></g>
+            <g class="art-rocket" filter="url(#shadow)" transform="rotate(26 334 255)">
+              <path d="M302 334c-10 24-21 40-26 76 18-9 33-23 47-41M367 332c21 19 34 42 46 75-25-12-43-26-55-44" fill="#796aeb" stroke="#403d96" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M321 357q18 23 29 0l8 46-27 44-18-44Z" fill="#ffbd67"/><path d="M329 375q9 12 17 0l-2 39-10 20-9-20Z" fill="#fff0ac"/>
+              <path d="M332 106c73 64 95 163 56 248-28 17-73 17-103 0-39-85-16-184 47-248Z" fill="url(#rocket)" stroke="#3d4579" stroke-width="6"/>
+              <path d="M332 106c28 24 45 52 56 81-31 12-81 14-113-1 15-31 34-57 57-80Z" fill="#7969eb" stroke="#3d4579" stroke-width="5"/>
+              <path d="M291 327c26 13 65 13 90 0l7 27c-29 17-74 17-103 0Z" fill="#ff8d9c" stroke="#3d4579" stroke-width="5"/>
+              <circle cx="332" cy="238" r="53" fill="#a6e7fa" stroke="#3d4579" stroke-width="9"/><circle cx="332" cy="238" r="39" fill="#8bd5f6"/><path d="M303 220q15-19 39-18" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".8"/>
+              <g transform="translate(332 244)"><circle cx="-13" cy="-4" r="4.5" fill="#263b63"/><circle cx="14" cy="-4" r="4.5" fill="#263b63"/><path d="M-10 10q10 12 22 0" fill="none" stroke="#263b63" stroke-width="4" stroke-linecap="round"/><ellipse cx="-27" cy="9" rx="7" ry="4" fill="#fcb1ba"/><ellipse cx="27" cy="9" rx="7" ry="4" fill="#fcb1ba"/></g>
+              <path d="M330 138l5 11 12 2-9 8 2 12-10-6-10 6 2-12-9-8 12-2Z" fill="#ffcb6a"/>
+            </g>
+            <g class="art-bubble art-float-mid" filter="url(#shadow)"><rect x="72" y="87" width="125" height="63" rx="25" fill="#fff"/><text x="134" y="129" text-anchor="middle" font-size="32" font-weight="900" font-family="system-ui" fill="#6857d9">HELLO!</text></g>
+            <g class="art-bubble art-float-fast" filter="url(#shadow)"><rect x="454" y="252" width="122" height="63" rx="25" fill="#fff"/><text x="515" y="295" text-anchor="middle" font-size="31" font-weight="900" font-family="system-ui" fill="#f3869e">ABC</text></g>
+            <g fill="#ffc86e"><path d="m93 224 5 14 15 5-15 5-5 14-5-14-15-5 15-5Z"/><path d="m574 70 4 12 13 4-13 4-4 12-4-12-13-4 13-4Z"/><path d="m556 410 5 13 14 5-14 5-5 13-5-13-14-5 14-5Z"/></g>
+            <g fill="#9488f4"><circle cx="212" cy="66" r="6"/><circle cx="593" cy="236" r="5"/><circle cx="73" cy="394" r="5"/><circle cx="209" cy="493" r="4"/></g>
+          </svg>
+          <div class="scene-sticker"><span aria-hidden="true">★</span> YOUR ADVENTURE<br> STARTS HERE!</div>
+          <div class="scene-blob" aria-hidden="true">LET'S GO!</div>
+        </div>
+      </div>
+      <div class="hero-wave" aria-hidden="true"></div>
+    </section>
+
+    <section class="journey-strip" aria-label="Twoja podróż">
+      <div class="container journey-inner">
+        <div class="journey-greeting"><span aria-hidden="true">👋</span><span><strong>Hej, Odkrywco!</strong><small>Każda wyprawa to nowa umiejętność.</small></span></div>
+        <div class="journey-divider"></div>
+        <div class="journey-stat"><span class="stat-icon lavender" aria-hidden="true">🗺️</span><span><strong>8</strong><small>krain do odkrycia</small></span></div>
+        <div class="journey-stat"><span class="stat-icon peach" aria-hidden="true">💬</span><span><strong>93</strong><small>słówka na kartach</small></span></div>
+        <div class="journey-stat"><span class="stat-icon mint" aria-hidden="true">⭐</span><span><strong id="learned-counter">0</strong><small>Twoje odkryte słowa</small></span></div>
+      </div>
+    </section>
+
+    <section id="mapa" class="map-section section-padding" aria-labelledby="map-heading">
+      <div class="container">
+        <div class="section-kicker"><span aria-hidden="true">✦</span> WIELKA MAPA ODKRYWCY <span aria-hidden="true">✦</span></div>
+        <div class="section-heading-wrap"><h2 id="map-heading">Wybierz swoją <em>krainę!</em></h2><p>Osiem światów, osiem przygód. Kliknij dowolną krainę, aby rozpocząć naukę jej słówek.</p></div>
+        <div class="map-decor decor-one" aria-hidden="true">✳</div><div class="map-decor decor-two" aria-hidden="true">✦</div>
+        <div class="world-grid" id="world-grid"></div>
+        <p class="map-caption"><span aria-hidden="true">✧</span> Możesz odkrywać krainy w dowolnej kolejności. Zapis odkryć działa w tej przeglądarce.</p>
+      </div>
+    </section>
+
+    <section class="challenge-section section-padding" id="misja" aria-labelledby="challenge-heading">
+      <div class="container"><div class="challenge-panel">
+        <div class="challenge-spark a" aria-hidden="true">✦</div><div class="challenge-spark b" aria-hidden="true">✳</div><div class="challenge-spark c" aria-hidden="true">✦</div>
+        <div class="challenge-text"><div class="challenge-tag">SZYBKA MISJA <span aria-hidden="true">⚡</span></div><h2 id="challenge-heading">5 pytań.<br>Jedna wielka <span>radość!</span></h2><p>Wylosujemy pięć słówek z naszych krain. Wybierz prawidłowe znaczenie i zbieraj gwiazdki. Gotowy na wyzwanie?</p><button class="btn btn-sun" type="button" data-quiz>Rozpocznij misję <span aria-hidden="true">↗</span></button></div>
+        <div class="challenge-art" aria-hidden="true"><div class="challenge-star star-one">★</div><div class="challenge-star star-two">★</div><div class="quiz-sheet"><div class="quiz-sheet-top"><span>MY MISSION</span><span>✦ ✦ ✦</span></div><div class="quiz-sheet-emoji">🌈</div><div class="quiz-sheet-q">What is it?</div><div class="quiz-sheet-line green"><span>✓</span> Great job!</div><div class="quiz-sheet-line blue"><span>✦</span> Keep going!</div><div class="quiz-sheet-line yellow"><span>★</span> You're a star!</div></div></div>
+      </div></div>
+    </section>
+
+    <section class="how-section section-padding" id="jak-to-dziala" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-kicker"><span aria-hidden="true">✦</span> PROSTE JAK ONE, TWO, THREE <span aria-hidden="true">✦</span></div>
+        <div class="section-heading-wrap"><h2 id="how-heading">Ucz się z <em>uśmiechem.</em></h2><p>Bez pośpiechu, bez presji. Małe kroki prowadzą do wielkich osiągnięć.</p></div>
+        <div class="steps"><article class="step"><div class="step-number">01</div><div class="step-picture step-purple" aria-hidden="true">🧭</div><h3>Wybierz krainę</h3><p>Zacznij od tego, co Cię ciekawi. Każda kraina to temat z angielskiego w klasie drugiej.</p></article><article class="step"><div class="step-number">02</div><div class="step-picture step-mint" aria-hidden="true">💬</div><h3>Odkrywaj słowa</h3><p>Obracaj fiszki, słuchaj wymowy i zaznaczaj słowa, które już dobrze znasz.</p></article><article class="step"><div class="step-number">03</div><div class="step-picture step-yellow" aria-hidden="true">🏆</div><h3>Zagraj i powtórz</h3><p>Sprawdź się w krótkiej misji. Do każdej krainy możesz wracać tyle razy, ile chcesz.</p></article></div>
+      </div>
+    </section>
+
+    <section class="parents-section" id="dla-rodzica" aria-labelledby="parent-heading"><div class="container parents-inner">
+      <div class="parents-illustration" aria-hidden="true"><span class="parent-book">📚</span><span class="parent-pencil">✏️</span><span class="parent-tick">✓</span></div>
+      <div class="parents-copy"><div class="parents-overline">KĄCIK DLA RODZICA</div><h2 id="parent-heading">Nauka ma być<br><em>przyjemnością.</em></h2><p>Strona porządkuje słówka według ośmiu rozdziałów New English Adventure 2. Możesz wydrukować prostą, oszczędną w tuszu listę słówek albo ćwiczyć razem z dzieckiem.</p><div class="parents-actions"><button type="button" class="btn btn-ink" id="print-words"><span aria-hidden="true">🖨️</span> Drukuj listę słówek</button><span class="parent-side-note">Czarno-biały wydruk · bez dużych grafik</span></div></div>
+    </div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-main"><div><div class="footer-logo">English<span>Adventure</span> <b>2</b></div><p>Wielkie przygody zaczynają się od małych słów. <span aria-hidden="true">💜</span></p></div><a href="#poczatek" class="back-top">Wróć na górę ↑</a></div><div class="container footer-bottom"><span>Nieoficjalna, autorska strona edukacyjna dla klasy 2. Nie jest powiązana z wydawcą materiałów kursowych.</span><span>Made for curious minds <span aria-hidden="true">✦</span></span></div></footer>
+
+  <dialog class="learning-dialog" id="learning-dialog" aria-labelledby="learning-heading">
+    <div class="dialog-inner">
+      <button class="dialog-close" type="button" data-close="learning-dialog" aria-label="Zamknij fiszki">×</button>
+      <div class="learning-top"><span id="learning-unit-tag" class="learning-unit-tag"></span><span id="learning-count" class="learning-count">1 / 9</span></div>
+      <h2 id="learning-heading">Let's learn!</h2><p class="learning-intro" id="learning-intro">Kliknij kartę, żeby odkryć znaczenie.</p>
+      <div class="flashcard-wrap"><button class="flashcard" id="flashcard" type="button" aria-label="Obróć fiszkę"><span class="flashcard-inner"><span class="flashcard-side front"><span class="flashcard-badge">ENGLISH</span><span class="flashcard-emoji" id="flashcard-emoji">⭐</span><span class="flashcard-word" id="flashcard-word">hello</span><span class="flashcard-hint">DOTKNIJ, ABY ODKRYĆ ZNACZENIE ↻</span></span><span class="flashcard-side back"><span class="flashcard-badge">PO POLSKU</span><span class="flashcard-emoji" id="flashcard-emoji-back">⭐</span><span class="flashcard-word" id="flashcard-translation">cześć</span><span class="flashcard-hint">DOTKNIJ, ABY WRÓCIĆ ↻</span></span></span></button></div>
+      <div class="flashcard-actions"><button class="action-chip" id="say-word" type="button">♫ <span>Posłuchaj</span></button><button class="action-chip" id="mark-known" type="button">☆ <span>Już umiem!</span></button></div>
+      <div class="flashcard-navigation"><button class="arrow-button" id="previous-word" type="button" aria-label="Poprzednie słowo">←</button><div class="learning-progress-track"><span id="learning-progress-fill"></span></div><button class="arrow-button" id="next-word" type="button" aria-label="Następne słowo">→</button></div><p class="dialog-footnote" id="speech-note" role="status" aria-live="polite">Wskazówka: użyj strzałek na klawiaturze do zmiany karty.</p>
+    </div>
+  </dialog>
+
+  <dialog class="quiz-dialog" id="quiz-dialog" aria-labelledby="quiz-heading"><div class="dialog-inner">
+    <button class="dialog-close" type="button" data-close="quiz-dialog" aria-label="Zamknij misję">×</button>
+    <div class="quiz-topline"><span>⚡ SZYBKA MISJA</span><span id="quiz-progress">PYTANIE 1 / 5</span></div>
+    <div class="quiz-progress-track"><span id="quiz-progress-fill"></span></div>
+    <div id="quiz-playing"><div class="quiz-question-icon" aria-hidden="true">✨</div><p class="quiz-subtitle">Wskaż prawidłowe znaczenie słowa:</p><h2 id="quiz-heading">Ready?</h2><button type="button" class="quiz-audio" id="quiz-say-word">♫ Posłuchaj słowa</button><div class="quiz-options" id="quiz-options"></div><p class="quiz-feedback" id="quiz-feedback" role="status" aria-live="polite"></p><button type="button" class="btn btn-primary quiz-next" id="quiz-next" hidden>Następne pytanie →</button></div>
+    <div id="quiz-finished" class="quiz-finished" hidden><div class="finish-illustration">🏆</div><h2 id="finish-heading">Brawo, Odkrywco!</h2><p id="finish-message"></p><div class="result-score"><strong id="final-score">5/5</strong><span>poprawnych odpowiedzi</span></div><button type="button" class="btn btn-primary" id="quiz-again">Zagraj jeszcze raz ↗</button><button type="button" class="quiet-link" data-close="quiz-dialog">Wróć na mapę</button></div>
+  </div></dialog>
+
+  <div id="print-sheet" aria-hidden="true"></div>
+</body>
+</html>
