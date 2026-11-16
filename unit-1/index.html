@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#287b9d">
+<meta name="description" content="Kraina 1 — My favourite things. Odkrywaj dziewięć zabawek, pytaj Is it a...?, mów o ulubionych rzeczach i baw się liczbami 11–15.">
+<title>Kraina 01 · Wyspa ulubionych rzeczy — English Adventure 2</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#przygoda">Przejdź do przygody</a>
+<div class="sky-confetti" aria-hidden="true"></div>
+<header class="topbar">
+  <div class="top-inner">
+    <a class="back-link" href="../index.html#mapa"><span aria-hidden="true">←</span> <span>Mapa przygód</span></a>
+    <a class="top-title" href="#start" aria-label="Kraina pierwsza, strona główna"><span class="top-mark" aria-hidden="true">✦</span><span>English <strong>Adventure</strong><small>THE LITTLE EXPLORERS CLUB</small></span></a>
+    <div class="top-actions"><span class="top-progress" id="top-progress">0/9 odkrytych</span><button type="button" id="sound-switch" class="top-sound" aria-pressed="true" aria-label="Wyłącz wymowę słówek">♫ <span>Dźwięk</span></button></div>
+  </div>
+</header>
+
+<main id="start">
+<section class="hero">
+  <div class="hero-inner wrap">
+    <div class="hero-left">
+      <div class="crumb"><span>✦</span> KRAINA 01 <span class="crumb-line"></span> MY FAVOURITE THINGS</div>
+      <h1>Wyspa <em>ulubionych</em> rzeczy<span class="hero-dot">.</span></h1>
+      <p>Witaj w warsztacie Robiego! Nasz mały robot ma dziewięć niezwykłych skarbów. Pomóż mu je rozpoznać, odnaleźć i opowiedzieć o swoim ulubionym.</p>
+      <div class="hero-actions"><a href="#przygoda" class="btn btn-main" id="hero-start">Zaczynamy przygodę <span aria-hidden="true">↗</span></a><button class="btn btn-clear" id="hero-vocab" type="button">Zobacz wszystkie słówka <span aria-hidden="true">⌕</span></button></div>
+      <div class="hero-footer"><span class="hero-seal" aria-hidden="true">★</span><div><strong>Uczysz się we własnym tempie</strong><small>Bez stopera, bez ocen i bez kar za pomyłki.</small></div></div>
+    </div>
+    <div class="hero-right">
+      <svg class="scene" viewBox="0 0 670 540" role="img" aria-labelledby="robot-title">
+        <title id="robot-title">Autorski sympatyczny robot Robi w warsztacie z zabawkami</title>
+        <defs>
+          <linearGradient id="water" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#68dce4"/><stop offset="1" stop-color="#2ba5c3"/></linearGradient>
+          <linearGradient id="robibody" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#c7edfa"/></linearGradient>
+          <linearGradient id="visor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#366bb2"/><stop offset="1" stop-color="#1b366a"/></linearGradient>
+          <filter id="shadow"><feDropShadow dx="0" dy="13" stdDeviation="12" flood-color="#186c89" flood-opacity=".23"/></filter>
+        </defs>
+        <g opacity=".5"><ellipse cx="335" cy="278" rx="265" ry="185" fill="none" stroke="#72d0e4" stroke-width="2" stroke-dasharray="7 15" transform="rotate(-18 335 278)"/><circle cx="518" cy="98" r="17" fill="#ffd47a"/><circle cx="104" cy="248" r="9" fill="#a8dbe9"/><path d="m105 91 8 19 20 7-20 7-8 19-8-19-20-7 20-7Z" fill="#ffca78"/></g>
+        <g class="float-slow"><ellipse cx="339" cy="427" rx="259" ry="51" fill="#2aa4be" opacity=".16"/><path d="M79 391q33-62 258-65 218 6 259 70l-20 63q-101 74-243 65Q160 518 96 461Z" fill="url(#water)" stroke="#3197b0" stroke-width="4"/><path d="M79 391q72 59 260 54 176-2 257-49" fill="none" stroke="#dcfeee" stroke-width="12" stroke-linecap="round"/><ellipse cx="340" cy="447" rx="163" ry="18" fill="#1b7298" opacity=".17"/></g>
+        <g class="float-mid" filter="url(#shadow)">
+          <g transform="translate(114 210) rotate(-13)"><rect x="0" y="0" rx="28" width="135" height="104" fill="#ffdf92"/><path d="M20 37h95M20 59h95" stroke="#d6a95c" stroke-width="5"/><rect x="32" y="-20" width="73" height="24" rx="11" fill="#ffca62"/><text x="67" y="87" font-size="28" text-anchor="middle">🛴</text></g>
+          <g transform="translate(466 222) rotate(10)"><rect x="0" y="0" rx="21" width="111" height="114" fill="#fac3e6"/><rect x="10" y="13" rx="13" width="91" height="71" fill="#fff3fa"/><text x="56" y="66" font-size="50" text-anchor="middle">🎮</text></g>
+        </g>
+        <g class="robi" filter="url(#shadow)">
+          <path d="M319 137V98" stroke="#417baf" stroke-width="10" stroke-linecap="round"/><circle cx="319" cy="87" r="15" fill="#ffca6e" stroke="#417baf" stroke-width="6"/>
+          <g transform="rotate(-12 222 320)"><path d="M255 290q-43-20-73 21" stroke="#3986af" stroke-width="19" stroke-linecap="round"/><circle cx="173" cy="325" r="24" fill="#d9f8ff" stroke="#3986af" stroke-width="7"/></g>
+          <g transform="rotate(12 438 322)"><path d="M398 287q49-6 66 44" stroke="#3986af" stroke-width="19" stroke-linecap="round"/><circle cx="469" cy="343" r="24" fill="#d9f8ff" stroke="#3986af" stroke-width="7"/></g>
+          <rect x="243" y="260" width="178" height="151" rx="53" fill="url(#robibody)" stroke="#397aab" stroke-width="9"/>
+          <rect x="281" y="310" width="102" height="54" rx="19" fill="#b9e7f8"/><circle cx="308" cy="338" r="12" fill="#ffbe75"/><rect x="329" y="326" rx="7" width="35" height="11" fill="#4bbfa8"/><rect x="329" y="344" rx="6" width="22" height="8" fill="#7a72dd"/>
+          <rect x="265" y="398" width="42" height="37" rx="12" fill="#2775a4"/><rect x="351" y="398" width="42" height="37" rx="12" fill="#2775a4"/>
+          <rect x="213" y="132" width="215" height="154" rx="66" fill="url(#robibody)" stroke="#397aab" stroke-width="9"/>
+          <rect x="232" y="151" width="177" height="106" rx="46" fill="url(#visor)"/>
+          <ellipse cx="281" cy="201" rx="15" ry="20" fill="#aafcf9"/><ellipse cx="362" cy="201" rx="15" ry="20" fill="#aafcf9"/>
+          <path d="M300 223q21 22 44 0" fill="none" stroke="#aafcf9" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="224" cy="256" r="16" fill="#ffaeaa"/><circle cx="420" cy="256" r="16" fill="#ffaeaa"/>
+          <rect x="198" y="186" width="25" height="43" rx="12" fill="#ffca75" stroke="#397aab" stroke-width="6"/><rect x="420" y="186" width="25" height="43" rx="12" fill="#ffca75" stroke="#397aab" stroke-width="6"/>
+        </g>
+        <g class="float-fast" filter="url(#shadow)"><rect x="68" y="93" width="154" height="65" rx="28" fill="#fff"/><text x="145" y="135" font-family="system-ui" font-size="28" font-weight="900" fill="#377b9d" text-anchor="middle">HELLO! ✨</text></g>
+        <g class="float-slow" filter="url(#shadow)"><rect x="462" y="125" width="152" height="65" rx="28" fill="#fff"/><text x="538" y="169" font-family="system-ui" font-size="28" font-weight="900" fill="#b875ad" text-anchor="middle">LET'S GO!</text></g>
+        <g fill="#ffcc72"><path d="m554 349 7 16 17 7-17 6-7 18-7-18-17-6 17-7Z"/><path d="m147 343 6 14 14 6-14 6-6 14-6-14-14-6 14-6Z"/></g>
+      </svg>
+      <div class="scene-label">MEET ROBI! <span aria-hidden="true">✦</span></div>
+      <div class="scene-sub">Twoja przygoda. Twoje tempo.</div>
+    </div>
+  </div>
+  <div class="wave" aria-hidden="true"></div>
+</section>
+
+<section class="journey" id="przygoda">
+  <div class="wrap">
+    <div class="journey-intro"><div><span class="overline">TWÓJ MAŁY WARSZTAT ODKRYWCY</span><h2>Gotowi na <em>przygodę?</em></h2><p>Możesz poznawać, próbować, pytać i wracać do ulubionych zabaw. Robi chętnie pomoże.</p></div><div class="counter-bubble"><strong id="journey-word-count">0</strong><span>z 9 słów<br>już poznanych</span></div></div>
+    <nav class="mission-nav" id="mission-nav" aria-label="Etapy przygody">
+      <button type="button" data-step="0" class="mission-tab active"><span class="tab-emoji">🧭</span><span>Start<small>Wyprawa</small></span></button>
+      <button type="button" data-step="1" class="mission-tab"><span class="tab-emoji">🔎</span><span>Odkrywam<small>Poznawanie</small></span></button>
+      <button type="button" data-step="2" class="mission-tab"><span class="tab-emoji">🧩</span><span>Szukam<small>Rozpoznawanie</small></span></button>
+      <button type="button" data-step="3" class="mission-tab"><span class="tab-emoji">💬</span><span>Zgaduję<small>Yes / No</small></span></button>
+      <button type="button" data-step="4" class="mission-tab"><span class="tab-emoji">💜</span><span>Opowiadam<small>My favourite...</small></span></button>
+      <button type="button" data-step="5" class="mission-tab"><span class="tab-emoji">⭐</span><span>Liczę<small>11–15</small></span></button>
+    </nav>
+    <div class="play-layout">
+      <div class="stage-panel" id="stage-panel">
+        <div id="stage-root" class="stage-root" aria-live="polite" aria-atomic="false"></div>
+      </div>
+      <aside class="side-panel">
+        <div class="side-card side-progress">
+          <div class="side-kicker">KOMPAS ODKRYWCY <span aria-hidden="true">✦</span></div>
+          <h3>Małe kroki, wielkie odkrycia</h3>
+          <p>Nie liczymy błędów. Liczy się to, co udało Ci się poznać i przećwiczyć.</p>
+          <div class="progress-meter" role="progressbar" aria-label="Poznane słówka" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0" id="master-progress"><span id="master-bar"></span></div>
+          <div class="progress-stats"><span><strong id="stat-seen">0</strong> <small>poznanych</small></span><span><strong id="stat-find">0</strong> <small>rozpoznanych samodzielnie</small></span></div>
+        </div>
+        <div class="side-card side-robi">
+          <span class="tiny-robi" aria-hidden="true">🤖</span><h3>Robi podpowiada</h3><p id="robi-tip">Nie musisz znać odpowiedzi od razu. Zawsze możesz poprosić mnie o wskazówkę!</p>
+        </div>
+        <div class="side-card side-note"><div class="note-mark" aria-hidden="true">✎</div><h3>W tej krainie</h3><p>9 zabawek · liczby 11–15 · <span lang="en">It's a… · It isn't a… · Is it a…? · My favourite thing is…</span></p></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="atlas-section" id="atlas">
+  <div class="wrap">
+    <div class="atlas-title"><div><span class="overline">ATLAS SKARBÓW</span><h2>Wszystkie skarby <em>Robiego</em></h2><p>Dziewięć słów, do których możesz wracać, kiedy tylko chcesz.</p></div><button type="button" class="btn btn-outline" id="atlas-speak">♫ Posłuchaj słów</button></div>
+    <div class="atlas-grid" id="atlas-grid"></div>
+  </div>
+</section>
+
+<section class="parent-section" id="dla-rodzica">
+  <div class="wrap parent-inner"><div class="parent-icon" aria-hidden="true">📚</div><div><span class="overline">KĄCIK RODZICA</span><h2>Nauka bez presji.</h2><p>Ćwiczenia są oparte na słownictwie i zwrotach Unit 1. Dziecko może samodzielnie odkrywać odpowiedzi i korzystać z podpowiedzi. Postęp zapisuje się wyłącznie na tym urządzeniu. Wymowa pochodzi z syntezatora mowy przeglądarki, nie z nagrań wydawnictwa.</p><div class="parent-actions"><button type="button" class="btn btn-dark" id="print-unit">🖨 Drukuj listę Unit 1</button><button type="button" class="btn btn-text" id="parent-details" aria-expanded="false" aria-controls="details-panel">Jak liczymy postępy? ↓</button></div><div id="details-panel" hidden class="details-panel"><p><strong>Poznane:</strong> dziecko zobaczyło fiszkę. <strong>Samodzielnie rozpoznane:</strong> wybrało poprawny przedmiot bez podpowiedzi i wcześniejszej pomyłki. <strong>Przećwiczone w zdaniu:</strong> ułożyło własne proste zdanie z pomocą aplikacji. Nie mierzymy ani nie oceniamy wymowy dziecka.</p><p>Wyrazy z trudnością pojawiają się ponownie podczas kolejnych wypraw. Nie porównujemy dzieci, nie stawiamy ocen i nie narzucamy czasu.</p><button type="button" id="reset-progress" class="danger-quiet">Wyczyść postępy na tym urządzeniu</button></div></div></div>
+</section>
+</main>
+<footer class="footer"><div class="wrap footer-inner"><div><strong>English <span>Adventure</span> 2</strong><p>Małe słowa. Wielkie przygody. <span aria-hidden="true">💜</span></p></div><a href="../index.html#mapa">← Powrót do mapy</a></div><div class="wrap footer-legal">Nieoficjalny projekt edukacyjny. Oryginalne ilustracje i ćwiczenia, bez wykorzystania materiałów graficznych wydawcy.</div></footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<section class="print-only" id="print-zone"><h1>UNIT 1 — MY FAVOURITE THINGS</h1><p>Imię: _____________________ Data: _______________</p><p>Ćwicz: przeczytaj, powiedz, zasłoń tłumaczenie i sprawdź, co pamiętasz.</p><table><thead><tr><th>English</th><th>Po polsku</th><th>Umiem ✓</th></tr></thead><tbody><tr><td>bat</td><td>rakietka do tenisa stołowego</td><td>☐</td></tr><tr><td>bike</td><td>rower</td><td>☐</td></tr><tr><td>computer</td><td>komputer</td><td>☐</td></tr><tr><td>computer game</td><td>gra komputerowa</td><td>☐</td></tr><tr><td>robot</td><td>robot</td><td>☐</td></tr><tr><td>scooter</td><td>hulajnoga</td><td>☐</td></tr><tr><td>spaceship</td><td>statek kosmiczny</td><td>☐</td></tr><tr><td>TV</td><td>telewizja / telewizor</td><td>☐</td></tr><tr><td>watch</td><td>zegarek</td><td>☐</td></tr></tbody></table><h2>Numbers</h2><p>11 eleven · 12 twelve · 13 thirteen · 14 fourteen · 15 fifteen</p><h2>Let's say</h2><p>It's a… / It isn't a… / Is it a…? / My favourite thing is a…</p><p>Moje ulubione rzeczy: ____________________________________________________</p></section>
+</body>
+</html>
