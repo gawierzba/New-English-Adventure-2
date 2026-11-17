@@ -109,6 +109,27 @@ Szósta pełna kraina, autorska pastelowa kuchnia prowadzona przez jeżycę Lil�
 
 Bez ocen, rankingów, limitu czasu, kont, mikrofonu i oceniania gustów żywieniowych. Wszystkie postacie i grafiki są autorskie. Świat działa mobilnie, respektuje preferencję ograniczenia animacji i udostępnia oszczędny wydruk A4.
 
+## Kraina 07 — Our world: Atlas Żywych Krajobrazów 🌍
+
+**https://gawierzba.github.io/New-English-Adventure-2/unit-7/**
+
+Siódma kraina to oryginalna, interaktywna podróż z Tolą. Program został zweryfikowany bezpośrednio w dostarczonych plikach **NEA_2_PORADNIK.pdf** (Rozdział 7 „Our world”), **NEA_2_WordCards.pdf** (Unit 7) i **NEA_2_Karty_Pracy_Zapamitaj_i_powtrz.pdf** (Unit 7).
+
+**14 słów WordCards:** field, bus, boat, car, mountain, lake, forest, lorry, town, river, plane, sky, train, tractor.
+
+**3 dodatkowe słowa z poradnika:** island, rainforest, van.
+
+**Aktywności:**
+- **Odkrywanie**: pięć kart z ilustracją, tłumaczeniem i wymową na wizytę. Pierwsza piątka: river, mountain, train, boat, field. Kolejne wizyty stawiają na niepoznane słowa i słabiej ćwiczone.
+- **Żywy atlas**: własny wektorowy krajobraz ze zmienną liczbą 1–4 obiektów. Elementy rzeczywiście pojawiają się na obrazku w podanej liczbie, a równocześnie powstaje zdanie **There's a… / There's an… / There are two/three/four…**. Kontrolowane są formy **an island, buses, lorries**. Dla *sky* używamy naturalnego zdania **The sky is blue**, bez niepoprawnego liczenia kilku „nieb”.
+- **Lornetka liter**: inspirowana domową zabawą opisaną w poradniku. Każda zagadka losuje angielską literę oraz trzy obrazki znanych słów; tylko jedna nazwa zawiera wybraną literę. Po rozwiązaniu dostępne są wyjaśnienia i stopniowane podpowiedzi.
+- **Podróż pociągiem**: krótka trasa przez cztery autorskie krajobrazy; przy każdym widoku dziecko porównuje poprawną formę zdania z błędnie dobraną liczbą pojedynczą lub mnogą. Najpierw pojawia się wstęp z przykładami.
+- **Pocztówka**: dziecko samo wybiera widok, liczbę obiektów i powiązane angielskie zdanie. Pocztówkę można wydrukować osobno, a słownictwo Unit 7 także jako oszczędną kartę A4.
+
+Bez ocen, punktów, stopera, kont, mikrofonu ani wysyłania postępów na serwer. Wyniki i własne próby zapisywane są lokalnie w przeglądarce. Użycie podpowiedzi i odpowiedź po błędzie **nie zwiększają licznika samodzielnie rozwiązanych zadań**. Scenerie, postać Toli i interakcje są autorskie; nie reprodukujemy grafik wydawcy ani postaci z filmów.
+
+**Architektura:** \`unit-7/index.html\`, \`unit-7/style.css\`, \`unit-7/engine.js\` (źródłowe słownictwo, gramatyka i krajobraz SVG), \`unit-7/app.js\` (lekcje, podróże, zapis postępów i druk).
+
 ## Co działa
 - kolorowa, responsywna mapa **8 krain** odpowiadających rozdziałom kursu,
 - **93 autorskie fiszki** ze słowem angielskim, polskim tłumaczeniem i ilustracją emoji,
