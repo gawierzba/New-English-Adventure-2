@@ -203,6 +203,38 @@ function quizNext(){
  if(quiz.index===quiz.tasks.length-1){go(5);return}
  quiz.index++;quiz.hint=0;quiz.wrong=null;quiz.done=false;quiz.assisted=false;renderQuiz()
 }
+function startMirror(){
+ if(!gate(1))return;
+ mirrorLook=E.cloneLook(state.look);
+ if(!E.listParts(mirrorLook).length)mirrorLook=E.randomLook(learned().map(w=>w.en),0,2);
+ mirrorTried=false;mirrorHelp=false;renderMirror()
+}
+function renderMirror(){
+ const line=E.describe(mirrorLook,true);
+ const parts=[
+  head("🪞 LUSTRO MOWY","What are you <em>wearing?</em>","Udawaj, że jesteś postacią ze swojego rysunku. Fela pyta, a Ty próbujesz odpowiedzieć po angielsku."),
+  '<div class="mirror-scene"><div class="mirror-grid">',
+  actor(mirrorLook,"studio","AN IMAGINARY OUTFIT"),
+  '<div><div class="mirror-dialogue"><span class="who">FELA ASKS</span>',
+  '<div class="bubble" lang="en">What are you wearing?</div>',
+  '<p class="translation-small">Co masz na sobie?</p></div>',
+  '<div class="mirror-dialogue"><span class="who">YOUR CHARACTER ANSWERS</span>',
+  '<div class="bubble" lang="en">',line,'</div>',
+  '<p class="translation-small">To zabawa w fikcyjną postać. Nie pytamy o Twoje prawdziwe ubranie.</p>',
+  '</div></div></div></div>',
+  '<div class="mirror-buttons">',
+  btn("mirror-hear","♫ Posłuchaj rozmowy","soft"),
+  btn("mirror-help",mirrorHelp?"Pomoc pokazana ✓":"💡 Pomóż mi","soft"),
+  btn("mirror-try",mirrorTried?"Spróbowałem(am)! ✓":"Spróbuję powiedzieć →"),
+  '</div>',
+  mirrorHelp?'<div class="hint"><b>Pomoc:</b> <span lang="en">I’m wearing…</span> znaczy „Mam na sobie…”. Przykład: <span lang="en">'+line+'</span></div>':"",
+  '<div class="actions">',
+  btn("mirror-new","Inny strój do rozmowy ↻","soft"),
+  btn("runway","Wielki pokaz →"),'</div>',
+  '<p class="tiny">Nie nagrywamy głosu. Sam oznaczasz, czy spróbowałeś odpowiedzieć.</p>'
+ ];
+ show(parts.join(""),"Na pytanie What are you wearing? odpowiadamy I am wearing…")
+}
 /* MODULES */
  /* EVENTS */
 session=chooseSession();counts();glossary();soundUI();go(0);
