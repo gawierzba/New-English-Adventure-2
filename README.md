@@ -153,6 +153,43 @@ Nie ma ocen, rankingów, stopera, kont, mikrofonu, rejestrowania tożsamości an
 
 **Pliki:** \`unit-8/index.html\`, \`unit-8/style.css\`, \`unit-8/engine.js\`, \`unit-8/app.js\`.
 
+## Etap 15.1–15.2 — Gwiezdna Poczta Lumo 💌🦉
+
+**Graj:** https://gawierzba.github.io/New-English-Adventure-2/post/
+
+Nowy, autorski rozdział English Adventure 2. W Obserwatorium Lumo przybyły cztery listy. Dziecko odwiedza gwiezdną sortownię, czyta wiadomości, słucha angielskich zdań, wykonuje **dwa krótkie zadania na list** i zdobywa pamiątkowy stempel. Projekt jest w pełni funkcjonalny w granicach etapów 15.1 i 15.2, bez przypisywania sobie jeszcze niezrealizowanych etapów 15.3 i 15.4.
+
+### Co działa?
+
+- **15.1 · Gwiezdna sortownia:** oryginalna, ręcznie napisana ilustracja SVG z sową Lumo, oknem z gwiazdą, sześcioma półkami na korespondencję, animowanymi kopertami, zegarem i pocztową ladą; osobny indywidualny styl północnego granatu, jasnego papieru, miękkiej mięty i fiołków.
+- **15.2 · Cztery interaktywne listy:** każda wiadomość ma autorskiego nadawcę, fabułę, rozmowę w przystępnym angielskim, czytanie na głos przez syntezator przeglądarki, zadanie ze znaczeniem angielskiej wypowiedzi, drugie zadanie z wyborem pełnego angielskiego zdania, dwustopniową podpowiedź i odpowiedź przyjaciela.
+- **Pierwszy album stempli:** cztery pamiątki odblokowywane dopiero po rozwiązaniu obu pytań. Można ponownie rozwiązać list, czytać go powtórnie i ulepszyć wynik z pomocą do samodzielnej odpowiedzi. Pocztę można zamknąć w środku pytania i dokończyć na tym samym urządzeniu, bez utraty podpowiedzi lub liczby pomyłek.
+- **Wejścia do poczty:** samodzielna strona `post/`, odnośniki na głównej mapie krain oraz zaproszenie we wcześniej istniejącym Żywym Miasteczku. Dostępne układy mobilne, obsługa klawiatury, etykiety dostępności, preferencja ograniczonego ruchu i druk albumu bez kolorowych tłach.
+
+### Wierność źródłom dydaktycznym
+
+Własne, oryginalne postacie i opowiadania wykorzystują słowa i struktury z dostarczonego **`NEA_2_PORADNIK.pdf`** (PDF strony 9, 10, 12 i 13), skorelowane z lokalnym katalogiem `passport/data.js`:
+
+| Nadawca | Kraina | Cztery słowa wykorzystane przy listach | Wzorzec zdania |
+|---|---|---|---|
+| 🐿️ Tuli | Unit 5, ruch i umiejętności | jump, run, dance, sing | *I can jump.* |
+| ⛵ Kapitan Kropelka | Unit 7, pojazdy | boat, train, bus, car | *There's a boat.* |
+| 🦔 Lila | Unit 6, jedzenie | bread, cake, strawberries, cheese | *Can I have cake, please?* |
+| 🦊 Fela | Unit 8, ubrania | scarf, jacket, raincoat, jeans | *She's wearing a scarf.* / *She's wearing jeans.* |
+
+Każdą kopertę można otworzyć nawet bez wcześniejszej nauki. **Zadania uruchamiają się dopiero po poznaniu co najmniej dwóch słów** spośród czterech z wybranego listu (status `seen` w natywnej krainie, a nie ręczny znacznik na stronie głównej). Każde pytanie losuje odpowiedź i pozostałe możliwości **wyłącznie spośród poznanych słów z tego samego rozdziału**, nigdy z innych krain lub słów jeszcze niepoznanych. Dobór dwóch różnych słów i rozłożenie na dwa typy pytania zwiększa stopniowanie trudności.
+
+Jedynie prawidłowe odpowiedzi zapisują próbę do istniejącego harmonogramu powtórek **`nea2-passport-revision-v1`**. Odpowiedź po pomyłce lub wskazówce jest próbą *z pomocą*, a nie *samodzielną*. Samo otwarcie wiadomości, odsłuchanie zdania i zdobycie stempla nie oznacza automatycznie samodzielnego opanowania słów. Nie modyfikujemy danych natywnych lekcji `seen`. Dokończenie listu daje stempel niezależnie od wskazówek; album oddzielnie informuje, czy uzyskano co najmniej jeden przebieg rozwiązany samodzielnie.
+
+### Stan i pliki
+
+- Osobny klucz `nea2-lumo-post-v1` przechowuje otwarte i ukończone koperty, stemple, próby, aktualny list, pytanie, wskazówki i pomyłki. Wyłączenie dźwięku zapisuje się osobno jako `nea2-post-voice-v1`.
+- Bez konta, mikrofonu, nagrywania głosu, reklam, zbierania danych na serwerze i ocen. Synteza wymowy zależy od możliwości przeglądarki; gdy jest niedostępna, tekst i ćwiczenia nadal działają.
+- Nowe pliki: `post/index.html`, `post/style.css`, `post/engine.js`, `post/art.js`, `post/app.js`, `post/preview.svg`.
+- Edytowane: `index.html`, `style.css`, `town/index.html`, `town/style.css`, `README.md`.
+
+**Kolejna odsłona, jeszcze nie wykonana:** 15.3 — konstruowanie własnych odpowiedzi przez układanie słów w kolejności i ozdabianie pocztówek; 15.4 — rozwój albumu i większa liczba przesyłek z pozostałych czterech krain. Początkowy album **czterech stempli jest już działający**, ale nie jest jeszcze pełnym pocztowym centrum adaptacyjnych powtórek.
+
 ## Etap 14 — Sekrety Miasteczka i Obserwatorium Lumo ✧🔭
 
 **Odkrywaj:** https://gawierzba.github.io/New-English-Adventure-2/town/#sekrety
