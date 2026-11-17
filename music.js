@@ -117,7 +117,8 @@
     if(!ctx||!wanted||document.hidden||interval!==null||!contextRunning()){
       setUI();return
     }
-    nextBar=ctx.currentTime+.07;
+    /* On tab return, retain already scheduled notes and wait for the next bar. */
+    if(nextBar<ctx.currentTime+.035)nextBar=ctx.currentTime+.07;
     master.gain.setValueAtTime(.0001,ctx.currentTime);
     master.gain.setTargetAtTime(.55,ctx.currentTime,.24);
     interval=window.setInterval(tick,145);
@@ -152,7 +153,7 @@
     if(interval!==null){window.clearInterval(interval);interval=null}
     if(ctx){
       var old=ctx,oldMaster=master;
-      ctx=null;master=null;
+      ctx=null;master=null;nextBar=0;
       try{oldMaster.gain.setTargetAtTime(0,old.currentTime,.055)}catch(e){}
       window.setTimeout(function(){try{if(old.close)old.close()}catch(e){}},240)
     }
