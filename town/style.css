@@ -228,3 +228,80 @@ footer{background:#244457;color:#fff;padding:42px 0 22px}
 .scene-hotspot.wrong{background:#d08d95;box-shadow:0 0 0 5px #efccd2}
 @media(max-width:670px){.sound-switch{height:35px;width:35px;font-size:19px}.journal-reset-row{justify-content:center}.journal-reset-row button{font-size:10px}}
 @media print{.journal-reset-row{display:none!important}}
+
+
+/* STAGE 12 — Three new living scenes: branchable theatre, moving park and station.
+   Additive styling: old three worlds keep their layouts and saved progress. */
+.map-station{left:23%;top:75%;animation-delay:1.9s}
+.map-park{left:13%;top:49%;animation-delay:.35s}
+.map-theatre{left:55%;top:35%;animation-delay:1.45s}
+.place-cards,.journal-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.town-map svg .town-extension-decor{filter:drop-shadow(0 7px 8px #3156662e)}
+.town-map.is-night .town-extension-decor{opacity:.82}
+.scene-wrap .station-engine{transform-box:fill-box;transform-origin:center}
+.scene-wrap .signal-green{transition:fill .35s,filter .35s}
+.scene-wrap.signal-open .signal-green{fill:#76dc98;filter:drop-shadow(0 0 9px #7cf4ae)}
+.scene-wrap.signal-open .station-engine{animation:station-depart 2.1s ease-in-out both}
+.scene-wrap .station-plane{animation:station-flight 10s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.scene-wrap .park-figure{animation:park-breathe 4.5s ease-in-out infinite}
+.scene-wrap.action-jump .park-figure{animation:park-jump 1.0s ease-in-out 3}
+.scene-wrap.action-run .park-figure{animation:park-run 1.4s ease-in-out 2}
+.scene-wrap.action-dance .park-figure{animation:park-dance 1.1s ease-in-out 3;transform-origin:center center;transform-box:fill-box}
+.scene-wrap.action-sing .park-figure{animation:park-singing 1.6s ease-in-out 2}
+.scene-wrap.action-climb .park-figure{animation:park-climb 1.5s ease-in-out 2}
+.scene-wrap.action-walk .park-figure{animation:park-walk 2s ease-in-out 1}
+.scene-wrap .park-butterflies{animation:park-butterfly 6s ease-in-out infinite}
+.scene-wrap .park-notes{animation:park-notes 3.6s ease-in-out infinite}
+.scene-wrap .theatre-spotlight{animation:spotlight 6s ease-in-out infinite;transform-origin:center center}
+.scene-wrap .theatre-owl{animation:owl-hover 4.7s ease-in-out infinite}
+.scene-wrap.applause .theatre-actor{animation:theatre-bow 1.25s ease-in-out 2;transform-origin:50% 100%;transform-box:fill-box}
+.scene-wrap.applause .theatre-stars{animation:theatre-cheer 1s ease-in-out 3}
+.scene-wrap .theatre-curtains{animation:curtain-sway 8s ease-in-out infinite}
+.theatre-role-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0 8px}
+.theatre-role{min-height:168px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:18px 16px;border:2px solid #d9e7e2;background:linear-gradient(138deg,#fffaf3,#f5f1f9);border-radius:22px;color:#5b7887;box-shadow:0 8px 0 #edf0ea;transition:transform .2s,border-color .2s}
+.theatre-role:hover{transform:translateY(-4px);border-color:#c4acc9}
+.theatre-role>span{font-size:52px;filter:drop-shadow(0 5px 8px #6573931f)}
+.theatre-role strong{font-family:Georgia,serif;font-size:19px;line-height:1.2;color:#62738b}
+.theatre-role small{font-size:11px;color:#8da1a8;line-height:1.7;max-width:235px}
+.theatre-role small b{color:#678c9b}
+.dialogue-note{margin:20px 0 16px;padding:18px 23px;border:1px solid #e5d8dd;background:linear-gradient(125deg,#fff9ef,#f5eef9);border-radius:22px;display:grid;gap:7px;position:relative}
+.dialogue-note:after{content:"❞";position:absolute;right:21px;top:10px;color:#d5becd;font-size:56px;font-family:Georgia,serif;line-height:1;opacity:.7}
+.dialogue-note span{font-size:10px;letter-spacing:1.5px;font-weight:1000;color:#947d9c}
+.dialogue-note strong{font-family:Georgia,serif;font-size:clamp(24px,3vw,34px);color:#6b718b;position:relative;z-index:1;line-height:1.25}
+.dialogue-note small{font-size:11px;color:#938c99;line-height:1.7;position:relative;z-index:1}
+.dialogue-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+.dialogue-choice{background:#fff;border:2px solid #d9e7e5;border-radius:16px;padding:15px 13px;min-height:66px;text-align:left;font-size:13px;font-weight:900;line-height:1.35;color:#658794;transition:border-color .15s,background .15s;overflow-wrap:anywhere}
+.dialogue-choice:hover:not(:disabled){border-color:#97c8c5;background:#f8fffa}
+.dialogue-choice.right{background:#ecf8ee;border-color:#8cccaa;color:#579377}
+.dialogue-choice.wrong{background:#fff0ed;border-color:#dfa8aa;color:#b37a84}
+.dialogue-choice.glow{box-shadow:0 0 0 4px #b5e5d1}
+.dialogue-choice:disabled{cursor:default}
+@keyframes station-depart{0%{translate:0 0}15%{translate:-11px 0}65%{translate:125px 0}100%{translate:125px 0}}
+@keyframes station-flight{0%,100%{translate:0 0}50%{translate:-25px -11px}}
+@keyframes park-breathe{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes park-jump{0%,100%{translate:0 0}45%{translate:0 -58px}}
+@keyframes park-run{0%,100%{translate:0 0}50%{translate:47px -7px}}
+@keyframes park-dance{0%,100%{rotate:0deg}25%{rotate:13deg}75%{rotate:-13deg}}
+@keyframes park-singing{0%,100%{translate:0 0;scale:1}50%{translate:0 -9px;scale:1.09}}
+@keyframes park-climb{0%,100%{translate:0 0}50%{translate:-25px -35px}}
+@keyframes park-walk{0%,100%{translate:0 0}50%{translate:35px -4px}}
+@keyframes park-butterfly{0%,100%{translate:0 0}50%{translate:20px -15px}}
+@keyframes park-notes{0%,100%{opacity:.55;translate:0 0}50%{opacity:1;translate:0 -11px}}
+@keyframes spotlight{0%,100%{opacity:.7}50%{opacity:1}}
+@keyframes theatre-bow{0%,100%{rotate:0deg}45%{rotate:14deg}}
+@keyframes theatre-cheer{0%,100%{scale:1;opacity:.7}50%{scale:1.2;opacity:1}}
+@keyframes curtain-sway{0%,100%{translate:0 0}50%{translate:3px 0}}
+@media(max-width:880px){.place-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.journal-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:670px){
+ .map-place{font-size:9px;gap:4px;padding:5px 8px 5px 5px}.map-place .pin-icon{width:25px;height:25px;font-size:17px}
+ .place-cards,.journal-cards{grid-template-columns:1fr}
+ .theatre-role-grid{gap:8px}.theatre-role{min-height:149px;padding:13px 9px;border-radius:17px}.theatre-role>span{font-size:38px}.theatre-role strong{font-size:16px}.theatre-role small{font-size:10px}
+ .dialogue-note{padding:15px}.dialogue-note strong{font-size:25px}
+ .dialogue-choices{gap:8px}.dialogue-choice{font-size:11px;min-height:60px;padding:11px 9px;border-radius:13px}
+ .side-stamps{gap:7px}.side-stamp{height:43px;width:43px;font-size:21px}
+}
+@media(max-width:370px){.theatre-role-grid,.dialogue-choices{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){
+ .station-engine,.station-plane,.park-figure,.park-butterflies,.park-notes,.theatre-spotlight,.theatre-owl,.theatre-stars,.theatre-actor,.theatre-curtains{animation:none!important}
+ .scene-wrap.signal-open .signal-green{fill:#76dc98;filter:none}
+}
