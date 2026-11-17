@@ -71,6 +71,26 @@ Czwarta pełna kraina oparta na poradniku NEA 2 (Unit 4, strona 8), WordCards (U
 
 Dla pierwszej sesji gwarantujemy obecność słów bed oraz box, żeby pokazywanie relacji miało sens. Kolejne wizyty priorytetowo pokazują nieodkryte słowa i trudniejsze ćwiczenia. Nie pokazujemy pytań o nieznane słownictwo. Korzystanie z pomocy nie podwyższa licznika odpowiedzi samodzielnych. Brak stopera, konta, mikrofonu i transferu danych postępu. Dostępny oszczędny wydruk A4.
 
+## Kraina 05 — I can jump!: Dżungla Supermocy 🌿
+
+**https://gawierzba.github.io/New-English-Adventure-2/unit-5/**
+
+Piąta autorska kraina, z własną postacią Kiko oraz **ruchomą sceną z 10 animacjami czynności**. Nauka zgodna z Unit 5 w dostarczonym poradniku (PDF strona 9), WordCards Unit 5 (PDF strony 11–15) i kartami „Zapamiętaj” Unit 5.
+
+**17 słów z kart:** bear, bird, boy, climb, dance, elephant, fly, jump, monkey, ride a bike, ride a horse, run, sing, snake, swim, walk, tiger. To 6 nazw zwierząt, 1 nazwa postaci i 10 czasowników lub zwrotów opisujących czynności.
+
+**Kolejne etapy:**
+- odkrywanie pięciu kart w krótkiej sesji, z wymową i tłumaczeniami (pierwsza sesja zawiera jump, run, monkey, bird, bear);
+- ruchoma dżungla: dziesięć bezpiecznych, autorskich animacji. Po poznaniu czynności można oglądać jej znaczenie i tworzyć zdania **I can…**, **I can't…** oraz pytania **Can you…?**;
+- tropienie postaci i zwierząt: wybór odpowiedniego obrazka na podstawie słowa angielskiego, bez podawania tłumaczenia w samych odpowiedziach;
+- rozmowa: najpierw pokaz dwóch poprawnych odpowiedzi, potem krótkie wywiady, w których **obie odpowiedzi są akceptowane**, ponieważ własne umiejętności dziecka nie podlegają ocenie;
+- kalambury: odczytanie lub odgadnięcie gestu, pokazanie poprawnego zdania i próba własnego wypowiedzenia go;
+- podsumowanie i kolejne wizyty, które dobierają najpierw nowe, potem słabiej ćwiczone słówka.
+
+Lekcja jest bez ocen, punktów i timerów. Odpowiedzi uzyskane po pomocy nie są liczone jako samodzielne rozpoznanie. Nie wymagamy rzeczywistego pływania, wspinania, jazdy konnej ani innej wymagającej aktywności — wystarczy gest, obejrzenie animacji lub opowiedzenie zdania. Brak mikrofonu i serwera zbierającego dane postępów. Dostępny mobilny układ, ograniczone animacje zgodnie z ustawieniami urządzenia i czarno-biały druk A4.
+
+Postać Kiko i oprawa są autorskie; nie wykorzystujemy filmowych bohaterów, ilustracji ani oryginalnych nagrań Pearson/Disney.
+
 ## Co działa
 - kolorowa, responsywna mapa **8 krain** odpowiadających rozdziałom kursu,
 - **93 autorskie fiszki** ze słowem angielskim, polskim tłumaczeniem i ilustracją emoji,
