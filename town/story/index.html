@@ -12,6 +12,8 @@
 <script defer src="../engine.js"></script>
 <script defer src="../art.js"></script>
 <script defer src="../art-extra.js"></script>
+<script defer src="../secrets.js"></script>
+<script defer src="../secrets-art.js"></script>
 <script defer src="engine.js"></script>
 <script defer src="art.js"></script>
 <script defer src="app.js"></script>
@@ -21,18 +23,18 @@
 <a class="skip" href="#storybook">Przejdź do opowieści</a>
 <header class="topbar"><div class="container topbar-inner">
  <a class="back" href="../">← <span>Żywe Miasteczko</span></a>
- <a class="wordmark" href="../../">English <strong>Adventure</strong><small>THE STORYBOOK CHAPTER · 13</small></a>
+ <a class="wordmark" href="../../">English <strong>Adventure</strong><small>THE STORYBOOK CHAPTER · 13–14</small></a>
  <nav aria-label="Nawigacja"><a href="#storybook">Opowieść</a><a href="#history">Moje zakończenia</a><a class="passport-link" href="../../passport/">📘 Paszport</a></nav>
  <button type="button" id="voice-toggle" aria-label="Wyłącz angielską wymowę" aria-pressed="true">♫</button>
 </div></header>
 <main>
 <section class="masthead"><div class="container hero-grid">
  <div class="intro">
-  <div class="eyebrow"><span class="eyebrow-star">✦</span> WIELKA OPOWIEŚĆ · ETAP 13</div>
+  <div class="eyebrow"><span class="eyebrow-star">✦</span> WIELKA OPOWIEŚĆ · ETAPY 13–14</div>
   <h1>Tajemnica <em>Zgaszonej Gwiazdy.</em></h1>
   <div class="chapter-rule"><span></span> ❦ <span></span></div>
   <p>W Miasteczku pod Chmurami zgasło tajemnicze światło. Lumo potrzebuje Twojej pomocy, żeby odnaleźć trzy promienie gwiazdy, a potem zapalić ją na nowo.</p>
-  <div class="hero-meta"><span>📖 3 rozdziały</span><span>🧭 8 dróg</span><span>✨ 4 finały</span></div>
+  <div class="hero-meta"><span>📖 3 rozdziały</span><span>🧭 8 dróg</span><span>✨ 4 finały</span><span>✧ 6 sekretów</span></div>
   <a class="hero-cta" href="#storybook">Otwórz księgę przygód <span aria-hidden="true">↗</span></a>
   <p class="quiet-promise">Nie ma limitu czasu ani ocen. Wyprawę można przerwać i kontynuować.</p>
  </div>
@@ -54,11 +56,12 @@
     <div class="book-bottom"><span>EVERY LITTLE WORD OPENS A NEW DOOR</span><span id="page-number">01 / 04</span></div>
   </div>
  </div>
+ <div id="story-secret-ledger" class="story-secret-ledger" aria-live="polite"></div>
  <div class="support-strip"><div class="support-owl" aria-hidden="true">🦉</div><p id="lumo-help">Nie ma złych wyborów. Możesz wracać do tej opowieści i odkrywać inne drogi.</p><button type="button" id="lumo-say">♫ Hello, Explorer!</button></div>
 </div></section>
 <section class="history-section" id="history"><div class="container">
  <div class="section-heading"><span>✦ OSOBISTA BIBLIOTEKA</span><h2>Twoje <em>zakończenia.</em></h2><p>Każda ukończona podróż zostawia pamiątkę. Zajrzyj tu, aby zobaczyć, jakie historie powstały dzięki Twoim decyzjom.</p></div>
- <div class="history-board"><div class="history-title"><span>THE STORYBOOK LIBRARY</span><span id="library-counter">0 / 4 zakończeń</span></div><div id="ending-gallery" class="ending-gallery"></div><div id="run-history" class="run-history"></div>
+ <div class="history-board"><div class="history-title"><span>THE STORYBOOK LIBRARY</span><span id="library-counter">0 / 4 zakończeń</span></div><div id="ending-gallery" class="ending-gallery"></div><div id="run-history" class="run-history"></div><div id="library-secret-note" class="library-secret-note"></div>
  <div class="history-bottom"><span>✦ KAŻDA OPOWIEŚĆ JEST INNA</span><button id="print-story" type="button">🖨️ Drukuj kartę opowieści</button></div>
  </div>
  <div class="learning-note"><span>♡</span><p>Przygodę można przeżyć bez wcześniejszej nauki — wtedy odkrywa się historię, ale nie wykonuje sprawdzianu. Pytania pojawiają się wyłącznie przy słowach już poznanych w macierzystych krainach. Odpowiedź z pomocą też pozwala dotrzeć do finału.</p></div>
