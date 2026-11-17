@@ -79,7 +79,7 @@ function stage(html,kicker,tip){
 function header(marker,title,desc){
  return '<span class="desk-tag">'+marker+'</span><h3 class="desk-title">'+title+'</h3><p class="desk-intro">'+desc+'</p>'
 }
-function action(name,label,kind="mail-button"){
+function buttonHTML(name,label,kind="mail-button"){
  return '<button type="button" class="'+kind+'" data-action="'+name+'">'+label+'</button>'
 }
 function actions(...buttons){return '<div class="mail-actions">'+buttons.join("")+'</div>'}
@@ -88,7 +88,7 @@ function showWelcome(){
  '<div class="welcome-mail"><span class="big-owl" aria-hidden="true">🦉</span><div><strong>Hello, Little Explorer!</strong>'+
  '<p>To ja, Lumo. Moja poczta lubi małe odkrycia. Listy możesz czytać zawsze — bez żadnego sprawdzianu. Gdy poznasz odpowiednie słówka, zaproszę Cię do dwóch zagadek i przygotuję pamiątkowy stempel.</p></div></div>'+
  '<div class="welcome-steps"><div><b>💌</b> Otwórz</div><div><b>🎧</b> Posłuchaj</div><div><b>✦</b> Odbierz stempel</div></div>'+
- actions(action("to-inbox","Wybieram pierwszą kopertę ↗")),
+ actions(buttonHTML("to-inbox","Wybieram pierwszą kopertę ↗")),
  "THE FIRST LETTER","Każdy list jest otwarty dla ciekawych świata. Możesz zacząć od dowolnego bohatera.")
 }
 function letterPaper(l){
@@ -113,9 +113,9 @@ function showLetter(){
  stage(header("✉ ROZPIECZĘTOWANA KOPERTA",escapeHTML(l.title)+" <em>✧</em>",
   "Przeczytaj wiadomość od przyjaciela. Możesz ją odsłuchać, a dopiero później — gdy znasz potrzebne słówka — rozwiązać mini-zadania.")+
  letterPaper(l)+note+
- actions(action("hear-letter","♫ Posłuchaj zdania","mail-button alt"),
-  paused?action("resume-letter","↪ Wracam do zagadek →"):can?action("start-letter","🧩 Odpowiadam na list →"):'<a class="mail-button" href="'+l.link+'">Poznaj słówka w krainie '+l.unit+' ↗</a>',
-  action("to-inbox","Inna koperta","mail-button quiet")),
+ actions(buttonHTML("hear-letter","♫ Posłuchaj zdania","mail-button alt"),
+  paused?buttonHTML("resume-letter","↪ Wracam do zagadek →"):can?buttonHTML("start-letter","🧩 Odpowiadam na list →"):'<a class="mail-button" href="'+l.link+'">Poznaj słówka w krainie '+l.unit+' ↗</a>',
+  buttonHTML("to-inbox","Inna koperta","mail-button quiet")),
  "LETTER FROM "+l.name.toUpperCase(),"Najpierw przeczytaj list. Zadania uruchamiamy tylko z już poznanych słów.")
 }
 function showQuiz(){
@@ -149,10 +149,10 @@ function showQuiz(){
  '<div class="answer-options">'+opts+'</div>'+
  (questionHint?'<div class="quiz-hint">'+escapeHTML(questionHint)+'</div>':"")+
  feedback+
- actions(answered?action("next-question",a.index===a.tasks.length-1?"Odbierz stempel pocztowy →":"Kolejna zagadka →"):
- action("hint",a.hint===0?"💡 Mała podpowiedź":a.hint===1?"✨ Podświetl odpowiedź":"♡ Odkryjmy razem","mail-button alt"),
- action("hear-question","♫ Posłuchaj","mail-button alt"),
- action("read-letter","Wróć do listu","mail-button quiet"))+
+ actions(answered?buttonHTML("next-question",a.index===a.tasks.length-1?"Odbierz stempel pocztowy →":"Kolejna zagadka →"):
+ buttonHTML("hint",a.hint===0?"💡 Mała podpowiedź":a.hint===1?"✨ Podświetl odpowiedź":"♡ Odkryjmy razem","mail-button alt"),
+ buttonHTML("hear-question","♫ Posłuchaj","mail-button alt"),
+ buttonHTML("read-letter","Wróć do listu","mail-button quiet"))+
  '<p class="quiz-note">Nie ma ocen ani stopera. Po pomyłce lub podpowiedzi zapisujemy próbę z pomocą, nie samodzielny sukces.</p>',
  "TASK "+(a.index+1)+" / "+a.tasks.length,
  "Wybierz odpowiedź, która pasuje do wiadomości. Podpowiedź nie blokuje zabawy.")
@@ -161,7 +161,7 @@ function showRepair(){
  const l=E.letter(state.selected);
  stage(header("✉ MAŁA PRZERWA","Lumo <em>porządkuje listy.</em>",
  "Dane poznanych słów zmieniły się podczas zagadki. Zobacz ponownie list i rozpocznij nową próbę, gdy będziesz gotowy.")+
- actions(action("repair","Wróć do otwartego listu →")),
+ actions(buttonHTML("repair","Wróć do otwartego listu →")),
  "LET'S TRY AGAIN","Możesz zawsze wrócić do koperty. Stare ukończone listy pozostają w albumie.")
 }
 function showFinished(l){
@@ -174,10 +174,10 @@ function showFinished(l){
  '<p>'+escapeHTML(l.story)+'</p><small>'+(record.independent?
  "Podczas co najmniej jednej wizyty obie zagadki zostały rozwiązane bez podpowiedzi.":
  "Zadania udało się ukończyć z pomocą Lumo. Możesz wrócić i spróbować samodzielnie.")+'</small></div>'+
- actions(action("hear-thanks","♫ Posłuchaj odpowiedzi","mail-button alt"),
-  action("repeat-letter","Rozwiąż list ponownie ↻"),
-  action("to-album","Zobacz stemple","mail-button alt"),
-  action("to-inbox","Inna koperta","mail-button quiet")),
+ actions(buttonHTML("hear-thanks","♫ Posłuchaj odpowiedzi","mail-button alt"),
+  buttonHTML("repeat-letter","Rozwiąż list ponownie ↻"),
+  buttonHTML("to-album","Zobacz stemple","mail-button alt"),
+  buttonHTML("to-inbox","Inna koperta","mail-button quiet")),
  "STAMP COLLECTED","Brawo za ukończenie całego listu! Możesz wrócić do tej koperty w każdej chwili.")
 }
 function scrollTo(id){
