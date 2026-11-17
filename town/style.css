@@ -305,3 +305,28 @@ footer{background:#244457;color:#fff;padding:42px 0 22px}
  .station-engine,.station-plane,.park-figure,.park-butterflies,.park-notes,.theatre-spotlight,.theatre-owl,.theatre-stars,.theatre-actor,.theatre-curtains{animation:none!important}
  .scene-wrap.signal-open .signal-green{fill:#76dc98;filter:none}
 }
+
+/* Stage 13 · The Lost Star book launch, independent of existing six locations. */
+.town-story-invite{padding:95px 0;background:linear-gradient(120deg,#293f65,#324c73 63%,#506982);color:#f7f2e8;overflow:hidden}
+.town-story-layout{display:grid;grid-template-columns:46% 54%;align-items:center;gap:42px}
+.town-story-illustration{position:relative;height:333px;max-width:100%;border:8px solid #fdf3e6;border-radius:29px;overflow:visible;transform:rotate(-3deg);box-shadow:0 24px 47px #182c4480;background:#bed6d1}
+.town-story-illustration img{width:100%;height:100%;display:block;object-fit:cover;border-radius:20px;filter:brightness(.68) saturate(.95)}
+.town-story-illustration:after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,#1c325c82,#536b9940 50%,#cc9ba11a);pointer-events:none;border-radius:21px}
+.lost-star-overlay{position:absolute;z-index:1;left:42%;top:3%;font-size:104px;color:#ffe7c9;text-shadow:0 0 18px #fbe9d3aa,0 0 34px #eee1d5;animation:town-star-breathe 5s ease-in-out infinite}
+.town-story-sticker{position:absolute;z-index:2;right:-26px;bottom:-25px;height:104px;width:104px;border:3px dashed #e0c0c7;background:#fff7eb;color:#a386a3;transform:rotate(12deg);border-radius:50%;font-size:10px;font-weight:1000;line-height:1.7;letter-spacing:1px;display:grid;place-items:center;text-align:center}
+.town-story-copy{padding:13px 0}
+.town-story-tag{font-size:10px;letter-spacing:1.8px;color:#bdd9d5;font-weight:1000}
+.town-story-copy h2{font-family:Georgia,serif;font-size:clamp(35px,4vw,51px);line-height:1.14;letter-spacing:-1.8px;margin:16px 0 18px;color:#fffaf0}
+.town-story-copy h2 em{font-weight:500;color:#e8bac5}
+.town-story-copy p{font-size:13px;line-height:1.85;color:#d0dbe2;max-width:580px;margin:0 0 17px}
+.town-story-features{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.town-story-features span{font-size:10px;font-weight:1000;padding:9px 12px;border-radius:99px;background:#ffffff19;border:1px solid #a3bac436;color:#d9e6df}
+.town-story-link{display:inline-flex;justify-content:center;align-items:center;gap:12px;background:#b0ddd5;color:#36576c;border-radius:99px;padding:15px 19px;font-weight:1000;font-size:12px;box-shadow:0 6px 0 #7898a8;transition:transform .2s}
+.town-story-link:hover{transform:translateY(-3px)}
+.town-story-copy small{display:block;font-size:10px;color:#b1c8ce;line-height:1.6;margin-top:18px}
+@keyframes town-star-breathe{0%,100%{scale:1;opacity:.6}50%{scale:1.14;opacity:1}}
+@media(max-width:1000px){.town-story-layout{grid-template-columns:43% 57%;gap:24px}.town-story-illustration{height:290px}.town-story-copy h2{font-size:37px}}
+@media(max-width:700px){.town-story-invite{padding:65px 0}.town-story-layout{display:flex;flex-direction:column;gap:36px}.town-story-illustration{height:250px;width:calc(100% - 20px);max-width:460px;margin:0 auto;border-width:6px}.town-story-sticker{height:82px;width:82px;right:-16px;bottom:-12px;font-size:8px}.lost-star-overlay{font-size:84px}.town-story-copy{text-align:center}.town-story-copy h2{font-size:37px}.town-story-copy p{font-size:12px}.town-story-features{justify-content:center}.town-story-link{font-size:11px}.town-story-tag{font-size:9px}}
+@media(max-width:375px){.town-story-link{padding:12px;font-size:10px}.town-story-illustration{height:195px}.town-story-copy h2{font-size:33px}}
+@media(prefers-reduced-motion:reduce){.lost-star-overlay{animation:none!important}}
+@media print{.town-story-invite{display:none!important}}
