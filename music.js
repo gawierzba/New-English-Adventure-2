@@ -1,7 +1,7 @@
 "use strict";
 /* English Adventure 2: original, softly synthesized instrumental score.
    The entire piece is written for this project: 16 gentle measures in C,
-   with a 3/4? No: 4 beats per measure, at 82 BPM.
+   in four-beat measures at a gentle 82 BPM.
    No remote audio, media files, copyrighted songs, ads or trackers.
    Browser policy: sound requires a first real tap/click/key press.
    One localStorage preference is shared by all 14 pages. */
