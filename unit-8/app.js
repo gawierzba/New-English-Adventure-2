@@ -279,6 +279,77 @@ function newTrip(){
  $("adventure").scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})
 }
 /* MODULES */
- /* EVENTS */
+ root.addEventListener("click",e=>{
+ const el=e.target.closest("[data-action]");if(!el)return;
+ const a=el.dataset.action,v=el.dataset.value;
+ switch(a){
+ case "learn":go(1);break;
+ case "closet":go(2);break;
+ case "weather":go(3);break;
+ case "detective":go(4);break;
+ case "runway":go(6);break;
+ case "reveal":reveal=true;discover();break;
+ case "hear-word":speak(session[index].en);break;
+ case "previous":index=Math.max(0,index-1);reveal=false;discover();break;
+ case "next-card":if(index===session.length-1)go(2);else{index++;reveal=false;discover()}break;
+ case "choose-person":
+  if(v==="0"||v==="1"){state.look.person=Number(v);save();renderWardrobe()}
+  break;
+ case "choose-item":chooseCloth(v);break;
+ case "choose-color":changeColor(v);break;
+ case "take-off":if(selected&&known(selected)){state.look=E.remove(state.look,selected);save();renderWardrobe()}break;
+ case "hear-look":if(E.describe(state.look))speak(E.describe(state.look));break;
+ case "say-look":
+  if(E.listParts(state.look).length){E.slots.forEach(s=>{const x=state.look.items[s];if(x)mark(E.word(x.en),"said")});toast("Brawo za próbę powiedzenia zdania!")}
+  break;
+ case "surprise":
+  state.look=E.randomLook(learned().map(w=>w.en),state.look.person,4);save();renderWardrobe();break;
+ case "weather-type":if(WEATHER[v]){weather=v;renderWeather()}break;
+ case "weather-person":if(v==="0"||v==="1"){weatherLook.person=Number(v);renderWeather()}break;
+ case "weather-wear":if(known(v)){weatherLook=E.equip(weatherLook,v,pick(COLORS).name);renderWeather()}break;
+ case "hear-weather":if(E.describe(weatherLook))speak(E.describe(weatherLook));break;
+ case "keep-weather":state.look=E.cloneLook(weatherLook);save();toast("Strój trafił do garderoby!");break;
+ case "quiz-demo":speak(E.describe(quiz.tasks[0].outfit));break;
+ case "begin-quiz":quiz.intro=false;renderQuiz();break;
+ case "quiz-question":speak("What's "+(quiz.tasks[quiz.index].outfit.person===0?"she":"he")+" wearing?");break;
+ case "quiz-answer":quizAnswer(v,false);break;
+ case "quiz-hint":if(quiz){if(quiz.hint<2){quiz.hint++;renderQuiz()}else quizAnswer("",true)}break;
+ case "quiz-next":quizNext();break;
+ case "mirror-hear":speak("What are you wearing? "+E.describe(mirrorLook,true));break;
+ case "mirror-help":mirrorHelp=true;renderMirror();break;
+ case "mirror-try":
+  if(!mirrorTried){mirrorTried=true;E.slots.forEach(s=>{const x=mirrorLook.items[s];if(x)mark(E.word(x.en),"said")});renderMirror()}
+  break;
+ case "mirror-new":mirrorLook=E.randomLook(learned().map(w=>w.en),mirrorLook.person,3);mirrorTried=false;mirrorHelp=false;renderMirror();break;
+ case "runway-hear":{const l=E.listParts(state.look).length?state.look:E.randomLook(learned().map(w=>w.en),0,2);speak(E.describe(l));break}
+ case "runway-print":printRunway();break;
+ case "finish":go(7);break;
+ case "new-trip":newTrip();break;
+ }
+});
+document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>{go(Number(tab.dataset.step));$("lesson").scrollIntoView({behavior:"smooth",block:"nearest"})}));
+$("hero-wardrobe").addEventListener("click",()=>{go(2);$("adventure").scrollIntoView({behavior:"smooth",block:"start"})});
+$("sound").addEventListener("click",()=>{state.sound=!state.sound;if(!state.sound&&audioOK)window.speechSynthesis.cancel();save();soundUI()});
+$("all-audio").addEventListener("click",()=>{if(!state.sound||!audioOK){toast("Sprawdź, czy wymowa jest dostępna.");return}try{window.speechSynthesis.cancel();WORDS.forEach(w=>{const u=new SpeechSynthesisUtterance(w.en);u.lang="en-GB";u.rate=.83;window.speechSynthesis.speak(u)})}catch(e){toast("Nie udało się odczytać listy słów.")}});
+$("print-words").addEventListener("click",()=>{document.body.classList.remove("print-look-mode");window.print()});
+$("about").addEventListener("click",()=>{const open=$("about-content").hidden;$("about-content").hidden=!open;$("about").setAttribute("aria-expanded",String(open));$("about").textContent=open?"Zwiń informacje ↑":"O nauce i postępach ↓"});
+$("reset").addEventListener("click",()=>{
+ if(!window.confirm("Wyczyścić postępy ósmej krainy w tej przeglądarce?"))return;
+ state=empty();
+ try{const a=JSON.parse(localStorage.getItem(HOME)||"[]");if(Array.isArray(a))localStorage.setItem(HOME,JSON.stringify(a.filter(x=>!String(x).startsWith("8|"))))}catch(e){}
+ save();session=chooseSession();selected=null;go(0);soundUI();toast("Postępy ósmej krainy wyczyszczone.")
+});
+window.addEventListener("afterprint",()=>document.body.classList.remove("print-look-mode"));
+window.EnglishAdventureUnit8=Object.freeze({
+ wordCount:WORDS.length,coreCount:WORDS.filter(w=>w.core).length,
+ guideExtra:WORDS.filter(w=>!w.core).map(w=>w.en),
+ colors:COLORS.map(c=>c.name),
+ phrasePart:E.phrasePart,describe:E.describe,
+ inspect:()=>({known:learned().map(w=>w.en),session:session.map(w=>w.en),outfit:E.cloneLook(state.look),
+  independent:WORDS.filter(w=>{const p=progress(w);return p.found||p.said}).map(w=>w.en),
+  quiz:quiz?{index:quiz.index,done:quiz.done,hint:quiz.hint}:null}),
+ newTrip
+});
+/* EVENTS */
 session=chooseSession();counts();glossary();soundUI();go(0);
 })();
