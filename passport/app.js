@@ -115,6 +115,109 @@ function renderWelcome(){
  '<a class="review-btn light" href="../index.html#mapa">Najpierw odwiedzę krainę</a></div>'+
  '<p class="tiny-note">Wszystkie odpowiedzi pochodzą z poznanego materiału. Bez stopera, ocen i przypadkowych trudnych słów.</p>')
 }
+function makeQuiz(force=false){
+ snapshot=Engine.readSnapshot(localStorage,now());
+ const list=Engine.selectReviewItems(snapshot,now(),6,force);
+ const qs=list.map((item,i)=>Engine.makeQuestion(item,snapshot,i)).filter(q=>q.options.length>=2);
+ if(!qs.length){toast("Najpierw poznaj dwa różne słowa w krainach.");refresh(true);return}
+ quiz={qs,index:0,hint:0,wrong:null,misses:0,done:false,assisted:false,results:[],extra:force};
+ renderQuestion();
+ $("review").scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})
+}
+const dots=(index,total)=>'<div class="count-dots" role="img" aria-label="Krok '+(index+1)+' z '+total+'">'+Array.from({length:total},(_,k)=>'<span class="'+(k<index?"done":k===index?"current":"")+'"></span>').join("")+'</div>';
+function renderQuestion(){
+ if(!quiz)return;
+ const q=quiz.qs[quiz.index],item=q.item,isPL=q.mode==="polish-to-english";
+ const main=isPL?item.pl:item.en;
+ const label=isPL?"JAK POWIESZ PO ANGIELSKU?":"CO TO ZNACZY PO POLSKU?";
+ const desc=isPL?"Wybierz angielską nazwę. Jeśli nie pamiętasz, poproś o podpowiedź.":"Wybierz polskie znaczenie. Możesz też posłuchać wymowy.";
+ const options=q.options.map((w,k)=>{
+  const txt=isPL?w.en:w.pl;
+  const cls=quiz.done&&w.key===item.key?" correct":quiz.wrong===w.key?" incorrect":"";
+  const highlighted=quiz.hint>=2&&w.key===item.key?" highlight":"";
+  return'<button type="button" data-action="answer" data-value="'+w.key+'"'+(quiz.done?" disabled":"")+
+   ' class="quiz-option'+cls+highlighted+'"'+(isPL?' lang="en"':"")+'><span>'+String.fromCharCode(65+k)+'</span>'+txt+'</button>'
+ }).join("");
+ const help=quiz.hint===1?'<div class="hint-box"><strong>✦ Pierwsza wskazówka:</strong> poprawna odpowiedź zaczyna się na literę <b>'+
+  (isPL?item.en:item.pl).slice(0,1).toUpperCase()+'</b>. Pomyśl o słowach z krainy „'+item.unitTitle+'”.</div>':
+ quiz.hint>=2?'<div class="hint-box"><strong>✦ Druga wskazówka:</strong> Fela podświetliła prawidłową odpowiedź. Wskaż ją lub odkryj rozwiązanie razem z nią.</div>':"";
+ const feedback=quiz.done?'<div class="question-feedback '+(quiz.assisted?"assisted":"good")+'">'+
+ (quiz.assisted?"Przypomnieliśmy sobie razem! ":"Świetnie — tym razem udało się samodzielnie! ")+
+ '<b lang="en">'+item.en+'</b> — '+item.pl+'.</div>':
+ quiz.wrong?'<div class="question-feedback">To nie ta odpowiedź. Możesz spróbować ponownie, poprosić o pomoc albo odsłonić rozwiązanie. Niczego nie tracisz.</div>':"";
+ const actions=quiz.done?
+ btn("next-question",quiz.index===quiz.qs.length-1?"Zobacz naszą wyprawę →":"Następne słowo →")+
+ btn("listen","♫ Posłuchaj angielskiej nazwy","review-btn light"):
+ btn("hint",quiz.hint===0?"💡 Mała wskazówka":quiz.hint===1?"💡 Podświetl odpowiedź":"✨ Odkryjmy razem","review-btn light")+
+ (isPL?"":btn("listen","♫ Posłuchaj słowa","review-btn light"));
+ body(stageHead("✦ POWTÓRKA · "+(quiz.index+1)+" / "+quiz.qs.length,
+  "Poznane słowo, <em>nowe spojrzenie.</em>","Odpowiedz na spokojnie. Pomoc i ponowne próby są zawsze dostępne.")+
+  dots(quiz.index,quiz.qs.length)+
+  '<div class="question-box"><div class="question-icon" aria-hidden="true">'+(isPL?"🔎":"🎧")+'</div>'+
+  '<div><span class="question-meta">'+label+' · KRAINA 0'+item.unit+'</span>'+
+  '<div class="question-main"'+(isPL?'':' lang="en"')+'>'+main+'</div>'+
+  '<div class="question-desc">'+desc+'</div></div></div>'+
+  '<div class="quiz-options">'+options+'</div>'+feedback+help+
+  '<div class="review-actions">'+actions+btn("end-review","Zakończ na dziś","review-btn ghost")+'</div>'+
+  '<p class="tiny-note">Rozpoznanie bez wskazówki jest zapisywane osobno. Po pomyłce lub pomocy słowo wróci do ćwiczeń wcześniej — to nie kara, tylko dodatkowa okazja do nauki.</p>')
+}
+function correctAnswer(forced=false){
+ if(!quiz||quiz.done)return;
+ const q=quiz.qs[quiz.index],independent=!forced&&quiz.hint===0&&quiz.misses===0;
+ quiz.done=true;quiz.assisted=!independent;
+ const saved=Engine.applyAnswer(Engine.readHistory(localStorage),q.item.key,independent,now());
+ if(!Engine.saveHistory(localStorage,saved.history))toast("Nie udało się zapisać powtórki w tej przeglądarce.");
+ quiz.results.push({en:q.item.en,pl:q.item.pl,unit:q.item.unit,independent});
+ refresh(false);
+ renderQuestion()
+}
+function answer(value){
+ if(!quiz||quiz.done)return;
+ const q=quiz.qs[quiz.index];
+ if(value!==q.item.key){quiz.wrong=value;quiz.misses++;renderQuestion();return}
+ correctAnswer(false)
+}
+function hint(){
+ if(!quiz||quiz.done)return;
+ if(quiz.hint<2){quiz.hint++;renderQuestion()}
+ else correctAnswer(true)
+}
+function nextQuestion(){
+ if(!quiz||!quiz.done)return;
+ if(quiz.index>=quiz.qs.length-1){renderResult();return}
+ quiz.index++;quiz.hint=0;quiz.wrong=null;quiz.misses=0;quiz.done=false;quiz.assisted=false;
+ renderQuestion()
+}
+function speak(text){
+ if(localStorage.getItem("nea2-sound-v1")==="off"){toast("Wymowa jest wyłączona na stronie głównej. Możesz ją tam włączyć.");return}
+ if(!("speechSynthesis" in window&&"SpeechSynthesisUtterance" in window)){
+  toast("Przeglądarka nie udostępnia wymowy. Angielskie słowo jest nadal widoczne.");return
+ }
+ try{
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang="en-GB";u.rate=.83;
+  const voices=window.speechSynthesis.getVoices(),chosen=voices.find(v=>/^en[-_]GB/i.test(v.lang))||voices.find(v=>/^en/i.test(v.lang));
+  if(chosen)u.voice=chosen;
+  window.speechSynthesis.speak(u)
+ }catch(e){toast("Nie udało się odczytać nazwy — możesz skorzystać z tekstu.")}
+}
+function renderResult(){
+ if(!quiz)return;
+ const completed=quiz.results.length,ind=quiz.results.filter(r=>r.independent).length,help=completed-ind;
+ const t=Engine.readSnapshot(localStorage,now()).totals;
+ const chips=quiz.results.map(r=>'<span>'+r.en+(r.independent?" ✦":" ♡")+'</span>').join("");
+ const more=t.due?btn("start-review","Kolejna mała powtórka ↗"):btn("start-extra","Jeszcze trochę poćwiczę");
+ body('<div class="review-result"><div class="result-emoji" aria-hidden="true">🧭🌟</div>'+
+  '<span class="stage-tag">✦ TWOJA MAŁA PODRÓŻ</span>'+
+  '<h3>Every word is <em>an adventure!</em></h3>'+
+  '<p>Świetnie, że próbowałeś! Każde przypomnienie wzmacnia znajomość angielskiego — także wtedy, gdy korzystamy z pomocy.</p>'+
+  '<div class="result-grid"><span><strong>'+ind+'</strong> przypomnianych samodzielnie</span>'+
+  '<span><strong>'+help+'</strong> odkrytych wspólnie</span></div>'+
+  '<div class="words-review">'+chips+'</div>'+
+  '<p>To nie są stopnie ani wyniki testu. Po prostu wiemy, do których słów warto wrócić. '+(t.due?"Czekają jeszcze kolejne słowa do powtórki.":"Pozostałe słowa wrócą w zaplanowanym czasie.")+'</p>'+
+  '<div class="review-actions">'+more+btn("back-to-passport","Moje pieczątki","review-btn light")+'</div></div>');
+ quiz=null
+}
 /* REVIEW MODULE */
 refresh(true);
 /* EVENTS */
