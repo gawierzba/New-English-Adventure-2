@@ -105,7 +105,7 @@ function showLetter(){
  const known=E.words(snapshot,l),can=E.eligible(snapshot,l);
  const paused=!!(state.active&&state.active.id===l.id);
  if(paused&&!preview){showQuiz();return}
- if(state.letters[l.id].completed){showFinished(l);return}
+ if(state.letters[l.id].completed&&!paused){showFinished(l);return}
  const note=paused?'<div class="study-gate"><strong>✦ Twoje zagadki czekają!</strong> Możesz ponownie przeczytać list. Wróć do zadań dokładnie od miejsca, w którym przerwano.</div>':can?'<div class="study-gate"><strong>✦ List gotowy do ćwiczeń!</strong> Znane słowa: '+known.length+' z '+l.words.length+
  '. Lumo przygotuje dwie krótkie zagadki tylko z tego, co już poznano w krainie.</div>':
  '<div class="study-gate locked"><strong>🌱 Jeszcze spokojnie odkrywamy.</strong> Poznano '+known.length+' z '+l.words.length+
@@ -225,7 +225,8 @@ function resumeLetter(){preview=false;render()}
 function repairLetter(){const a=state.active;if(!a)return;preview=false;persist({...state,active:null})}
 function render(){
  snapshot=P.readSnapshot(localStorage);state=E.read(localStorage);
- $("mailroom-art").innerHTML=A.room;
+ const artHolder=$("mailroom-art");
+ if(!artHolder.dataset.loaded){artHolder.innerHTML=A.room;artHolder.dataset.loaded="yes"}
  counters();drawLetters();drawAlbum();
  if(!state.selected){showWelcome();return}
  showLetter()
