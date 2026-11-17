@@ -184,6 +184,50 @@ function finale(run){
  '<a class="story-button subtle" href="../">Wróć do miasteczka</a></div>',
  "THE END · "+e.subtitle.toUpperCase())
 }
+function renderSecretLedger(){
+ const st=Secrets.read(localStorage),a=story(),route=a?a.route:(data.runs.length?data.runs[data.runs.length-1].route:[]);
+ const used=Secrets.routeState(st,route),count=Secrets.count(st);
+ const html='<span class="secret-ledger-symbol">✧</span><div class="secret-ledger-copy">'+
+ '<strong>Sekretna konstelacja Lumo</strong><p>'+count+' z 6 śladów odnalezionych w miasteczku. '+
+ (used.total?"Na wybranej trasie: "+used.found+" z "+used.total+" sekretów.":"Wybierz drogę, aby odkryć jej tajemnicę.")+
+ (used.complete?" ✦ Wszystkie ślady tej drogi odnalezione — czeka tajny epilog!":"")+
+ '</p></div><a href="../#sekrety">Otwórz pocztówki ↗</a>';
+ $("story-secret-ledger").innerHTML=html;
+ const note=$("library-secret-note");
+ const bonus=data.runs.filter(r=>r.secretBonus).length;
+ note.textContent=bonus?"✦ Odkryto "+bonus+" tajnych epilogów. Każdy z nich wynikał ze znalezienia trzech śladów na obranej drodze.":
+ "✧ Znajdź po jednym sekrecie na każdym z trzech przystanków swojej trasy, a po finałowej gwieździe zobaczysz tajny epilog.";
+ if(st.observatory)note.textContent+=" Obserwatorium Lumo zostało otwarte!"
+}
+function findSecret(id){
+ const a=story();if(!a||a.chapter>=3)return;
+ const venue=a.route[a.chapter],secret=Secrets.byId(id);
+ if(!secret||secret.venue!==venue||!a.route[a.chapter])return;
+ const prev=Secrets.read(localStorage),next=Secrets.discover(prev,id);
+ if(!next)return;
+ if(!Secrets.save(localStorage,next)){toast("Nie udało się zachować odkrytej pocztówki.");return}
+ render();
+ toast(prev.found[id]?"Ten sekret już jest w kolekcji.":"✦ Odkryto tajny ślad: "+secret.title+"!")
+}
+function secretEpilogue(run){
+ const found=(run.secretTrail||[]).map(id=>Secrets.byId(id)).filter(Boolean);
+ if(!run.secretBonus||found.length!==3)return '<div class="secret-epilogue-locked">'+
+ '<span>✧ TAJNY EPILOG JESZCZE CZEKA</span><p>Znasz już zakończenie tej historii. Wróć do miasteczka, odkryj po jednym śladzie w trzech odwiedzonych miejscach, a następna wyprawa może odsłonić tajną stronę księgi.</p>'+
+ '<a href="../#sekrety">✉ Szukaj śladów Lumo ↗</a></div>';
+ const endings={
+  music:"Gdy ucichła muzyka, trzy odnalezione pamiątki uniosły się ponad scenę. Zrodziła się z nich cicha melodia, którą rozumieją tylko przyjaciele.",
+  feast:"Po uczcie okazało się, że trzy pamiątki ukrywają przepis nie na ciasto, lecz na wspólne szczęście. Lumo schowała go między stronami księgi.",
+  river:"Lampiony odpłynęły, lecz trzy znalezione ślady zostały na brzegu. Ułożyły się w mapę maleńkich światełek prowadzących do wieży.",
+  parade:"Gdy pociąg zakończył podróż, trzy ślady rozbłysły w jego oknach. Z ich blasku powstał znak, który wskazuje drogę do obserwatorium."
+ };
+ return '<div class="secret-epilogue"><div class="epilogue-sign">✦ UKRYTA STRONA KSIĘGI · ODNALEZIONA ✦</div>'+
+ '<h4>Tajny list <em>od Lumo</em></h4><p>'+endings[run.ending]+'</p>'+
+ '<div class="epilogue-found">'+found.map(x=>'<div><span>'+x.icon+'</span><strong>'+x.title+'</strong></div>').join("")+'</div>'+
+ '<p class="epilogue-whisper">To Wasza własna, sekretna opowieść. Żaden odkryty ślad nie jest oceną — wszystkie tworzą jedną piękną historię.</p>'+
+ (run.observatory?'<div class="epilogue-observatory">'+SecretArt.observatory+'<strong>✧ Obserwatorium Lumo przypomina: każda mała gwiazda jest ważna.</strong></div>':
+ '<a class="epilogue-next" href="../#sekrety">🔭 Szukaj pozostałych pocztówek i otwórz obserwatorium ↗</a>')+
+ '</div>'
+}
 function renderLibrary(){
  const known=new Set(data.runs.map(r=>r.ending));
  $("library-counter").textContent=known.size+" / 4 zakończeń";
@@ -298,6 +342,7 @@ function playTask(){
 function act(name,value){
  switch(name){
  case "begin":startStory();break;
+ case "find-secret":findSecret(value);break;
  case "choose":chooseRoute(value);break;
  case "start-quiz":startQuiz();break;
  case "skip-quiz":finishChapter();break;
