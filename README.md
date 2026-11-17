@@ -153,6 +153,17 @@ Nie ma ocen, rankingów, stopera, kont, mikrofonu, rejestrowania tożsamości an
 
 **Pliki:** \`unit-8/index.html\`, \`unit-8/style.css\`, \`unit-8/engine.js\`, \`unit-8/app.js\`.
 
+## Muzyka w tle — wspólna melodia na wszystkich 14 stronach 🎵
+
+Dla wszystkich części projektu dostępny jest jeden dyskretny przycisk **„♫ Muzyka”** w lewym dolnym rogu. Można go znaleźć na stronie głównej, w ośmiu krainach, paszporcie, ekspedycji, Żywym Miasteczku, Wielkiej Opowieści oraz Gwiezdnej Poczcie Lumo.
+
+- **Całkowicie autorska muzyka** — spokojny, 16-taktowy utwór instrumentalny w tonacji C, w metrum 4/4 i tempie 82 BPM. Synteza dźwięków przypominających pozytywkę oraz łagodnych akordów odbywa się w przeglądarce za pomocą Web Audio. Nie korzystamy z nagrań ani melodii innych twórców.
+- **Jedna zapamiętana decyzja** — preferencja pod kluczem nea2-background-music-v1 w localStorage jest wspólna dla 14 stron. Jeśli muzykę wyłączono w jednej krainie, pozostaje wyłączona także w następnej. Gdy jest włączona, startuje po pierwszej interakcji na danej stronie lub po naciśnięciu przycisku.
+- **Nie zagłusza wymowy** — kiedy syntezator odczytuje angielskie słowo, podkład zostaje znacznie przyciszony i wraca delikatnie po zakończeniu wypowiedzi.
+- **Uczciwie o ograniczeniach** — większość przeglądarek nie pozwala na dźwięk bez pierwszego dotknięcia lub kliknięcia. Zmiana podstrony powoduje ponowne ładowanie dokumentu, zatem utwór może mieć przerwę i czekać na nową interakcję. Nie da się uczciwie zagwarantować bezszwowego odtwarzania przez pełne przeładowania.
+- **Zgodność** — obsługa AudioContext i starszego webkitAudioContext (również implementacji bez pola state), wyłączenie w druku, wsparcie ograniczonego ruchu, czytników ekranu i mobilnych stref bezpiecznych. Na starszym urządzeniu bez Web Audio przycisk informuje o braku wsparcia, a lekcje działają normalnie.
+- **Implementacja** — dwa niezależne pliki w katalogu głównym: music.js oraz music.css. Podłączone do wszystkich 14 plików index.html bez zmiany danych edukacyjnych i postępów w krainach.
+
 ## Etap 15.1–15.2 — Gwiezdna Poczta Lumo 💌🦉
 
 **Graj:** https://gawierzba.github.io/New-English-Adventure-2/post/
