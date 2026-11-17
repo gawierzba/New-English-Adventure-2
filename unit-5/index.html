@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#084f53">
+<meta name="description" content="Kraina 05 — Dżungla Supermocy. Przyjaciel Kiko, 17 słówek, ruchoma scena, kalambury i rozmowy I can, I can't, Can you...?">
+<meta property="og:title" content="Kraina 05 — Dżungla Supermocy | English Adventure 2">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><script defer src="app.js"></script>
+<title>Kraina 05 · Dżungla Supermocy — English Adventure 2</title>
+</head><body>
+<a href="#missions" class="skip">Przejdź do przygody</a>
+<header class="top"><div class="wrap top-inner">
+ <a class="back" href="../index.html#mapa"><span class="back-icon" aria-hidden="true">←</span><span class="back-text">Mapa przygód</span></a>
+ <a href="#home" class="brand"><span class="brand-symbol">✳</span><span>English <b>Adventure</b><small>LITTLE EXPLORERS CLUB</small></span></a>
+ <div class="top-tools"><span class="found" aria-label="Liczba poznanych słówek">✿ <span id="top-count">0 / 17</span></span>
+ <button class="sound" id="sound-toggle" type="button" aria-pressed="true" aria-label="Wyłącz wymowę">♫ <span>Wymowa</span></button></div>
+</div></header>
+<main id="home">
+<section class="hero">
+ <div class="canopy canopy-one" aria-hidden="true"></div><div class="canopy canopy-two" aria-hidden="true"></div>
+ <div class="wrap hero-grid">
+  <div class="hero-copy">
+   <div class="hero-eyebrow"><span>✳</span> KRAINA 05 <i></i> I CAN JUMP!</div>
+   <h1>Dżungla <em>Supermocy</em><span class="hero-period">.</span></h1>
+   <p>Witaj w dżungli, w której każdy dzień przynosi nowe odkrycia! Mały odkrywca <strong>Kiko</strong> pokaże Ci, jak skakać, biegać, tańczyć i mówić o swoich umiejętnościach po angielsku.</p>
+   <div class="hero-buttons"><a href="#missions" class="btn btn-primary">Rozpocznij wyprawę <span aria-hidden="true">↗</span></a><button id="jump-into-lab" type="button" class="btn btn-ghost">▶ Ruchoma dżungla</button></div>
+   <div class="hero-footnote"><span aria-hidden="true">♥</span> Każdy ma inne supermoce. Uczymy się bez oceniania.</div>
+  </div>
+  <div class="hero-art">
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 575" class="jungle-picture" role="img" aria-label="Autorska ilustracja żywej dżungli z uśmiechniętym małym odkrywcą Kiko">
+    <defs>
+     <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#91e2cc"/><stop offset="1" stop-color="#bdebd6"/></linearGradient>
+     <linearGradient id="ground" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#75bb86"/><stop offset="1" stop-color="#3e9378"/></linearGradient>
+     <filter id="soft"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#003f43" flood-opacity=".2"/></filter>
+    </defs>
+    <ellipse cx="330" cy="498" rx="297" ry="43" fill="#002e3d" opacity=".15"/>
+    <g filter="url(#soft)">
+     <rect x="74" y="51" width="512" height="441" rx="91" fill="url(#sky)"/>
+     <ellipse cx="325" cy="463" rx="252" ry="75" fill="url(#ground)"/>
+     <path d="M76 367q94-89 190 0 115-125 239-27 66-51 81 17v120H75Z" fill="#51b39e"/>
+     <path d="M77 393q93-72 172-14 83-76 154-13 114-52 182 11v100H76Z" fill="#35967f"/>
+     <path d="M119 451q-53-223 20-299" fill="none" stroke="#2b8b74" stroke-width="30" stroke-linecap="round"/>
+     <path d="M510 471q43-238-24-333" fill="none" stroke="#317d71" stroke-width="30" stroke-linecap="round"/>
+     <g fill="#60c6a1"><ellipse cx="94" cy="192" rx="75" ry="50" transform="rotate(-29 94 192)"/><ellipse cx="154" cy="130" rx="82" ry="47" transform="rotate(13 154 130)"/><ellipse cx="200" cy="189" rx="83" ry="47" transform="rotate(-28 200 189)"/><ellipse cx="480" cy="155" rx="100" ry="50" transform="rotate(-28 480 155)"/><ellipse cx="541" cy="208" rx="89" ry="44" transform="rotate(27 541 208)"/><ellipse cx="417" cy="217" rx="93" ry="49" transform="rotate(27 417 217)"/></g>
+     <g fill="#86dfae"><ellipse cx="173" cy="111" rx="64" ry="37" transform="rotate(-27 173 111)"/><ellipse cx="496" cy="124" rx="67" ry="39" transform="rotate(22 496 124)"/><ellipse cx="94" cy="244" rx="57" ry="31" transform="rotate(23 94 244)"/></g>
+     <path d="M310 87q42 56 30 123" stroke="#317d70" stroke-width="9" fill="none" stroke-linecap="round"/>
+     <path d="M338 208q-36-8-57 13M338 208q33 1 41 25" stroke="#317d70" stroke-width="7" fill="none" stroke-linecap="round"/>
+     <ellipse cx="337" cy="471" rx="196" ry="27" fill="#b4e4a0" opacity=".7"/>
+    </g>
+    <g class="hero-kiko" filter="url(#soft)">
+     <path d="M399 397q73-80 93-16 7 44-52 35" fill="none" stroke="#bb806f" stroke-width="24" stroke-linecap="round"/>
+     <path d="M252 394q-46 37-32 64M400 395q48 36 32 63" fill="none" stroke="#ad765f" stroke-width="24" stroke-linecap="round"/>
+     <path d="M307 444l-13 29M364 446l13 29" stroke="#805d75" stroke-width="23" stroke-linecap="round"/>
+     <ellipse cx="339" cy="371" rx="91" ry="103" fill="#bc8676" stroke="#915e68" stroke-width="6"/>
+     <ellipse cx="257" cy="266" rx="49" ry="55" fill="#b37e72" stroke="#94636b" stroke-width="5"/>
+     <ellipse cx="429" cy="266" rx="49" ry="55" fill="#b37e72" stroke="#94636b" stroke-width="5"/>
+     <ellipse cx="257" cy="266" rx="27" ry="32" fill="#f5b6a5"/><ellipse cx="429" cy="266" rx="27" ry="32" fill="#f5b6a5"/>
+     <ellipse cx="343" cy="271" rx="106" ry="105" fill="#c9917c" stroke="#8e5b65" stroke-width="7"/>
+     <ellipse cx="343" cy="299" rx="80" ry="63" fill="#f8d1ad"/>
+     <ellipse cx="306" cy="265" rx="22" ry="28" fill="#fff"/><ellipse cx="381" cy="265" rx="22" ry="28" fill="#fff"/>
+     <circle cx="312" cy="265" r="10" fill="#3b4f58"/><circle cx="385" cy="265" r="10" fill="#3b4f58"/>
+     <circle cx="318" cy="258" r="4" fill="#fff"/><circle cx="391" cy="258" r="4" fill="#fff"/>
+     <ellipse cx="344" cy="295" rx="18" ry="13" fill="#755666"/>
+     <path d="M315 324q29 33 58 0" fill="none" stroke="#805566" stroke-width="7" stroke-linecap="round"/>
+     <ellipse cx="277" cy="302" rx="13" ry="9" fill="#f4a4a6" opacity=".6"/><ellipse cx="411" cy="302" rx="13" ry="9" fill="#f4a4a6" opacity=".6"/>
+     <path d="M283 185q64-60 120 1" fill="none" stroke="#e4b394" stroke-width="12" stroke-linecap="round"/>
+     <path d="M285 184l-24 32 27-8M402 184l24 32-29-8" fill="#edbda0"/>
+     <path d="M288 375q51 34 99 0" fill="none" stroke="#f5d4b4" stroke-width="15" stroke-linecap="round"/>
+     <path d="M319 389q23 9 45 0" fill="none" stroke="#fff2d3" stroke-width="8" stroke-linecap="round"/>
+    </g>
+    <g class="hero-sign" filter="url(#soft)"><rect x="68" y="76" width="139" height="66" rx="23" fill="#fff"/><text x="138" y="120" font-size="24" text-anchor="middle" fill="#257e78" font-weight="900" font-family="system-ui">I CAN! ✦</text></g>
+    <g class="hero-sign second" filter="url(#soft)"><rect x="449" y="283" width="159" height="65" rx="25" fill="#fff"/><text x="528" y="325" font-size="23" text-anchor="middle" fill="#ec788d" font-weight="900" font-family="system-ui">LET'S GO!</text></g>
+    <g fill="#fff9e0"><path d="m108 285 7 18 19 7-19 7-7 18-7-18-19-7 19-7Z"/><path d="m553 98 7 18 17 6-17 7-7 17-6-17-18-7 18-6Z"/></g>
+   </svg>
+   <div class="hero-sticker" aria-hidden="true"><span>✿</span> MOVE, SAY<br> & PLAY!</div>
+  </div>
+ </div><div class="hero-curve" aria-hidden="true"></div>
+</section>
+<section class="ribbon wrap"><div class="ribbon-hello"><span class="ribbon-emoji">🐒</span><div><strong>Hej, Odkrywco!</strong><small>Kiko ma dla Ciebie ruchome przygody.</small></div></div><div class="ribbon-separator"></div><div class="ribbon-stat"><span>🌿</span><strong>17</strong><small>słówek</small></div><div class="ribbon-stat"><span>🎭</span><strong>10</strong><small>czynności</small></div><div class="ribbon-stat"><span>✳</span><strong id="banner-count">0</strong><small>odkrytych</small></div></section>
+
+<section id="missions" class="adventures"><div class="wrap">
+ <div class="section-header"><span class="overline">✿ SZLAKI DŻUNGLI</span><h2>Wybierz swoją <em>supermoc!</em></h2><p>To Ty decydujesz, czego dzisiaj chcesz się nauczyć. Każda droga ma podpowiedzi.</p></div>
+ <nav class="steps-nav" aria-label="Ścieżki przygody">
+  <button type="button" class="step active" data-step="0"><span>🏕️</span><b>Witaj!</b><small>Start</small></button>
+  <button type="button" class="step" data-step="1"><span>🔍</span><b>Odkryj</b><small>Słowa</small></button>
+  <button type="button" class="step" data-step="2"><span>⚡</span><b>Rusz się!</b><small>Scena</small></button>
+  <button type="button" class="step" data-step="3"><span>🐾</span><b>Trop zwierząt</b><small>Zagadki</small></button>
+  <button type="button" class="step" data-step="4"><span>💬</span><b>Zapytaj!</b><small>Can you?</small></button>
+  <button type="button" class="step" data-step="5"><span>🎭</span><b>Kalambury</b><small>Ruch i słowa</small></button>
+ </nav>
+ <div class="main-layout"><div class="task-card">
+  <div class="task-stripe"><span>KIKO'S WILD ADVENTURE</span><span aria-hidden="true">✳ ✿ ✳</span></div>
+  <section id="stage" class="task-stage" aria-label="Aktualna aktywność"></section>
+ </div>
+ <aside class="sidebar">
+  <div class="side-box side-progress"><span class="side-caption">TWÓJ SZLAK ✿</span><h3>Odkrywaj we własnym tempie.</h3><p>Za próbę, pytanie i odkrycie — nie za liczbę punktów.</p>
+   <div id="progress" class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="17" aria-label="Poznane słowa"><span id="progress-bar"></span></div>
+   <div class="progress-numbers"><span><strong id="seen-count">0</strong><small>poznanych</small></span><span><strong id="solo-count">0</strong><small>samodzielnych odkryć</small></span></div>
+  </div>
+  <div class="side-box side-helper"><span class="helper-emoji" aria-hidden="true">🐒</span><h3>Kiko podpowiada</h3><p id="kiko-tip">Najpierw poznajemy słowa. Potem pokazuję, jak ich użyć w zdaniu.</p></div>
+  <div class="side-box side-phrases"><span class="side-caption">ZAPAMIĘTAJ</span><p><strong lang="en">I can jump!</strong><br>Potrafię skakać!</p><p><strong lang="en">I can't fly.</strong><br>Nie umiem latać.</p><p><strong lang="en">Can you dance?</strong><br>Umiesz tańczyć?</p></div>
+ </aside></div>
+</div></section>
+
+<section id="vocabulary" class="vocab-section"><div class="wrap">
+ <div class="vocab-head"><div><span class="overline">SŁOWNIK ODKRYWCY</span><h2>Wszystkie słowa <em>dżungli.</em></h2><p>10 czynności i 7 nazw zwierząt lub postaci. Wszystko w jednym miejscu, zawsze do powtórzenia.</p></div><button type="button" id="listen-all" class="btn btn-light">♫ Posłuchaj słówek</button></div>
+ <div id="vocab-grid" class="vocab-grid"></div>
+</div></section>
+
+<section class="parent-section"><div class="wrap parent-layout"><div class="parent-art" aria-hidden="true">📚<span>✿</span></div>
+ <div><span class="overline">DLA RODZICÓW I OPIEKUNÓW</span><h2>Ruch, słowa i wyobraźnia.</h2>
+ <p>Zakres opiera się na Unit 5 <em>I can jump!</em> z udostępnionych materiałów. Zamiast odtwarzać postacie i nagrania filmowe, korzystamy z autorskiego Kiko i krótkich ćwiczeń: odkrywanie, ruchoma scena, rozpoznawanie zwierząt, pytania <em>Can you…?</em> i kalambury. Można bezpiecznie odgrywać gesty w miejscu albo tylko oglądać animacje. Nikt nie musi mówić, co „powinien” umieć.</p>
+ <div class="parent-actions"><button type="button" id="print-words" class="btn btn-dark">🖨️ Wydrukuj słówka</button><button type="button" id="info-toggle" aria-expanded="false" aria-controls="info-content" class="btn btn-light">O sposobie nauki ↓</button></div>
+ <div id="info-content" hidden class="details"><p>Przez pierwszą sesję poznajemy pięć kart (najpierw kilka czasowników i zwierząt). Potem zabawy korzystają z wcześniej poznanych słów, a następne sesje dobierają nowe i słabiej ćwiczone. Pomyłka lub podpowiedź nie jest zaliczana jako rozwiązanie samodzielne. Zamiast oceniać zdolności dziecka, pokazujemy przykładowe zdania, a odpowiedzi o własnych umiejętnościach są zawsze wyborem dziecka.</p>
+ <p>Syntezator mowy jest funkcją przeglądarki. Nie prosimy o mikrofon i nie nagrywamy wypowiedzi. Dane postępów pozostają wyłącznie w pamięci tej przeglądarki.</p><button type="button" id="clear" class="reset">Usuń postępy piątej krainy</button></div></div></div></section>
+</main>
+<footer class="footer"><div class="wrap footer-main"><div><strong>English <span>Adventure</span> 2</strong><p>Każdy ma swoją supermoc. 🌿</p></div><a href="../index.html#mapa">← Wróć na mapę</a></div><div class="wrap footer-note">Nieoficjalny, niezależny projekt edukacyjny. Autorskie ilustracje i aktywności; nie reprodukuje filmu ani grafik wydawcy.</div></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<section class="print-page" aria-hidden="true"><h1>UNIT 5 — I CAN JUMP!</h1><p>Imię: ______________________________ Data: _______________</p><p>Powtórz słowa. Zaznacz te, które potrafisz przeczytać i powiedzieć.</p>
+<table><thead><tr><th>English</th><th>Po polsku</th><th>✓</th></tr></thead><tbody>
+<tr><td>bear</td><td>niedźwiedź</td><td>□</td></tr><tr><td>bird</td><td>ptak</td><td>□</td></tr><tr><td>boy</td><td>chłopiec</td><td>□</td></tr><tr><td>climb</td><td>wspinać się</td><td>□</td></tr><tr><td>dance</td><td>tańczyć</td><td>□</td></tr><tr><td>elephant</td><td>słoń</td><td>□</td></tr><tr><td>fly</td><td>latać</td><td>□</td></tr><tr><td>jump</td><td>skakać</td><td>□</td></tr><tr><td>monkey</td><td>małpa</td><td>□</td></tr><tr><td>ride a bike</td><td>jeździć na rowerze</td><td>□</td></tr><tr><td>ride a horse</td><td>jeździć konno</td><td>□</td></tr><tr><td>run</td><td>biegać</td><td>□</td></tr><tr><td>sing</td><td>śpiewać</td><td>□</td></tr><tr><td>snake</td><td>wąż</td><td>□</td></tr><tr><td>swim</td><td>pływać</td><td>□</td></tr><tr><td>walk</td><td>chodzić</td><td>□</td></tr><tr><td>tiger</td><td>tygrys</td><td>□</td></tr></tbody></table>
+<h2>Say it!</h2><p>I can jump. — Potrafię skakać.</p><p>I can't fly. — Nie umiem latać.</p><p>Can you dance? — Czy potrafisz tańczyć?</p><p>Yes, I can. / No, I can't.</p><h2>Moje kalambury</h2><p>Narysuj swoją ulubioną czynność i powiedz o niej zdanie:</p><div class="draw"></div>
+</section>
+</body></html>
