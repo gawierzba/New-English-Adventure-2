@@ -122,7 +122,7 @@ function gate(kind,n,place){
 }
 const ACTION_ICON={climb:"🧗",dance:"💃",fly:"🕊️",jump:"🤸","ride a bike":"🚴","ride a horse":"🏇",run:"🏃",sing:"🎤",swim:"🏊",walk:"🚶"};
 const ENGLISH_MODE={can:()=> "I can "+labAction+".",cant:()=> "I can't "+labAction+".",question:()=> "Can you "+labAction+"?"};
-const POLISH_MODE={can:()=> "Potrafię "+(byEn(labAction)?.pl||labAction)+".",cant:()=> "Nie potrafię: "+(byEn(labAction)?.pl||labAction)+".",question:()=> "Czy potrafisz: "+(byEn(labAction)?.pl||labAction)+"?"};
+const POLISH_MODE={can:()=> "Potrafię "+byEn(labAction).pl+".",cant:()=> "Nie potrafię: "+byEn(labAction).pl+".",question:()=> "Czy potrafisz: "+byEn(labAction).pl+"?"};
 function motionStage(action,mode){
  // Scene actors are imaginary, so a chosen power is not a factual statement about a real animal.
  const stageMode=mode==="cant"?"cant":"can";
