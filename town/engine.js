@@ -15,10 +15,10 @@ function read(storage){
 function save(storage,x){try{storage.setItem(KEY,JSON.stringify(x));return true}catch(e){return false}}
 function nextState(state,venue,independent,now=Date.now()){
  const old=safeObject(state.places[venue]),count=Math.max(0,Number(old.visits)||0);
- return{version:1,night:!!state.night,places:{...state.places,[venue]:{visits:count+1,finished:true,independent:!!old.independent||!!independent,last:now}}}
+ return{version:1,night:!!state.night,places:{...state.places,[venue]:{...old,visits:count+1,viewed:true,finished:true,independent:!!old.independent||!!independent,last:now}}}
 }
 function discovered(snapshot,venue){return snapshot.all.filter(w=>w.seen&&w.unit===venue.unit&&venue.words.includes(w.en))}
-function status(snapshot,state){return venues.map(v=>{const found=discovered(snapshot,v),p=safeObject(state.places[v.id]);return{...v,known:found.length,total:v.words.length,playable:found.length>=2,finished:!!p.finished,independent:!!p.independent,visits:Math.max(0,Number(p.visits)||0)}})}
+function status(snapshot,state){return venues.map(v=>{const found=discovered(snapshot,v),p=safeObject(state.places[v.id]);return{...v,known:found.length,total:v.words.length,playable:found.length>=2,viewed:!!p.viewed||!!p.finished,finished:!!p.finished,independent:!!p.independent,visits:Math.max(0,Number(p.visits)||0)}})}
 function randomize(a,rand=Math.random){const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
 function createMission(snapshot,venue,rand=Math.random){
  const words=discovered(snapshot,venue);
