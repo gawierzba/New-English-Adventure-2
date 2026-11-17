@@ -196,7 +196,28 @@ function beginMission(){
  snap=P.readSnapshot(localStorage);
  const run=E.createMission(snap,active);
  if(!run){toast("Do tej zabawy potrzeba dwóch poznanych słów.");renderExplore();return}
- mission={targets:run.targets,index:0,done:false,hint:0,wrong:null,misses:0,results:[]};inspection=null;renderMission()
+ mission={targets:run.targets,index:0,done:false,hint:0,wrong:null,misses:0,results:[],role:active.kind==="dialogue"?null:"explorer",choices:[]};inspection=null;if(active.kind==="dialogue")renderRolePicker();else renderMission()
+}
+function renderRolePicker(){
+ if(!active||!mission)return;
+ stage(header("🎭 TEATR MAŁYCH ROZMÓW","Wybierz swoją <em>rolę na scenie.</em>",
+ "To Ty zdecydujesz, jak potoczy się rozmowa. Wszystkie odpowiedzi wykorzystują tylko osoby z rodziny, które już poznaliśmy.")+
+ sceneHtml(active,"explore")+
+ '<div class="theatre-role-grid">'+
+ '<button type="button" class="theatre-role" data-action="choose-role" data-name="actor"><span>🎤</span><strong>Jestem aktorem</strong><small>Lumo pyta: <b lang="en">Who’s this?</b> Odpowiadam po angielsku.</small></button>'+
+ '<button type="button" class="theatre-role" data-action="choose-role" data-name="director"><span>🎬</span><strong>Jestem reżyserem</strong><small>Lumo mówi po angielsku. Rozpoznaję polskie znaczenie.</small></button></div>'+
+ '<p class="scene-place-note">Wybór roli zmienia kierunek dialogu. Bez mikrofonu, bez nagrywania — można też samodzielnie wypowiedzieć zdanie na głos.</p>'+
+ '<div class="stage-actions">'+button("leave","Wróć do zwiedzania","stage-action quiet")+'</div>',
+ "Aktorem czy reżyserem? Każda rola ćwiczy angielski w nieco inny sposób.")
+}
+function prepareDialogueChoices(){
+ if(!mission||!active||active.kind!=="dialogue")return;
+ const target=mission.targets[mission.index],other=E.randomize(rows(active).filter(w=>w.en!==target.en)).slice(0,3);
+ mission.choices=E.randomize([target,...other])
+}
+function chooseRole(role){
+ if(!mission||!active||active.kind!=="dialogue"||!["actor","director"].includes(role))return;
+ mission.role=role;prepareDialogueChoices();renderMission()
 }
 function taskDots(){
  return '<div class="task-dots">'+mission.targets.map((x,i)=>'<span class="'+(i<mission.index?"past":i===mission.index?"active":"")+'"></span>').join("")+'</div>'
@@ -257,7 +278,7 @@ function hint(){
 function nextTask(){
  if(!mission||!mission.done)return;
  if(mission.index===mission.targets.length-1){completeVenue();return}
- mission.index++;mission.hint=0;mission.misses=0;mission.wrong=null;mission.done=false;renderMission()
+ mission.index++;mission.hint=0;mission.misses=0;mission.wrong=null;mission.done=false;if(active.kind==="dialogue")prepareDialogueChoices();renderMission()
 }
 function completeVenue(){
  if(!mission||!active||mission.results.length!==mission.targets.length)return;
