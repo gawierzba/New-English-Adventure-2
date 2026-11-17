@@ -91,6 +91,24 @@ Lekcja jest bez ocen, punktów i timerów. Odpowiedzi uzyskane po pomocy nie są
 
 Postać Kiko i oprawa są autorskie; nie wykorzystujemy filmowych bohaterów, ilustracji ani oryginalnych nagrań Pearson/Disney.
 
+## Kraina 06 — He likes cheese!: Smakowita Pracownia Lili 🍓
+
+**https://gawierzba.github.io/New-English-Adventure-2/unit-6/**
+
+Szósta pełna kraina, autorska pastelowa kuchnia prowadzona przez jeżycę Lilę. Materiał zweryfikowano w **NEA_2_PORADNIK.pdf (PDF s. 10)** oraz **NEA_2_WordCards.pdf (PDF s. 15–18)**. Poradnik obejmuje 16 produktów; **14 ma karty obrazkowe WordCards**, a **cereal i soup** są dodatkowymi pozycjami z poradnika.
+
+**Słownictwo:** bread, cake, carrots, cereal, cheese, chocolate, fish, grapes, ice cream, mushrooms, onions, peas, salad, soup, strawberries, tomatoes.
+
+**Struktura krainy:**
+- **Odkryj:** pięć produktów na wyprawę. Pierwsza sesja rozpoczyna się od: cheese, grapes, cake, carrots, bread; następne priorytetowo pokazują niepoznane słówka.
+- **Przygotuj:** własny talerz dla fikcyjnych gości Leo i Ady. Dziecko wybiera produkt, postać i fikcyjną preferencję, otrzymując poprawne **He likes… / She doesn't like…** i wymowę; może zaznaczyć własną próbę wypowiedzenia.
+- **Odgadnij:** po pokazaniu gramatyki pojawia się kilka losowanych zagadek słuchowo-obrazkowych ze stałymi opcjami, stopniowanymi wskazówkami i możliwością odkrycia rozwiązania.
+- **Sklepik:** najpierw przykład **Can I have cheese, please? — Here you are. — Thank you!**, potem trzy krótkie dialogi z produktami już poznanymi przez dziecko.
+- **Bingo:** losowana **plansza 2×2** na początku, a **3×3** od dziewięciu poznanych słów. Wylosowane wywołania są zawsze z obrazków na planszy; bingo następuje po ułożeniu linii.
+- **Powracanie:** lokalny postęp, zachęta do powrotu do słabszych i niepoznanych słów; każda wskazówka pomaga, ale nie jest liczona jako samodzielna odpowiedź.
+
+Bez ocen, rankingów, limitu czasu, kont, mikrofonu i oceniania gustów żywieniowych. Wszystkie postacie i grafiki są autorskie. Świat działa mobilnie, respektuje preferencję ograniczenia animacji i udostępnia oszczędny wydruk A4.
+
 ## Co działa
 - kolorowa, responsywna mapa **8 krain** odpowiadających rozdziałom kursu,
 - **93 autorskie fiszki** ze słowem angielskim, polskim tłumaczeniem i ilustracją emoji,
