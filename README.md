@@ -34,6 +34,23 @@ Druga kraina ma odmienną oprawę i własną historię o lisiczce Pipi. W oparci
 
 Bardzo ważne: ćwiczenia nie wymagają opisywania rzeczywistej rodziny dziecka; role są przypisane wymyślonym postaciom, więc każda sytuacja rodzinna jest traktowana z szacunkiem.
 
+## Kraina 03 — My body and face: Portretownia Mimi 🎨
+
+**https://gawierzba.github.io/New-English-Adventure-2/unit-3/**
+
+Trzecia autorska przygoda, z własną ilustracją bohaterki, **ruchomym portretem SVG** i nowymi mechanizmami aktywnej nauki. Zakres rozdziału sprawdzono w dostarczonych źródłach NEA 2: poradniku dla rodzica (s. 7), WordCards Unit 3 i karcie „Zapamiętaj” Unit 3.
+
+- 8 słów z WordCards: blond hair, chin, dark hair, eyes, glasses, neck, tail, teeth.
+- Krótkie lekcje odkrywania z wymową i możliwością pokazania tłumaczenia.
+- **Portretownia:** samodzielna zmiana włosów, oczu, okularów, szyi, ogona, zębów i podbródka — tylko dla poznanych słów. Równocześnie powstają poprawne zdania **He's/She's got...** oraz **He/She hasn't got...**.
+- **Detektyw:** generowane portrety i zagadki „prawda czy fałsz”; stopniowane podpowiedzi.
+- **Opowiedz:** dwie wersje opisu postaci, wybieranie zgodnego z portretem zdania, odsłuch i próba wypowiedzenia.
+- **Teatr gestów:** najpierw nauka czterech poleceń, potem zabawa: brush your hair/teeth, wash your face/hands.
+- Bez ocen, zegara, mikrofonu i oceniania wyglądu ludzi. Losowość obejmuje wyłącznie poznany materiał.
+- Postęp wyłącznie lokalny, responsywny układ, spokojne animacje i czarno-biały wydruk Unit 3.
+
+Wizualne postacie są celowo fantastyczne. He i She są rolami w opowieści, a nie wnioskiem z wyglądu realnej osoby. Gry korzystają z kontrolowanych szablonów językowych, nie z dowolnie generowanych zdań.
+
 ## Co działa
 - kolorowa, responsywna mapa **8 krain** odpowiadających rozdziałom kursu,
 - **93 autorskie fiszki** ze słowem angielskim, polskim tłumaczeniem i ilustracją emoji,
