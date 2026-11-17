@@ -3,7 +3,7 @@
    No server, accounts, analytics or voice recording.
    A scene tap is NOT evidence of learning; only task answers update review history. */
 (()=>{
-const P=window.EA2_PASSPORT_ENGINE,E=window.EA2_LIVING_TOWN_ENGINE,A=window.EA2_TOWN_ART;
+const P=window.EA2_PASSPORT_ENGINE,E=window.EA2_LIVING_TOWN_ENGINE,A={...window.EA2_TOWN_ART,...window.EA2_TOWN_EXTRA_ART};
 const $=id=>document.getElementById(id);
 const LOC={
 harbour:[
@@ -20,6 +20,21 @@ atelier:[
 {en:"jacket",x:42,y:52,symbol:"🧥"},{en:"jeans",x:54,y:60,symbol:"👖"},
 {en:"raincoat",x:67,y:56,symbol:"🧥"},{en:"scarf",x:79,y:49,symbol:"🧣"},
 {en:"sun hat",x:87,y:20,symbol:"👒"},{en:"wellies",x:82,y:83,symbol:"🥾"}
+],
+station:[
+{en:"train",x:47,y:73,symbol:"🚂"},{en:"bus",x:15,y:78,symbol:"🚌"},
+{en:"car",x:84,y:79,symbol:"🚗"},{en:"lorry",x:83,y:62,symbol:"🚚"},
+{en:"plane",x:83,y:17,symbol:"✈️"},{en:"tractor",x:13,y:61,symbol:"🚜"}
+],
+park:[
+{en:"jump",x:38,y:69,symbol:"🤸"},{en:"run",x:30,y:91,symbol:"🏃"},
+{en:"dance",x:69,y:62,symbol:"💃"},{en:"sing",x:73,y:30,symbol:"🎤"},
+{en:"climb",x:18,y:52,symbol:"🧗"},{en:"walk",x:80,y:84,symbol:"🚶"}
+],
+theatre:[
+{en:"mum",x:27,y:29,symbol:"👩"},{en:"dad",x:39,y:29,symbol:"👨"},
+{en:"sister",x:50,y:29,symbol:"👧"},{en:"brother",x:61,y:29,symbol:"👦"},
+{en:"grandma",x:72,y:29,symbol:"👵"},{en:"granddad",x:65,y:70,symbol:"👴"}
 ]};
 let snap=P.readSnapshot(localStorage),state=E.read(localStorage);
 let active=null,mission=null,inspection=null,sound=localStorage.getItem("nea2-town-sound-v1")!=="off",timer=null;
@@ -52,16 +67,17 @@ function travelTo(id){
 }
 function visitCount(){return status().filter(x=>x.viewed).length}
 function finishCount(){return status().filter(x=>x.finished).length}
-function learnedCount(){return status().reduce((n,x)=>n+x.known,0)}
+function learnedCount(){const unique=new Set();E.venues.forEach(v=>E.discovered(snap,v).forEach(w=>unique.add(w.key)));return unique.size}
+function totalWords(){return new Set(E.venues.flatMap(v=>v.words.map(en=>v.unit+"|"+en))).size}
 function renderCounters(){
- $("places-count").innerHTML=visitCount()+"<small>/3</small>";
- $("town-words-count").innerHTML=learnedCount()+"<small>/18</small>";
- $("quests-count").innerHTML=finishCount()+"<small>/3</small>"
+ $("places-count").innerHTML=visitCount()+"<small>/"+E.venues.length+"</small>";
+ $("town-words-count").innerHTML=learnedCount()+"<small>/"+totalWords()+"</small>";
+ $("quests-count").innerHTML=finishCount()+"<small>/"+E.venues.length+"</small>"
 }
 function renderMap(){
- $("town-art").innerHTML=A.town;
+ $("town-art").innerHTML=A.town.replace("</svg>",A.mapDecor+"</svg>");
  const night=$("town-map").classList.contains("is-night");
- $("town-map").classList.toggle("is-celebrating",finishCount()===3);
+ $("town-map").classList.toggle("is-celebrating",finishCount()===E.venues.length);
  $("time-toggle").textContent=night?"☀ Pokaż dzień":"☾ Włącz wieczór";
  $("time-toggle").setAttribute("aria-pressed",String(night))
 }
@@ -105,8 +121,8 @@ function renderJournal(){
   card.append(seal,title,detail,stateText,button);grid.appendChild(card)
  });
  const n=finishCount();
- $("journal-note").textContent=n===3?"Wszystkie trzy miejskie pamiątki zebrane!":n===0?
- "Pierwsza pamiątka już na Ciebie czeka.":"Zebrano "+n+" z 3 pamiątek. Pozostałe czekają!"
+ $("journal-note").textContent=n===E.venues.length?"Wszystkie sześć miejskich pamiątek zebrane!":n===0?
+ "Pierwsza pamiątka już na Ciebie czeka.":"Zebrano "+n+" z "+E.venues.length+" pamiątek. Pozostałe czekają!"
 }
 function renderPrint(){
  const grid=$("print-entries");grid.textContent="";
@@ -128,7 +144,7 @@ const button=(act,text,cls="stage-action")=>'<button type="button" data-action="
 const header=(label,title,desc)=>'<span class="stage-eyebrow">'+label+'</span><h3 class="stage-title">'+title+'</h3><p class="stage-lead">'+desc+'</p>';
 function welcome(){
  active=null;mission=null;inspection=null;
- stage(header("🦉 LUMO WITA GOŚCI","Welcome to <em>our town!</em>","Jestem Lumo, Twoja przewodniczka. Możesz już spacerować po miasteczku. Chodź do przystani, sklepiku albo mojej zaprzyjaźnionej pracowni.")+
+ stage(header("🦉 LUMO WITA GOŚCI","Welcome to <em>our town!</em>","Jestem Lumo, Twoja przewodniczka. Czeka tu już sześć miejsc: przystań, sklepik, pracownia, dworzec, park i teatr rozmów. Wybierz własną drogę!")+
  '<div class="welcome-scene"><div class="big-owl" aria-hidden="true">🦉</div><div><strong>Three places. Many little stories.</strong>'+
  '<p>W każdej scenie dotkniesz przedmiotów, posłuchasz angielskich zdań i rozwiążesz krótką misję, gdy poznasz potrzebne słowa.</p></div></div>'+
  '<div class="steps-line"><span><b>👀</b> Obejrzyj</span><span><b>👆</b> Dotknij</span><span><b>💬</b> Powiedz</span></div>'+
@@ -137,7 +153,7 @@ function welcome(){
 }
 function sceneHtml(v,mode){
  const available=new Set(rows(v).map(w=>w.en));
- const display=LOC[v.id].filter(x=>mode!=="mission"||available.has(x.en));
+ const display=LOC[v.id].filter(x=>(mode!=="mission"||v.kind!=="dialogue")&&(mode!=="mission"||available.has(x.en)));
  const target=mission&&!mission.done?mission.targets[mission.index].en:null;
  const spots=display.map(obj=>{
   const isKnown=available.has(obj.en),glow=mission&&mission.hint>=2&&obj.en===target,wrong=mission&&mission.wrong===obj.en;
@@ -146,7 +162,8 @@ function sceneHtml(v,mode){
    (mode==="mission"?"Wskaż obrazek: ":"Zobacz przedmiot: ")+obj.en+'"><span aria-hidden="true">'+
    (isKnown?obj.symbol:"✦")+'</span></button>'
  }).join("");
- return '<div class="scene-wrap"><div class="scene-illustration">'+A[v.id]+
+ const effect=mission&&mission.done?(v.id==="station"?" signal-open":v.id==="park"?" action-"+mission.targets[mission.index].en:v.id==="theatre"?" applause":""):"";
+ return '<div class="scene-wrap'+effect+'"><div class="scene-illustration">'+A[v.id]+
  '<span class="scene-scene-label">'+v.english.toUpperCase()+' ✦</span>'+spots+'</div></div>'
 }
 function showInspection(v){
@@ -248,7 +265,7 @@ function completeVenue(){
  const next=E.nextState(state,v.id,independent,now());
  if(E.save(localStorage,next))state=next;else toast("Nie udało się zapisać miejskiej pamiątki.");
  mission=null;inspection=null;drawAll();
- const all=finishCount()===3;
+ const all=finishCount()===E.venues.length;
  stage(header("✦ PAMIĄTKA Z MIASTECZKA",all?"Całe miasteczko <em>odkryte!</em>":"Udało się! <em>Odkryliśmy miejsce.</em>",
  "Kolejny kawałek naszej opowieści trafił do Dziennika Małych Odkryć. Możesz wrócić tutaj lub wybrać inne miejsce.")+
  '<div class="scene-award"><span class="award-icon" aria-hidden="true">'+(all?"🦉🌟":v.icon)+'</span>'+
@@ -308,7 +325,7 @@ window.EA2LivingTown=Object.freeze({
   results:mission.results.slice(),target:mission.targets[mission.index].en}:null}),
  visit:travelTo,resetTown
 });
-$("town-art").innerHTML=A.town;
+$("town-art").innerHTML=A.town.replace("</svg>",A.mapDecor+"</svg>");
 $("town-map").classList.toggle("is-night",state.night);
 drawAll();renderMap();renderSound();welcome();
 })();
