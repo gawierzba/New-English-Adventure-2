@@ -26,7 +26,7 @@ function counts(){const n=learned().length,ind=WORDS.filter(w=>{const p=progress
  $("progress-fill").style.width=(n/13*100)+"%";$("progress").setAttribute("aria-valuenow",String(n))}
 function glossary(){const list=$("word-grid");list.textContent="";WORDS.forEach(w=>{
  const tile=document.createElement("article");tile.className="word-card";
- const ico=document.createElement("span");ico.className="word-icon";ico.textContent=w.icon;
+ const ico=document.createElement("span");ico.className="word-icon";ico.innerHTML=E.iconSVG(w.en);
  const b=document.createElement("div");b.className="word-copy";const h=document.createElement("strong");h.lang="en";h.textContent=w.en;
  const p=document.createElement("small");p.textContent=w.pl;
  const status=document.createElement("em");status.className=known(w.en)?"seen":"";
@@ -61,7 +61,7 @@ function welcome(){show(head("🦊 MAGICZNA SZAFA FELI","Hej! Jestem <em>Fela!</
  "Najpierw poznajemy słowa, potem tworzymy z nich zdania.");}
 function discover(){const w=session[index];if(!w)return;if(!known(w.en))mark(w,"seen");
  show(head("🔍 ODKRYJ · "+(index+1)+"/"+session.length,"Co jest w <em>szafie?</em>","Spójrz na obrazek, posłuchaj wymowy i odkryj polskie znaczenie.")+
- dots(index,session.length)+'<div class="flash-grid"><div class="flash-visual"><span class="flash-stamp">'+(w.core?"WORD CARD":"EXTRA WORD")+' ✿</span><span class="emoji" role="img" aria-label="'+w.pl+'">'+w.icon+'</span></div>'+
+ dots(index,session.length)+'<div class="flash-grid"><div class="flash-visual"><span class="flash-stamp">'+(w.core?"WORD CARD":"EXTRA WORD")+' ✿</span><span class="emoji" role="img" aria-label="'+w.pl+'">'+E.iconSVG(w.en)+'</span></div>'+
  '<div class="flash-copy"><span class="micro">ENGLISH</span><h4 lang="en">'+w.en+'</h4>'+btn("hear-word","♫ Posłuchaj","listen")+
  '<div class="translation">'+(reveal?'<span class="micro">PO POLSKU</span><strong>'+w.pl+'</strong>':btn("reveal","Pokaż znaczenie 👀",""))+'</div>'+
  '<p class="tiny">Możesz słuchać i powtarzać tyle razy, ile chcesz.</p></div></div>'+
@@ -79,7 +79,7 @@ function renderWardrobe(){
  const clothes=learned().map(w=>{
   const active=look.items[w.slot]&&look.items[w.slot].en===w.en;
   return '<button type="button" data-action="choose-item" data-value="'+w.en+'" class="'+(active?"selected ":"")+(selected===w.en?"current":"")+
-  '" aria-pressed="'+String(!!active)+'"><span aria-hidden="true">'+w.icon+'</span>'+w.en+'</button>'
+  '" aria-pressed="'+String(!!active)+'"><span aria-hidden="true">'+E.iconSVG(w.en)+'</span>'+w.en+'</button>'
  }).join("");
  const palette=COLORS.map(c=>'<button type="button" data-action="choose-color" data-value="'+c.name+'" style="background:'+c.hex+
  '" class="'+(shade===c.name?"active":"")+'" aria-label="Kolor '+c.pl+'" title="'+c.pl+'" aria-pressed="'+(shade===c.name)+'"></button>').join("");
@@ -125,7 +125,7 @@ function renderWeather(){
  const t=WEATHER[weather];
  const types=Object.keys(WEATHER).map(k=>'<button type="button" data-action="weather-type" data-value="'+k+'" class="'+(weather===k?"active":"")+'">'+WEATHER[k].emoji+" "+WEATHER[k].label+'</button>').join("");
  let opts=t.items.filter(known);if(!opts.length)opts=learned().slice(0,3).map(w=>w.en);
- const suggestions=opts.map(en=>'<button type="button" data-action="weather-wear" data-value="'+en+'">'+E.word(en).icon+" "+en+'</button>').join("");
+ const suggestions=opts.map(en=>'<button type="button" data-action="weather-wear" data-value="'+en+'">'+E.iconSVG(en)+" "+en+'</button>').join("");
  show(head("🌦️ KOLOROWA POGODA","W co ubrać <em>bohatera?</em>","Wybierz pogodę i zaprojektuj ubiór postaci. Podpowiedzi są inspiracjami, a nie oceną Twojego pomysłu.")+
  '<div class="weather-row">'+types+'</div>'+avatars(weatherLook.person,"weather-person")+
  '<div class="weather-stage"><div class="weather-hero">'+actor(weatherLook,weather,"THE WEATHER TODAY")+
@@ -169,7 +169,7 @@ function renderQuiz(){
   const right=quiz.done&&q.w.en===w.en,wrong=quiz.wrong===w.en,hinted=quiz.hint>=2&&q.w.en===w.en;
   return ['<button type="button" data-action="quiz-answer" data-value="',w.en,'" ',
    quiz.done?"disabled":"",' class="',right?"correct":wrong?"wrong":"",hinted?" glow":"",
-   '"><span role="img" aria-label="',w.pl,'">',w.icon,'</span><small lang="en">',w.en,'</small></button>'].join("")
+   '"><span role="img" aria-label="',w.pl,'">',E.iconSVG(w.en),'</span><small lang="en">',w.en,'</small></button>'].join("")
  }).join("");
  const result=quiz.done?'<div class="feedback '+(quiz.assisted?"assisted":"good")+'">'+
   (quiz.assisted?"Znaleźliśmy to razem. ":"Samodzielna odpowiedź — brawo! ")+E.describe(q.outfit)+'</div>':
