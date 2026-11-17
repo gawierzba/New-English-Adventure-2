@@ -152,7 +152,7 @@ function renderMystery(){
  const hint=mystery.hint===1?'<div class="hint"><b>Pierwsza podpowiedź:</b> <span lang="en">'+q.word.en+'</span> znaczy '+q.word.pl+'.</div>':
  mystery.hint>=2?'<div class="hint"><b>Druga podpowiedź:</b> Lila podświetliła właściwy obrazek. Możesz go wybrać lub wspólnie odkryć odpowiedź.</div>':"";
  display(head("🕵️ DETEKTYW SMAKU · "+(mystery.index+1)+"/"+mystery.tasks.length,
- "Co lubi nasz <em>gość?</em>","Lila wypowiada zdanie. Wybierz produkt, o którym mówi, korzystając z poznanych słówek.")+
+ "O którym <em>produkcie</em> mowa?","Lila wypowiada zdanie. Wybierz produkt, o którym mówi, korzystając z poznanych słówek.")+
  dots(mystery.index,mystery.tasks.length)+
  '<div class="detect-scene"><div class="detect-image"><span class="who">'+q.who.emoji+'</span><span aria-hidden="true">🍽️</span></div>'+
  '<div class="detect-text"><span class="micro">LISTEN AND LOOK</span><h4 lang="en">'+line+'</h4>'+btn("hear-mystery","♫ Posłuchaj zdania","action-alt")+'</div></div>'+
