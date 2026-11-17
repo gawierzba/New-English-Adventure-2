@@ -167,21 +167,21 @@ Etap 12 rozbudowuje istniejące Żywe Miasteczko z 3 do **6 grywalnych miejsc** 
 | 🌳 Park Tańczących Drzew | Unit 5, *I can jump!* | jump, run, dance, sing, climb, walk | *Can you…? / I can…*; oryginalna Tuli ilustruje odgadniętą czynność ruchem |
 | 🎭 Teatr Sześciu Portretów | Unit 2, *My family* | mum, dad, sister, brother, grandma, granddad | *Who's this? / This is my…*; dwie ścieżki: aktor (budowa wypowiedzi po angielsku), reżyser (rozpoznanie jej znaczenia) |
 
-Źródło wyrażeń: plik \`NEA_2_PORADNIK.pdf\`, PDF strony 6, 9 i 12 (odpowiednio Unit 2, 5, 7). Wszystkie 18 nowych punktów interakcji sprawdzono z rzeczywistym katalogiem słownictwa istniejącej aplikacji.
+Podstawa materiałowa: plik `NEA_2_PORADNIK.pdf`, PDF strony 6, 9 i 12 (odpowiednio Unit 2, 5, 7). Pytanie *Who's this?* to autorska rama dialogowa naszej gry; poradnik w Unit 2 proponuje zwrot *This is my…* przy opisywaniu rodzinnych zdjęć. Wszystkie 18 nowych punktów interakcji sprawdzono z rzeczywistym katalogiem słownictwa aplikacji.
 
 Ponieważ część pojazdów występuje zarówno na **przystani**, jak i na **dworcu**, sześć miejsc zawiera razem **32 unikatowe słowa** — licznik nie podwaja tych samych wyrazów. Na mapie istnieje sześć odnośników, a niżej sześć dużych przycisków dostępnych również na telefonie.
 
 ### Edukacja i zachowanie danych
 
 - Każde z sześciu miejsc można zwiedzać i dotykać obrazków bez znajomości słów. **Nie traktuje się tego jako samodzielnej nauki.**
-- Mini-misja zostaje odblokowana po poznaniu co najmniej dwóch słów z danego miejsca. Losuje 2–3 zadania, wyłącznie z rzeczywiście poznanych wyrazów \`seen=true\` w ich macierzystej krainie, nie z odhaczeń strony głównej.
+- Mini-misja zostaje odblokowana po poznaniu co najmniej dwóch słów z danego miejsca. Losuje 2–3 zadania, wyłącznie z rzeczywiście poznanych wyrazów `seen=true` w ich macierzystej krainie, nie z odhaczeń strony głównej.
 - Teatr daje wybór **aktor/reżyser**, przed pierwszym zadaniem. W trybie aktora dziecko wybiera angielską odpowiedź *This is my…*, a w trybie reżysera rozpoznaje polskie znaczenie usłyszanej angielskiej wypowiedzi. W obu przypadkach wszystkie opcje pochodzą z poznanego słownictwa; wybór roli jest widoczny w Dzienniku po ukończeniu scenki.
-- Dwie wskazówki i rozwiązanie wspólne działają bez kar. Prawidłowa samodzielna odpowiedź jest odróżniana od odpowiedzi po pomyłce lub z pomocą; obie są przekazywane do istniejącego harmonogramu powtórek \`nea2-passport-revision-v1\`.
-- Stare pamiątki pozostają zapisane bez migracji pod istniejącym kluczem \`nea2-living-town-v1\`. Do trzech istniejących miejsc dochodzą trzy nowe; wybór roli w teatrze trafia do \`places.theatre.lastRole\`.
+- Dwie wskazówki i rozwiązanie wspólne działają bez kar. Prawidłowa samodzielna odpowiedź jest odróżniana od odpowiedzi po pomyłce lub z pomocą; obie są przekazywane do istniejącego harmonogramu powtórek `nea2-passport-revision-v1`.
+- Stare pamiątki pozostają zapisane bez migracji pod istniejącym kluczem `nea2-living-town-v1`. Do trzech istniejących miejsc dochodzą trzy nowe; wybór roli w teatrze trafia do `places.theatre.lastRole`.
 - Reset dziennika usuwa tylko postępy miasteczka; nie usuwa postępów w krainach ani historii powtórek.
 - Bez logowania, mikrofonu, ocen, zewnętrznych grafik i nagrań. Angielska wymowa działa wyłącznie przez syntezę mowy przeglądarki. Wsparto ruch ograniczony w ustawieniach dostępności i układ mobilny.
 
-**Nowy kod:** \`town/art-extra.js\` (3 oryginalne wektorowe sceny, mapowy park i teatr), rozbudowane \`town/engine.js\`, \`town/app.js\`, \`town/style.css\`, \`town/index.html\`, \`town/preview.svg\`, poprawione zaproszenie na stronie głównej. Wersja obejmuje 6 grywalnych miejsc, ale nie jest jeszcze pełną fabularną wyprawą łączącą wszystkie historie w jeden rozgałęziony rozdział.
+**Nowy kod:** `town/art-extra.js` (3 oryginalne wektorowe sceny, mapowy park i teatr), rozbudowane `town/engine.js`, `town/app.js`, `town/style.css`, `town/index.html`, `town/preview.svg`, poprawione zaproszenie na stronie głównej. Wersja obejmuje 6 grywalnych miejsc, ale nie jest jeszcze pełną fabularną wyprawą łączącą wszystkie historie w jeden rozgałęziony rozdział.
 
 **Kolejny kierunek:** wspólny wątek opowieści, zadania łączące 2–3 różne krainy i bohaterów oraz indywidualna „księga opowieści” z zapisanymi wyborami.
 
