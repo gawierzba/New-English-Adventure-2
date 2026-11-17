@@ -78,7 +78,7 @@ function compareRows(a,b){
 }
 function selectReviewItems(snapshot,now=Date.now(),limit=6,force=false){
  let possible=snapshot.all.filter(w=>w.seen&&(force||w.needsReview));
- if(possible.length<2)return[];
+ if(possible.length===0)return[];
  const perWorld=new Map();
  possible.sort(compareRows).forEach(w=>{if(!perWorld.has(w.unit))perWorld.set(w.unit,[]);perWorld.get(w.unit).push(w)});
  const groups=[...perWorld.entries()].sort((a,b)=>compareRows(a[1][0],b[1][0]));
