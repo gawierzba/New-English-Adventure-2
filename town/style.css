@@ -398,3 +398,20 @@ footer{background:#244457;color:#fff;padding:42px 0 22px}
 }
 @media(prefers-reduced-motion:reduce){.scene-secret,.scene-secret:before{animation:none!important}}
 @media print{.secrets-section{display:none!important}}
+
+
+/* Stage 15: mail arrives in the Little Town. */
+.mail-post-portal{padding:91px 0;background:radial-gradient(ellipse 50% 80% at 90% 15%,#e3e4ef,transparent),linear-gradient(#eff5f0,#f8f7f3)}
+.mail-post-layout{display:grid;grid-template-columns:48% 52%;align-items:center;gap:34px}
+.mail-post-visual{height:292px;max-width:100%;border-radius:27px;transform:rotate(-3deg);border:8px solid #fffdf5;box-shadow:0 22px 35px #4a637a29;background:#c5e0da;overflow:hidden}
+.mail-post-visual img{display:block;width:100%;height:100%;object-fit:cover}
+.mail-post-copy span{font-size:10px;color:#82a4a7;font-weight:1000;letter-spacing:2px}
+.mail-post-copy h2{font-family:Georgia,serif;font-size:clamp(35px,3.9vw,48px);color:#50758a;line-height:1.13;letter-spacing:-1.5px;margin:15px 0}
+.mail-post-copy h2 em{color:#a799bb;font-weight:500}
+.mail-post-copy p{font-size:13px;color:#889fa6;line-height:1.85;max-width:600px;margin:0 0 20px}
+.mail-post-copy a{display:inline-flex;justify-content:center;align-items:center;min-height:45px;padding:12px 18px;background:#4b8191;border-radius:99px;box-shadow:0 5px 0 #cce2dc;color:#fff;font-size:11px;font-weight:1000}
+.mail-post-copy small{display:block;margin-top:16px;color:#9eacb1;font-size:10px;line-height:1.5}
+@media(max-width:890px){.mail-post-layout{grid-template-columns:44% 56%;gap:22px}.mail-post-visual{height:245px}.mail-post-copy h2{font-size:36px}.mail-post-copy p{font-size:12px}}
+@media(max-width:670px){.mail-post-portal{padding:62px 0 72px}.mail-post-layout{display:flex;flex-direction:column;gap:32px}.mail-post-visual{width:calc(100% - 20px);height:218px;border-width:6px}.mail-post-copy{text-align:center}.mail-post-copy span{font-size:9px;letter-spacing:1px}.mail-post-copy h2{font-size:37px}.mail-post-copy p{font-size:12px}.mail-post-copy a{width:100%}}
+@media(max-width:380px){.mail-post-visual{height:180px}.mail-post-copy h2{font-size:32px}}
+@media print{.mail-post-portal{display:none!important}}
