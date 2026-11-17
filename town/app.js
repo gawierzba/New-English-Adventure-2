@@ -68,7 +68,7 @@ function travelTo(id){
 function visitCount(){return status().filter(x=>x.viewed).length}
 function finishCount(){return status().filter(x=>x.finished).length}
 function learnedCount(){const unique=new Set();E.venues.forEach(v=>E.discovered(snap,v).forEach(w=>unique.add(w.key)));return unique.size}
-function totalWords(){return new Set(E.venues.flatMap(v=>v.words.map(en=>v.unit+"|"+en))).size}
+function totalWords(){const unique=new Set();E.venues.forEach(v=>v.words.forEach(en=>unique.add(v.unit+"|"+en)));return unique.size}
 function renderCounters(){
  $("places-count").innerHTML=visitCount()+"<small>/"+E.venues.length+"</small>";
  $("town-words-count").innerHTML=learnedCount()+"<small>/"+totalWords()+"</small>";
@@ -113,7 +113,7 @@ function renderJournal(){
   const seal=document.createElement("div");seal.className="journal-seal";seal.textContent=v.finished?v.icon:"✧";
   const title=document.createElement("strong");title.textContent=v.badge;
   const detail=document.createElement("small");detail.textContent=v.finished?
-  "Misja ukończona · odwiedzin z misją: "+v.visits+(v.independent?" · przynajmniej jedna bez pomocy":" · wspólnie z Lumo")+(v.id==="theatre"&&state.places.theatre?.lastRole?" · rola: "+(state.places.theatre.lastRole==="actor"?"aktor":"reżyser"):""):
+  "Misja ukończona · odwiedzin z misją: "+v.visits+(v.independent?" · przynajmniej jedna bez pomocy":" · wspólnie z Lumo")+(v.id==="theatre"&&(state.places.theatre&&state.places.theatre.lastRole)?" · rola: "+(state.places.theatre.lastRole==="actor"?"aktor":"reżyser"):""):
   v.viewed?"Już odwiedzone. Wróć po pamiątkę!":"Jeszcze nieodkryte.";
   const stateText=document.createElement("span");stateText.className="journal-state";
   stateText.textContent=v.finished?"✦ W DZIENNIKU":"○ CZEKA NA ODKRYCIE";
