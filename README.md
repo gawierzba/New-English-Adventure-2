@@ -153,6 +153,39 @@ Nie ma ocen, rankingów, stopera, kont, mikrofonu, rejestrowania tożsamości an
 
 **Pliki:** \`unit-8/index.html\`, \`unit-8/style.css\`, \`unit-8/engine.js\`, \`unit-8/app.js\`.
 
+## Etap 09 — Paszport Małego Odkrywcy 🧭
+
+**https://gawierzba.github.io/New-English-Adventure-2/passport/**
+
+Paszport scala rzeczywiste postępy z **ośmiu autonomicznych krain**, nie przepisywując ani nie resetując danych gier. Odczytuje dokładnie **93 podstawowe słowa głównej mapy** (9 + 11 + 8 + 10 + 17 + 14 + 14 + 10). Słownictwo rozszerzające z poradnika nadal dostępne jest we właściwych krainach, ale nie zawyża liczby 93.
+
+### Poprawna interpretacja postępów
+
+Paszport celowo **nie ufa zbiorczemu kluczowi \`nea2-learned-v1\` jako dowodowi znajomości angielskiego**, ponieważ ten zawiera także pozycje oznaczone ręcznie na starych fiszkach i jest uzupełniany według różnych kryteriów. Zamiast tego czyta rekordy oryginalnych jednostek:
+- **01** \`ea2-unit-1-learning-v1\`, kolekcja \`items\`, rozpoznanie: \`find\`;
+- **02** \`ea2-family-v1\`, kolekcja \`entries\`, rozpoznanie: \`recognise\`;
+- **03** \`ea2-u3-v1\`, kolekcja \`words\`, rozpoznanie: \`detect\`;
+- **04** \`ea2-myroom-v1\`, kolekcja \`words\`, rozpoznanie: \`recognised\`;
+- **05** \`ea2-jungle-v1\`, kolekcja \`words\`, rozpoznanie: \`found\`;
+- **06** \`ea2-food-v1\`, kolekcja \`words\`, rozpoznanie: \`found\`;
+- **07** \`nea2-unit7-atlas-v1\`, kolekcja \`words\`, rozpoznanie: \`found\`;
+- **08** \`nea2-unit8-fashion-v1\`, kolekcja \`words\`, rozpoznanie: \`found\`.
+
+**Trzy odrębne pojęcia:** poznane = istnieje status \`seen=true\`; samodzielnie rozpoznane = gra macierzysta zapisała niezależne trafienie w zadaniu lub dziecko poprawnie odpowiedziało bez podpowiedzi w powtórce; powtórzone = poprawna, samodzielna odpowiedź w Akademii Powtórek. Samo kliknięcie „Spróbowałem(am) powiedzieć” NIE oznacza zweryfikowanej wymowy ani automatycznie samodzielnego rozpoznania.
+
+### Akademia Powtórek (pierwsza wersja)
+
+- Maksymalnie sześć słów na sesję, różne krainy, preferencja słów słabo ćwiczonych. Pytania i rozpraszające odpowiedzi pochodzą wyłącznie ze słów rzeczywiście poznanych w grach; 2 opcje przy dwóch znanych słowach, maks. 4 przy czterech lub więcej.
+- Zadania naprzemienne: **polski → angielski** oraz **angielski → polski**, odsłuch brytyjskiej wymowy przy pytaniach po angielsku (o ile przeglądarka obsługuje syntezator).
+- Podpowiedzi: pierwsza litera prawidłowego słowa, podświetlenie odpowiedzi, wspólne odkrycie; odpowiedzi po pomocy lub pomyłce nie są liczone jako niezależne.
+- Kolejny powrót po 1, 3, 7, 14 albo 30 dniach (zależnie od serii samodzielnych odpowiedzi). Po wspólnej odpowiedzi słowo proponujemy za 12 godzin — bez ocen i kar.
+- Gdy aktualnie nie ma słów „do powtórki”, aplikacja proponuje odpoczynek lub **dobrowolne ćwiczenie**. Przy zaledwie jednym odkrytym słowie nie pokazuje pozorowanego testu wielokrotnego wyboru.
+- Historia prób i terminów jest zapisywana pod osobnym kluczem \`nea2-passport-revision-v1\`. Jej reset **nie usuwa postępów w ośmiu krainach**.
+
+Paszport obejmuje osiem pieczątek, panel faktycznych postępów i przygotowaną do A4 wersję drukowaną. Dane istnieją wyłącznie w lokalnej przeglądarce, bez logowania, serwera, mikrofonu i zewnętrznego profilowania.
+
+**Pliki:** \`passport/index.html\` (autorska ilustracja i układ), \`passport/style.css\`, \`passport/data.js\` (katalog 93 słów + adaptery), \`passport/engine.js\` (czysty silnik statusów i odstępów), \`passport/app.js\` (widoki, nawigacja, ćwiczenia, druk). Panel wejściowy oraz nawigacja znajdują się również w \`index.html\`.
+
 ## Co działa
 - kolorowa, responsywna mapa **8 krain** odpowiadających rozdziałom kursu,
 - **93 autorskie fiszki** ze słowem angielskim, polskim tłumaczeniem i ilustracją emoji,
