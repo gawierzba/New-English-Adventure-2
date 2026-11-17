@@ -11,7 +11,7 @@ const grammar={
  5:{title:"Dżungla Ruchu",short:"Tropem skaczących zwierząt",scene:"🌿",sky:"#e1f5e2",story:"Dżungla ożywa! Pokaż, co potrafisz zrobić, i pomóż znaleźć kompas.",prep:"I can",items:["climb","dance","fly","jump","ride a bike","ride a horse","run","sing","swim","walk"],choice:en=>en},
  6:{title:"Targ Pachnących Przysmaków",short:"Smaczna wiadomość",scene:"🍓",sky:"#fff0df",story:"Kucharz ukrył wskazówkę pomiędzy ulubionymi przysmakami. Rozpoznaj jedzenie.",prep:"He likes",items:null,choice:en=>en},
  7:{title:"Przystań Wielkiego Atlasu",short:"Podróż przez krajobrazy",scene:"⛵",sky:"#dff4fa",story:"Z pociągu widać góry i jeziora. Tola pokazuje miejsce z kolejnym fragmentem mapy.",prep:"There's",items:["boat","bus","car","field","forest","lake","lorry","mountain","plane","river","town","train","tractor"],choice:en=>(/^[aeiou]/i.test(en)?"an ":"a ")+en},
- 8:{title:"Teatr Barwnych Kostiumów",short:"Finałowa garderoba",scene:"👗",sky:"#f7e5f6",story:"Fela przygotowała pokaz strojów. Ostatni fragment kompasu ukrył się w garderobie.",prep:"She's wearing",items:null,choice:en=>(/^(jeans|shorts|socks|trainers|wellies)$/.test(en)?"":/^[aeiou]/i.test(en)?"an ":"a ")+en}
+ 8:{title:"Teatr Barwnych Kostiumów",short:"Finałowa garderoba",scene:"👗",sky:"#f7e5f6",story:"Fela przygotowała pokaz strojów. Ostatni fragment kompasu ukrył się w garderobie.",prep:"She's wearing",items:null,choice:en=>(/^(jeans|shorts|socks|trainers|wellies)$/.test(en)?"":en==="uniform"?"a ":/^[aeiou]/i.test(en)?"an ":"a ")+en}
 };
 const moduleInfo=u=>grammar[u];
 const seedNumber=(a,b)=>((a*1103515245+b*12345+0xBEEF)>>>0);
