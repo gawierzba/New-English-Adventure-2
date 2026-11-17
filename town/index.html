@@ -12,6 +12,7 @@
 <script defer src="../passport/engine.js"></script>
 <script defer src="engine.js"></script>
 <script defer src="art.js"></script>
+<script defer src="art-extra.js"></script>
 <script defer src="app.js"></script>
 <title>Żywe Miasteczko pod Chmurami · English Adventure 2</title>
 </head>
@@ -30,7 +31,7 @@
   <div class="eyebrow"><span class="dot"></span> ETAP 11 · OTWIERAMY NOWY ŚWIAT</div>
   <h1>Żywe <em>Miasteczko</em><span class="period">.</span></h1>
   <p class="hero-lead">Nie tylko patrz. <strong>Dotknij, odkrywaj, rozmawiaj.</strong> W Miasteczku pod Chmurami wszystko ma swoją historię — i własne angielskie słowo.</p>
-  <div class="hero-actions"><a class="primary-action" href="#town">Wejdź do miasteczka <span aria-hidden="true">↗</span></a><a class="secondary-action" href="#places">Poznaj trzy miejsca</a></div>
+  <div class="hero-actions"><a class="primary-action" href="#town">Wejdź do miasteczka <span aria-hidden="true">↗</span></a><a class="secondary-action" href="#places">Poznaj sześć miejsc</a></div>
   <p class="hero-sub">🦉 Lumo czeka. Możesz spacerować także wtedy, gdy dopiero zaczynasz uczyć się słówek.</p>
  </div>
  <div class="hero-emblem">
@@ -46,9 +47,9 @@
  </div>
 </div></section>
 <section class="quick-stats wrap" aria-label="Postęp odkrywania miasteczka">
- <div><span aria-hidden="true">🏡</span><strong id="places-count">0<small>/3</small></strong><small>odwiedzone miejsca</small></div>
- <div><span aria-hidden="true">🌱</span><strong id="town-words-count">0<small>/18</small></strong><small>poznane słowa w miasteczku</small></div>
- <div><span aria-hidden="true">🧩</span><strong id="quests-count">0<small>/3</small></strong><small>ukończone mini-przygody</small></div>
+ <div><span aria-hidden="true">🏡</span><strong id="places-count">0<small>/6</small></strong><small>odwiedzone miejsca</small></div>
+ <div><span aria-hidden="true">🌱</span><strong id="town-words-count">0<small>/32</small></strong><small>poznane słowa w miasteczku</small></div>
+ <div><span aria-hidden="true">🧩</span><strong id="quests-count">0<small>/6</small></strong><small>ukończone mini-przygody</small></div>
 </section>
 <section class="map-section" id="town"><div class="wrap">
  <div class="section-kicker">✦ DZIEŃ PIERWSZY · WITAJ W MIASTECZKU POD CHMURAMI</div>
@@ -60,12 +61,15 @@
    <button class="map-place map-market" data-place="market" type="button" aria-label="Wejdź do Sklepiku Pod Truskawką"><span class="pin-icon">🍓</span><span class="pin-name">Sklepik</span></button>
    <button class="map-place map-atelier" data-place="atelier" type="button" aria-label="Wejdź do Pracowni Barwnych Strojów"><span class="pin-icon">👗</span><span class="pin-name">Pracownia</span></button>
    <button class="map-place map-harbour" data-place="harbour" type="button" aria-label="Wejdź do Przystani Lumo"><span class="pin-icon">⛵</span><span class="pin-name">Przystań</span></button>
+   <button class="map-place map-station" data-place="station" type="button" aria-label="Wejdź do Dworca Błękitnych Podróży"><span class="pin-icon">🚂</span><span class="pin-name">Dworzec</span></button>
+   <button class="map-place map-park" data-place="park" type="button" aria-label="Wejdź do Parku Tańczących Drzew"><span class="pin-icon">🌳</span><span class="pin-name">Park</span></button>
+   <button class="map-place map-theatre" data-place="theatre" type="button" aria-label="Wejdź do Teatru Sześciu Portretów"><span class="pin-icon">🎭</span><span class="pin-name">Teatr</span></button>
    <span class="map-caption" aria-hidden="true">THE LITTLE LIVING TOWN · A PLACE TO DISCOVER</span>
   </div>
  </div>
- <p class="map-mobile-hint">↔ Na mniejszym ekranie możesz przesunąć mapę w bok. Wszystkie trzy miejsca są też dostępne na kartach poniżej.</p>
+ <p class="map-mobile-hint">↔ Na mniejszym ekranie możesz przesunąć mapę w bok. Wszystkie sześć miejsc jest też dostępnych na kartach poniżej.</p>
  <div id="map-navigation" class="place-cards" aria-label="Wybierz miejsce do odwiedzenia"></div>
- <div class="map-storyline"><span aria-hidden="true">🦉</span><p id="map-tale">Cześć! Tu Lumo. W miasteczku czekają trzy opowieści. Wybierz miejsce, a pokażę Ci drogę!</p><button id="owl-say" type="button" title="Odsłuchaj angielskie powitanie">♫ Hello!</button></div>
+ <div class="map-storyline"><span aria-hidden="true">🦉</span><p id="map-tale">Cześć! Tu Lumo. W miasteczku czeka już sześć opowieści. Wybierz miejsce, a pokażę Ci drogę!</p><button id="owl-say" type="button" title="Odsłuchaj angielskie powitanie">♫ Hello!</button></div>
 </div></section>
 <section class="places-section" id="places"><div class="wrap">
  <div class="section-kicker">✦ OTWÓRZ DRZWI · WEJDŹ DO ŚRODKA</div>
@@ -77,7 +81,7 @@
   </article>
   <aside class="visit-side">
     <div class="aside-box guide-box"><span class="aside-kicker">LUMO PODPOWIADA</span><div class="aside-owl" aria-hidden="true">🦉</div><h3>Odkrywaj bez pośpiechu.</h3><p id="owl-tip">W miasteczku nie ma stopera. Możesz wracać do każdego miejsca tyle razy, ile zechcesz.</p></div>
-    <div class="aside-box"><span class="aside-kicker">DZISIEJSZA PODRÓŻ</span><h3>Moje trzy miejsca</h3><div id="side-stamps" class="side-stamps"></div></div>
+    <div class="aside-box"><span class="aside-kicker">DZISIEJSZA PODRÓŻ</span><h3>Moje sześć miejsc</h3><div id="side-stamps" class="side-stamps"></div></div>
     <div class="aside-box help-box"><span class="aside-kicker">JAK UCZYMY SIĘ SŁÓW?</span><p>Rozpoznanie bez pomocy zapisuje się jako samodzielna powtórka. Po podpowiedzi możemy dokończyć zabawę razem, a słowo wróci później.</p></div>
   </aside>
  </div>
@@ -90,9 +94,9 @@
  <div class="journal-info"><span aria-hidden="true">♡</span><p>Zapis działa na tym urządzeniu, w tej przeglądarce. Dziennik nie zastępuje sprawdzianu i nie ocenia wymowy. Dotknięcie przedmiotu podczas swobodnego zwiedzania nie daje punktów za naukę.</p></div>
  <div class="journal-reset-row"><button id="reset-town" type="button">Wyczyść wyłącznie dziennik miasteczka</button></div>
 </div></section>
-<section class="next-section"><div class="wrap next-content"><div><div class="section-kicker">✦ CO OŻYJE W KOLEJNYCH ODSŁONACH?</div><h2>Miasto ma jeszcze <em>wiele tajemnic.</em></h2><p>W tej pierwszej wersji w pełni grywalne są trzy miejsca. Później możemy rozwinąć stację kolejową, park, teatr rozmów i historie z różnymi drogami.</p></div><div class="next-scenes"><span>🚂 <small>Stacja</small></span><span>🌳 <small>Park</small></span><span>🎭 <small>Teatr</small></span></div></div></section>
+<section class="next-section"><div class="wrap next-content"><div><div class="section-kicker">✦ CO OŻYJE W KOLEJNYCH ODSŁONACH?</div><h2>Miasto ma jeszcze <em>wiele tajemnic.</em></h2><p>Mamy już sześć grywalnych miejsc, a w Teatrze Sześciu Portretów można wybrać własną rolę. Kolejnym krokiem będą opowieści łączące miejsca w różne trasy.</p></div><div class="next-scenes"><span>🧭 <small>Szlaki</small></span><span>📜 <small>Historie</small></span><span>✨ <small>Sekrety</small></span></div></div></section>
 </main>
-<footer><div class="wrap foot"><div><strong>English <span>Adventure</span> 2</strong><p>Wszystkie wielkie wyprawy zaczynają się od małego słowa. ♥</p></div><a href="../passport/">📘 Mój Paszport</a></div><div class="wrap foot-fine">Etap 11.1–11.3 · Żywe Miasteczko pod Chmurami · Autorska oprawa i ćwiczenia</div></footer>
+<footer><div class="wrap foot"><div><strong>English <span>Adventure</span> 2</strong><p>Wszystkie wielkie wyprawy zaczynają się od małego słowa. ♥</p></div><a href="../passport/">📘 Mój Paszport</a></div><div class="wrap foot-fine">Etapy 11–12 · Żywe Miasteczko pod Chmurami · Autorska oprawa i ćwiczenia</div></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <section class="print-sheet" id="print-sheet" aria-hidden="true"><h1>DZIENNIK ŻYWEGO MIASTECZKA</h1><p>English Adventure 2 · Miasteczko pod Chmurami</p><p>Imię odkrywcy: _____________________________________</p><div id="print-entries"></div><p class="print-last">Moje ulubione nowe słowo: __________________________</p></section>
 </body>
