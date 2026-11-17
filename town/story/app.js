@@ -36,7 +36,7 @@ function setStage(html,info){
 }
 function progress(){
  const a=story(),step=a?a.chapter:0,route=a?a.route:[],complete=data.runs.length;
- $("progress-label").textContent=a?"ROZDZIAŁ "+(step+1)+" Z 3":complete?"KSIĘGA GOTOWA DO PONOWNEGO OTWARCIA":"KSIĘGA JESZCZE ZAMKNIĘTA";
+ $("progress-label").textContent=a?(step===3?"FINAŁ · ODZYSKANA GWIAZDA":"ROZDZIAŁ "+(step+1)+" Z 3"):complete?"KSIĘGA GOTOWA DO PONOWNEGO OTWARCIA":"KSIĘGA JESZCZE ZAMKNIĘTA";
  const node=$("chapter-track");node.textContent="";
  S.CHAPTERS.forEach((c,i)=>{
   const cell=document.createElement("div");cell.className="chapter-track-item"+(a&&i===a.chapter?" current":"")+(a&&i<a.chapter?" complete":"");
@@ -250,7 +250,8 @@ function renderLibrary(){
   const info=document.createElement("span"),title=document.createElement("strong"),sub=document.createElement("small");
   title.textContent=S.ENDINGS[run.ending].title;
   sub.textContent=S.routeLabels(run.route).map(x=>x.symbol).join(" → ")+" · "+run.independent+" samodzielnych / "+run.answers+" ćwiczeń";
-  info.append(title,sub);row.append(mark,info);list.appendChild(row)
+  const read=document.createElement("button");read.type="button";read.dataset.run=String(data.runs.length-1-i);read.textContent="Przeczytaj ↗";read.setAttribute("aria-label","Przeczytaj ponownie: "+S.ENDINGS[run.ending].title);
+  info.append(title,sub);row.append(mark,info,read);list.appendChild(row)
  });
  if(!data.runs.length){const p=document.createElement("p");p.className="empty-library";p.textContent="Pierwsze zakończenie dopiero na Ciebie czeka. Otwórz księgę i wybierz własną drogę!";list.appendChild(p)}
 }
@@ -374,6 +375,7 @@ $("voice-toggle").addEventListener("click",()=>{
  $("voice-toggle").setAttribute("aria-label",speaker?"Wyłącz angielską wymowę":"Włącz angielską wymowę");
  $("voice-toggle").setAttribute("aria-pressed",String(speaker))
 });
+$("run-history").addEventListener("click",e=>{const b=e.target.closest("[data-run]");if(!b)return;const i=Number(b.dataset.run);if(!Number.isInteger(i)||i<0||i>=data.runs.length)return;finale(data.runs[i]);$("storybook").scrollIntoView({behavior:"smooth",block:"start"})});
 $("lumo-say").addEventListener("click",()=>speak("Hello, Explorer! We can find the lost star!"));
 $("print-story").addEventListener("click",()=>{renderPrint();try{window.print()}catch(e){toast("Drukowanie jest niedostępne.")}});
 window.addEventListener("pageshow",render);
