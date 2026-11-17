@@ -179,6 +179,67 @@ function showInspection(v){
  '<div class="stage-actions">'+button("hear-object","♫ Posłuchaj słowa","stage-action alt")+
  (!seen?'<a class="stage-action" href="../unit-'+v.unit+'/">Poznaj w krainie '+v.unit+' →</a>':"")+'</div>'
 }
+function renderSecretNotice(v){
+ if(!secretNotice||secretNotice.venue!==v.id)return"";
+ const sec=secretNotice,known=Secrets.knownWord(snap,sec.id);
+ return '<div class="secret-revelation"><span class="secret-revelation-icon">'+sec.icon+'</span><div class="secret-revelation-copy">'+
+ '<span class="secret-revelation-label">✧ ODNALEZIONA TAJEMNICA · '+v.english+'</span>'+
+ '<h4>'+sec.title+'</h4><p>'+sec.message+'</p>'+
+ '<strong lang="en">'+sec.line+'</strong><small>'+(known?"To poznane słowo. Posłuchaj i spróbuj powtórzyć.":
+ "Możesz posłuchać zdania, ale to odkrycie nie jest zaliczeniem nauki.")+'</small>'+
+ '<div class="secret-revelation-actions">'+button("hear-secret","♫ Posłuchaj","stage-action alt")+
+ '<a class="stage-action alt" href="story/">📖 Szukaj tego śladu w Wielkiej Opowieści ↗</a></div></div></div>'
+}
+function discoverSecret(id){
+ const sec=Secrets.byId(id);
+ if(!sec||!active||sec.venue!==active.id||mission)return;
+ const was=Secrets.read(localStorage),next=Secrets.discover(was,id);
+ if(!next)return;
+ if(!Secrets.save(localStorage,next))toast("Nie udało się zapisać sekretu na tym urządzeniu.");
+ secretNotice=sec;drawAll();renderExplore();
+ toast(was.found[id]?"Ta pamiątka już jest w Sekretnej Poczcie Lumo.":"✦ Znalazłeś: "+sec.title+"!")
+}
+function renderSecrets(){
+ const st=Secrets.read(localStorage),count=Secrets.count(st),el=$("secret-postcards");
+ $("secret-progress").textContent=count+" / "+Secrets.ITEMS.length;
+ el.textContent="";
+ Secrets.ITEMS.forEach(sec=>{
+  const found=!!st.found[sec.id],v=E.getVenue(sec.venue);
+  const card=document.createElement("article");card.className="secret-postcard"+(found?" found":" hidden");
+  card.style.setProperty("--secret-accent",sec.color);
+  const emblem=document.createElement("span");emblem.className="secret-postcard-icon";emblem.textContent=found?sec.icon:"✧";
+  const label=document.createElement("span");label.className="secret-postcard-location";label.textContent=v.name;
+  const heading=document.createElement("h3");heading.textContent=found?sec.title:"Nieodkryta pocztówka";
+  const line=document.createElement("p");line.textContent=found?sec.message:sec.hint;
+  const english=document.createElement("span");english.className="secret-postcard-english";
+  if(found){english.textContent=sec.line;english.lang="en"}
+  const actions=document.createElement("div");actions.className="secret-postcard-actions";
+  const visit=document.createElement("button");visit.type="button";visit.dataset.secretAction="visit";visit.dataset.secret=sec.id;
+  visit.textContent=found?"Odwiedź ponownie ↗":"Szukaj w tym miejscu ↗";
+  actions.appendChild(visit);
+  if(found){
+   const listen=document.createElement("button");listen.type="button";listen.dataset.secretAction="hear";listen.dataset.secret=sec.id;
+   listen.textContent="♫ Posłuchaj";actions.appendChild(listen)
+  }
+  card.append(emblem,label,heading,line,english,actions);el.appendChild(card)
+ });
+ const o=$("secret-observatory");
+ if(!Secrets.all(st)){
+  o.innerHTML='<div class="observatory-locked"><span>🔭</span><div><strong>Obserwatorium Lumo czeka…</strong><p>Odkryj '+(Secrets.ITEMS.length-count)+' '+(Secrets.ITEMS.length-count===1?"pozostałą pocztówkę":"pozostałe pocztówki")+', aby otworzyć ukryte obserwatorium. Zbieraj ślady w dowolnej kolejności.</p></div></div>'
+ }else if(!st.observatory){
+  o.innerHTML='<div class="observatory-ready"><div class="observatory-art">'+SecretArt.observatory+'</div><div><span>✦ SEKRET ODNALEZIONY</span><h3>Zapraszam do mojego <em>obserwatorium!</em></h3><p>Sześć pamiątek rozświetliło niebo. Lumo odnalazła ukryte drzwi pod wieżą zegarową.</p><button type="button" data-secret-action="unlock">🔭 Otwórz tajne obserwatorium ↗</button></div></div>'
+ }else{
+  o.innerHTML='<div class="observatory-unlocked"><div class="observatory-art">'+SecretArt.observatory+'</div>'+
+  '<div><span>✦ OTWARTO TAJNE OBSERWATORIUM</span><h3>Six little lights. <em>One big adventure.</em></h3>'+
+  '<p>Wszystkie sześć śladów Lumo połączyło się w jedną konstelację. Zajrzyj jeszcze raz do Tajemnicy Zgaszonej Gwiazdy — znane Ci sekrety otworzą dodatkową stronę opowieści.</p>'+
+  '<a href="story/">✨ Wróć do Wielkiej Opowieści ↗</a></div></div>'
+ }
+}
+function openObservatory(){
+ const st=Secrets.read(localStorage),next=Secrets.unlockObservatory(st);
+ if(!next)return;Secrets.save(localStorage,next);renderSecrets();
+ toast("✦ Obserwatorium Lumo jest otwarte!")
+}
 function renderExplore(){
  if(!active)return welcome();
  const v=active,arr=rows(v),ready=arr.length>=2;
@@ -374,6 +435,7 @@ window.addEventListener("pageshow",()=>{if(!mission){drawAll();if(active)renderE
 window.addEventListener("storage",e=>{if(!mission&&(e.key===E.KEY||P.CATALOG.some(x=>x.storage.key===e.key))){drawAll();if(active)renderExplore()}});
 window.EA2LivingTown=Object.freeze({
  inspect:()=>({visited:status().filter(x=>x.viewed).map(x=>x.id),finished:status().filter(x=>x.finished).map(x=>x.id),
+  secrets:Secrets.read(localStorage).order.slice(),observatory:Secrets.read(localStorage).observatory,
   known:learnedCount(),active:active?active.id:null,mission:mission?{index:mission.index,length:mission.targets.length,done:mission.done,hint:mission.hint,
   results:mission.results.slice(),role:mission.role,choices:(mission.choices||[]).map(x=>x.en),target:mission.targets[mission.index].en}:null}),
  visit:travelTo,resetTown
