@@ -87,7 +87,7 @@ function renderEncounter(){
  setStage(heading("ROZDZIAŁ "+(a.chapter+1)+" Z 3 · ODKRYWANIE",choice.short+"<em> czeka na nas!</em>",choice.story)+
  scenePanel(v)+
  '<div class="encounter-card"><span class="encounter-symbol">'+choice.symbol+'</span><div><strong>Wiadomość od Lumo</strong><p>'+
- (eligible?"Znasz tu "+known.length+" poznanych słów. Odnajdziemy dwa promienie, ćwicząc angielskie zdania. Zadania będą oparte tylko na tych słowach.":
+ (eligible?"Znasz tu "+known.length+" poznanych słów. Rozwiążemy dwa krótkie zadania po angielsku. Odpowiedzi będą oparte tylko na tych słowach.":
  "W tej krainie poznano jeszcze mniej niż dwa różne słowa z naszej sceny. Możemy mimo to odkrywać historię, bez udawania, że rozwiązaliśmy sprawdzian.")+
  '</p></div></div>'+
  '<div class="page-buttons">'+(eligible?btn("start-quiz","Zaczynam zagadki po angielsku →"):
