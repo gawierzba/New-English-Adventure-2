@@ -153,6 +153,34 @@ Nie ma ocen, rankingów, stopera, kont, mikrofonu, rejestrowania tożsamości an
 
 **Pliki:** \`unit-8/index.html\`, \`unit-8/style.css\`, \`unit-8/engine.js\`, \`unit-8/app.js\`.
 
+## Etap 13 — Tajemnica Zgaszonej Gwiazdy ✦🦉
+
+**Opowieść:** https://gawierzba.github.io/New-English-Adventure-2/town/story/
+
+To osobny, w pełni grywalny rozdział fabularny Żywego Miasteczka. Zaginęła gwiazda nad miasteczkiem; sowa Lumo prosi odkrywcę o odnalezienie trzech promieni. Historia ma **3 rozdziały**, w każdym jeden z **dwóch wyborów**, czyli **8 różnych tras** i **4 rzeczywiście dostępne finały**.
+
+| Rozdział | Pierwsza droga | Druga droga | Materiał źródłowy |
+|---|---|---|---|
+| I. Pierwszy promień | Przystań (harbour) | Dworzec (station) | Unit 7: pojazdy, krajobraz, *There's a…* |
+| II. Drugi promień | Park (park) | Sklepik (market) | Unit 5: *I can / Can you…?*; Unit 6: *Can I have… please?* |
+| III. Trzeci promień | Teatr (theatre) | Pracownia (atelier) | Unit 2: opisy rodziny, *This is my…*; Unit 8: *She's wearing…* |
+
+**Finały nie są losowe**, lecz wynikają z decyzji dziecka. Wybranie teatru i parku prowadzi do **Koncertu na Srebrnym Placu**; teatru i sklepiku — do **Uczty pod Złotą Gwiazdą**; pracowni i przystani — do **Latarni nad Niebieską Rzeką**; pracowni i dworca — do **Parady Sześciu Kolorów**. Wcześniejsze i późniejsze wybory wpływają na miejsca, wydarzenia i zapis trasy. Cztery zakończenia można zdobywać w dowolnej kolejności; gra dokumentuje je w **Bibliotece Zakończeń**.
+
+### Dydaktyka i dostępność
+
+- W każdym rozdziale można wejść do jednego z dwóch miejsc, nawet jeśli nie ukończono macierzystej krainy. Rozpoznawanie angielskich słów jest proponowane tylko przy **co najmniej dwóch poznanych wyrazach** z wybranego miejsca w źródłowym zapisie lekcji.
+- Przy poznanym materiale etap ma **dwie krótkie zagadki**. Formy urozmaicono: (I) polskie hasło → angielska nazwa, (II) angielskie zdanie → polskie znaczenie, (III) polskie hasło → całe angielskie zdanie. Odpowiedzi i dystraktory pochodzą *wyłącznie* z tego samego poznanego zestawu. Nigdy nie tworzymy obowiązkowego testu z nieznanych słów.
+- Bez dostatecznej znajomości słów dziecko odkrywa rozdział **bez punktowania i bez wpisów do powtórek**. Księgę można wtedy uczciwie ukończyć; po poznaniu słów warto wrócić i rozegrać kolejny wariant.
+- Pomyłki i dwustopniowe wskazówki nie blokują opowieści. Po podpowiedzi zadanie jest zapisane jako **wykonane z pomocą**, a po poprawnym samodzielnym rozpoznaniu — jako niezależne. Tylko rzeczywiście rozwiązane pytania trafiają do wspólnego harmonogramu powtórek paszportu.
+- Gra zapisuje **bieżący rozdział, wybrane miejsca, pytania, odpowiedzi i wskazówki**. Po zamknięciu i ponownym otwarciu strony można kontynuować rozpoczętą historię. Na tym samym urządzeniu zachowuje do 12 ukończonych tras i kolekcję wszystkich czterech zakończeń. Wydruk A4 zawiera wybraną drogę i tekst ostatniej przygody.
+- Dane opowieści: tylko `nea2-town-story-v1` w localStorage. Brak kont, reklam, podglądu mikrofonu, nagrywania głosu, limitu czasu i ocen. Historia nie nadpisuje postępu w ośmiu krainach, sześciu miejscach miasteczka ani Paszporcie Odkrywcy.
+- Płynna, oryginalna oprawa wektorowa wykorzystuje znajome sześć ilustracji miejsc, autorską wieczorną mapę z gwiazdą i sową Lumo oraz cztery odmiany finałowej iluminacji. Obrazy i postacie nie są kopiowane z wydawnictwa. Zapewniono tryb ograniczonego ruchu, obsługę telefonu, klawiatury i opcjonalną wymowę przeglądarkową.
+
+**Użyte źródło dydaktyczne:** załączony `NEA_2_PORADNIK.pdf`, strony 6 (Unit 2), 9 (Unit 5), 10 (Unit 6), 12 (Unit 7) i 13 (Unit 8). Wrażenia fabularne, imiona autorskich postaci i cztery finały to nowe elementy gry, nie treści wydawnictwa.
+
+**Kod:** `town/story/index.html`, `town/story/style.css`, `town/story/engine.js` (bez skutków ubocznych), `town/story/art.js` (nowe warianty mapy i finału), `town/story/app.js` (pełny przebieg interakcji). Wejście dostępne ze strony głównej i z Żywego Miasteczka.
+
 ## Etap 12 — Żywe Miasteczko rośnie: dworzec, park i teatr 🎭🚂🌳
 
 **Graj:** https://gawierzba.github.io/New-English-Adventure-2/town/
