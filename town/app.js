@@ -3,7 +3,7 @@
    No server, accounts, analytics or voice recording.
    A scene tap is NOT evidence of learning; only task answers update review history. */
 (()=>{
-const P=window.EA2_PASSPORT_ENGINE,E=window.EA2_LIVING_TOWN_ENGINE,A={...window.EA2_TOWN_ART,...window.EA2_TOWN_EXTRA_ART};
+const P=window.EA2_PASSPORT_ENGINE,E=window.EA2_LIVING_TOWN_ENGINE,A={...window.EA2_TOWN_ART,...window.EA2_TOWN_EXTRA_ART},Secrets=window.EA2_TOWN_SECRETS,SecretArt=window.EA2_TOWN_SECRET_ART;
 const $=id=>document.getElementById(id);
 const LOC={
 harbour:[
@@ -37,7 +37,7 @@ theatre:[
 {en:"grandma",x:72,y:29,symbol:"👵"},{en:"granddad",x:65,y:70,symbol:"👴"}
 ]};
 let snap=P.readSnapshot(localStorage),state=E.read(localStorage);
-let active=null,mission=null,inspection=null,sound=localStorage.getItem("nea2-town-sound-v1")!=="off",timer=null;
+let active=null,mission=null,inspection=null,secretNotice=null,sound=localStorage.getItem("nea2-town-sound-v1")!=="off",timer=null;
 function now(){return Date.now()}
 function short(id){return E.getVenue(id)}
 function rows(v){return E.discovered(snap,v)}
@@ -58,7 +58,7 @@ function speak(s){
 function travelTo(id){
  snap=P.readSnapshot(localStorage);state=E.read(localStorage);
  const venue=short(id);if(!venue)return;
- active=venue;mission=null;inspection=null;
+ active=venue;mission=null;inspection=null;secretNotice=null;
  const previous=state.places[id]||{};
  if(!previous.viewed){state.places[id]={...previous,viewed:true,enteredAt:now()};if(!E.save(localStorage,state))toast("Nie udało się zapisać odwiedzin w tej przeglądarce.")}
  drawAll();
@@ -134,7 +134,7 @@ function renderPrint(){
   b.append(t,d);line.append(sym,b);grid.appendChild(line)
  })
 }
-function drawAll(){snap=P.readSnapshot(localStorage);state=E.read(localStorage);renderCounters();renderMapNavigation();renderSide();renderJournal();renderPrint()}
+function drawAll(){snap=P.readSnapshot(localStorage);state=E.read(localStorage);renderCounters();renderMapNavigation();renderSide();renderJournal();renderPrint();renderSecrets()}
 function stage(html,tip){
  $("visit-stage").innerHTML=html;
  $("ribbon-place").textContent=active?active.english.toUpperCase():"THE LITTLE TOWN";
@@ -162,9 +162,11 @@ function sceneHtml(v,mode){
    (mode==="mission"?"Wskaż obrazek: ":"Zobacz przedmiot: ")+obj.en+'"><span aria-hidden="true">'+
    (isKnown?obj.symbol:"✦")+'</span></button>'
  }).join("");
+ const secret=Secrets.byVenue(v.id),got=Secrets.read(localStorage).found[secret.id];
+ const secretSpot=mode!=="mission"?'<button type="button" class="scene-secret '+(got?"discovered":"undiscovered")+'" data-action="discover-secret" data-name="'+secret.id+'" style="left:'+secret.x+'%;top:'+secret.y+'%" aria-label="'+(got?"Otwórz odkryty sekret: "+secret.title:"Odkryj ukryty sekret w tej scenie")+'"><span aria-hidden="true">'+(got?secret.icon:"✧")+'</span></button>':"";
  const effect=mission&&mission.done?(v.id==="station"?" signal-open":v.id==="park"?" action-"+mission.targets[mission.index].en:v.id==="theatre"?" applause":""):"";
  return '<div class="scene-wrap'+effect+'"><div class="scene-illustration">'+A[v.id]+
- '<span class="scene-scene-label">'+v.english.toUpperCase()+' ✦</span>'+spots+'</div></div>'
+ '<span class="scene-scene-label">'+v.english.toUpperCase()+' ✦</span>'+spots+secretSpot+'</div></div>'
 }
 function showInspection(v){
  if(!inspection)return"";
@@ -186,7 +188,7 @@ function renderExplore(){
  stage(header("✦ MIEJSCE DO ODKRYCIA",v.name+" <em>wita!</em>",v.entry)+
  sceneHtml(v,"explore")+
  '<p class="scene-place-note">Dotknij jednego z pulsujących kółek na ilustracji, by poznać przedmiot. To swobodne zwiedzanie — bez ocen i bez zaliczania słów.</p>'+
- showInspection(v)+challenge+
+ showInspection(v)+renderSecretNotice(v)+challenge+
  '<div class="stage-actions">'+(ready?button("begin-mission","🧩 Rozpocznij mini-przygodę →"):'<a class="stage-action" href="../unit-'+v.unit+'/">Poznaj angielskie słowa →</a>')+
  button("to-map","Wybierz inne miejsce","stage-action alt")+'</div>',
  "Dotykaj przedmiotów na rysunku. W mini-misji poproszę Cię o rozpoznanie tylko poznanych słów.")
@@ -339,11 +341,15 @@ function resetTown(){
  try{localStorage.removeItem(E.KEY)}catch(e){toast("Przeglądarka nie pozwala wyczyścić dziennika.");return}
  state=E.read(localStorage);active=null;mission=null;inspection=null;drawAll();welcome();toast("Miasteczko zaczyna nową przygodę.")
 }
+$("secret-postcards").addEventListener("click",e=>{const b=e.target.closest("[data-secret-action]");if(!b)return;const id=b.dataset.secret,action=b.dataset.secretAction,item=Secrets.byId(id);if(action==="visit"&&item)travelTo(item.venue);if(action==="hear"&&item)speak(item.line)});
+$("secret-observatory").addEventListener("click",e=>{const b=e.target.closest("[data-secret-action]");if(!b)return;if(b.dataset.secretAction==="unlock")openObservatory()});
 $("visit-stage").addEventListener("click",e=>{
  const b=e.target.closest("[data-action]");if(!b)return;
  const a=b.dataset.action,v=b.dataset.name;
  switch(a){
  case "object":pickObject(v);break;
+ case "discover-secret":discoverSecret(v);break;
+ case "hear-secret":if(secretNotice)speak(secretNotice.line);break;
  case "dialogue-answer":pickObject(v);break;
  case "choose-role":chooseRole(v);break;
  case "begin-mission":beginMission();break;
