@@ -96,9 +96,24 @@ function uniqueChoices(target,rows,count=4){
  for(const w of picks){if(options.length>=count)break;if(options.some(q=>q.en===w.en||q.pl===w.pl))continue;options.push(w)}
  return shuffle(options)
 }
+/* Only use pictures when the course icon is an unambiguous depiction.
+   Several inherited cards use the same emoji (e.g. belt and jeans)
+   or a generic person glyph; those remain text questions. */
+const PICTURE_SAFE=new Set([
+ "1|bat","1|bike","1|computer","1|computer game","1|robot","1|scooter","1|spaceship","1|TV","1|watch",
+ "3|eyes","3|glasses","3|teeth",
+ "4|armchair","4|bath","4|bed","4|box","4|lamp","4|mirror",
+ "5|bear","5|bird","5|elephant","5|monkey","5|snake","5|tiger",
+ "6|bread","6|cake","6|carrots","6|cheese","6|chocolate","6|fish","6|grapes","6|ice cream","6|mushrooms","6|onions","6|peas","6|salad","6|strawberries","6|tomatoes",
+ "7|boat","7|bus","7|car","7|field","7|forest","7|lake","7|lorry","7|mountain","7|plane","7|river","7|town","7|train","7|tractor",
+ "8|scarf","8|shorts","8|socks","8|sun hat","8|trainers","8|wellies"
+]);
 function makeQuestion(item,snapshot,index){
  const options=uniqueChoices(item,snapshot.all,Math.min(4,snapshot.totals.seen));
- const mode=index%2===0?"polish-to-english":"english-to-polish";
+ const wantPicture=index%3===2;
+ const distinctPictures=options.length>=2&&new Set(options.map(w=>w.icon)).size===options.length;
+ const isPicture=wantPicture&&PICTURE_SAFE.has(item.key)&&distinctPictures;
+ const mode=isPicture?"picture-to-english":index%3===1?"english-to-polish":"polish-to-english";
  return{item,mode,options,answerKey:item.key}
 }
 function applyAnswer(history,key,independent,now=Date.now()){
