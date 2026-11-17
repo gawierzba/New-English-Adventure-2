@@ -13,6 +13,8 @@
 <script defer src="engine.js"></script>
 <script defer src="art.js"></script>
 <script defer src="art-extra.js"></script>
+<script defer src="secrets.js"></script>
+<script defer src="secrets-art.js"></script>
 <script defer src="app.js"></script>
 <title>Żywe Miasteczko pod Chmurami · English Adventure 2</title>
 </head>
@@ -21,7 +23,7 @@
 <header class="header"><div class="wrap nav">
  <a class="back" href="../index.html#mapa"><span aria-hidden="true">←</span><span class="back-word">Mapa krain</span></a>
  <a href="../index.html" class="brand"><span class="brand-symbol" aria-hidden="true">✳</span><span>English <b>Adventure</b><small>THE LITTLE EXPLORERS CLUB</small></span></a>
- <nav class="top-links" aria-label="Nawigacja miasteczka"><a href="#town">Miasteczko</a><a href="#places">Odkrywaj</a><a href="story/">Opowieść ✦</a><a href="#journal">Dziennik</a></nav>
+ <nav class="top-links" aria-label="Nawigacja miasteczka"><a href="#town">Miasteczko</a><a href="#places">Odkrywaj</a><a href="#sekrety">Sekrety ✧</a><a href="story/">Opowieść ✦</a><a href="#journal">Dziennik</a></nav>
  <a class="passport-link" href="../passport/">📘 <span>Mój paszport</span></a>
  <button id="sound-toggle" type="button" class="sound-switch" aria-label="Wyłącz wymowę" aria-pressed="true">♫</button>
 </div></header>
@@ -31,7 +33,7 @@
   <div class="eyebrow"><span class="dot"></span> ETAP 12 · MIASTECZKO ROŚNIE</div>
   <h1>Żywe <em>Miasteczko</em><span class="period">.</span></h1>
   <p class="hero-lead">Nie tylko patrz. <strong>Dotknij, odkrywaj, rozmawiaj.</strong> W Miasteczku pod Chmurami wszystko ma swoją historię — i własne angielskie słowo.</p>
-  <div class="hero-actions"><a class="primary-action" href="#town">Wejdź do miasteczka <span aria-hidden="true">↗</span></a><a class="secondary-action" href="story/">✨ Wielka opowieść</a></div>
+  <div class="hero-actions"><a class="primary-action" href="#town">Wejdź do miasteczka <span aria-hidden="true">↗</span></a><a class="secondary-action" href="#sekrety">✧ Odkryj sekrety</a><a class="secondary-action" href="story/">✨ Wielka opowieść</a></div>
   <p class="hero-sub">🦉 Lumo czeka. Możesz spacerować także wtedy, gdy dopiero zaczynasz uczyć się słówek.</p>
  </div>
  <div class="hero-emblem">
@@ -96,6 +98,16 @@
     <div class="aside-box help-box"><span class="aside-kicker">JAK UCZYMY SIĘ SŁÓW?</span><p>Rozpoznanie bez pomocy zapisuje się jako samodzielna powtórka. Po podpowiedzi możemy dokończyć zabawę razem, a słowo wróci później.</p></div>
   </aside>
  </div>
+</div></section>
+<section class="secrets-section" id="sekrety" aria-labelledby="secrets-heading"><div class="wrap">
+ <div class="section-kicker">✧ ETAP 14 · SEKRETNA POCZTA LUMO</div>
+ <div class="section-title-row"><div><h2 id="secrets-heading">Sześć śladów. <em>Jedna tajemna konstelacja.</em></h2><p>W każdym z sześciu miejsc skrywa się maleńka pamiątka. Szukaj połyskującego symbolu ✧ na ilustracji. Każde odkrycie odsłania kolejną kartę, a odnalezione sekrety zmieniają także Wielką Opowieść.</p></div><div class="secret-progress-pill"><span id="secret-progress">0 / 6</span><small>odkrytych sekretów</small></div></div>
+ <div class="secret-mail-wrap">
+  <div class="secret-mail-top"><span>✉ LUMO'S SECRET POSTCARDS</span><span>✦ ✦ ✦</span></div>
+  <div id="secret-postcards" class="secret-postcards" aria-live="polite"></div>
+  <div class="secret-mail-bottom"><span>Nie musisz znać wszystkich słów, by odkrywać świat — samo znalezienie sekretu nie jest testem.</span><a href="story/">📖 Sprawdź, jak sekrety zmieniają opowieść ↗</a></div>
+ </div>
+ <div id="secret-observatory" class="secret-observatory" aria-live="polite"></div>
 </div></section>
 <section class="journal-section" id="journal"><div class="wrap">
  <div class="section-kicker">✦ MAŁA KSIĘGA WIELKICH ODKRYĆ</div>
