@@ -138,6 +138,71 @@ function renderWeather(){
  '<p class="tiny">W tej zabawie nie ma ocen za wygląd ani za wybór ubrań. Każdy projekt jest ważny.</p>',
  "W deszczu możemy używać słowa raincoat, a w słońcu sun hat.");
 }
+function startQuiz(){
+ if(!gate(3))return;
+ const pool=shuffle(learned()).sort((a,b)=>progress(a).found-progress(b).found);
+ const tasks=pool.slice(0,Math.min(4,pool.length)).map((w,k)=>{
+  const outfit=E.equip(Object.assign(E.emptyLook(),{person:k%2}),w.en,pick(COLORS).name);
+  let others=shuffle(learned().filter(x=>x.en!==w.en&&x.icon!==w.icon)).slice(0,2);
+  if(others.length<2)others.push(...learned().filter(x=>x.en!==w.en&&!others.some(y=>y.en===x.en)).slice(0,2-others.length));
+  return{w,outfit,choices:shuffle([w,...others])};
+ });
+ quiz={intro:true,tasks,index:0,hint:0,wrong:null,done:false,assisted:false};
+ renderQuiz()
+}
+function renderQuiz(){
+ const q=quiz.tasks[quiz.index];
+ if(quiz.intro){
+  show([
+   head("🕵️ ZOBACZ PRZYKŁAD","What’s he <em>wearing?</em>","Zanim zaczniesz zgadywać, Fela pokaże Ci pytanie i przykładowe zdanie."),
+   '<div class="quiz-look">',actor(q.outfit,"studio","LOOK AND LEARN"),
+   '<div class="quiz-prompt"><span class="micro">LOOK & LISTEN</span>',
+   '<h4 lang="en">What’s ',q.outfit.person===0?"she":"he",' wearing?</h4>',
+   '<p>Co ',q.outfit.person===0?"ona":"on",' ma na sobie?</p>',
+   '<div class="notice"><b>Przykładowa odpowiedź:</b> ',E.describe(q.outfit),'</div>',
+   btn("quiz-demo","♫ Posłuchaj przykładu","soft"),'</div></div>',
+   '<div class="actions">',btn("begin-quiz","Teraz zgaduję →"),btn("closet","Wróć do garderoby","soft"),'</div>'
+  ].join(""),"Patrz i słuchaj. Pytamy: What's she wearing? Odpowiadamy: She's wearing…");
+  return
+ }
+ const answers=q.choices.map(w=>{
+  const right=quiz.done&&q.w.en===w.en,wrong=quiz.wrong===w.en,hinted=quiz.hint>=2&&q.w.en===w.en;
+  return ['<button type="button" data-action="quiz-answer" data-value="',w.en,'" ',
+   quiz.done?"disabled":"",' class="',right?"correct":wrong?"wrong":"",hinted?" glow":"",
+   '"><span role="img" aria-label="',w.pl,'">',w.icon,'</span><small lang="en">',w.en,'</small></button>'].join("")
+ }).join("");
+ const result=quiz.done?'<div class="feedback '+(quiz.assisted?"assisted":"good")+'">'+
+  (quiz.assisted?"Znaleźliśmy to razem. ":"Samodzielna odpowiedź — brawo! ")+E.describe(q.outfit)+'</div>':
+  quiz.wrong!==null?'<div class="feedback retry">To inne ubranie. Popatrz jeszcze raz albo poproś o wskazówkę.</div>':"";
+ const help=quiz.hint===1?'<div class="hint"><b>Podpowiedź:</b> To '+q.w.pl+'.</div>':
+  quiz.hint>=2?'<div class="hint"><b>Wskazówka:</b> Poprawna odpowiedź jest podświetlona.</div>':"";
+ show([
+  head("🕵️ DETEKTYW · "+(quiz.index+1)+"/"+quiz.tasks.length,"W co jest <em>ubrana postać?</em>","Wskaż angielską nazwę ubrania, które widzisz."),
+  dots(quiz.index,quiz.tasks.length),
+  '<div class="quiz-look">',actor(q.outfit,"studio","MYSTERY OUTFIT"),
+  '<div class="quiz-prompt"><span class="micro">LOOK & GUESS</span>',
+  '<h4 lang="en">What’s ',q.outfit.person===0?"she":"he",' wearing?</h4>',
+  '<p>Wybierz jeden z trzech obrazków.</p>',
+  btn("quiz-question","♫ Posłuchaj pytania","soft"),
+  '</div></div><div class="quiz-options">',answers,'</div>',result,help,
+  '<div class="actions">',
+  quiz.done?btn("quiz-next",quiz.index===quiz.tasks.length-1?"Czas na rozmowę →":"Kolejny strój →"):
+  btn("quiz-hint",quiz.hint===0?"💡 Podpowiedź":quiz.hint===1?"💡 Podświetl ubranie":"✨ Odkryj rozwiązanie","soft"),
+  '</div>'
+ ].join(""),"Wszystkie odpowiedzi są z wcześniej poznanych słów. Pomoc jest zawsze dostępna.")
+}
+function quizAnswer(v,forced){
+ if(!quiz||quiz.intro||quiz.done)return;
+ const q=quiz.tasks[quiz.index];
+ if(!forced&&v!==q.w.en){quiz.wrong=v;renderQuiz();return}
+ quiz.done=true;quiz.assisted=!!forced||quiz.hint>0||quiz.wrong!==null;
+ mark(q.w,quiz.assisted?"help":"found");renderQuiz()
+}
+function quizNext(){
+ if(!quiz||!quiz.done)return;
+ if(quiz.index===quiz.tasks.length-1){go(5);return}
+ quiz.index++;quiz.hint=0;quiz.wrong=null;quiz.done=false;quiz.assisted=false;renderQuiz()
+}
 /* MODULES */
  /* EVENTS */
 session=chooseSession();counts();glossary();soundUI();go(0);
