@@ -218,3 +218,13 @@ footer{background:#244457;color:#fff;padding:42px 0 22px}
  .print-row strong{display:block;font-size:13pt}.print-row small{display:block;font-size:10pt;margin-top:2mm;color:#555}
  .print-last{margin-top:15mm;border-top:1px solid #aaa;padding-top:6mm;font-size:12pt}
 }
+
+
+/* Respect child/parent audio and local-journal controls. */
+.sound-switch{display:grid;place-items:center;width:40px;height:40px;flex:none;border:1px solid #dceae7;background:#fff;border-radius:50%;font-size:22px;color:#548b91}
+.sound-switch[aria-pressed="false"]{opacity:.6}
+.journal-reset-row{display:flex;justify-content:flex-end;padding:12px 6px 0}
+.journal-reset-row button{border:0;background:none;text-decoration:underline;color:#a9919a;font-size:11px;font-weight:800;padding:9px 0}
+.scene-hotspot.wrong{background:#d08d95;box-shadow:0 0 0 5px #efccd2}
+@media(max-width:670px){.sound-switch{height:35px;width:35px;font-size:19px}.journal-reset-row{justify-content:center}.journal-reset-row button{font-size:10px}}
+@media print{.journal-reset-row{display:none!important}}
