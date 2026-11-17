@@ -224,32 +224,55 @@ function taskDots(){
 }
 function renderMission(){
  if(!mission||!active)return;
- const v=active,t=mission.targets[mission.index],success=mission.done;
+ const v=active,t=mission.targets[mission.index],success=mission.done,isDialogue=v.kind==="dialogue";
+ if(isDialogue&&!mission.role){renderRolePicker();return}
  const result=success?mission.results[mission.results.length-1]:null;
- const feedback=success?'<div class="feedback-box '+(result.independent?"good":"help")+'">'+
- (result.independent?"✦ Świetnie rozpoznany przedmiot!":"♡ Znaleźliśmy przedmiot wspólnie. Tak też się uczymy!")+
- '<span class="display-phrase" lang="en">'+t.phrase+'</span><small>'+t.pl+' · Możesz posłuchać całego zdania.</small></div>':
- mission.wrong?'<div class="feedback-box">To inny przedmiot. Wróć do ilustracji albo poproś Lumo o wskazówkę.</div>':"";
- const clue=mission.hint===1?'<div class="hint-box"><b>💡 Pierwsza wskazówka:</b> po polsku to „'+t.pl+'”. Spróbuj odnaleźć przedmiot na rysunku.</div>':
- mission.hint>=2?'<div class="hint-box"><b>✦ Druga wskazówka:</b> Lumo podświetliła właściwe kółko. Możesz go dotknąć albo wspólnie odkryć odpowiedź.</div>':"";
+ const solvedText=isDialogue?"✦ Udało się poprowadzić dialog! ":"✦ Właściwy przedmiot znaleziony! ";
+ const helpedText=isDialogue?"♡ Dokończyliśmy dialog wspólnie. ":"♡ Znaleźliśmy przedmiot wspólnie. ";
+ const feedback=success?
+  '<div class="feedback-box '+(result.independent?"good":"help")+'">'+
+  (result.independent?solvedText:helpedText)+
+  '<span class="display-phrase" lang="en">'+t.phrase+'</span><small>'+t.pl+' · Wysłuchaj całego zdania i spróbuj je powtórzyć.</small></div>':
+  mission.wrong?'<div class="feedback-box">'+(isDialogue?"To inna wypowiedź. Poszukaj odpowiedzi związanej z podanym znaczeniem.":"To inny przedmiot. Spróbuj jeszcze raz lub poproś Lumo o pomoc.")+'</div>':"";
+ const firstHint=isDialogue?
+  (mission.role==="actor"?'angielskie słowo zaczyna się na literę <b>'+t.en[0].toUpperCase()+'</b>.':
+   'polskie znaczenie zaczyna się na literę <b>'+t.pl[0].toUpperCase()+'</b>.'):
+  'po polsku to „'+t.pl+'”. Spróbuj odnaleźć przedmiot na rysunku.';
+ const clue=mission.hint===1?'<div class="hint-box"><b>💡 Pierwsza wskazówka:</b> '+firstHint+'</div>':
+ mission.hint>=2?'<div class="hint-box"><b>✦ Druga wskazówka:</b> Lumo podświetliła '+(isDialogue?"właściwą odpowiedź.":"właściwe kółko.")+' Możesz ją wybrać albo wspólnie odkryć rozwiązanie.</div>':"";
  const collected=mission.results.length?
  '<div class="scene-basket">'+mission.results.map(r=>'<span title="'+r.en+'">'+r.icon+'</span>').join("")+'</div>':"";
- const askText=v.id==="market"?"Lumo składa zamówienie":v.id==="atelier"?"Fela szuka ubrania":"Lumo wypatruje przedmiotu";
+ const askText=isDialogue?"Lumo otwiera spektakl":v.id==="market"?"Lumo składa zamówienie":v.id==="atelier"?"Fela szuka ubrania":v.id==="park"?"Tuli pokazuje, co potrafi":v.id==="station"?"Konduktor szuka pojazdu":"Lumo wypatruje przedmiotu";
+ const explanation=isDialogue?
+  "Posłuchaj Lumo i wybierz wypowiedź, która pasuje do jej wskazówki. Po odegraniu scenki usłyszysz gotowe zdanie.":
+  "Posłuchaj zdania i dotknij właściwego przedmiotu lub czynności na rysunku. Używamy tylko poznanych słów.";
+ const lead=isDialogue?(mission.role==="actor"?
+  '<div class="dialogue-note"><span>🦉 Lumo</span><strong lang="en">Who’s this?</strong><small>Podpowiedź reżysera po polsku: '+t.pl+'. Wybierz pełną odpowiedź po angielsku.</small></div>':
+  '<div class="dialogue-note"><span>🦉 Lumo</span><strong lang="en">'+t.phrase+'</strong><small>Reżyserze, wybierz znaczenie tej wypowiedzi po polsku.</small></div>'):"";
+ const dialogueChoices=isDialogue?
+  '<div class="dialogue-choices">'+mission.choices.map(w=>{
+   const isRight=w.en===t.en,cl=(mission.done&&isRight?" right":"")+(mission.wrong===w.en?" wrong":"")+(mission.hint>=2&&isRight?" glow":"");
+   const phrase=mission.role==="actor"?"This is my "+w.en+".":w.pl;
+   return '<button type="button" class="dialogue-choice'+cl+'" data-action="dialogue-answer" data-name="'+w.en+'"'+(success?' disabled':'')+(mission.role==="actor"?' lang="en"':'')+'>'+phrase+'</button>'
+  }).join("")+'</div>':"";
  stage(header("🧩 MINI-PRZYGODA · "+(mission.index+1)+" / "+mission.targets.length,
-  askText+" <em>na ilustracji.</em>",
-  "Posłuchaj zdania, spójrz na scenę i dotknij kółka przy właściwym przedmiocie. Każde pytanie korzysta tylko z poznanych słów.")+
+  askText+" <em>"+(isDialogue?"na scenie.":"na ilustracji.")+"</em>",explanation)+
  taskDots()+
- '<div class="target-line"><strong lang="en">'+t.cue+'</strong>'+
- button("hear-task","♫ Posłuchaj","stage-action alt")+'</div>'+
- sceneHtml(v,"mission")+collected+
- '<p class="scene-place-note">Kółka wskazują tylko obiekty z poznanego słownictwa. Wskazówkę możesz otworzyć w każdej chwili.</p>'+
+ (isDialogue?lead:
+ '<div class="target-line"><strong lang="en">'+t.cue+'</strong>'+button("hear-task","♫ Posłuchaj","stage-action alt")+'</div>')+
+ sceneHtml(v,"mission")+dialogueChoices+collected+
+ '<p class="scene-place-note">'+(isDialogue?
+ "Twoja rola: "+(mission.role==="actor"?"aktor — budujesz angielską odpowiedź.":"reżyser — rozpoznajesz znaczenie wypowiedzi.")+" Możesz powtarzać dialog na głos, ale gra nie nagrywa głosu.":
+ "Kółka pokazują tylko poznane słowa. Trafna odpowiedź ożywia scenę.")+'</p>'+
  feedback+clue+
  '<div class="stage-actions">'+(success?
- button("next-task",mission.index===mission.targets.length-1?"Odbierz miejską pamiątkę →":"Kolejny przedmiot →"):
- button("hint",mission.hint===0?"💡 Mała podpowiedź":mission.hint===1?"✨ Podświetl przedmiot":"♡ Odkryjmy razem","stage-action alt"))+
+ button("next-task",mission.index===mission.targets.length-1?"Odbierz miejską pamiątkę →":"Kolejna scena →"):
+ button("hint",mission.hint===0?"💡 Mała podpowiedź":mission.hint===1?"✨ Podświetl odpowiedź":"♡ Odkryjmy razem","stage-action alt"))+
  (success?button("hear-phrase","♫ Całe zdanie","stage-action alt"):"")+
+ (isDialogue?button("hear-task","♫ Głos Lumo","stage-action alt"):"")+
  button("leave","Wróć do zwiedzania","stage-action quiet")+'</div>',
- "Zagadka dotyczy poznanych już słów. Jeśli się pomylisz, możesz próbować dalej bez limitu.")
+ isDialogue?"Na scenie gramy bez ocen i bez nagrywania głosu. Możesz zmienić rolę podczas następnej wizyty.":
+ "Właściwy przedmiot lub czynność uruchomi małą animację. Nie ma stopera ani ocen.")
 }
 function pickObject(en){
  if(!active)return;
@@ -320,9 +343,11 @@ $("visit-stage").addEventListener("click",e=>{
  const a=b.dataset.action,v=b.dataset.name;
  switch(a){
  case "object":pickObject(v);break;
+ case "dialogue-answer":pickObject(v);break;
+ case "choose-role":chooseRole(v);break;
  case "begin-mission":beginMission();break;
  case "hint":hint();break;
- case "hear-task":if(mission)speak(mission.targets[mission.index].cue);break;
+ case "hear-task":if(mission)speak(active&&active.kind==="dialogue"&&mission.role==="director"?mission.targets[mission.index].phrase:mission.targets[mission.index].cue);break;
  case "hear-phrase":if(mission)speak(mission.targets[mission.index].phrase);break;
  case "hear-object":if(active&&inspection)speak(inspection);break;
  case "next-task":nextTask();break;
