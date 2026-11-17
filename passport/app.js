@@ -220,5 +220,40 @@ function renderResult(){
 }
 /* REVIEW MODULE */
 refresh(true);
+$("review-stage").addEventListener("click",e=>{
+ const el=e.target.closest("[data-action]");if(!el)return;
+ const action=el.dataset.action,value=el.dataset.value;
+ switch(action){
+  case "start-review":quiz=null;makeQuiz(false);break;
+  case "start-extra":quiz=null;makeQuiz(true);break;
+  case "answer":answer(value);break;
+  case "hint":hint();break;
+  case "listen":if(quiz)speak(quiz.qs[quiz.index].item.en);break;
+  case "next-question":nextQuestion();break;
+  case "end-review":renderResult();break;
+  case "back-to-passport":$("passport").scrollIntoView({behavior:"smooth",block:"start"});break;
+ }
+});
+$("passport-print").addEventListener("click",()=>{renderPrintable();try{window.print()}catch(e){toast("Drukowanie nie jest dostępne w tej przeglądarce.")}});
+$("parent-toggle").addEventListener("click",()=>{
+ const box=$("parent-details"),open=box.hidden;box.hidden=!open;
+ $("parent-toggle").setAttribute("aria-expanded",String(open));
+ $("parent-toggle").innerHTML=open?"Zwiń szczegóły <span>↑</span>":"Co dokładnie liczymy? <span>↓</span>"
+});
+$("review-reset").addEventListener("click",()=>{
+ if(!window.confirm("Wyczyścić wyłącznie historię powtórek paszportu? Odkrycia w ośmiu krainach pozostaną bez zmian."))return;
+ try{localStorage.removeItem(KEY)}catch(e){toast("Nie udało się usunąć historii powtórek.");return}
+ quiz=null;refresh(true);toast("Historia powtórek wyczyszczona. Pieczątki z krain pozostały.")
+});
+window.addEventListener("pageshow",()=>refresh(!quiz));
+window.addEventListener("focus",()=>{if(!quiz)refresh(true)});
+window.addEventListener("storage",e=>{
+ if(e.key===KEY||Engine.CATALOG.some(u=>u.storage.key===e.key)){if(!quiz)refresh(true);else refresh(false)}
+});
+window.EA2Passport=Object.freeze({
+ inspect:()=>({totals:Engine.readSnapshot(localStorage,now()).totals,worlds:Engine.readSnapshot(localStorage,now()).worlds,
+  due:Engine.readSnapshot(localStorage,now()).all.filter(w=>w.needsReview).map(w=>w.key),quizActive:!!quiz}),
+ startReview:()=>makeQuiz(false),startExtra:()=>makeQuiz(true)
+});
 /* EVENTS */
 })();
