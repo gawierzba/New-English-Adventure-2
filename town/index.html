@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#25475e">
+<meta name="description" content="Żywe Miasteczko English Adventure 2: piękny, interaktywny świat z Lumo, przystanią, sklepikiem i pracownią strojów.">
+<meta property="og:title" content="Żywe Miasteczko pod Chmurami · English Adventure 2">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script defer src="../passport/data.js"></script>
+<script defer src="../passport/engine.js"></script>
+<script defer src="engine.js"></script>
+<script defer src="art.js"></script>
+<script defer src="app.js"></script>
+<title>Żywe Miasteczko pod Chmurami · English Adventure 2</title>
+</head>
+<body>
+<a class="skip" href="#town">Przejdź do mapy miasteczka</a>
+<header class="header"><div class="wrap nav">
+ <a class="back" href="../index.html#mapa"><span aria-hidden="true">←</span><span class="back-word">Mapa krain</span></a>
+ <a href="../index.html" class="brand"><span class="brand-symbol" aria-hidden="true">✳</span><span>English <b>Adventure</b><small>THE LITTLE EXPLORERS CLUB</small></span></a>
+ <nav class="top-links" aria-label="Nawigacja miasteczka"><a href="#town">Miasteczko</a><a href="#places">Odkrywaj</a><a href="#journal">Dziennik</a></nav>
+ <a class="passport-link" href="../passport/">📘 <span>Mój paszport</span></a>
+</div></header>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+ <div class="hero-copy">
+  <div class="eyebrow"><span class="dot"></span> ETAP 11 · OTWIERAMY NOWY ŚWIAT</div>
+  <h1>Żywe <em>Miasteczko</em><span class="period">.</span></h1>
+  <p class="hero-lead">Nie tylko patrz. <strong>Dotknij, odkrywaj, rozmawiaj.</strong> W Miasteczku pod Chmurami wszystko ma swoją historię — i własne angielskie słowo.</p>
+  <div class="hero-actions"><a class="primary-action" href="#town">Wejdź do miasteczka <span aria-hidden="true">↗</span></a><a class="secondary-action" href="#places">Poznaj trzy miejsca</a></div>
+  <p class="hero-sub">🦉 Lumo czeka. Możesz spacerować także wtedy, gdy dopiero zaczynasz uczyć się słówek.</p>
+ </div>
+ <div class="hero-emblem">
+  <div class="emblem-halo" aria-hidden="true">✧ ✦ ✧</div>
+  <svg viewBox="0 0 320 310" role="img" aria-label="Autorska ilustracja sowy Lumo trzymającej klucz do bajkowego miasteczka" xmlns="http://www.w3.org/2000/svg">
+  <defs><filter id="emblem-shadow"><feDropShadow dx="0" dy="12" stdDeviation="13" flood-color="#213e4e" flood-opacity=".2"/></filter></defs>
+  <g filter="url(#emblem-shadow)"><circle cx="164" cy="143" r="124" fill="#e7f3ea" stroke="#b6dacf" stroke-width="14"/><circle cx="164" cy="143" r="103" fill="#f9fbf4" stroke="#d6e9e4" stroke-dasharray="4 12" stroke-width="4"/></g>
+  <g class="owl-hero"><path d="m105 104-19-60 57 34m72 24 25-60-59 38" fill="#8e86b5"/><ellipse cx="162" cy="144" rx="84" ry="92" fill="#8e86b5"/><ellipse cx="160" cy="159" rx="62" ry="60" fill="#f1dac6"/><circle cx="136" cy="119" r="26" fill="#fff"/><circle cx="191" cy="119" r="26" fill="#fff"/><circle cx="143" cy="123" r="14" fill="#3d5b73"/><circle cx="197" cy="123" r="14" fill="#3d5b73"/><circle cx="148" cy="117" r="5" fill="#fff"/><circle cx="201" cy="117" r="5" fill="#fff"/><path d="m162 138-13 20 28 0Z" fill="#edb390"/><path d="M138 182q24 19 48 0" fill="none" stroke="#b08f9b" stroke-width="6" stroke-linecap="round"/><path d="M96 155q-47-6-60-51" fill="none" stroke="#8e86b5" stroke-width="29" stroke-linecap="round"/><path d="M226 164q32 8 48 49" fill="none" stroke="#8e86b5" stroke-width="28" stroke-linecap="round"/></g>
+  <g class="key-hero" transform="translate(248 221) rotate(-24)"><circle cx="0" cy="-48" r="21" fill="none" stroke="#d5a5a3" stroke-width="12"/><path d="M0-23v78M0 31h19M0 48h14" stroke="#d5a5a3" stroke-width="13" stroke-linecap="round"/></g>
+  <g fill="#cba9b9"><path d="m45 19 7 17 17 7-17 7-7 18-7-18-18-7 18-7Z"/><path d="m281 41 5 13 14 6-14 5-5 15-6-15-14-5 14-6Z"/></g>
+  </svg>
+  <div class="emblem-ticket" aria-hidden="true">THE LITTLE TOWN<br>EST. WITH IMAGINATION ✦</div>
+ </div>
+</div></section>
+<section class="quick-stats wrap" aria-label="Postęp odkrywania miasteczka">
+ <div><span aria-hidden="true">🏡</span><strong id="places-count">0<small>/3</small></strong><small>odwiedzone miejsca</small></div>
+ <div><span aria-hidden="true">🌱</span><strong id="town-words-count">0<small>/18</small></strong><small>poznane słowa w miasteczku</small></div>
+ <div><span aria-hidden="true">🧩</span><strong id="quests-count">0<small>/3</small></strong><small>ukończone mini-przygody</small></div>
+</section>
+<section class="map-section" id="town"><div class="wrap">
+ <div class="section-kicker">✦ DZIEŃ PIERWSZY · WITAJ W MIASTECZKU POD CHMURAMI</div>
+ <div class="section-title-row"><div><h2>Miasteczko, które <em>odpowiada na dotyk.</em></h2><p>Kliknij rozświetlone miejsca, by wejść do ich wnętrza. Włącz wieczór, posłuchaj Lumo i zobacz, jak zmienia się miasto.</p></div>
+ <button class="time-button" id="time-toggle" type="button" aria-pressed="false">☾ Włącz wieczór</button></div>
+ <div id="town-map-scroll" class="town-map-scroll" role="region" tabindex="0" aria-label="Przewijana mapa miasteczka; na dole znajdują się też przyciski miejsc">
+  <div id="town-map" class="town-map">
+   <div id="town-art" class="map-art"></div>
+   <button class="map-place map-market" data-place="market" type="button" aria-label="Wejdź do Sklepiku Pod Truskawką"><span class="pin-icon">🍓</span><span class="pin-name">Sklepik</span></button>
+   <button class="map-place map-atelier" data-place="atelier" type="button" aria-label="Wejdź do Pracowni Barwnych Strojów"><span class="pin-icon">👗</span><span class="pin-name">Pracownia</span></button>
+   <button class="map-place map-harbour" data-place="harbour" type="button" aria-label="Wejdź do Przystani Lumo"><span class="pin-icon">⛵</span><span class="pin-name">Przystań</span></button>
+   <span class="map-caption" aria-hidden="true">THE LITTLE LIVING TOWN · A PLACE TO DISCOVER</span>
+  </div>
+ </div>
+ <p class="map-mobile-hint">↔ Na mniejszym ekranie możesz przesunąć mapę w bok. Wszystkie trzy miejsca są też dostępne na kartach poniżej.</p>
+ <div id="map-navigation" class="place-cards" aria-label="Wybierz miejsce do odwiedzenia"></div>
+ <div class="map-storyline"><span aria-hidden="true">🦉</span><p id="map-tale">Cześć! Tu Lumo. W miasteczku czekają trzy opowieści. Wybierz miejsce, a pokażę Ci drogę!</p><button id="owl-say" type="button" title="Odsłuchaj angielskie powitanie">♫ Hello!</button></div>
+</div></section>
+<section class="places-section" id="places"><div class="wrap">
+ <div class="section-kicker">✦ OTWÓRZ DRZWI · WEJDŹ DO ŚRODKA</div>
+ <div class="section-title-row"><div><h2>Małe miejsca. <em>Wielkie odkrycia.</em></h2><p>Każdy przedmiot na ilustracji można dotknąć. W mini-misji Lumo poprosi Cię o znalezienie poznanych już rzeczy.</p></div></div>
+ <div class="visit-layout">
+  <article class="visit-paper">
+   <div class="visit-ribbon"><span>✦ LIVING TOWN EXPLORER</span><span id="ribbon-place">THE LITTLE TOWN</span></div>
+   <div id="visit-stage" class="visit-stage" aria-live="polite"></div>
+  </article>
+  <aside class="visit-side">
+    <div class="aside-box guide-box"><span class="aside-kicker">LUMO PODPOWIADA</span><div class="aside-owl" aria-hidden="true">🦉</div><h3>Odkrywaj bez pośpiechu.</h3><p id="owl-tip">W miasteczku nie ma stopera. Możesz wracać do każdego miejsca tyle razy, ile zechcesz.</p></div>
+    <div class="aside-box"><span class="aside-kicker">DZISIEJSZA PODRÓŻ</span><h3>Moje trzy miejsca</h3><div id="side-stamps" class="side-stamps"></div></div>
+    <div class="aside-box help-box"><span class="aside-kicker">JAK UCZYMY SIĘ SŁÓW?</span><p>Rozpoznanie bez pomocy zapisuje się jako samodzielna powtórka. Po podpowiedzi możemy dokończyć zabawę razem, a słowo wróci później.</p></div>
+  </aside>
+ </div>
+</div></section>
+<section class="journal-section" id="journal"><div class="wrap">
+ <div class="section-kicker">✦ MAŁA KSIĘGA WIELKICH ODKRYĆ</div>
+ <div class="section-title-row"><div><h2>Dziennik <em>miejskich przygód.</em></h2><p>Każde ukończone miejsce zostawia pamiątkę. Możesz wrócić do jego historii lub wydrukować kartkę z odkryciami.</p></div><button id="print-journal" class="print-button" type="button">🖨️ Wydrukuj dziennik</button></div>
+ <div class="journal-book"><div class="journal-head"><span>MY LITTLE TOWN JOURNAL</span><span>✦ ✧ ✦</span></div><div id="journal-cards" class="journal-cards"></div>
+ <div class="journal-foot"><span>EVERY LITTLE DISCOVERY MATTERS</span><span id="journal-note">Pierwsza pamiątka już na Ciebie czeka.</span></div></div>
+ <div class="journal-info"><span aria-hidden="true">♡</span><p>Zapis działa na tym urządzeniu, w tej przeglądarce. Dziennik nie zastępuje sprawdzianu i nie ocenia wymowy. Dotknięcie przedmiotu podczas swobodnego zwiedzania nie daje punktów za naukę.</p></div>
+</div></section>
+<section class="next-section"><div class="wrap next-content"><div><div class="section-kicker">✦ CO OŻYJE W KOLEJNYCH ODSŁONACH?</div><h2>Miasto ma jeszcze <em>wiele tajemnic.</em></h2><p>W tej pierwszej wersji w pełni grywalne są trzy miejsca. Później możemy rozwinąć stację kolejową, park, teatr rozmów i historie z różnymi drogami.</p></div><div class="next-scenes"><span>🚂 <small>Stacja</small></span><span>🌳 <small>Park</small></span><span>🎭 <small>Teatr</small></span></div></div></section>
+</main>
+<footer><div class="wrap foot"><div><strong>English <span>Adventure</span> 2</strong><p>Wszystkie wielkie wyprawy zaczynają się od małego słowa. ♥</p></div><a href="../passport/">📘 Mój Paszport</a></div><div class="wrap foot-fine">Etap 11.1–11.3 · Żywe Miasteczko pod Chmurami · Autorska oprawa i ćwiczenia</div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<section class="print-sheet" id="print-sheet" aria-hidden="true"><h1>DZIENNIK ŻYWEGO MIASTECZKA</h1><p>English Adventure 2 · Miasteczko pod Chmurami</p><p>Imię odkrywcy: _____________________________________</p><div id="print-entries"></div><p class="print-last">Moje ulubione nowe słowo: __________________________</p></section>
+</body>
+</html>
