@@ -110,7 +110,7 @@ function renderWelcome(){
  }
  body(stageHead("✦ MOJA MAŁA POWTÓRKA","Dziś przypomnimy sobie <em>kilka słów!</em>","W paszporcie czeka "+t.due+" "+(t.due===1?"słowo":t.due<5?"słowa":"słów")+". Wybiorę maksymalnie sześć, ze znanych już krain. Będą też wskazówki, jeśli coś umknęło.")+
  '<div class="review-empty"><div class="empty-emoji">🎒</div><div><strong>Ty decydujesz, kiedy zaczynamy.</strong>'+
- '<p>Raz wybieramy angielską nazwę, innym razem polskie znaczenie. Posłuchaj wymowy, spróbuj odpowiedzieć i nie przejmuj się pomyłkami.</p></div></div>'+
+ '<p>Raz wybieramy tłumaczenie, a innym razem rozpoznajemy obrazek. Posłuchaj wymowy, spróbuj odpowiedzieć i nie przejmuj się pomyłkami.</p></div></div>'+
  '<div class="review-actions">'+btn("start-review","Wyruszam na krótką powtórkę ↗")+
  '<a class="review-btn light" href="../index.html#mapa">Najpierw odwiedzę krainę</a></div>'+
  '<p class="tiny-note">Wszystkie odpowiedzi pochodzą z poznanego materiału. Bez stopera, ocen i przypadkowych trudnych słów.</p>')
@@ -155,7 +155,7 @@ function renderQuestion(){
   dots(quiz.index,quiz.qs.length)+
   '<div class="question-box"><div class="question-icon" aria-hidden="true">'+(isPicture?"👀":isPL?"🔎":"🎧")+'</div>'+
   '<div><span class="question-meta">'+label+' · KRAINA 0'+item.unit+'</span>'+
-  '<div class="question-main'+(isPicture?' visual-question':'')+'"'+(isPicture?' role="img" aria-label="Obrazek z poznanej krainy"':isPL?'':' lang="en"')+'>'+main+'</div>'+
+  '<div class="question-main'+(isPicture?' visual-question':'')+'"'+(isPicture?' role="img" aria-label="'+item.pl+'"':isPL?'':' lang="en"')+'>'+main+'</div>'+
   '<div class="question-desc">'+desc+'</div></div></div>'+
   '<div class="quiz-options">'+options+'</div>'+feedback+help+
   '<div class="review-actions">'+actions+btn("end-review","Zakończ na dziś","review-btn ghost")+'</div>'+
