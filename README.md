@@ -51,6 +51,26 @@ Trzecia autorska przygoda, z własną ilustracją bohaterki, **ruchomym portrete
 
 Wizualne postacie są celowo fantastyczne. He i She są rolami w opowieści, a nie wnioskiem z wyglądu realnej osoby. Gry korzystają z kontrolowanych szablonów językowych, nie z dowolnie generowanych zdań.
 
+## Kraina 04 — My room: Nocny Pokój Tajemnic 🌙
+
+**https://gawierzba.github.io/New-English-Adventure-2/unit-4/**
+
+Czwarta pełna kraina oparta na poradniku NEA 2 (Unit 4, strona 8), WordCards (Unit 4, strony PDF 8–10) oraz kartach pracy („Zapamiętaj”, Unit 4, PDF s. 5). Oprawa graficzna i ćwiczenia są autorskie, bez ilustracji i bohaterów wydawnictwa.
+
+**Zawartość kursu:**
+- 10 słów: armchair, bath, bed, box, carpet, cupboard, curtain, floor, lamp, mirror;
+- relacje przestrzenne: on, under, next to, a także przykład „The box is in the bedroom”;
+- liczby sixteen, seventeen, eighteen, nineteen, twenty (16–20).
+
+**Aktywności:**
+- odkrywanie pięciu przedmiotów na wizytę, z wymową i tłumaczeniem;
+- w pełni rysowana, zmienna scena pokoju — pudełko, a po poznaniu również lampę, można przenosić na łóżko, pod łóżko, obok niego; po poznaniu fotela dochodzi drugi punkt odniesienia;
+- „Odszukaj”: trzy zadania rozpoznawania znanych przedmiotów i trzy zadania o położeniu przedmiotów (z podpowiedziami i wyjaśnieniami);
+- liczby 16–20: najpierw demonstracja wszystkich, potem krótkie losowane liczenie gwiazdek;
+- samodzielny opis pokoju: The box is under the bed. Dziecko może posłuchać zdania, powiedzieć je i oznaczyć własną próbę.
+
+Dla pierwszej sesji gwarantujemy obecność słów bed oraz box, żeby pokazywanie relacji miało sens. Kolejne wizyty priorytetowo pokazują nieodkryte słowa i trudniejsze ćwiczenia. Nie pokazujemy pytań o nieznane słownictwo. Korzystanie z pomocy nie podwyższa licznika odpowiedzi samodzielnych. Brak stopera, konta, mikrofonu i transferu danych postępu. Dostępny oszczędny wydruk A4.
+
 ## Co działa
 - kolorowa, responsywna mapa **8 krain** odpowiadających rozdziałom kursu,
 - **93 autorskie fiszki** ze słowem angielskim, polskim tłumaczeniem i ilustracją emoji,
