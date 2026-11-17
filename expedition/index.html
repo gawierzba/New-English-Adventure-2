@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173f58">
+<meta name="description" content="Ekspedycja Zaginionego Kompasu — wyrusz przez osiem krain English Adventure 2, przypominaj sobie poznane słowa i odkrywaj fragmenty mapy!">
+<meta property="og:title" content="Zaginiony Kompas | English Adventure 2">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script src="../passport/data.js" defer></script>
+<script src="../passport/engine.js" defer></script>
+<script src="engine.js" defer></script>
+<script src="app.js" defer></script>
+<title>Ekspedycja Zaginionego Kompasu · English Adventure 2</title>
+</head><body>
+<a href="#route" class="skip-link">Przejdź do mapy wyprawy</a>
+<header class="nav-shell"><div class="wrap nav">
+<a href="../index.html#mapa" class="back"><span>←</span><span class="back-text">Osiem krain</span></a>
+<a href="../index.html" class="brand"><span class="brand-gem">✳</span><span>English <strong>Adventure</strong><small>THE LITTLE EXPLORERS CLUB</small></span></a>
+<div class="header-right"><a href="../passport/" class="passport-link">📘 <span>Mój paszport</span></a><button id="sound-toggle" class="sound-button" type="button" aria-label="Włącz lub wyłącz wymowę" aria-pressed="true">♫</button></div>
+</div></header>
+<main>
+<section class="hero">
+ <div class="hero-constellation" aria-hidden="true">✦ · ✶ · ✦ · ✧</div>
+ <div class="wrap hero-inner">
+  <div class="hero-copy">
+   <div class="eyebrow">✦ ETAP 10 <span class="divider-line"></span> WIELKA EKSPEDYCJA · PROLOG</div>
+   <h1>Tajemnica <em>Zaginionego Kompasu.</em></h1>
+   <p>W krainach English Adventure zaginął zaczarowany kompas! Jego osiem fragmentów ukryto w miejscach, które już znasz. Dołącz do <strong>Lumo</strong>, małej sowy-nawigatorki, i odnajdź je dzięki poznanemu angielskiemu.</p>
+   <div class="hero-actions"><a href="#route" class="primary-button">Odkryj mapę ekspedycji <span>↗</span></a><a href="#rules" class="outline-button">Jak działa wyprawa?</a></div>
+   <div class="hero-note">♡ Nie ścigamy się. Każdy przystanek odkrywa się w Twoim tempie.</div>
+  </div>
+  <div class="hero-scene">
+   <svg class="hero-drawing" viewBox="0 0 770 655" role="img" aria-label="Ilustracja zaczarowanego świata: podróżna sowa Lumo na pokładzie balonu, osiem wysp oraz wielki kompas" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+     <linearGradient id="isleSea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#79cbd5"/><stop offset="1" stop-color="#284a7c"/></linearGradient>
+     <linearGradient id="cloudGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6fff7"/><stop offset="1" stop-color="#d4e4f9"/></linearGradient>
+     <linearGradient id="balloonGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f18fa2"/><stop offset=".52" stop-color="#f6b6ae"/><stop offset="1" stop-color="#a5a7d6"/></linearGradient>
+     <filter id="isleShadow"><feDropShadow dx="0" dy="13" stdDeviation="12" flood-color="#0a253b" flood-opacity=".25"/></filter>
+    </defs>
+    <ellipse cx="400" cy="485" rx="310" ry="115" fill="url(#isleSea)" opacity=".56"/>
+    <path d="M115 502Q250 422 397 475T681 470" fill="none" stroke="#e8f4dd" stroke-width="5" stroke-linecap="round" stroke-dasharray="8 16" opacity=".7"/>
+    <g class="island-shadow" filter="url(#isleShadow)">
+      <g transform="translate(164 373)"><ellipse cx="0" cy="36" rx="79" ry="27" fill="#336e8a"/><ellipse cx="0" rx="92" ry="44" fill="#83c6af"/><path d="M-38-6-3-70 36-7Z" fill="#fff0dc"/><path d="m-3-70 19 35-34 0Z" fill="#e9b9b7"/><text x="-60" y="16" font-size="29">🏡</text></g>
+      <g transform="translate(330 450)"><ellipse cy="30" rx="93" ry="31" fill="#426b89"/><ellipse rx="105" ry="37" fill="#d9c7a7"/><path d="M-88-11q95-40 180 2" fill="none" stroke="#e8e6d4" stroke-width="14"/><text x="-27" y="12" font-size="49">🚂</text></g>
+      <g transform="translate(585 372)"><ellipse cy="32" rx="76" ry="23" fill="#2e6b81"/><ellipse rx="85" ry="38" fill="#a0d6a5"/><path d="M-20-9-7-80 9-12" stroke="#806e8a" stroke-width="18" fill="none"/><path d="M-18-75Q14-108 48-64Q3-32-18-75Z" fill="#62a7a0"/><text x="-59" y="18" font-size="36">🌿</text></g>
+      <g transform="translate(505 538)"><ellipse cy="20" rx="78" ry="20" fill="#376482"/><ellipse rx="88" ry="34" fill="#ddc6d8"/><text x="-27" y="15" font-size="43">🎨</text></g>
+    </g>
+    <g class="scene-cloud" fill="url(#cloudGrad)" opacity=".9"><path d="M58 160Q63 129 102 135Q117 95 159 114Q208 112 210 150Q249 165 214 184H83Q47 181 58 160Z"/><path d="M501 112Q522 83 553 103Q586 78 608 115Q654 113 659 147Q659 170 629 170H520Q476 171 501 112Z"/></g>
+    <g class="floating-balloon">
+     <path d="M334 267q-94-55-63-160q40-98 129-82q100 13 113 111q8 79-77 132Z" fill="url(#balloonGrad)" stroke="#e9c6cf" stroke-width="7"/>
+     <path d="M362 37Q309 147 372 265M436 34Q482 148 409 266" fill="none" stroke="#fff9e9" stroke-width="13" opacity=".8"/>
+     <path d="M346 263 354 302M429 266 421 303" stroke="#eed0b8" stroke-width="8"/>
+     <path d="M344 301h86l-13 59h-58Z" fill="#ad7a66" stroke="#f1bf9c" stroke-width="7"/>
+     <path d="M363 317h49M364 334h49" stroke="#eed1a0" stroke-width="6"/>
+     <g class="lumo">
+      <ellipse cx="387" cy="284" rx="42" ry="44" fill="#9c80b0"/>
+      <path d="m356 251-12-38 34 21M418 248l11-36-34 24" fill="#9c80b0"/>
+      <path d="m359 248-5-23 18 15M414 247l8-21-21 16" fill="#e7c3cf"/>
+      <ellipse cx="386" cy="294" rx="28" ry="29" fill="#f7dbbf"/>
+      <circle cx="373" cy="278" r="14" fill="#fff"/><circle cx="399" cy="278" r="14" fill="#fff"/>
+      <circle cx="376" cy="280" r="7" fill="#4c536d"/><circle cx="401" cy="280" r="7" fill="#4c536d"/>
+      <path d="m386 285-7 10 14 0Z" fill="#f2ab7e"/>
+      <path d="M377 302q11 11 19 0" fill="none" stroke="#9d7182" stroke-width="4" stroke-linecap="round"/>
+      <path d="M345 307q-36 9-40 34" stroke="#9c80b0" stroke-width="17" stroke-linecap="round"/>
+     </g>
+    </g>
+    <g class="compass-spin" transform="translate(603 217)">
+      <circle r="95" fill="#e5eedf" stroke="#fff7e9" stroke-width="13"/>
+      <circle r="79" fill="#e8f4ee" stroke="#6e9eb5" stroke-width="5" stroke-dasharray="4 8"/>
+      <path d="M0-66 15-14 65 0 15 14 0 66-15 14-65 0-15-14Z" fill="#cf889f" stroke="#8b839e" stroke-width="5"/>
+      <path d="M0-66V66M-65 0H65" stroke="#fff5e5" stroke-width="4"/>
+      <circle r="16" fill="#f9d6a8" stroke="#bba69c" stroke-width="4"/>
+      <text y="-73" text-anchor="middle" fill="#647f9c" font-weight="900" font-family="system-ui" font-size="18">N</text>
+    </g>
+    <g class="floating-tag" transform="translate(194 92) rotate(-9)"><rect width="183" height="59" rx="25" fill="#fff9eb"/><text x="91" y="25" font-family="system-ui" font-weight="900" font-size="13" text-anchor="middle" fill="#678e9f">HELLO, EXPLORER!</text><text x="91" y="45" font-family="system-ui" font-weight="900" font-size="13" text-anchor="middle" fill="#b987ab">LET'S GO! ✦</text></g>
+    <g fill="#fff2d0"><path d="m72 264 10 22 25 9-25 10-10 23-10-23-26-10 26-9Z"/><path d="m681 50 8 19 22 8-22 7-8 21-8-21-22-7 22-8Z"/><path d="m709 468 8 19 21 9-21 8-8 21-8-21-21-8 21-9Z"/></g>
+   </svg>
+   <span class="orb-label" aria-hidden="true">8 CZĘŚCI<br>1 KOMPAS</span>
+  </div>
+ </div><div class="wave" aria-hidden="true"></div>
+</section>
+<section class="stats-bar wrap" aria-label="Postęp ekspedycji">
+ <div><span>🧭</span><strong id="compass-total">0 <small>/ 8</small></strong><small>fragmenty kompasu</small></div>
+ <div><span>🗺️</span><strong id="worlds-ready">0 <small>/ 8</small></strong><small>krainy gotowe do wyprawy</small></div>
+ <div><span>🌱</span><strong id="words-known">0</strong><small>poznane słowa</small></div>
+</section>
+<section id="route" class="route-section"><div class="wrap">
+ <span class="section-kicker">✦ WYPRAWA LUMO · OSIEM PRZYSTANKÓW</span>
+ <div class="section-title-row"><div><h2>Dokąd dziś <em>polecimy?</em></h2><p>Wybierz jeden z ośmiu przystanków. Wszystkie są na mapie, ale zagadki uruchamiają się dopiero po poznaniu co najmniej dwóch słów z danej krainy.</p></div><a href="../passport/" class="secondary-link">📘 Wróć do paszportu</a></div>
+ <div class="route-board">
+  <div class="route-head"><span>THE EIGHT-WORLD ROUTE</span><span aria-hidden="true">✦ ✧ ✦</span></div>
+  <div id="route-grid" class="route-grid"></div>
+  <div class="route-footer"><span>✧ Odkryjesz fragment także z pomocą. Ważne, żeby spróbować!</span><span>THE COMPASS IS WAITING</span></div>
+ </div>
+</div></section>
+<section id="station" class="station-section"><div class="wrap">
+ <span class="section-kicker">✦ PODRÓŻUJ, ODKRYWAJ, ROZMAWIAJ</span>
+ <div class="section-title-row"><div><h2>Przystanek <em>pełen tajemnic.</em></h2><p>Lumo przygotowała dla Ciebie dwie krótkie zagadki. Po ich rozwiązaniu na mapie pojawi się fragment kompasu.</p></div></div>
+ <div class="station-layout"><article class="station-paper">
+  <div class="station-ribbon"><span>✦ THE COMPASS CLUB</span><span id="ribbon-world">STATION 00</span></div>
+  <div id="station-stage" class="station-stage" aria-live="polite"></div>
+ </article>
+ <aside class="journey-sidebar">
+  <div class="side-card navigator-card"><span class="side-kicker">TWOJA NAWIGATORKA</span><div class="owl-avatar" aria-hidden="true">🦉</div><h3>Lumo podpowiada</h3><p id="lumo-tip">Każda kraina ma swoją opowieść. Wybierz przystanek i sprawdź, dokąd zaprowadzą Cię angielskie słowa!</p></div>
+  <div class="side-card parts-card"><span class="side-kicker">FRAGMENTY KOMPASU</span><h3>Nasza magiczna tarcza</h3><div id="compass-pieces" class="compass-pieces" aria-label="Odkryte części kompasu"></div><p id="pieces-note">Odkrywaj kolejne fragmenty bez pośpiechu.</p></div>
+  <div class="side-card side-help"><span class="side-kicker">ZASADA PRZYGODY</span><p>💡 Podpowiedzi nie odbierają fragmentu kompasu. Paszport zapisuje jednak, czy słowo przypomniało się samodzielnie, czy wspólnie z Lumo.</p></div>
+ </aside></div>
+</div></section>
+<section id="rules" class="rules-section"><div class="wrap rules-grid">
+ <div class="rules-graphic" aria-hidden="true">🧭<span>✦</span></div>
+ <div><span class="section-kicker">DLA ODKRYWCÓW I RODZICÓW</span><h2>Prawdziwa przygoda. <em>Spokojna nauka.</em></h2>
+ <p>Wyprawa korzysta z rzeczywistych postępów zapisanych w ośmiu wcześniejszych krainach. Nie pyta o przypadkowe, nieznane wyrazy. Każdy przystanek zawiera rozpoznawanie słów i krótkie zdanie wprowadzone w kursie. Jeżeli brakuje materiału, podpowiemy, w którym świecie można go odkryć.</p>
+ <p>Zadania aktualizują również harmonogram powtórek w paszporcie. Samodzielna odpowiedź przesuwa termin przypomnienia, a odpowiedź po pomocy pozwala zaplanować wcześniejsze utrwalenie. Fragment kompasu jest pamiątką ukończenia przystanku, nie szkolną oceną. Wszystkie dane pozostają lokalnie w przeglądarce.</p>
+ <div class="rules-actions"><a href="../passport/" class="rules-btn">📘 Mój paszport</a><button id="reset-expedition" type="button" class="rules-reset">Wyczyść tylko fragmenty kompasu</button></div>
+ </div>
+</div></section>
+</main>
+<footer><div class="wrap footer-top"><div><strong>English <span>Adventure</span> 2</strong><p>Wielka wyprawa zaczyna się od małego słowa. ♥</p></div><a href="../index.html#mapa">← Wróć do wszystkich krain</a></div><div class="wrap footer-fine">Etap 10 · Ekspedycja Zaginionego Kompasu · Niezależne ilustracje i zadania edukacyjne</div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body></html>
