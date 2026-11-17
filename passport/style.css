@@ -32,3 +32,8 @@
 @media(max-width:660px){.voyage-offer{padding:13px 0 66px}.voyage-grid{display:flex;flex-direction:column;padding:12px 22px 33px;text-align:center;border-radius:25px}.voyage-illustration{height:195px;width:260px}.voyage-copy h2{font-size:32px}.voyage-copy p{font-size:12px}.voyage-kicker{font-size:9px}.voyage-link{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.voyage-illustration svg{animation:none!important}}
 @media print{.voyage-offer{display:none!important}}
+
+
+/* Third review mode: distinguish safe image flashcards from written words. */
+.question-main.visual-question{font-size:clamp(62px,7.6vw,91px);line-height:1.18;letter-spacing:0;filter:drop-shadow(0 9px 11px #3c719422);margin:5px 0 0}
+@media(max-width:660px){.question-main.visual-question{font-size:67px}}
