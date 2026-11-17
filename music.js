@@ -45,7 +45,8 @@
     try{window.localStorage.setItem(KEY,value?"on":"off")}catch(e){}
   }
   wanted=stored();
-  function playing(){return !!(wanted&&ctx&&interval!==null&&ctx.state==="running")}
+  function contextRunning(){return !!ctx&&(ctx.state==="running"||typeof ctx.state==="undefined")}
+  function playing(){return !!(wanted&&interval!==null&&contextRunning())}
   function setUI(){
     if(!button)return;
     var status=!AC?"unsupported":!wanted?"off":playing()?"playing":"waiting";
@@ -73,15 +74,15 @@
   function freq(midi){return MIDI_A4*Math.pow(2,(midi-69)/12)}
   function voice(midi,start,seconds,volume,wave,slow){
     if(!ctx||!master)return;
-    var o=ctx.createOscillator(),gain=ctx.createGain(),attack=slow?.27:.025;
+    var o=ctx.createOscillator(),gain=ctx.createGain(),attack=slow ? .27 : .025;
     o.type=wave;
     o.frequency.setValueAtTime(freq(midi),start);
     gain.gain.setValueAtTime(.0001,start);
     gain.gain.linearRampToValueAtTime(volume,start+attack);
-    gain.gain.exponentialRampToValueAtTime(slow?volume*.55:volume*.38,start+Math.max(attack+.08,seconds*.65));
-    gain.gain.exponentialRampToValueAtTime(.0001,start+seconds+(slow?.45:.24));
+    gain.gain.exponentialRampToValueAtTime(slow ? volume*.55 : volume*.38,start+Math.max(attack+.08,seconds*.65));
+    gain.gain.exponentialRampToValueAtTime(.0001,start+seconds+(slow ? .45 : .24));
     o.connect(gain);gain.connect(master);
-    o.start(start);o.stop(start+seconds+(slow?.5:.30))
+    o.start(start);o.stop(start+seconds+(slow ? .5 : .30))
   }
   function measure(start,i){
     var chord=CHORDS[i],notes=MELODY[i],n;
@@ -98,12 +99,12 @@
     }
   }
   function tick(){
-    if(!ctx||!wanted||interval===null||ctx.state!=="running")return;
+    if(!ctx||!wanted||interval===null||!contextRunning())return;
     var now=ctx.currentTime;
     var speech=false;
     try{speech=!!(window.speechSynthesis&&window.speechSynthesis.speaking)}catch(e){}
     /* Lower music substantially while a vocabulary word is spoken. */
-    master.gain.setTargetAtTime(speech?.13:.55,now,.17);
+    master.gain.setTargetAtTime(speech ? .13 : .55,now,.17);
     var count=0;
     while(nextBar<now+LOOK_AHEAD&&count<3){
       measure(nextBar,bar);
@@ -113,7 +114,7 @@
     }
   }
   function startClock(){
-    if(!ctx||!wanted||document.hidden||interval!==null||ctx.state!=="running"){
+    if(!ctx||!wanted||document.hidden||interval!==null||!contextRunning()){
       setUI();return
     }
     nextBar=ctx.currentTime+.07;
@@ -133,15 +134,15 @@
         master.gain.value=.0001;
         master.connect(ctx.destination);
       }
-      if(ctx.state==="running"){startClock();return}
+      if(contextRunning()){startClock();return}
       if(ctx.resume){
         var result=ctx.resume();
         if(result&&typeof result.then==="function"){
           result.then(function(){if(wanted)startClock()}).catch(function(){setUI()})
         }else{
-          if(ctx.state==="running")startClock();else setUI()
+          if(contextRunning())startClock();else setUI()
         }
-      }else if(ctx.state==="running")startClock();
+      }else if(contextRunning())startClock();
       setUI()
     }catch(e){
       setUI()
