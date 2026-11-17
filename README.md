@@ -153,6 +153,38 @@ Nie ma ocen, rankingów, stopera, kont, mikrofonu, rejestrowania tożsamości an
 
 **Pliki:** \`unit-8/index.html\`, \`unit-8/style.css\`, \`unit-8/engine.js\`, \`unit-8/app.js\`.
 
+## Etap 11 — Żywe Miasteczko pod Chmurami 🏡🦉
+
+**https://gawierzba.github.io/New-English-Adventure-2/town/**
+
+Autorska, grywalna wersja żyjącego miasteczka z przewodniczką Lumo. Pierwsze trzy podetapy zrealizowane jako spójne wdrożenie:
+
+- **11.1 · Mapa żywego miasteczka:** oryginalny wielowarstwowy SVG (wieża zegarowa, sklepik, pracownia, przystań, stacja, balony/chmury, pociąg i łódka); animacje CSS, przełączanie dnia i wieczoru, przyciski wejścia do trzech miejsc, osobna nawigacja po miejscach także na telefonie;
+- **11.2 · Trzy grywalne wnętrza:** przystań (Unit 7), sklepik (Unit 6), pracownia strojów (Unit 8). Każde wnętrze to własna oryginalna ilustracja wektorowa, sześć dotykalnych przedmiotów i krótka mini-przygoda dopasowana do wcześniej poznanych słów;
+- **11.3 · Miejski dziennik:** osobne oznaczanie odwiedzonych miejsc, ukończonych misji i pamiątek, ponowne zwiedzanie, wersja A4 o niskim zużyciu tuszu, reset tylko miasteczka, bez naruszania postępów z ośmiu lekcji ani paszportu.
+
+### Zakres edukacyjny
+
+Zgodny z dostarczonym **NEA_2_PORADNIK.pdf**, Unit 6 (PDF s. 10), Unit 7 (PDF s. 12), Unit 8 (PDF s. 13). Na mapie i w scenach występuje **18 podstawowych słów z katalogu kursu**, podzielonych według miejsca:
+
+| Miejsce | Unit | Słowa | Konstrukcja |
+|---|---:|---|---|
+| Przystań Lumo | 7 | boat, train, bus, river, car, plane | *There's a…* |
+| Sklepik Pod Truskawką | 6 | bread, cake, carrots, strawberries, grapes, cheese | *Can I have …, please?* |
+| Pracownia Barwnych Strojów | 8 | jacket, jeans, raincoat, scarf, sun hat, wellies | *She's wearing…* |
+
+**Zasada uczciwego uczenia:** wszystkie przedmioty w scenie można obejrzeć i odsłuchać od razu, ale samo obejrzenie nie zmienia statusu opanowania słowa. Minizadania są dostępne po poznaniu co najmniej dwóch spośród sześciu słów danego miejsca w natywnej krainie; za każdym razem losują 2–3 **wyłącznie wcześniej poznane** przedmioty. Naciśnięcie właściwego przedmiotu bez pomocy zapisuje samodzielne rozpoznanie, a podpowiedź/pomyłka zapisuje próbę z pomocą. W obu wypadkach można ukończyć miejsce i otrzymać miejską pamiątkę.
+
+Do sprawdzania postępów korzystamy z istniejącego, wieloźródłowego adaptera \`passport/data.js\` i \`passport/engine.js\`. Odpowiedzi dodają zdarzenia do tego samego osobnego harmonogramu powtórek \`nea2-passport-revision-v1\`; nie dotykają rekordów materiału źródłowego \`seen\`, nie odhaczają żadnych fiszek i nie oceniają wymowy.
+
+**Nowy klucz lokalny:** \`nea2-living-town-v1\` — zwiedzone/ukończone miejsca, pamiątki oraz tryb dnia/nocy. Reset miasteczka nie czyści powtórek paszportu ani postępów lekcji. Wyłączanie wymowy zapamiętywane jest osobno pod \`nea2-town-sound-v1\`. Brak kont, mikrofonu, reklam, zewnętrznych zależności i kopiowanych grafik wydawcy.
+
+Na małych ekranach mapa jest przewijana poziomo **i** ma osobne przyciski trzech miejsc pod ilustracją, więc nie wymaga trafienia w maleńkie znaczniki. Dostępne są \`aria-label\`, \`aria-live\`, nawigacja klawiaturą, \`prefers-reduced-motion\`, proste zdania po angielsku i podpowiedzi w języku polskim.
+
+**Pliki:** \`town/index.html\`, \`town/style.css\`, \`town/art.js\` (autorskie SVG), \`town/engine.js\` (czyste reguły edukacyjne), \`town/app.js\` (logika i zapisy), \`town/preview.svg\` (otwarta grafika poglądowa).
+
+Następne etapy, **jeszcze nie zrealizowane**: rozbudowana stacja kolejowa, park i teatr dialogów, więcej interaktywnych scen oraz opowieści z rozgałęzieniami. Obecny etap 11 daje trzy gotowe, grywalne lokalizacje, a nie pozoruje ukończenia całej przyszłej gry fabularnej.
+
 ## Etap 10 — Ekspedycja Zaginionego Kompasu 🧭🦉
 
 **https://gawierzba.github.io/New-English-Adventure-2/expedition/**
