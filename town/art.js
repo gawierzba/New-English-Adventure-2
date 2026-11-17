@@ -91,5 +91,20 @@ cloud(185,104,.45)+
 '<g class="light-bulb"><path d="M180 0v31" stroke="#b7a8c0" stroke-width="5"/><ellipse cx="180" cy="51" rx="19" ry="25" fill="#fff3d4" stroke="#d3c2bd" stroke-width="5"/></g>'+
 '<g><rect x="60" y="416" width="196" height="75" rx="15" fill="#ac96ad"/><rect x="83" y="402" width="150" height="48" rx="12" fill="#d6c5db"/><path d="M84 470h151" stroke="#ede2eb" stroke-width="9"/></g>'+
 '</svg>';
-window.EA2_TOWN_ART=Object.freeze({town,harbour,market,atelier,lumo});
+/* Distinct SVG definition IDs keep the living map and interior scenes from
+   accidentally sharing filters or gradients in the same document. */
+function scoped(svg,prefix){
+ for(const id of ["sky","nightSky","water","ground","tile","shade","soft","dots"]){
+  svg=svg.split('id="'+id+'"').join('id="'+prefix+'-'+id+'"');
+  svg=svg.split('url(#'+id+')').join('url(#'+prefix+'-'+id+')');
+ }
+ return svg
+}
+window.EA2_TOWN_ART=Object.freeze({
+ town:scoped(town,"town"),
+ harbour:scoped(harbour,"harbour"),
+ market:scoped(market,"market"),
+ atelier:scoped(atelier,"atelier"),
+ lumo
+});
 })();
