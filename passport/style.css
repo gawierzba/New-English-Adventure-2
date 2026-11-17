@@ -18,3 +18,17 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 @media print{@page{size:A4;margin:12mm}body{background:white!important;color:#111!important;font-family:Arial,sans-serif!important}.site-header,.hero,.passport-metrics,.passport-section,.review-section,.parent-section,.footer,.toast{display:none!important}
 .print-sheet{display:block!important}.print-sheet h1{font-size:23pt;letter-spacing:.5pt;margin:0 0 5mm}.print-sheet>p{font-size:11pt}.print-sheet #print-summary{font-size:10pt;margin:7mm 0;padding:5mm 0;border-top:1px solid #555;border-bottom:1px solid #555}.print-sheet #print-stamps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5mm}.print-stamp{border:1px solid #999;border-radius:4mm;min-height:31mm;padding:4mm;display:flex;align-items:center;gap:4mm;page-break-inside:avoid}.print-stamp .print-circle{border:2px dashed #777;border-radius:50%;height:23mm;width:23mm;flex:none;display:grid;place-items:center;font-size:24pt}.print-stamp .print-circle.empty{border-color:#aaa;opacity:.4}.print-stamp strong{display:block;font-size:10pt}.print-stamp small{display:block;font-size:8pt;color:#555;line-height:1.5}.print-foot{margin-top:8mm;font-size:9pt;text-align:center}}
+
+
+/* Expedition 10 — cinematic invitation within the learner passport. */
+.voyage-offer{padding:24px 0 85px;background:#f6faf8}
+.voyage-grid{display:grid;grid-template-columns:37% 63%;align-items:center;gap:1px;min-height:320px;background:radial-gradient(ellipse 65% 85% at 20% 36%,#528aa7,transparent 85%),linear-gradient(114deg,#253d67,#334c7d 70%,#484d86);border-radius:34px;padding:25px 56px 25px 9px;overflow:hidden;box-shadow:0 18px 45px #1b356333;color:#fff;position:relative}
+.voyage-illustration{height:275px;position:relative;display:grid;place-items:center}.voyage-illustration svg{height:100%;max-width:100%;overflow:visible;animation:book-float 6s ease-in-out infinite}
+.voyage-copy{position:relative;z-index:2;padding:8px 0}.voyage-kicker{font-size:10px;color:#b0e2dd;letter-spacing:1.8px;font-weight:1000}.voyage-copy h2{font-size:clamp(30px,3.6vw,45px);line-height:1.16;letter-spacing:-1.5px;margin:16px 0}.voyage-copy h2 em{color:#f2beca;font-style:normal}
+.voyage-copy p{font-size:13px;line-height:1.8;color:#d9e5ee;max-width:630px;margin:0 0 22px}
+.voyage-link{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:#b1e5da;color:#27516b;border-radius:99px;padding:13px 19px;font-weight:1000;font-size:12px;box-shadow:0 6px 0 #396d92;transition:transform .15s}
+.voyage-link:hover{transform:translateY(-3px)}
+@media(max-width:900px){.voyage-grid{grid-template-columns:34% 66%;padding:15px 30px 16px 0}.voyage-illustration{height:235px}.voyage-copy h2{font-size:34px}.voyage-copy p{font-size:12px}}
+@media(max-width:660px){.voyage-offer{padding:13px 0 66px}.voyage-grid{display:flex;flex-direction:column;padding:12px 22px 33px;text-align:center;border-radius:25px}.voyage-illustration{height:195px;width:260px}.voyage-copy h2{font-size:32px}.voyage-copy p{font-size:12px}.voyage-kicker{font-size:9px}.voyage-link{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.voyage-illustration svg{animation:none!important}}
+@media print{.voyage-offer{display:none!important}}
