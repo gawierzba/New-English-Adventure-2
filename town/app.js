@@ -113,7 +113,7 @@ function renderJournal(){
   const seal=document.createElement("div");seal.className="journal-seal";seal.textContent=v.finished?v.icon:"✧";
   const title=document.createElement("strong");title.textContent=v.badge;
   const detail=document.createElement("small");detail.textContent=v.finished?
-  "Misja ukończona · odwiedzin z misją: "+v.visits+(v.independent?" · przynajmniej jedna bez pomocy":" · wspólnie z Lumo"):
+  "Misja ukończona · odwiedzin z misją: "+v.visits+(v.independent?" · przynajmniej jedna bez pomocy":" · wspólnie z Lumo")+(v.id==="theatre"&&state.places.theatre?.lastRole?" · rola: "+(state.places.theatre.lastRole==="actor"?"aktor":"reżyser"):""):
   v.viewed?"Już odwiedzone. Wróć po pamiątkę!":"Jeszcze nieodkryte.";
   const stateText=document.createElement("span");stateText.className="journal-state";
   stateText.textContent=v.finished?"✦ W DZIENNIKU":"○ CZEKA NA ODKRYCIE";
@@ -145,8 +145,8 @@ const header=(label,title,desc)=>'<span class="stage-eyebrow">'+label+'</span><h
 function welcome(){
  active=null;mission=null;inspection=null;
  stage(header("🦉 LUMO WITA GOŚCI","Welcome to <em>our town!</em>","Jestem Lumo, Twoja przewodniczka. Czeka tu już sześć miejsc: przystań, sklepik, pracownia, dworzec, park i teatr rozmów. Wybierz własną drogę!")+
- '<div class="welcome-scene"><div class="big-owl" aria-hidden="true">🦉</div><div><strong>Three places. Many little stories.</strong>'+
- '<p>W każdej scenie dotkniesz przedmiotów, posłuchasz angielskich zdań i rozwiążesz krótką misję, gdy poznasz potrzebne słowa.</p></div></div>'+
+ '<div class="welcome-scene"><div class="big-owl" aria-hidden="true">🦉</div><div><strong>Six places. Many little stories.</strong>'+
+ '<p>W mieście czeka sześć różnych miejsc: znajdź pojazd, pokaż ruch w parku i odegraj dialog. Zadania wykorzystują poznane słówka.</p></div></div>'+
  '<div class="steps-line"><span><b>👀</b> Obejrzyj</span><span><b>👆</b> Dotknij</span><span><b>💬</b> Powiedz</span></div>'+
  '<div class="stage-actions">'+button("to-map","Wybiorę miejsce na mapie ↗")+'</div>',
  "To Twoje miasteczko. Możesz zacząć od dowolnego miejsca!")
@@ -307,6 +307,7 @@ function completeVenue(){
  if(!mission||!active||mission.results.length!==mission.targets.length)return;
  const v=active,solved=mission.results.slice(),independent=solved.every(r=>r.independent);
  const next=E.nextState(state,v.id,independent,now());
+ if(v.kind==="dialogue")next.places[v.id].lastRole=mission.role;
  if(E.save(localStorage,next))state=next;else toast("Nie udało się zapisać miejskiej pamiątki.");
  mission=null;inspection=null;drawAll();
  const all=finishCount()===E.venues.length;
@@ -315,7 +316,7 @@ function completeVenue(){
  '<div class="scene-award"><span class="award-icon" aria-hidden="true">'+(all?"🦉🌟":v.icon)+'</span>'+
  '<strong>'+v.badge+'</strong><p>'+solved.length+' '+(solved.length===2?"słowa":"słowa")+' przećwiczone w przygodzie. '+
  (independent?"Tym razem wszystkie udało się rozpoznać bez podpowiedzi.":"Niektóre znaleźliśmy wspólnie — to także udana nauka!")+'</p></div>'+
- (all?'<div class="lesson-prompt"><span aria-hidden="true">🌈</span><div><strong>Ożyło całe miasteczko!</strong><small>Masz trzy miejskie pamiątki. Dziennik czeka na wspólne podsumowanie!</small></div></div>':"")+
+ (all?'<div class="lesson-prompt"><span aria-hidden="true">🌈</span><div><strong>Ożyło całe miasteczko!</strong><small>Masz sześć miejskich pamiątek. Dziennik czeka na wspólne podsumowanie!</small></div></div>':"")+
  '<div class="stage-actions">'+button("back-explore","Obejrzę scenę jeszcze raz")+
  button("to-map","Inny zakątek miasteczka","stage-action alt")+
  button("to-journal","Otwórz mój dziennik","stage-action alt")+'</div>',
@@ -368,7 +369,7 @@ window.addEventListener("storage",e=>{if(!mission&&(e.key===E.KEY||P.CATALOG.som
 window.EA2LivingTown=Object.freeze({
  inspect:()=>({visited:status().filter(x=>x.viewed).map(x=>x.id),finished:status().filter(x=>x.finished).map(x=>x.id),
   known:learnedCount(),active:active?active.id:null,mission:mission?{index:mission.index,length:mission.targets.length,done:mission.done,hint:mission.hint,
-  results:mission.results.slice(),target:mission.targets[mission.index].en}:null}),
+  results:mission.results.slice(),role:mission.role,choices:(mission.choices||[]).map(x=>x.en),target:mission.targets[mission.index].en}:null}),
  visit:travelTo,resetTown
 });
 $("town-art").innerHTML=A.town.replace("</svg>",A.mapDecor+"</svg>");
