@@ -130,6 +130,29 @@ Bez ocen, punktów, stopera, kont, mikrofonu ani wysyłania postępów na serwer
 
 **Architektura:** \`unit-7/index.html\`, \`unit-7/style.css\`, \`unit-7/engine.js\` (źródłowe słownictwo, gramatyka i krajobraz SVG), \`unit-7/app.js\` (lekcje, podróże, zapis postępów i druk).
 
+## Kraina 08 — What's he wearing?: Studio Wielkiej Przebieranki 🎨
+
+**https://gawierzba.github.io/New-English-Adventure-2/unit-8/**
+
+Ósma autorska kraina pełnego kursu z przewodniczką Felą, dwoma rysowanymi postaciami Mią i Leo, interaktywną szafą, pogodą, detektywem ubrań, lustrem mowy i finałowym pokazem. Sprawdzona w udostępnionych plikach **NEA_2_PORADNIK.pdf** (PDF strona 13, Rozdział 8), **NEA_2_WordCards.pdf** (PDF strony 22–24, Unit 8), **NEA_2_Karty_Pracy_Zapamitaj_i_powtrz.pdf** (PDF strona 9).
+
+**Zakres:** 10 podstawowych nazw z kart WordCards: belt, jacket, jeans, raincoat, scarf, shorts, socks, sun hat, trainers, wellies. Trzy dodatkowe nazwy z poradnika: cap, tie, uniform. Słowa **rain** i **umbrella** pojawiają się osobno w kontekście pogody (nie są liczone jako ubrania).
+
+**Zasady edukacyjne i mechanika:**
+- **Odkryj:** pięć kart słów na wizytę. Pierwsza piątka: jacket, jeans, raincoat, wellies, sun hat. Późniejsze wizyty w pierwszej kolejności obejmują słowa niepoznane, następnie ćwiczone rzadziej;
+- **Garderoba:** rysowany w SVG bohater naprawdę zakłada poszczególne części garderoby, a nie otrzymuje ich wyłącznie jako tekst. Ubrania są warstwami (nakrycie głowy, okrycie, szyja, pasek, spodnie, skarpety, buty). Jeden element w danym slocie zastępuje drugi, więc kurtka nie nachodzi na płaszcz, a dżinsy na szorty;
+- **Kolory:** 10 kolorów, osobny wybór koloru każdego ubrania, zamiana postaci Mia (she) / Leo (he), poprawne zdania **He’s / She’s wearing…** z odpowiednim przedimkiem: *a blue jacket*, *an orange cap*, ale *red jeans, yellow wellies*;
+- **Pogoda:** sceneria sunny / rainy / cold, pomysły ubrań tylko ze znanego słownictwa, bez oceniania stylów i prawdziwych upodobań dziecka;
+- **Detektyw:** pytanie *What’s he/she wearing?*, najpierw przykład, potem obrazkowe wybory tylko z poznanych ubrań, dostępne podpowiedzi i pełne wyjaśnienia; po wskazówce lub błędzie odpowiedź nie trafia do licznika samodzielnych;
+- **Lustro:** odgrywanie fikcyjnej postaci i odpowiedź **What are you wearing? — I’m wearing…**, możliwość odsłuchu i oznaczenia własnej próby wypowiedzenia bez mikrofonu;
+- **Wielki pokaz:** osobista karta stylizacji z rysunkiem i angielskim zdaniem do druku, a także oszczędne ćwiczenie A4.
+
+Własne wektorowe rysunki wszystkich 13 ubrań pozwalają odróżniać nawet wyglądające podobnie pozycje, np. pasek od dżinsów czy kurtkę od płaszcza przeciwdeszczowego. Wszystkie ilustracje, postacie i ćwiczenia są autorskie; bez kopiowania grafik i postaci filmowych.
+
+Nie ma ocen, rankingów, stopera, kont, mikrofonu, rejestrowania tożsamości ani zdalnego wysyłania postępów. Postęp lokalny w przeglądarce jest zintegrowany ze znacznikami 10 głównych słów na mapie strony głównej.
+
+**Pliki:** \`unit-8/index.html\`, \`unit-8/style.css\`, \`unit-8/engine.js\`, \`unit-8/app.js\`.
+
 ## Co działa
 - kolorowa, responsywna mapa **8 krain** odpowiadających rozdziałom kursu,
 - **93 autorskie fiszki** ze słowem angielskim, polskim tłumaczeniem i ilustracją emoji,
