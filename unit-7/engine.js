@@ -30,7 +30,7 @@ function phrase(w,count){
  return"There are "+({2:"two",3:"three",4:"four"}[count])+" "+plural(w.en)+"."
 }
 function polish(w,count){
- return w.en==="sky"?"Niebo jest niebieskie.":count===1?"Widzimy: jedna "+w.pl+".":"Widzimy: "+count+" × "+w.many+"."
+ return w.en==="sky"?"Niebo jest niebieskie.":count===1?"Widzimy: 1 × "+w.pl+".":"Widzimy: "+count+" × "+w.many+"."
 }
 function vector(w,x,y,i){
  const pos='translate('+x+' '+y+')';
