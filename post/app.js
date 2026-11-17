@@ -6,7 +6,7 @@
 const P=window.EA2_PASSPORT_ENGINE, E=window.EA2_LUMO_POST_ENGINE, A=window.EA2_LUMO_POST_ART;
 const $=id=>document.getElementById(id);
 const escapeHTML=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-let state=E.read(localStorage),snapshot=P.readSnapshot(localStorage),sound=localStorage.getItem("nea2-post-voice-v1")!=="off",toastTimer=null;
+let state=E.read(localStorage),snapshot=P.readSnapshot(localStorage),preview=false,sound=localStorage.getItem("nea2-post-voice-v1")!=="off",toastTimer=null;
 function toast(message){
  const t=$("toast");t.textContent=message;t.classList.add("show");clearTimeout(toastTimer);
  toastTimer=setTimeout(()=>t.classList.remove("show"),3100)
@@ -103,9 +103,10 @@ function showLetter(){
  const l=E.letter(state.selected);
  if(!l){showWelcome();return}
  const known=E.words(snapshot,l),can=E.eligible(snapshot,l);
- if(state.active&&state.active.id===l.id){showQuiz();return}
+ const paused=!!(state.active&&state.active.id===l.id);
+ if(paused&&!preview){showQuiz();return}
  if(state.letters[l.id].completed){showFinished(l);return}
- const note=can?'<div class="study-gate"><strong>✦ List gotowy do ćwiczeń!</strong> Znane słowa: '+known.length+' z '+l.words.length+
+ const note=paused?'<div class="study-gate"><strong>✦ Twoje zagadki czekają!</strong> Możesz ponownie przeczytać list. Wróć do zadań dokładnie od miejsca, w którym przerwano.</div>':can?'<div class="study-gate"><strong>✦ List gotowy do ćwiczeń!</strong> Znane słowa: '+known.length+' z '+l.words.length+
  '. Lumo przygotuje dwie krótkie zagadki tylko z tego, co już poznano w krainie.</div>':
  '<div class="study-gate locked"><strong>🌱 Jeszcze spokojnie odkrywamy.</strong> Poznano '+known.length+' z '+l.words.length+
  ' słów z listu. Aby rozwiązać zadania, odwiedź odpowiednią krainę i poznaj co najmniej dwa różne wyrazy. Samo otwarcie koperty nie zalicza nauki.</div>';
@@ -113,7 +114,7 @@ function showLetter(){
   "Przeczytaj wiadomość od przyjaciela. Możesz ją odsłuchać, a dopiero później — gdy znasz potrzebne słówka — rozwiązać mini-zadania.")+
  letterPaper(l)+note+
  actions(action("hear-letter","♫ Posłuchaj zdania","mail-button alt"),
-  can?action("start-letter","🧩 Odpowiadam na list →"):'<a class="mail-button" href="'+l.link+'">Poznaj słówka w krainie '+l.unit+' ↗</a>',
+  paused?action("resume-letter","↪ Wracam do zagadek →"):can?action("start-letter","🧩 Odpowiadam na list →"):'<a class="mail-button" href="'+l.link+'">Poznaj słówka w krainie '+l.unit+' ↗</a>',
   action("to-inbox","Inna koperta","mail-button quiet")),
  "LETTER FROM "+l.name.toUpperCase(),"Najpierw przeczytaj list. Zadania uruchamiamy tylko z już poznanych słów.")
 }
@@ -186,11 +187,11 @@ function scrollTo(id){
 }
 function selectLetter(id){
  if(!E.letter(id))return;
- state=E.visit(E.read(localStorage),id);persist(state);scrollTo("maildesk")
+ preview=false;state=E.visit(E.read(localStorage),id);persist(state);scrollTo("maildesk")
 }
 function beginLetter(){
  const id=state.selected,l=E.letter(id);if(!l)return;
- const next=E.start(state,snapshot,id);
+ preview=false;const next=E.start(state,snapshot,id);
  if(!next){toast("Do ćwiczeń potrzebne są dwa poznane słowa z krainy "+l.unit+".");return}
  persist(next)
 }
@@ -219,7 +220,9 @@ function nextQuestion(){
  }
  persist(next)
 }
-function showOpenedAgain(){const a=state.active;if(!a)return;persist({...state,active:null})}
+function showOpenedAgain(){preview=true;render()}
+function resumeLetter(){preview=false;render()}
+function repairLetter(){const a=state.active;if(!a)return;preview=false;persist({...state,active:null})}
 function render(){
  snapshot=P.readSnapshot(localStorage);state=E.read(localStorage);
  $("mailroom-art").innerHTML=A.room;
@@ -238,7 +241,8 @@ function action(name,value){
   case "hint":hint();break;
   case "next-question":nextQuestion();break;
   case "read-letter":showOpenedAgain();break;
-  case "repair":showOpenedAgain();break;
+  case "resume-letter":resumeLetter();break;
+  case "repair":repairLetter();break;
   case "hear-thanks":{const l=E.letter(state.selected);if(l)speak(l.thanks);break}
   case "repeat-letter":beginLetter();break;
  }
