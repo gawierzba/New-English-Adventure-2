@@ -202,7 +202,7 @@ function renderRolePicker(){
  if(!active||!mission)return;
  stage(header("🎭 TEATR MAŁYCH ROZMÓW","Wybierz swoją <em>rolę na scenie.</em>",
  "To Ty zdecydujesz, jak potoczy się rozmowa. Wszystkie odpowiedzi wykorzystują tylko osoby z rodziny, które już poznaliśmy.")+
- sceneHtml(active,"explore")+
+ sceneHtml(active,"mission")+
  '<div class="theatre-role-grid">'+
  '<button type="button" class="theatre-role" data-action="choose-role" data-name="actor"><span>🎤</span><strong>Jestem aktorem</strong><small>Lumo pyta: <b lang="en">Who’s this?</b> Odpowiadam po angielsku.</small></button>'+
  '<button type="button" class="theatre-role" data-action="choose-role" data-name="director"><span>🎬</span><strong>Jestem reżyserem</strong><small>Lumo mówi po angielsku. Rozpoznaję polskie znaczenie.</small></button></div>'+
@@ -278,7 +278,7 @@ function pickObject(en){
  if(!active)return;
  const v=active;
  if(!mission){inspection=en;renderExplore();return}
- if(mission.done)return;
+ if(mission.done||active.kind==="dialogue"&&!mission.role)return;
  const target=mission.targets[mission.index];
  if(!known(v,en))return;
  if(!E.isCorrect(target,en)){mission.wrong=en;mission.misses++;renderMission();return}
