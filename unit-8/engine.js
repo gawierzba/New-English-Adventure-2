@@ -97,5 +97,31 @@ function wearSVG(look,weather="studio"){
  '<rect x="25" y="22" width="166" height="39" rx="18" fill="#fffaf4" opacity=".94"/>'+
  '<text x="108" y="47" text-anchor="middle" font-family="system-ui" font-size="15" font-weight="900" fill="#8067a6">'+weatherLabel+'</text></svg>'
 }
-window.EA8ENGINE=Object.freeze({items,colors,people,slots,word,color,person,emptyLook,cloneLook,equip,remove,phrasePart,describe,listParts,randomLook,wearSVG});
+function iconSVG(name){
+ const w=word(name);if(!w)return"";
+ const fill={
+  belt:"#b68979",cap:"#6ca6cb",jacket:"#8aabd0",jeans:"#668bad",raincoat:"#e5a1aa",
+  scarf:"#dd8fb6",shorts:"#efc26b",socks:"#88c2b6","sun hat":"#f5d58b",
+  tie:"#a28bc5",trainers:"#88b7c7",uniform:"#756f9e",wellies:"#79b8a5"
+ }[name]||"#a1a4bd";
+ const stroke="#675d7b";
+ let shape="";
+ switch(name){
+ case "belt":shape='<rect x="7" y="41" width="86" height="19" rx="8" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><rect x="42" y="34" width="25" height="33" rx="5" fill="#fff7e4" stroke="#ab8b6c" stroke-width="5"/><path d="M46 50H60" stroke="'+stroke+'" stroke-width="4"/>';break;
+ case "cap":shape='<path d="M20 56Q22 23 49 23Q78 23 81 56Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M18 55q40-15 71 3q3 13-27 12H27q-21 0-9-15Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M49 27v26" stroke="#ffffffa9" stroke-width="4"/>';break;
+ case "jacket":shape='<path d="M33 19q17-7 34 0l18 13 10 22-13 13-9-11v29H28V56l-9 11L6 54l10-22Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M50 22v63" stroke="#fff5ef" stroke-width="5"/><path d="m33 20 17 23-22-6M67 20 50 43l22-6" fill="#dceaf1" stroke="#f7eaf1" stroke-width="3"/><circle cx="50" cy="63" r="3" fill="#fff"/>';break;
+ case "jeans":shape='<path d="M24 13h52l-6 75H53L50 44l-4 44H28Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="5"/><path d="M49 17v31M25 31h50" stroke="#d8e5f4" stroke-width="3"/>';break;
+ case "raincoat":shape='<path d="M33 23q17-10 34 0l17 12 12 23-13 11-8-13 9 36H16l9-36-8 13L4 58l12-23Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M32 25q0-26 18-27q19 1 19 27" fill="'+fill+'" stroke="'+stroke+'" stroke-width="5"/><path d="M50 25v65" stroke="#fff7ec" stroke-width="5"/><circle cx="50" cy="46" r="3" fill="#fff"/><circle cx="50" cy="66" r="3" fill="#fff"/>';break;
+ case "scarf":shape='<path d="M20 33Q29 11 49 16Q71 13 80 36" fill="none" stroke="'+fill+'" stroke-width="18" stroke-linecap="round"/><path d="M72 40 65 87" fill="none" stroke="'+fill+'" stroke-width="21" stroke-linecap="round"/><path d="m55 75 18 4M19 35l9 3" stroke="#f9e3f5" stroke-width="5"/>';break;
+ case "shorts":shape='<path d="M23 19h54v57H54l-5-24-5 24H22Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="5"/><path d="M24 36h52" stroke="#fff5e4" stroke-width="3"/>';break;
+ case "socks":shape='<path d="M19 16h24v41q0 9-15 15L12 77Q3 65 18 58Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M58 16h23v41q0 9-15 15L51 77q-10-12 6-20Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M19 27h24M58 27h23" stroke="#fff" stroke-width="5"/>';break;
+ case "sun hat":shape='<path d="M30 47Q28 16 50 14Q74 15 71 47Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><ellipse cx="50" cy="56" rx="45" ry="17" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M31 42h38" stroke="#f6b7a5" stroke-width="7"/>';break;
+ case "tie":shape='<path d="M38 10h25l-7 23 11 44-17 16-16-16 11-44Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M41 23h18" stroke="#eee1ff" stroke-width="4"/>';break;
+ case "trainers":shape='<path d="M12 48h30l15 16q7 14-10 17H9q-12-11 3-21Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M58 47h22l14 20q6 14-10 14H55q-10-11 3-21Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M12 72h38M60 72h27" stroke="#fff" stroke-width="6"/>';break;
+ case "uniform":shape='<path d="M30 19q20-9 40 0l17 11 7 30-15 9-9-15v32H29V54l-9 15-15-9 8-30Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="m33 20 17 28 17-28" fill="#fffdf5" stroke="#eee4ef" stroke-width="4"/><circle cx="51" cy="65" r="4" fill="#ffd67e"/><path d="M18 34h17M67 34h17" stroke="#ffd67e" stroke-width="6"/>';break;
+ case "wellies":shape='<path d="M17 19h28v49l-9 15H6q-12-12 10-22Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M57 19h27v42q23 10 10 22H64l-7-15Z" fill="'+fill+'" stroke="'+stroke+'" stroke-width="4"/><path d="M17 34h28M57 34h27" stroke="#fff4db" stroke-width="5"/>';break;
+ }
+ return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="'+w.pl+'" class="clothing-icon">'+shape+'</svg>'
+}
+window.EA8ENGINE=Object.freeze({items,colors,people,slots,word,color,person,emptyLook,cloneLook,equip,remove,phrasePart,describe,listParts,randomLook,wearSVG,iconSVG});
 })();
