@@ -67,6 +67,77 @@ function discover(){const w=session[index];if(!w)return;if(!known(w.en))mark(w,"
  '<p class="tiny">Możesz słuchać i powtarzać tyle razy, ile chcesz.</p></div></div>'+
  '<div class="actions">'+(index?btn("previous","← Poprzednia karta","soft"):"")+btn("next-card",index===session.length-1?"Zacznij projektowanie →":"Następne ubranie →")+'</div>',
  "To słowo po angielsku to "+w.en+". Spróbuj je powtórzyć.");}
+function startWardrobe(){
+ if(!gate(1))return;
+ if(!E.listParts(state.look).length){state.look=E.equip(state.look,learned()[0].en,"blue");save()}
+ if(!selected||!known(selected))selected=learned()[0].en;
+ const item=state.look.items[E.word(selected).slot];if(item&&item.en===selected)shade=item.color;
+ renderWardrobe()
+}
+function renderWardrobe(){
+ const look=E.cloneLook(state.look);
+ const clothes=learned().map(w=>{
+  const active=look.items[w.slot]&&look.items[w.slot].en===w.en;
+  return '<button type="button" data-action="choose-item" data-value="'+w.en+'" class="'+(active?"selected ":"")+(selected===w.en?"current":"")+
+  '" aria-pressed="'+String(!!active)+'"><span aria-hidden="true">'+w.icon+'</span>'+w.en+'</button>'
+ }).join("");
+ const palette=COLORS.map(c=>'<button type="button" data-action="choose-color" data-value="'+c.name+'" style="background:'+c.hex+
+ '" class="'+(shade===c.name?"active":"")+'" aria-label="Kolor '+c.pl+'" title="'+c.pl+'" aria-pressed="'+(shade===c.name)+'"></button>').join("");
+ show(head("🪄 MAGICZNA GARDEROBA","Zaprojektuj własny <em>strój!</em>","Kliknij ubranie, potem wybierz jego kolor. Postać zmienia się razem z Twoimi decyzjami.")+
+ avatars(look.person,"choose-person")+
+ '<div class="studio-layout">'+actor(look,"studio","MY FASHION STUDIO")+
+ '<div class="cloth-panel"><span class="panel-title">1. POZNANE UBRANIA</span><div class="clothes-grid">'+clothes+'</div>'+
+ '<span class="panel-title">2. TWOJE KOLORY</span><div class="swatches">'+palette+'</div>'+
+ '<p class="color-note">Wybrany kolor: <strong>'+shade+'</strong>. Wybrane ubranie: '+selected+'.</p>'+
+ btn("take-off","Zdejmij wybrane ubranie","soft")+'</div></div>'+
+ sentenceBox(look)+
+ '<div class="actions">'+btn("hear-look","♫ Posłuchaj zdania","soft")+btn("say-look","Spróbuję powiedzieć →")+
+ btn("surprise","✧ Zaskocz mnie","soft")+btn("weather","Sprawdź pogodę →")+'</div>'+
+ '<p class="tiny">Ubrania w jednej grupie zastępują się nawzajem. Dżinsy i krótkie spodenki nie nachodzą na siebie, podobnie jak kurtka i płaszcz.</p>',
+ "Zmieniając strój, powiedz: He's wearing albo She's wearing.");
+}
+function chooseCloth(en){
+ if(!known(en))return;
+ selected=en;const w=E.word(en),current=state.look.items[w.slot];
+ if(current&&current.en===en)shade=current.color;
+ else state.look=E.equip(state.look,en,shade);
+ save();renderWardrobe()
+}
+function changeColor(name){
+ if(!COLORS.some(c=>c.name===name))return;shade=name;
+ if(selected&&known(selected)){const w=E.word(selected),current=state.look.items[w.slot];
+  if(current&&current.en===selected){state.look=E.equip(state.look,selected,name);save()}
+ }
+ renderWardrobe()
+}
+const WEATHER={
+ sunny:{emoji:"☀️",label:"Słonecznie",en:"It's sunny!",tip:"Może kapelusz od słońca albo krótkie spodenki?",items:["sun hat","shorts","cap","trainers"]},
+ rainy:{emoji:"🌧️",label:"Pada deszcz",en:"It's rainy!",tip:"Może płaszcz przeciwdeszczowy lub kalosze?",items:["raincoat","wellies","jacket","cap"]},
+ cold:{emoji:"❄️",label:"Chłodno",en:"It's cold!",tip:"Może szalik lub kurtka?",items:["scarf","jacket","jeans","socks"]}
+};
+function startWeather(){
+ if(!gate(1))return;
+ weatherLook=E.cloneLook(state.look);
+ if(!E.listParts(weatherLook).length)weatherLook=E.equip(weatherLook,learned()[0].en,"purple");
+ renderWeather()
+}
+function renderWeather(){
+ const t=WEATHER[weather];
+ const types=Object.keys(WEATHER).map(k=>'<button type="button" data-action="weather-type" data-value="'+k+'" class="'+(weather===k?"active":"")+'">'+WEATHER[k].emoji+" "+WEATHER[k].label+'</button>').join("");
+ let opts=t.items.filter(known);if(!opts.length)opts=learned().slice(0,3).map(w=>w.en);
+ const suggestions=opts.map(en=>'<button type="button" data-action="weather-wear" data-value="'+en+'">'+E.word(en).icon+" "+en+'</button>').join("");
+ show(head("🌦️ KOLOROWA POGODA","W co ubrać <em>bohatera?</em>","Wybierz pogodę i zaprojektuj ubiór postaci. Podpowiedzi są inspiracjami, a nie oceną Twojego pomysłu.")+
+ '<div class="weather-row">'+types+'</div>'+avatars(weatherLook.person,"weather-person")+
+ '<div class="weather-stage"><div class="weather-hero">'+actor(weatherLook,weather,"THE WEATHER TODAY")+
+ '<div class="weather-tip"><span>WEATHER REPORT</span><h4 lang="en">'+t.en+'</h4><p>'+t.label+'. '+t.tip+'</p>'+
+ '<div class="suggestions">'+suggestions+'</div>'+
+ '<p>W poradniku pojawiają się też <b lang="en">rain</b> — deszcz oraz <b lang="en">umbrella</b> — parasolka.</p></div></div></div>'+
+ sentenceBox(weatherLook)+
+ '<div class="actions">'+btn("hear-weather","♫ Posłuchaj zdania","soft")+btn("keep-weather","Zachowaj ten strój","soft")+
+ btn("detective","Zabawa w detektywa →")+'</div>'+
+ '<p class="tiny">W tej zabawie nie ma ocen za wygląd ani za wybór ubrań. Każdy projekt jest ważny.</p>',
+ "W deszczu możemy używać słowa raincoat, a w słońcu sun hat.");
+}
 /* MODULES */
  /* EVENTS */
 session=chooseSession();counts();glossary();soundUI();go(0);
