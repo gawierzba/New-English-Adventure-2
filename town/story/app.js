@@ -156,7 +156,7 @@ function renderChapterEnd(){
  "CHAPTER 0"+(c.index+1)+" · THE FOUND LIGHT")
 }
 function renderRestore(){
- const a=story(),ending=S.endingFor(a.route);
+ const a=story(),ending=S.endingFor(a.route),secretRoute=Secrets.routeState(Secrets.read(localStorage),a.route);
  if(!ending){showRepair();return}
  setStage(heading("✨ TRZY PROMIENIE · WIELKI FINAŁ",
  "Gwiazda zaczyna <em>świecić!</em>",
@@ -164,6 +164,7 @@ function renderRestore(){
  '<div class="restored-preview">'+ART.ending(ending.id)+'</div>'+
  '<div class="restored-box"><strong>'+escapeHTML(ending.title)+'</strong><p>Dotknij gwiazdy, żeby odkryć pełne zakończenie i zapisać je w swojej bibliotece.</p>'+
  '<span class="big-starlight" aria-hidden="true">✦</span></div>'+
+ '<div class="secret-before-finale">'+(secretRoute.complete?"✦ Odnaleziono trzy tajemnice tej drogi. Po zakończeniu otworzy się ukryty epilog!":"✧ Odkryto "+secretRoute.found+" z 3 sekretów tej trasy. Możesz wrócić do miasta i poszukać brakujących śladów, a potem dokończyć opowieść.")+'</div>'+
  '<div class="page-buttons">'+btn("restore-star","Odkrywam zakończenie! ✦")+'</div>',
  "THE LOST STAR · THE FINALE")
 }
@@ -177,6 +178,7 @@ function finale(run){
  '<div class="final-verse"><span>'+escapeHTML(e.subtitle.toUpperCase())+'</span><p>'+escapeHTML(e.text)+'</p>'+
  '<strong lang="en">'+escapeHTML(e.english)+'</strong><button data-action="listen-final" type="button" aria-label="Posłuchaj zakończenia po angielsku">♫</button></div>'+
  '<div class="souvenir"><span>'+e.symbol+'</span><div><strong>'+escapeHTML(e.souvenir)+'</strong><small>Nowa pamiątka w bibliotece opowieści</small></div></div>'+
+ secretEpilogue(run)+
  '<div class="story-route-summary"><b>Twoja droga:</b> '+unique+'<small>'+run.answers+
  ' odpowiedzi językowych · '+run.independent+' samodzielnych. Podróż nie jest oceniana.</small></div>'+
  '<div class="page-buttons">'+btn("begin","Przeżyję inną opowieść →")+
@@ -262,7 +264,8 @@ function renderPrint(){
  S.routeLabels(r.route).forEach((v,i)=>{
   const row=document.createElement("p");row.className="print-line";row.textContent=(i+1)+". "+v.symbol+" "+v.short+" — "+v.storyEnd;p.appendChild(row)
  });
- const quote=document.createElement("p");quote.textContent="Moje angielskie zdanie: "+e.english;p.appendChild(quote)
+ const quote=document.createElement("p");quote.textContent="Moje angielskie zdanie: "+e.english;p.appendChild(quote);
+ if(r.secretBonus){const note=document.createElement("p");note.textContent="✦ ODKRYTO TAJNY EPILOG: "+(r.secretTrail||[]).map(id=>(Secrets.byId(id)||{}).title).filter(Boolean).join(" · ");p.appendChild(note)}
 }
 function render(){
  snapshot=P.readSnapshot(localStorage);data=S.read(localStorage);
@@ -327,10 +330,11 @@ function moveOn(){
 function finishChapter(){save(S.chapterDone(data))}
 function finishStory(){
  const result=S.finish(data);if(!result)return;
- const record=result.final;
+ const record=result.final,secretState=Secrets.read(localStorage),trail=Secrets.routeState(secretState,record.route);
+ record.secretTrail=trail.items.slice();record.secretBonus=trail.complete;record.observatory=secretState.observatory;
  const next={version:1,runs:result.runs,active:null};
  if(!S.write(localStorage,next)){toast("Nie udało się zapisać zakończenia.");return}
- data=next;progress();renderLibrary();renderPrint();finale(record)
+ data=next;progress();renderLibrary();renderPrint();renderSecretLedger();finale(record)
 }
 function playTask(){
  const a=story();if(!a)return;
