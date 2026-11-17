@@ -103,7 +103,7 @@ function learn(){
 }
 function supportsRoom(){return known("bed")&&known("box")}
 const ANCHORS=[{en:"bed",pl:"łóżko"},{en:"armchair",pl:"fotel"}];
-const ITEMS=[{en:"box",pl:"pudełko"},{en:"watch",pl:"zegarek"}]; // watch is only an optional, earlier-unit learned word
+const ITEMS=[{en:"box",pl:"pudełko"},{en:"lamp",pl:"lampa"}]; // only vocabulary already discovered in Unit 4
 function activeAnchors(){return ANCHORS.filter(a=>known(a.en))}
 function activeItems(){return ITEMS.filter(x=>known(x.en))}
 function locateCoords(anchor,pos){
@@ -115,8 +115,8 @@ function locateCoords(anchor,pos){
 function sceneSVG(place){
  const anchor=place.anchor,at=place.position,item=place.item;
  const [cx,cy]=locateCoords(anchor,at);
- const object=item==="watch"?
- '<g transform="translate('+cx+" "+cy+')"><rect x="-11" y="-37" width="22" height="74" rx="8" fill="#ce8fa7"/><circle r="24" fill="#fff" stroke="#4d83a0" stroke-width="7"/><path d="M0-12V0L12 7" fill="none" stroke="#55688b" stroke-width="4" stroke-linecap="round"/></g>':
+ const object=item==="lamp"?
+ '<g transform="translate('+cx+" "+cy+')"><ellipse cx="0" cy="23" rx="30" ry="7" fill="#6b82aa" opacity=".2"/><rect x="-6" y="-13" width="12" height="33" rx="5" fill="#6387ae"/><ellipse cy="22" rx="22" ry="6" fill="#526d9c"/><path d="M-23-16H23L15-46H-15Z" fill="#fff1ce" stroke="#cfbfce" stroke-width="3"/><circle cy="-48" r="6" fill="#fff8d7"/></g>':
  '<g transform="translate('+cx+" "+cy+')"><ellipse cx="0" cy="19" rx="34" ry="8" fill="#38496e" opacity=".12"/><path d="M-25-18H25L31 20H-32Z" fill="#eab9ba" stroke="#b987a0" stroke-width="3"/><path d="M-25-18 0-31 25-18 0-4Z" fill="#fff0db" stroke="#b987a0" stroke-width="3"/><path d="M0-4V20" stroke="#ad7e9a" stroke-width="3"/><path d="M-13-19V4M13-19V4" stroke="#f6d3d1" stroke-width="3"/></g>';
  const onBed=anchor==="bed"&&at==="on",underBed=anchor==="bed"&&at==="under";
  const onChair=anchor==="armchair"&&at==="on",underChair=anchor==="armchair"&&at==="under";
@@ -194,7 +194,7 @@ function renderHunt(){
   prompt="Find the "+q.target.en+"!";
   image='<div class="memo"><b>Wskazówka:</b> Przyjrzyj się przedmiotom. Wybierz właściwy obrazek.</div>';
   choices=q.options.map(w=>'<button type="button" data-action="hunt-answer" data-value="'+w.en+'" '+(hunt.done?"disabled":"")+
-   ' class="'+(hunt.done&&w.en===q.target.en?"correct":hunt.wrong===w.en?"wrong":"")+(hunt.hint>=2&&w.en===q.target.en?" recommend":"")+'"><span aria-hidden="true">'+w.icon+'</span>'+w.pl+'</button>').join("");
+   ' class="'+(hunt.done&&w.en===q.target.en?"correct":hunt.wrong===w.en?"wrong":"")+(hunt.hint>=2&&w.en===q.target.en?" recommend":"")+'" aria-label="Wybierz obrazek: '+w.pl+'"><span aria-hidden="true">'+w.icon+'</span><small>obrazek</small></button>').join("");
  }else{
   prompt="Where's the "+q.target.en+"?";
   image='<div class="room-wrap"><div class="room-caption">FIND THE PLACE ✧</div>'+sceneSVG({item:q.target.en,anchor:q.anchor,position:q.position})+'</div>';
@@ -207,7 +207,7 @@ function renderHunt(){
  hunt.wrong!==null?'<div class="feedback retry">Ta odpowiedź jeszcze nie pasuje. Sprawdź obrazek lub poproś o podpowiedź.</div>':"";
  const hint=hunt.hint===1?'<div class="hint"><b>Wskazówka:</b> '+(isWord?q.target.en+" znaczy "+q.target.pl+".":PREPS.find(p=>p.id===q.position).en+" znaczy "+PREPS.find(p=>p.id===q.position).pl+".")+'</div>':
  hunt.hint>=2?'<div class="hint"><b>Rozwiązanie:</b> Iskra zaznaczyła właściwą odpowiedź. Możesz ją wybrać albo odkryć razem z nią.</div>':"";
- display(title("🔦 SZUKAM · "+(hunt.idx+1)+"/"+hunt.list.length,isWord?"Znajdź ten <em>przedmiot!</em>":"Gdzie jest <em>pudełko?</em>",isWord?
+ display(title("🔦 SZUKAM · "+(hunt.idx+1)+"/"+hunt.list.length,isWord?"Znajdź ten <em>przedmiot!</em>":"Gdzie jest <em>"+q.target.pl+"?</em>",isWord?
   "Iskra nazywa przedmiot. Który z obrazków przedstawia to słowo?":"Popatrz, gdzie leży przedmiot. Wybierz odpowiedni angielski przyimek.")+
  steps(hunt.idx,hunt.list.length)+
  '<div class="detect-prompt"><strong lang="en">'+prompt+'</strong>'+btn("hear-hunt","♫ Posłuchaj","soft-btn")+'</div>'+image+
