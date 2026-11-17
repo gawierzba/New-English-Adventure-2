@@ -153,6 +153,26 @@ Nie ma ocen, rankingów, stopera, kont, mikrofonu, rejestrowania tożsamości an
 
 **Pliki:** \`unit-8/index.html\`, \`unit-8/style.css\`, \`unit-8/engine.js\`, \`unit-8/app.js\`.
 
+## Etap 10 — Ekspedycja Zaginionego Kompasu 🧭🦉
+
+**https://gawierzba.github.io/New-English-Adventure-2/expedition/**
+
+Etap 10 łączy wszystkie osiem krain w jedną autorską wyprawę z sową-nawigatorką Lumo. **Osiem przystanków = osiem fragmentów kompasu**. W każdej krainie dziecko rozwiązuje dwa krótkie zadania z poznanym już materiałem: przypomnienie słowa oraz dokończenie angielskiego zdania (lub odwróconą zagadkę, jeżeli brak bezpiecznych dwóch słów do takiego zdania). Nie wykorzystujemy grafik ani postaci filmowych wydawcy.
+
+**Edukacja i bezpieczeństwo:**
+- Tylko słowa **seen=true** w prawdziwym zapisie danej krainy uprawniają do pytań. Przystanek z mniej niż dwiema poznanymi nazwami jest widoczny na mapie, ale kieruje do lekcji, nie losuje nieznanych odpowiedzi;
+- Przygotowano 8 odrębnych historii i zdania bazujące na strukturach z poradnika: **My favourite thing is…**, **I've got…**, **She's got…**, **The … is in the room**, **I can…**, **He likes…**, **There's…**, **She's wearing…**. Szczególnie kontrolujemy *an aunt / an uncle*, *an armchair* (gdy ma zastosowanie), *a uniform*, liczby mnogie ubrań i znaczenie czasowników;
+- W przypadku słowa niewpasowującego się w daną strukturę (np. *sky* w **There’s…**, *floor* w szablonie przedmiotów lub zwierzę w **I can…**) silnik nie tworzy sztucznych zdań, lecz wybiera bezpieczniejszą zagadkę znaczeniową;
+- Każde pytanie ma pomoc stopniowaną: pierwsza litera, podświetlenie prawidłowej odpowiedzi i wspólne odkrycie. Po pomyłce/podpowiedzi zadanie jest ukończone z pomocą; nie otrzymuje statusu niezależnego rozpoznania;
+- Każdy ukończony przystanek daje **fragment kompasu niezależnie od pomocy**. To pamiątka wyprawy, nie stopień. Wszystkie 8 fragmentów uruchamia finałową opowieść;
+- Prawidłowe odpowiedzi przekazujemy do tego samego mechanizmu powtórek co paszport: samodzielna odpowiedź planuje przypomnienie zgodnie z serią 1/3/7/14/30 dni, a odpowiedź po pomocy — za 12 godzin;
+- Odkrycia kompasu zapisywane są odrębnie, w \`nea2-expedition-v1\`. Ich wyzerowanie **nie usuwa** słów, historii ćwiczeń ani terminów powtórek;
+- Brak kont, mikrofonu, ocen, limitu czasu i przesyłania danych dziecka na serwer. Wymowa wykorzystuje tylko \`speechSynthesis\`, jeśli przeglądarka go obsługuje.
+
+**Akademia Powtórek w paszporcie** otrzymała przy okazji trzeci rodzaj zadania — **obrazek → angielskie słowo**, obok dwóch kierunków tłumaczenia. Obrazki pojawiają się tylko przy starannie dobranych hasłach i zestawach z rozróżnialnymi ikonami: np. robot, rower, statek kosmiczny. Nie pokazujemy takich zagadek przy mylących symbolach paska/dżinsów czy niejednoznacznych osobach z rodziny. Wszystkie typy zadań nadal podlegają jednakowemu harmonogramowi powtórek.
+
+**Pliki:** \`expedition/index.html\` (autorska ilustracja balonu i kompasu), \`expedition/style.css\`, \`expedition/engine.js\` (bezpieczna gramatyka i dobieranie zadań), \`expedition/app.js\` (podróż i lokalne zapisy), plus ulepszenia \`passport/engine.js\`, \`passport/app.js\`, \`passport/index.html\` i strony głównej. To **prolog Wielkiej Ekspedycji** z ośmioma krótkimi stacjami, a nie jeszcze pełna gra fabularna ze złożonymi scenami i wieloma rozgałęzieniami.
+
 ## Etap 09 — Paszport Małego Odkrywcy 🧭
 
 **https://gawierzba.github.io/New-English-Adventure-2/passport/**
