@@ -2,7 +2,7 @@
 /* Stage 13 · The Lost Star. Independent narrative progress, native-review scoring. */
 (()=>{
 const P=window.EA2_PASSPORT_ENGINE,T=window.EA2_LIVING_TOWN_ENGINE,S=window.EA2_TOWN_STORY_ENGINE;
-const ART=window.EA2_TOWN_STORY_ART;
+const ART=window.EA2_TOWN_STORY_ART,Secrets=window.EA2_TOWN_SECRETS,SecretArt=window.EA2_TOWN_SECRET_ART;
 const SCENES={...window.EA2_TOWN_ART,...window.EA2_TOWN_EXTRA_ART};
 const $=id=>document.getElementById(id);
 let data=S.read(localStorage),snapshot=P.readSnapshot(localStorage),speaker=localStorage.getItem("nea2-story-voice-v1")!=="off",timer=null;
@@ -78,9 +78,16 @@ function renderChoice(){
  "CHAPTER 0"+(c.index+1)+" · CHOOSE YOUR PATH")
 }
 function scenePanel(v){
- const image=SCENES[v.id]||ART.cover;
- return '<div class="book-scene"><div class="scene-svg-wrap">'+image+'</div>'+
- '<span class="scene-caption">'+escapeHTML(v.english)+' · THE LITTLE TOWN</span></div>'
+ const image=SCENES[v.id]||ART.cover,sec=Secrets.byVenue(v.id),found=Secrets.read(localStorage).found[sec.id];
+ const mark='<button type="button" class="storybook-secret '+(found?"found":"hidden")+'" data-action="find-secret" data-secret="'+sec.id+
+ '" style="left:'+sec.x+'%;top:'+sec.y+'%" aria-label="'+(found?"Otwórz sekret: "+sec.title:"Odkryj ukryty ślad Lumo")+
+ '"><span aria-hidden="true">'+(found?sec.icon:"✧")+'</span></button>';
+ const note=found?'<div class="story-found-secret"><span>'+sec.icon+'</span><div><b>✦ TAJNY ŚLAD: '+escapeHTML(sec.title)+'</b>'+
+ '<p>'+escapeHTML(sec.message)+'</p><strong lang="en">'+escapeHTML(sec.line)+'</strong>'+
+ '<small>Odnalezienie śladu to przygoda, a nie zaliczenie słowa.</small></div></div>':
+ '<p class="story-unfound-secret">✧ W tej scenie ukryto pamiątkę Lumo. Wypatruj połyskującego znaku na ilustracji.</p>';
+ return '<div class="book-scene"><div class="scene-svg-wrap">'+image+'</div>'+mark+
+ '<span class="scene-caption">'+escapeHTML(v.english)+' · THE LITTLE TOWN</span></div>'+note
 }
 function renderEncounter(){
  const a=story(),c=chapter(),id=a.route[a.chapter],v=T.getVenue(id),choice=c.choices.find(x=>x.id===id),known=S.known(snapshot,id),eligible=known.length>=2;
@@ -215,7 +222,7 @@ function renderPrint(){
 }
 function render(){
  snapshot=P.readSnapshot(localStorage);data=S.read(localStorage);
- progress();renderLibrary();renderPrint();
+ progress();renderLibrary();renderPrint();renderSecretLedger();
  const a=story();
  if(!a){cover();return}
  $("hero-art").innerHTML=ART.cover;
@@ -309,7 +316,7 @@ function act(name,value){
 }
 $("story-stage").addEventListener("click",e=>{
  const button=e.target.closest("[data-action]");if(!button)return;
- act(button.dataset.action,button.dataset.venue||button.dataset.word||"")
+ act(button.dataset.action,button.dataset.secret||button.dataset.venue||button.dataset.word||"")
 });
 $("voice-toggle").addEventListener("click",()=>{
  speaker=!speaker;try{localStorage.setItem("nea2-story-voice-v1",speaker?"on":"off")}catch(e){}
