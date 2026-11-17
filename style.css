@@ -231,3 +231,21 @@ dialog::backdrop{background:#292a58ad;backdrop-filter:blur(7px)}
 @media print{@page{size:A4;margin:13mm}html,body{background:white!important;color:black!important;font-family:Arial,sans-serif!important;font-size:10pt!important}.site-header,main,.site-footer,dialog,.page-speckles,.skip-link{display:none!important}#print-sheet{display:block!important}#print-sheet h1{font-size:20pt;border-bottom:2px solid #333;padding-bottom:8px;margin-bottom:8px}#print-sheet .print-intro{font-size:9pt;margin:0 0 12px}#print-sheet .print-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}#print-sheet section{break-inside:avoid;margin-bottom:9px}#print-sheet h2{font-size:11pt;border-bottom:1px solid #999;margin:0 0 6px;padding-bottom:3px}#print-sheet ul{columns:2;padding-left:18px;margin:0}#print-sheet li{font-size:9pt;line-height:1.6;padding-right:5px}#print-sheet footer{font-size:8pt;margin-top:10px;color:#777}}
 .world-feature{position:absolute;right:12px;top:13px;z-index:4;background:#fff;color:#6752cd;border-radius:99px;padding:8px 12px;box-shadow:0 5px 13px #66549b22;font-size:9px;font-weight:1000;letter-spacing:.45px;transform:rotate(3deg)}
 @media(max-width:650px){.world-feature{right:7px;top:9px;font-size:7px;padding:6px 7px;max-width:95px;text-align:center}}
+
+
+/* Stage 09: native passport entrance below the eight adventure worlds. */
+.passport-promo-section{padding:20px 0 92px;background:var(--cream)}
+.passport-promo{position:relative;display:grid;grid-template-columns:35% 65%;align-items:center;min-height:308px;overflow:hidden;border-radius:35px;padding:26px 65px 26px 21px;color:#fff;background:radial-gradient(ellipse 55% 110% at 13% 50%,#426d94,transparent 87%),linear-gradient(117deg,#233d6c,#364a86 68%,#464a83);box-shadow:0 20px 47px #1b2f6030}
+.passport-promo-art{position:relative;z-index:1;align-self:center;display:grid;place-items:center;min-height:247px}.passport-promo-art svg{width:min(100%,370px);height:auto;overflow:visible;filter:drop-shadow(0 7px 9px #17265330);animation:passport-hover 5.5s ease-in-out infinite}
+.passport-promo-copy{position:relative;z-index:2;padding:8px 0 11px}.passport-promo-tag{display:inline-block;font-weight:1000;font-size:10px;letter-spacing:1.65px;color:#b5e5da;margin-bottom:13px}
+.passport-promo h2{font-size:clamp(31px,3.55vw,46px);line-height:1.13;letter-spacing:-1.6px;margin:0 0 15px;max-width:630px}
+.passport-promo h2 em{font-style:normal;color:#afe5d7}
+.passport-promo p{max-width:695px;color:#ceddeb;line-height:1.8;font-size:13px;margin:0 0 20px}
+.passport-promo-button{display:inline-flex;align-items:center;gap:12px;background:#b5e7db;color:#244a68;font-weight:1000;font-size:12px;padding:13px 20px;border-radius:100px;box-shadow:0 6px 0 #3b7190;transition:transform .2s}
+.passport-promo-button:hover{transform:translateY(-3px)}
+.passport-promo-spark{position:absolute;right:25px;top:20px;font-size:25px;letter-spacing:18px;opacity:.2;color:#d4dcef}
+@keyframes passport-hover{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(2deg)}}
+@media(max-width:850px){.passport-promo{grid-template-columns:36% 64%;padding:20px 30px 20px 5px;min-height:260px}.passport-promo h2{font-size:34px}.passport-promo p{font-size:12px}.passport-promo-section{padding:10px 0 65px}}
+@media(max-width:650px){.passport-promo{display:flex;flex-direction:column;text-align:center;padding:8px 20px 34px;border-radius:25px}.passport-promo-art{height:195px;min-height:195px;max-width:270px;margin:-1px auto -6px}.passport-promo-art svg{max-height:225px}.passport-promo-copy{padding:0 0 5px}.passport-promo-tag{font-size:9px}.passport-promo h2{font-size:32px;letter-spacing:-1px}.passport-promo p{font-size:12px;line-height:1.7}.passport-promo-button{font-size:11px;justify-content:center;min-height:46px}.passport-promo-section{padding:0 0 59px}.passport-promo-spark{right:-28px}}
+@media(prefers-reduced-motion:reduce){.passport-promo-art svg{animation:none!important}}
+@media print{.passport-promo-section{display:none!important}}
