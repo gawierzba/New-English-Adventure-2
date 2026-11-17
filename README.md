@@ -153,6 +153,48 @@ Nie ma ocen, rankingów, stopera, kont, mikrofonu, rejestrowania tożsamości an
 
 **Pliki:** \`unit-8/index.html\`, \`unit-8/style.css\`, \`unit-8/engine.js\`, \`unit-8/app.js\`.
 
+## Etap 14 — Sekrety Miasteczka i Obserwatorium Lumo ✧🔭
+
+**Odkrywaj:** https://gawierzba.github.io/New-English-Adventure-2/town/#sekrety
+
+**Wielka Opowieść z tajnymi epilogami:** https://gawierzba.github.io/New-English-Adventure-2/town/story/
+
+Etap 14 **łączy istniejące sześć grywalnych miejsc z Tajemnicą Zgaszonej Gwiazdy**. Nie zastępuje niczego z etapów 11–13: pocztówki pojawiają się jako dodatkowe aktywności, a fabuła i wcześniej zapisane zakończenia pozostają dostępne.
+
+### Sześć sekretów w żyjących scenach
+
+| Miejsce | Znajdź symbol ✧ | Odblokowana pocztówka | Swobodnie odkrywane zdanie |
+|---|---|---|---|
+| Przystań | Pod żaglówką | Muszla Błękitnej Rzeki 🐚 | *There's a boat.* |
+| Dworzec | Blisko semafora | Bilet bez Daty 🎟️ | *There's a train.* |
+| Sklepik | Przy słodkościach | Przepis na Światło 🍰 | *Can I have cake, please?* |
+| Park | Przy koronie największego drzewa | Listek Wiewiórki Tuli 🍃 | *I can jump.* |
+| Teatr | W pobliżu kurtyny | Maska Złotej Sceny 🎭 | *This is my grandma.* |
+| Pracownia | Przy zwisającym szaliku | Wstążka Sześciu Kolorów 🎀 | *She's wearing a scarf.* |
+
+Sceny zachowują **wszystkie dotychczasowe klikalne przedmioty i minizadania**. Po wejściu do miejsca można dotknąć pulsującego symbolu ✧, zobaczyć nową wiadomość Lumo i dodać pocztówkę do Sekretnej Poczty. Podpowiedzi w kolekcji wskazują, gdzie szukać brakujących śladów. Zebranie kompletu **sześciu** otwiera nową, autorską ilustrację **Obserwatorium Lumo** z sześciogwiezdną konstelacją i lunetą. To ukryta scena odkrywania, a nie nowa oceniana lekcja.
+
+### Połączenie z Wielką Opowieścią
+
+W *Tajemnicy Zgaszonej Gwiazdy* symbole są dostępne także **bezpośrednio podczas zwiedzania scen rozdziałów**. Po znalezieniu sekretu w książce pocztówka natychmiast pojawia się w Żywym Miasteczku — i na odwrót. Pomiędzy obydwoma stronami można przechodzić bez utraty rozpoczętej historii.
+
+- **3 odkryte sekrety odpowiadające trzem miejscom wybranej trasy** odblokowują *tajny epilog* po zwykłym zakończeniu opowieści.
+- Każdy z **4 istniejących finałów** ma odrębny, autorski tekst tajnego epilogu. Są to dodatkowe strony istniejących zakończeń, **nie cztery nowe zakończenia ani nowa losowa trasa**.
+- Jeżeli otwarto też Obserwatorium Lumo, tajny epilog pokazuje jego ilustrację i nowy tekst fabularny.
+- Biblioteka Zakończeń przechowuje informację, czy podczas ukończenia danej drogi otwarto ukryty epilog oraz które trzy sekrety zostały wówczas znalezione. Dodano przyciski **„Przeczytaj ↗”** — dawne zakończenia, także te z epilogiem, można ponownie otwierać po restarcie przeglądarki.
+- Dawne historie z etapu 13 pozostają czytelne; nie przypisujemy im epilogów wstecz. Aby odblokować ukrytą stronę, należy przejść nową opowieść po odkryciu sekretów danej trasy.
+
+### Zasady edukacyjne i techniczne
+
+- Odkrywanie sekretu to **swobodna eksploracja, nie sprawdzian**. Samo kliknięcie gwiazdki nie zmienia `seen`, nie zapisuje sukcesu powtórkowego, nie oznacza samodzielnego rozpoznania ani nie udaje oceniania wymowy.
+- Przykładowe angielskie zdania wykorzystują istniejące konstrukcje i słowa z katalogu ośmiu krain. Dziecko może je odsłuchać, ale dopiero macierzyste krainy zapisują poznanie słów. Pytania w trzech rozdziałach opowieści nadal wymagają co najmniej dwóch **poznanych** wyrazów w wybranym miejscu.
+- Osobny klucz `nea2-town-secrets-v1` w pamięci przeglądarki zapisuje sześć pocztówek, kolejność odkryć i dostęp do obserwatorium. Stan nie nadpisuje `nea2-living-town-v1`, `nea2-town-story-v1` ani `nea2-passport-revision-v1`.
+- W dawnym kluczu opowieści nowe, opcjonalne pola `secretTrail`, `secretBonus`, `observatory` są dodawane **wyłącznie do nowo ukończonych historii**, bez niszczenia wcześniejszych zapisów.
+- Zachowano brak kont, reklam, nagrywania głosu, stopera i ocen. Dostępne są obsługa dotykowa/klawiatura, `aria-label`, układ mobilny, `prefers-reduced-motion` i oryginalne ilustracje SVG.
+- Źródłem materiału językowego pozostaje istniejący katalog paszportu opracowany według dołączonego poradnika NEA 2. Fabuła, sekrety i ilustracje są autorskie.
+
+**Nowe pliki:** `town/secrets.js` (katalog, niezależny zapis i warunki odkryć), `town/secrets-art.js` (oryginalne Obserwatorium Lumo). **Rozbudowane:** `town/index.html`, `town/style.css`, `town/app.js`, `town/story/index.html`, `town/story/style.css`, `town/story/app.js`, strona główna oraz niniejsza dokumentacja.
+
 ## Etap 13 — Tajemnica Zgaszonej Gwiazdy ✦🦉
 
 **Opowieść:** https://gawierzba.github.io/New-English-Adventure-2/town/story/
