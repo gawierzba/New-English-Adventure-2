@@ -7,23 +7,23 @@
  */
 (()=>{
 const VOCAB=[
- {en:"bear",pl:"niedźwiedź",icon:"🐻",group:"animal"},
- {en:"bird",pl:"ptak",icon:"🐦",group:"animal"},
- {en:"boy",pl:"chłopiec",icon:"👦",group:"animal"},
+ {en:"bear",pl:"niedźwiedź",icon:"🐻",group:"friend"},
+ {en:"bird",pl:"ptak",icon:"🐦",group:"friend"},
+ {en:"boy",pl:"chłopiec",icon:"👦",group:"friend"},
  {en:"climb",pl:"wspinać się",icon:"🧗",group:"action"},
  {en:"dance",pl:"tańczyć",icon:"💃",group:"action"},
- {en:"elephant",pl:"słoń",icon:"🐘",group:"animal"},
+ {en:"elephant",pl:"słoń",icon:"🐘",group:"friend"},
  {en:"fly",pl:"latać",icon:"🕊️",group:"action"},
  {en:"jump",pl:"skakać",icon:"🤸",group:"action"},
- {en:"monkey",pl:"małpa",icon:"🐒",group:"animal"},
+ {en:"monkey",pl:"małpa",icon:"🐒",group:"friend"},
  {en:"ride a bike",pl:"jeździć na rowerze",icon:"🚴",group:"action"},
  {en:"ride a horse",pl:"jeździć konno",icon:"🏇",group:"action"},
  {en:"run",pl:"biegać",icon:"🏃",group:"action"},
  {en:"sing",pl:"śpiewać",icon:"🎤",group:"action"},
- {en:"snake",pl:"wąż",icon:"🐍",group:"animal"},
+ {en:"snake",pl:"wąż",icon:"🐍",group:"friend"},
  {en:"swim",pl:"pływać",icon:"🏊",group:"action"},
  {en:"walk",pl:"chodzić",icon:"🚶",group:"action"},
- {en:"tiger",pl:"tygrys",icon:"🐅",group:"animal"}
+ {en:"tiger",pl:"tygrys",icon:"🐅",group:"friend"}
 ];
 const INTRO=["jump","run","monkey","bird","bear"];
 const $=id=>document.getElementById(id), root=$("stage"),KEY="ea2-jungle-v1",HOME_KEY="nea2-learned-v1";
@@ -37,7 +37,7 @@ let ranger=null,interview=null,mime=null,toastJob=null;
 function progress(w){const p=state.words[w.en]||{};return{seen:!!p.seen,found:Math.max(0,Number(p.found)||0),used:Math.max(0,Number(p.used)||0),spoken:Math.max(0,Number(p.spoken)||0),helps:Math.max(0,Number(p.helps)||0),last:Math.max(0,Number(p.last)||0)}}
 const learned=()=>VOCAB.filter(w=>progress(w).seen);
 const known=en=>!!byEn(en)&&progress(byEn(en)).seen;
-const animals=()=>VOCAB.filter(w=>w.group==="animal"&&progress(w).seen);
+const friends=()=>VOCAB.filter(w=>w.group==="friend"&&progress(w).seen);
 const actions=()=>VOCAB.filter(w=>w.group==="action"&&progress(w).seen);
 function syncMain(){try{const v=JSON.parse(localStorage.getItem(HOME_KEY)||"[]"),x=new Set(Array.isArray(v)?v.filter(s=>typeof s==="string"):[]);VOCAB.forEach(w=>{const p=progress(w);if(p.seen&&(p.found>0||p.used>0))x.add("5|"+w.en)});localStorage.setItem(HOME_KEY,JSON.stringify([...x]))}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}syncMain();renderProgress();renderVocab()}
@@ -103,7 +103,7 @@ function discover(){
  if(!progress(w).seen)mark(w,"seen");
  show(head("🔍 ODKRYWAM · "+(index+1)+"/"+session.length,"Co to za <em>supermoc?</em>","Poznaj nową nazwę zwierzęcia albo czynność. Zobacz obrazek, posłuchaj angielskiego słowa i odkryj tłumaczenie.")+
  dots(index,session.length)+
- '<div class="flash-grid"><div class="flash-photo"><span class="photo-stamp">'+(w.group==="animal"?"ANIMAL FRIEND":"ACTION POWER")+'</span><span class="photo-emoji" role="img" aria-label="'+w.pl+'">'+w.icon+'</span></div>'+
+ '<div class="flash-grid"><div class="flash-photo"><span class="photo-stamp">'+(w.group==="friend"?"ANIMAL OR PERSON":"ACTION POWER")+'</span><span class="photo-emoji" role="img" aria-label="'+w.pl+'">'+w.icon+'</span></div>'+
  '<div class="flash-copy"><span class="micro">ENGLISH</span><h4 lang="en">'+w.en+'</h4>'+btn("speak-word","♫ Posłuchaj wymowy","listen")+
  '<div class="translation">'+(reveal?'<span class="micro">PO POLSKU</span><strong>'+w.pl+'</strong>':btn("reveal","Pokaż, co to znaczy 👀",""))+'</div>'+
  '<p class="footnote">Powiedz słowo z Kiko. Możesz odsłuchać je tyle razy, ile potrzebujesz.</p></div></div>'+
@@ -113,9 +113,9 @@ function discover(){
  "Po angielsku mówimy "+w.en+". Posłuchaj i spróbuj powtórzyć.");
 }
 function gate(kind,n,place){
- const pool=kind==="animal"?animals():actions();
+ const pool=kind==="friend"?friends():actions();
  if(pool.length>=n)return pool;
- show(head("🌱 UCZYMY SIĘ STOPNIOWO","Zacznijmy od <em>odkrywania.</em>","Do tej zabawy warto poznać przynajmniej "+n+" "+(kind==="animal"?"nazwy zwierząt lub postaci.":"nazwy czynności."))+
+ show(head("🌱 UCZYMY SIĘ STOPNIOWO","Zacznijmy od <em>odkrywania.</em>","Do tej zabawy warto poznać przynajmniej "+n+" "+(kind==="friend"?"nazwy zwierząt lub postaci.":"nazwy czynności."))+
  '<div class="welcome-grid"><div class="welcome-illustration"><span>🔍🌿</span></div><div class="welcome-copy"><h4>Nie zgadujemy nieznanych słów!</h4><p>Kiko najpierw pokaże przykłady i wyjaśni je po polsku. Dopiero potem spróbujesz samodzielnie.</p><div class="action-row">'+btn("discover","Poznaj nowe słówka →")+'</div></div></div>',
  "Jeśli słowo jest nowe, najpierw je poznamy. Potem wróci w naszej zabawie.");
  return null;
@@ -163,7 +163,7 @@ function renderLab(){
  "Zmień czynność i obserwuj ruch. Gdy włączysz I can't, animacja zatrzyma się.");
 }
 function startRanger(){
- const a=gate("animal",3,"ranger");if(!a)return;
+ const a=gate("friend",3,"ranger");if(!a)return;
  const list=weak(a,Math.min(4,a.length),"found").map(w=>({target:w,options:shuffle([w,...shuffle(a.filter(x=>x.en!==w.en)).slice(0,2)])}));
  ranger={list,index:0,hint:0,wrong:null,done:false,assisted:false,intro:true};renderRanger();
 }
@@ -171,7 +171,7 @@ function renderRanger(){
  if(!ranger)return;
  if(ranger.intro){
  show(head("🐾 SZKOŁA TROPICIELI","Najpierw <em>obserwujemy!</em>","Zanim rozpoczniemy zagadki, obejrzyj trzech poznanych przyjaciół. Klikaj zdjęcia i posłuchaj ich angielskich nazw.")+
- '<div class="quiz-options">'+animals().slice(0,3).map(w=>'<button type="button" data-action="hear-animal" data-value="'+w.en+'"><span aria-hidden="true">'+w.icon+'</span><small lang="en">'+w.en+'</small><small>'+w.pl+'</small></button>').join("")+'</div>'+
+ '<div class="quiz-options">'+friends().slice(0,3).map(w=>'<button type="button" data-action="hear-animal" data-value="'+w.en+'"><span aria-hidden="true">'+w.icon+'</span><small lang="en">'+w.en+'</small><small>'+w.pl+'</small></button>').join("")+'</div>'+
  '<div class="notice"><b>Jak będzie wyglądać zabawa?</b> Kiko powie słowo po angielsku, a Ty wybierzesz odpowiedni obrazek. Zagadki nigdy nie pytają o niepoznane zwierzę.</div>'+
  '<div class="action-row">'+btn("start-ranger","Zaczynam tropienie →")+btn("discover","Wrócę do kart","outline")+'</div>',
  "Najpierw pokazuję trzy zwierzęta. Potem spróbujesz znaleźć je po angielskiej nazwie.");return;
@@ -183,12 +183,12 @@ function renderRanger(){
  const result=ranger.done?'<div class="feedback '+(ranger.assisted?"assisted":"good")+'">'+
  (ranger.assisted?"Znaleźliśmy to razem. ":"Brawo, samodzielny tropicielu! ")+
  '<span lang="en">'+q.target.en+'</span> to '+q.target.pl+'.</div>':
- ranger.wrong!==null?'<div class="feedback retry">To inny zwierzak. Popatrz na obrazki i spróbuj jeszcze raz!</div>':"";
+ ranger.wrong!==null?'<div class="feedback retry">To inny przyjaciel. Popatrz na obrazki i spróbuj jeszcze raz!</div>':"";
  const hint=ranger.hint===1?'<div class="tip"><strong>Podpowiedź:</strong> <span lang="en">'+q.target.en+'</span> oznacza '+q.target.pl+'.</div>':
  ranger.hint>=2?'<div class="tip"><strong>Wskazówka:</strong> Kiko podświetlił właściwe zdjęcie. Możesz je kliknąć lub poprosić o rozwiązanie.</div>':"";
  show(head("🐾 TROPICIEL · "+(ranger.index+1)+"/"+ranger.list.length,"Który to <em>przyjaciel?</em>","Posłuchaj nazwy i dotknij właściwego obrazka. Możesz prosić o podpowiedź bez żadnej kary.")+
  dots(ranger.index,ranger.list.length)+
- '<div class="question-scene"><span class="big" aria-hidden="true">🔎</span><div class="question"><span class="micro">FIND THE ANIMAL</span><h4 lang="en">Find the '+q.target.en+'!</h4>'+btn("hear-target","♫ Posłuchaj","outline")+'</div></div>'+
+ '<div class="question-scene"><span class="big" aria-hidden="true">🔎</span><div class="question"><span class="micro">FIND THE FRIEND</span><h4 lang="en">Find the '+q.target.en+'!</h4>'+btn("hear-target","♫ Posłuchaj","outline")+'</div></div>'+
  '<div class="quiz-options">'+opts+'</div>'+result+hint+
  '<div class="action-row">'+(ranger.done?btn("next-ranger",ranger.index===ranger.list.length-1?"Zadajmy pytania! →":"Kolejny trop →"):
  btn("ranger-hint",ranger.hint===0?"💡 Podpowiedź":ranger.hint===1?"💡 Druga wskazówka":"✨ Pokaż rozwiązanie","outline"))+
@@ -307,6 +307,6 @@ $("clear").addEventListener("click",()=>{
  state=fresh();try{const x=JSON.parse(localStorage.getItem(HOME_KEY)||"[]");if(Array.isArray(x))localStorage.setItem(HOME_KEY,JSON.stringify(x.filter(k=>!String(k).startsWith("5|"))))}catch(e){}
  save();session=pickSession();go(0);soundUI();toast("Postępy piątej krainy wyczyszczone.");
 });
-window.EnglishAdventureUnit5=Object.freeze({vocabulary:VOCAB.map(w=>w.en),animalCount:7,actionCount:10,inspect:()=>({seen:learned().map(w=>w.en),session:session.map(w=>w.en),independent:VOCAB.filter(w=>progress(w).found||progress(w).used).map(w=>w.en)}),newTrip});
+window.EnglishAdventureUnit5=Object.freeze({vocabulary:VOCAB.map(w=>w.en),animalCount:6,personCount:1,friendCount:7,actionCount:10,inspect:()=>({seen:learned().map(w=>w.en),session:session.map(w=>w.en),independent:VOCAB.filter(w=>progress(w).found||progress(w).used).map(w=>w.en)}),newTrip});
 session=pickSession();renderProgress();renderVocab();soundUI();go(0);
 })();
