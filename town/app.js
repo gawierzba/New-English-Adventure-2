@@ -267,6 +267,7 @@ function viewMap(){
  $("town").scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})
 }
 function welcomeAudio(){speak("Hello, Explorer! Welcome to our little town. Let's explore!")}
+function renderSound(){const el=$("sound-toggle");el.setAttribute("aria-pressed",String(sound));el.setAttribute("aria-label",sound?"Wyłącz wymowę":"Włącz wymowę");el.textContent=sound?"♫":"♪"}
 function toggleEvening(){
  state.night=!state.night;if(!E.save(localStorage,state))toast("Nie udało się zapisać pory dnia.");
  $("town-map").classList.toggle("is-night",state.night);renderMap()
@@ -295,7 +296,9 @@ $("visit-stage").addEventListener("click",e=>{
 });
 document.querySelectorAll(".map-place").forEach(b=>b.addEventListener("click",()=>travelTo(b.dataset.place)));
 $("owl-say").addEventListener("click",welcomeAudio);
+$("sound-toggle").addEventListener("click",()=>{sound=!sound;try{localStorage.setItem("nea2-town-sound-v1",sound?"on":"off")}catch(e){};if(!sound&&"speechSynthesis" in window)window.speechSynthesis.cancel();renderSound()});
 $("time-toggle").addEventListener("click",toggleEvening);
+$("reset-town").addEventListener("click",resetTown);
 $("print-journal").addEventListener("click",()=>{renderPrint();try{window.print()}catch(e){toast("Drukowanie jest niedostępne.")}});
 window.addEventListener("pageshow",()=>{if(!mission){drawAll();if(active)renderExplore()}});
 window.addEventListener("storage",e=>{if(!mission&&(e.key===E.KEY||P.CATALOG.some(x=>x.storage.key===e.key))){drawAll();if(active)renderExplore()}});
@@ -307,5 +310,5 @@ window.EA2LivingTown=Object.freeze({
 });
 $("town-art").innerHTML=A.town;
 $("town-map").classList.toggle("is-night",state.night);
-drawAll();renderMap();welcome();
+drawAll();renderMap();renderSound();welcome();
 })();
