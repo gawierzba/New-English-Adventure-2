@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#243d67">
+<meta name="description" content="Tajemnica Zgaszonej Gwiazdy — nowa opowieść Żywego Miasteczka New English Adventure 2. Trzy rozdziały, osiem tras, cztery zakończenia i zadania z poznanym słownictwem.">
+<meta property="og:title" content="Tajemnica Zgaszonej Gwiazdy · Żywe Miasteczko">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script defer src="../../passport/data.js"></script>
+<script defer src="../../passport/engine.js"></script>
+<script defer src="../engine.js"></script>
+<script defer src="../art.js"></script>
+<script defer src="../art-extra.js"></script>
+<script defer src="engine.js"></script>
+<script defer src="art.js"></script>
+<script defer src="app.js"></script>
+<title>Tajemnica Zgaszonej Gwiazdy · English Adventure 2</title>
+</head>
+<body>
+<a class="skip" href="#storybook">Przejdź do opowieści</a>
+<header class="topbar"><div class="container topbar-inner">
+ <a class="back" href="../">← <span>Żywe Miasteczko</span></a>
+ <a class="wordmark" href="../../">English <strong>Adventure</strong><small>THE STORYBOOK CHAPTER · 13</small></a>
+ <nav aria-label="Nawigacja"><a href="#storybook">Opowieść</a><a href="#history">Moje zakończenia</a><a class="passport-link" href="../../passport/">📘 Paszport</a></nav>
+ <button type="button" id="voice-toggle" aria-label="Wyłącz angielską wymowę" aria-pressed="true">♫</button>
+</div></header>
+<main>
+<section class="masthead"><div class="container hero-grid">
+ <div class="intro">
+  <div class="eyebrow"><span class="eyebrow-star">✦</span> WIELKA OPOWIEŚĆ · ETAP 13</div>
+  <h1>Tajemnica <em>Zgaszonej Gwiazdy.</em></h1>
+  <div class="chapter-rule"><span></span> ❦ <span></span></div>
+  <p>W Miasteczku pod Chmurami zgasło tajemnicze światło. Lumo potrzebuje Twojej pomocy, żeby odnaleźć trzy promienie gwiazdy, a potem zapalić ją na nowo.</p>
+  <div class="hero-meta"><span>📖 3 rozdziały</span><span>🧭 8 dróg</span><span>✨ 4 finały</span></div>
+  <a class="hero-cta" href="#storybook">Otwórz księgę przygód <span aria-hidden="true">↗</span></a>
+  <p class="quiet-promise">Nie ma limitu czasu ani ocen. Wyprawę można przerwać i kontynuować.</p>
+ </div>
+ <div class="hero-illustration" aria-label="Oryginalna ilustracja miasteczka w wieczornej scenerii"><div id="hero-art"></div><span class="hero-sticker">THE LOST STAR<br>✦ STORY 01</span></div>
+</div></section>
+<section class="story-progress-wrap"><div class="container">
+ <div class="story-progress-head"><span>✦ TWOJA PODRÓŻ PRZEZ MIASTECZKO</span><span id="progress-label">KSIĘGA JESZCZE ZAMKNIĘTA</span></div>
+ <div class="chapter-track" id="chapter-track" aria-label="Postęp rozdziałów">
+  <div class="chapter-track-item">I · WYBIERZ DROGĘ</div><div class="chapter-track-item">II · ZNAJDŹ PRZYJACIELA</div><div class="chapter-track-item">III · ZAPAL GWIAZDĘ</div>
+ </div>
+</div></section>
+<section class="storybook-section" id="storybook"><div class="container">
+ <div class="section-heading"><span>✦ KSIĘGA OPOWIEŚCI</span><h2>Każdy wybór <em>pisze Twoją historię.</em></h2><p>W tej samej opowieści można iść zupełnie inną drogą. Nie ma złych wyborów — każda trasa skrywa coś pięknego.</p></div>
+ <div class="book">
+  <div class="book-spine" aria-hidden="true"><span>✧</span><span>THE LITTLE STORYBOOK</span><span>✧</span></div>
+  <div class="book-page">
+    <div class="book-ribbon"><span>✦ THE LOST STAR</span><span id="page-kicker">PROLOGUE</span></div>
+    <div id="story-stage" class="story-stage" aria-live="polite"></div>
+    <div class="book-bottom"><span>EVERY LITTLE WORD OPENS A NEW DOOR</span><span id="page-number">01 / 04</span></div>
+  </div>
+ </div>
+ <div class="support-strip"><div class="support-owl" aria-hidden="true">🦉</div><p id="lumo-help">Nie ma złych wyborów. Możesz wracać do tej opowieści i odkrywać inne drogi.</p><button type="button" id="lumo-say">♫ Hello, Explorer!</button></div>
+</div></section>
+<section class="history-section" id="history"><div class="container">
+ <div class="section-heading"><span>✦ OSOBISTA BIBLIOTEKA</span><h2>Twoje <em>zakończenia.</em></h2><p>Każda ukończona podróż zostawia pamiątkę. Zajrzyj tu, aby zobaczyć, jakie historie powstały dzięki Twoim decyzjom.</p></div>
+ <div class="history-board"><div class="history-title"><span>THE STORYBOOK LIBRARY</span><span id="library-counter">0 / 4 zakończeń</span></div><div id="ending-gallery" class="ending-gallery"></div><div id="run-history" class="run-history"></div>
+ <div class="history-bottom"><span>✦ KAŻDA OPOWIEŚĆ JEST INNA</span><button id="print-story" type="button">🖨️ Drukuj kartę opowieści</button></div>
+ </div>
+ <div class="learning-note"><span>♡</span><p>Przygodę można przeżyć bez wcześniejszej nauki — wtedy odkrywa się historię, ale nie wykonuje sprawdzianu. Pytania pojawiają się wyłącznie przy słowach już poznanych w macierzystych krainach. Odpowiedź z pomocą też pozwala dotrzeć do finału.</p></div>
+</div></section>
+<section class="epilogue"><div class="container epilogue-inner"><div><span class="epilogue-tag">✦ RESZTA MIASTECZKA CZEKA</span><h2>Wróć na <em>jasną stronę miasta.</em></h2><p>Przystań, park, dworzec i teatr nadal zapraszają do swoich osobnych przygód.</p></div><a href="../" class="epilogue-button">🏡 Zwiedzaj Żywe Miasteczko ↗</a></div></section>
+</main>
+<footer><div class="container footer-inner"><span>English <strong>Adventure</strong> 2 · Tajemnica Zgaszonej Gwiazdy</span><a href="../../">Powrót do wszystkich krain ↑</a></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<section id="printable" class="printable" aria-hidden="true"><h1>MOJA OPOWIEŚĆ W ŻYWYM MIASTECZKU</h1><p>English Adventure 2 · Tajemnica Zgaszonej Gwiazdy</p><p>Imię odkrywcy: ______________________________________</p><div id="print-body"></div><p>Moje ulubione angielskie słowo: ___________________________</p></section>
+</body>
+</html>
