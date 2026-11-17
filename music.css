@@ -1,0 +1,42 @@
+/* English Adventure 2 · shared quiet soundtrack control. */
+#ea2-music-toggle{
+  box-sizing:border-box!important;position:fixed!important;z-index:2147482000!important;
+  left:15px!important;bottom:15px!important;display:inline-flex!important;align-items:center!important;
+  justify-content:center!important;gap:8px!important;min-height:44px!important;
+  min-width:124px!important;max-width:calc(100vw - 30px)!important;
+  margin:0!important;padding:9px 13px!important;border-radius:99px!important;
+  border:1.5px solid #ccdcd7!important;background:#fffdf6f2!important;
+  color:#426a7a!important;font-family:"Segoe UI",Arial,sans-serif!important;
+  font-size:12px!important;font-weight:800!important;letter-spacing:.1px!important;
+  line-height:1.25!important;white-space:nowrap!important;text-transform:none!important;
+  opacity:1!important;visibility:visible!important;box-shadow:0 5px 20px #24425e35!important;
+  -webkit-tap-highlight-color:transparent!important;cursor:pointer!important;
+  transform:none!important;filter:none!important;touch-action:manipulation!important;
+  -webkit-appearance:none!important;appearance:none!important
+}
+#ea2-music-toggle:hover{background:#f1faf5!important;border-color:#a4c5bf!important}
+#ea2-music-toggle:focus-visible{outline:3px solid #bb98c2!important;outline-offset:4px!important}
+#ea2-music-toggle:disabled{cursor:not-allowed!important;opacity:.65!important}
+#ea2-music-toggle .ea2-music-icon{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:22px!important;height:22px!important;border-radius:50%!important;
+  background:#e4f1ed!important;color:#4a8191!important;font-family:Georgia,serif!important;
+  font-size:20px!important;font-weight:normal!important
+}
+#ea2-music-toggle .ea2-music-caption{display:inline!important;font-size:12px!important;font-weight:800!important}
+#ea2-music-toggle .ea2-music-badge{
+  display:inline-block!important;min-width:31px!important;text-align:center!important;
+  font-size:9px!important;letter-spacing:.65px!important;font-weight:900!important;
+  border-radius:99px!important;padding:4px 5px!important;background:#edf3f0!important;color:#829c9e!important
+}
+#ea2-music-toggle[data-state="playing"] .ea2-music-icon{background:#d5efe0!important;color:#377e7e!important;animation:ea2-music-pulse 2.8s ease-in-out infinite!important}
+#ea2-music-toggle[data-state="playing"] .ea2-music-badge{background:#d7f0e3!important;color:#40826e!important}
+#ea2-music-toggle[data-state="off"]{background:#fbfafaef!important;border-color:#e0e1e0!important;color:#849399!important}
+#ea2-music-toggle[data-state="off"] .ea2-music-icon{background:#f0efef!important;color:#9aa5a9!important}
+#ea2-music-toggle[data-state="off"] .ea2-music-badge{background:#f1f1f1!important;color:#999!important}
+#ea2-music-toggle[data-state="waiting"] .ea2-music-badge{background:#fbf0d8!important;color:#a18c66!important}
+@keyframes ea2-music-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+@supports (bottom:env(safe-area-inset-bottom)){#ea2-music-toggle{bottom:calc(14px + env(safe-area-inset-bottom))!important;left:calc(14px + env(safe-area-inset-left))!important}}
+@media(max-width:420px){#ea2-music-toggle{min-width:104px!important;min-height:40px!important;padding:8px 10px!important;gap:6px!important;font-size:11px!important}}
+@media(prefers-reduced-motion:reduce){#ea2-music-toggle .ea2-music-icon{animation:none!important}}
+@media print{#ea2-music-toggle{display:none!important}}
