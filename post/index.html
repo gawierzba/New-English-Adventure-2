@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#314a67">
+<meta name="description" content="Gwiezdna Poczta Lumo — interaktywna nauka angielskiego w klasie 2. Czytaj bajkowe listy, słuchaj zdań, rozwiązuj zadania z poznanych słówek i zbieraj stemple.">
+<meta property="og:title" content="Gwiezdna Poczta Lumo · English Adventure 2">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script defer src="../passport/data.js"></script>
+<script defer src="../passport/engine.js"></script>
+<script defer src="engine.js"></script>
+<script defer src="art.js"></script>
+<script defer src="app.js"></script>
+<title>Gwiezdna Poczta Lumo · English Adventure 2</title>
+</head>
+<body>
+<a class="skip" href="#letters">Przejdź do listów</a>
+<header class="topbar"><div class="wrap topbar-inner">
+ <a class="back-link" href="../"><span aria-hidden="true">←</span> Mapa krain</a>
+ <a class="wordmark" href="../">English <strong>Adventure</strong><small>LUMO'S STAR POST · ETAP 15</small></a>
+ <nav class="navlinks" aria-label="Nawigacja poczty"><a href="#letters">Odebrane listy</a><a href="#maildesk">Biurko Lumo</a><a href="#stamps">Mój album</a><a href="../town/">🏡 Miasteczko</a></nav>
+ <button id="sound-toggle" class="sound-toggle" type="button" aria-pressed="true" aria-label="Wyłącz angielską wymowę">♫</button>
+</div></header>
+<main>
+<section class="hero" aria-labelledby="hero-heading">
+ <div class="wrap hero-grid">
+  <div class="hero-copy">
+   <span class="kicker"><span class="kicker-star">✧</span> ETAP 15 · NOWA PRZYGODA</span>
+   <h1 id="hero-heading">Gwiezdna <em>Poczta</em> Lumo<span class="hero-dot">.</span></h1>
+   <p class="hero-lead">W nocy do Obserwatorium Lumo dotarły cztery niezwykłe koperty. <strong>Otwórz listy od przyjaciół, posłuchaj ich wiadomości i odkryj, co chcą Ci powiedzieć po angielsku.</strong></p>
+   <div class="hero-actions"><a class="primary" href="#letters">Odbierz moje listy <span aria-hidden="true">↗</span></a><a class="secondary" href="#maildesk">Poznaj poczmistrzynię Lumo</a></div>
+   <p class="hero-trust">✦ Bez logowania, ocen i pośpiechu. Uczymy się tylko na poznanych słowach.</p>
+  </div>
+  <div class="hero-picture">
+   <div id="mailroom-art" class="mailroom-art-holder" aria-label="Ilustracja gwiezdnej sortowni Lumo"></div>
+   <div class="hero-address"><span>✉️</span><b>TO: LITTLE EXPLORER</b><small>FROM: THE STARRY TOWN</small></div>
+   <span class="hero-orbit orbit-a" aria-hidden="true">✦</span><span class="hero-orbit orbit-b" aria-hidden="true">✧</span>
+  </div>
+ </div>
+ <div class="hero-wave" aria-hidden="true"></div>
+</section>
+<section class="status-section"><div class="wrap status-grid">
+ <div><span class="stat-icon">💌</span><strong id="opened-count">0<small>/4</small></strong><span>otwarte listy</span></div>
+ <div><span class="stat-icon">✉️</span><strong id="finished-count">0<small>/4</small></strong><span>odpowiedziane listy</span></div>
+ <div><span class="stat-icon">🪄</span><strong id="stamp-count">0<small>/4</small></strong><span>pamiątkowe stemple</span></div>
+</div></section>
+<section id="letters" class="inbox-section" aria-labelledby="inbox-heading"><div class="wrap">
+ <div class="section-kicker">✦ THE INCOMING MAIL</div>
+ <div class="section-title-row"><div><h2 id="inbox-heading">Nowa poczta <em>już czeka.</em></h2><p>Przesuń kopertę wzrokiem, rozpoznaj nadawcę i otwórz list. Każdy przyjaciel ma swoją małą historię — i swoje angielskie słowa.</p></div><span class="postmark">4 NEW LETTERS<br><b>✧ FROM OUR FRIENDS</b></span></div>
+ <div id="letter-grid" class="letter-grid" aria-live="polite"></div>
+ <div class="post-route"><span>🦉</span><p>Nieznane słowa? Nie szkodzi! Możesz przeczytać każdy list. Gdy poznasz przynajmniej dwa jego słowa w odpowiedniej krainie, Lumo przygotuje krótką zagadkę. To właśnie ona prowadzi do stempla.</p></div>
+</div></section>
+<section id="maildesk" class="desk-section" aria-labelledby="desk-heading"><div class="wrap">
+ <div class="section-kicker">✦ LUMO'S WRITING DESK</div>
+ <div class="section-title-row"><div><h2 id="desk-heading">Biurko <em>Poczmistrzyni Lumo.</em></h2><p>Rozłóżmy list na biurku. Najpierw poznaj jego historię, później sprawdź, czy potrafisz odpowiedzieć po angielsku.</p></div><a class="desk-quiet-link" href="#letters">↑ Wróć do skrzynki</a></div>
+ <div class="desk-layout">
+  <div class="desk-paper">
+   <div class="desk-ribbon"><span>✉ STAR POST · PRIVATE LETTER</span><span id="desk-page-label">HELLO, EXPLORER!</span></div>
+   <div id="desk-stage" class="desk-stage" aria-live="polite"></div>
+   <div class="desk-footer"><span>EVERY LITTLE WORD MATTERS</span><span>✧ ENGLISH ADVENTURE 2</span></div>
+  </div>
+  <aside class="desk-aside">
+   <div class="lumo-aside"><div class="owl-face" aria-hidden="true">🦉</div><span class="aside-kicker">A LITTLE NOTE FROM LUMO</span><h3>You've got mail!</h3><p id="lumo-tip">Jestem Lumo! Wybierz jedną z czterech kopert. Możesz czytać bez ocen i bez pośpiechu.</p><button type="button" id="lumo-greeting">♫ Posłuchaj Lumo</button></div>
+   <div class="parent-note"><span>♡ DLA OPIEKUNA</span><p>Ważne: otwarcie listu nie oznacza poznania słowa. Zapisujemy tylko rzeczywiste odpowiedzi na zadania. Pomyłka lub podpowiedź daje próbę z pomocą, nie samodzielny sukces.</p></div>
+   <a class="passport-small" href="../passport/">📘 Mój Paszport Odkrywcy ↗</a>
+  </aside>
+ </div>
+</div></section>
+<section id="stamps" class="album-section" aria-labelledby="stamps-heading"><div class="wrap">
+ <div class="section-kicker">✦ MY LITTLE POSTAL ALBUM</div>
+ <div class="section-title-row"><div><h2 id="stamps-heading">Album czterech <em>pocztowych stempli.</em></h2><p>Każdy ukończony list zostawia odcisk w albumie. Wróć do swojej ulubionej koperty i spróbuj jeszcze raz — zawsze możesz zrobić to samodzielnie.</p></div><span class="album-count" id="album-label">0 / 4 ODKRYTE</span></div>
+ <div class="album-book"><div class="album-header"><span>LUMO'S POSTMARK COLLECTION</span><span>✦ ✦ ✦</span></div><div id="album-grid" class="album-grid"></div><div class="album-bottom"><span>THE LITTLE EXPLORER'S STAMP BOOK</span><span>✉ THE STORY CONTINUES</span></div></div>
+ <div class="coming-next"><span>✦ JESZCZE W DRODZE</span><p>To pierwszy rozdział Gwiezdnej Poczty. Kolejne przesyłki z pozostałych krain oraz układanie własnych wiadomości po angielsku to następna odsłona.</p><div><span>🤖 Robot Robi</span><span>👨‍👩‍👧 Album rodzinny</span><span>🪞 Portretownia</span><span>🌙 Nocny pokój</span></div></div>
+</div></section>
+<section class="leave-section"><div class="wrap leave-inner"><div><span>✦ OUR LITTLE WORLD</span><h2>Listy prowadzą <em>do kolejnych przygód.</em></h2><p>Od poczty do miasteczka, od miasteczka do ośmiu krain. Wszędzie czekają znajomi bohaterowie i nowe angielskie zdania.</p></div><div class="leave-links"><a href="../town/">🏡 Żywe Miasteczko ↗</a><a href="../town/story/">✨ Tajemnica Zgaszonej Gwiazdy ↗</a></div></div></section>
+</main>
+<footer><div class="wrap foot"><span>English <strong>Adventure</strong> 2 · Gwiezdna Poczta Lumo</span><a href="../">Powrót na mapę krain ↑</a></div></footer>
+<div id="toast" role="status" aria-live="polite" class="toast"></div>
+</body>
+</html>
