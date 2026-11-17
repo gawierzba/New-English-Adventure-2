@@ -294,3 +294,25 @@ dialog::backdrop{background:#292a58ad;backdrop-filter:blur(7px)}
 @media(max-width:650px){.town-story-home-link{margin:14px auto 0;font-size:10px;justify-content:center;max-width:100%}}
 @media(prefers-reduced-motion:reduce){.town-story-home-link{transition:none}}
 @media print{.town-story-home-link{display:none!important}}
+
+
+/* Stage 15 · Star Post: distinctive navy/porcelain feature on course homepage. */
+.starpost-feature{background:radial-gradient(ellipse at 95% 0,#587da240,transparent 61%),linear-gradient(126deg,#2d4266,#415d7e 58%,#688798);padding:88px 0 92px;color:#f9f7f2;overflow:hidden}
+.starpost-home-grid{display:grid;grid-template-columns:48% 52%;align-items:center;gap:38px}
+.starpost-home-image{position:relative;max-width:100%;height:332px;border:8px solid #fff7ec;border-radius:28px;background:#bad4ce;box-shadow:0 23px 39px #1d325368;transform:rotate(-3deg)}
+.starpost-home-image img{display:block;width:100%;height:100%;object-fit:cover;border-radius:18px}
+.starpost-home-stamp{position:absolute;bottom:-19px;right:-21px;display:grid;place-items:center;text-align:center;background:#fff8ed;border:3px dashed #c9acbe;border-radius:50%;height:103px;width:103px;transform:rotate(14deg);font-size:10px;line-height:1.5;letter-spacing:1px;color:#9d86a8;font-weight:1000;box-shadow:0 8px 20px #1e315a50}
+.starpost-home-copy{min-width:0}.starpost-home-copy>span{color:#c2dadc;letter-spacing:2px;font-size:10px;font-weight:1000}
+.starpost-home-copy h2{font-family:Georgia,serif;font-size:clamp(36px,4.4vw,54px);line-height:1.14;letter-spacing:-1.6px;color:#fffaf1;margin:16px 0 17px}
+.starpost-home-copy h2 em{color:#e7bccd;font-weight:500}
+.starpost-home-copy p{font-size:13px;line-height:1.82;color:#d6e2e5;max-width:600px;margin:0 0 18px}
+.starpost-home-senders{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px}
+.starpost-home-senders span{background:#ffffff18;color:#e7f0eb;border:1px solid #d5e6e648;border-radius:99px;padding:8px 12px;font-size:10px;font-weight:900}
+.starpost-home-button{display:inline-flex;align-items:center;justify-content:center;gap:11px;border-radius:99px;min-height:48px;background:#b2ded5;color:#355977;padding:12px 20px;font-size:12px;font-weight:1000;transition:transform .2s;box-shadow:0 6px 0 #7296a7}
+.starpost-home-button:hover{transform:translateY(-3px)}.starpost-home-copy>small{display:block;margin-top:19px;color:#bbd3d5;font-size:10px;line-height:1.6}
+@media(min-width:901px) and (max-width:1240px){.desktop-nav{gap:9px}.desktop-nav a{font-size:10px}}
+@media(max-width:990px){.starpost-home-grid{grid-template-columns:45% 55%;gap:24px}.starpost-home-image{height:300px}.starpost-home-copy h2{font-size:38px}.starpost-home-copy p{font-size:12px}}
+@media(max-width:720px){.starpost-feature{padding:70px 0 76px}.starpost-home-grid{display:flex;flex-direction:column;gap:39px}.starpost-home-image{width:calc(100% - 22px);height:265px;margin:auto;border-width:6px}.starpost-home-stamp{height:83px;width:83px;font-size:8px;right:-14px;bottom:-14px}.starpost-home-copy{text-align:center}.starpost-home-copy>span{font-size:9px;letter-spacing:1px}.starpost-home-copy h2{font-size:38px}.starpost-home-copy p{font-size:12px}.starpost-home-senders{justify-content:center}.starpost-home-button{font-size:11px}}
+@media(max-width:375px){.starpost-home-image{height:201px}.starpost-home-copy h2{font-size:32px}.starpost-home-button{padding:11px 13px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.starpost-home-button{transition:none!important}}
+@media print{.starpost-feature{display:none!important}}
