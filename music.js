@@ -66,9 +66,9 @@
       button.title="Muzyka gra cicho w tle. Kliknij, aby wyłączyć.";
       statusText.textContent="GRA";
     }else{
-      button.setAttribute("aria-label","Wyłącz muzykę w tle (gotowa po pierwszym dotknięciu strony)");
-      button.title="Melodia uruchomi się po pierwszym dotknięciu strony. Kliknij, aby ją wyłączyć.";
-      statusText.textContent="AUTO";
+      button.setAttribute("aria-label","Uruchom spokojną muzykę w tle");
+      button.title="Dotknij, aby usłyszeć muzykę. Melodia ruszy także po pierwszym dotknięciu strony.";
+      statusText.textContent="START";
     }
   }
   function freq(midi){return MIDI_A4*Math.pow(2,(midi-69)/12)}
@@ -165,6 +165,7 @@
   }
   function toggle(){
     if(!AC)return;
+    if(wanted&&!playing()){startFromGesture();setUI();return}
     wanted=!wanted;
     remember(wanted);
     if(wanted)startFromGesture();else stop();
