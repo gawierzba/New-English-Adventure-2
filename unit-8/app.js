@@ -235,6 +235,49 @@ function renderMirror(){
  ];
  show(parts.join(""),"Na pytanie What are you wearing? odpowiadamy I am wearing…")
 }
+function runway(){
+ if(!gate(1))return;
+ const look=E.listParts(state.look).length?E.cloneLook(state.look):E.randomLook(learned().map(w=>w.en),0,2);
+ show([
+  head("🌟 NASZ WIELKI FINAŁ","Witaj na <em>pokazie!</em>","Nie ma jury ani ocen. Pokaż własny strój, posłuchaj zdania i wydrukuj pamiątkę."),
+  '<div class="runway-card"><div class="runway-top"><strong>THE LITTLE FASHION SHOW ✦</strong><span>UNIT 08</span></div>',
+  actor(look,"studio","MY COLOURFUL LOOK"),
+  '<div class="runway-bottom"><strong>Designed with imagination ✿</strong>',
+  '<p lang="en">',E.describe(look),'</p><small>Every style tells a story. ♡</small></div></div>',
+  '<div class="actions">',
+  btn("runway-hear","♫ Posłuchaj stroju","soft"),
+  btn("runway-print","🖨️ Wydrukuj projekt","soft"),
+  btn("closet","Jeszcze coś zmienię","soft"),
+  btn("finish","Finał ośmiu krain →"),'</div>',
+  '<div class="notice"><b>Osiem krain!</b> W pierwszej odkrywaliśmy pojedyncze słowa. Teraz możemy tworzyć obrazy i całe angielskie zdania.</div>'
+ ].join(""),"Nasz pokaz to kolejny sposób opowiadania po angielsku.")
+}
+function printRunway(){
+ const l=E.listParts(state.look).length?E.cloneLook(state.look):E.randomLook(learned().map(w=>w.en),0,2);
+ $("print-look-art").innerHTML=E.wearSVG(l);
+ $("print-look-title").textContent=E.person(l.person).name+"'s outfit";
+ $("print-look-sentence").textContent=E.describe(l);
+ document.body.classList.add("print-look-mode");
+ try{window.print()}catch(e){toast("Drukowanie jest niedostępne.")}
+}
+function finish(){
+ const n=learned().length,ind=WORDS.filter(w=>{const p=progress(w);return p.found||p.said}).length,spoken=WORDS.filter(w=>progress(w).said).length;
+ show([
+  '<div class="finish"><div class="big">🦊🌟🎉</div><span class="stage-tag">✦ FINAŁ ÓSMEJ KRAINY</span>',
+  '<h3>You are a <em>designer!</em></h3>',
+  '<p>Poznałeś ubrania, zmieniałeś kolory, tworzyłeś stroje i próbowałeś mówić po angielsku. Najważniejsze są wszystkie próby!</p>',
+  '<div class="finish-stats"><span><b>',n,'/13</b> poznanych słów</span>',
+  '<span><b>',ind,'</b> samodzielnie ćwiczonych</span>',
+  '<span><b>',spoken,'</b> próbowanych w mówieniu</span></div>',
+  '<p>W kolejnej wyprawie wrócą nowe słowa i inne ubrania. Możesz odwiedzić też wszystkie wcześniejsze krainy.</p>',
+  '<div class="actions">',btn("new-trip","Nowa wyprawa z Felą ↗"),
+  btn("closet","Jeszcze jedna stylizacja","soft"),'</div></div>'
+ ].join(""),"Gratulacje — nasze osiem światów jest gotowych na kolejne odkrycia!")
+}
+function newTrip(){
+ state.visits++;session=chooseSession();save();go(0);
+ $("adventure").scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})
+}
 /* MODULES */
  /* EVENTS */
 session=chooseSession();counts();glossary();soundUI();go(0);
