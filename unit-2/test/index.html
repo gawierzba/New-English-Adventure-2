@@ -7,6 +7,7 @@
 <meta name="description" content="Przygotowanie do testu Family — klasa 2. 11 słówek, pisanie, I've got, Have you got, czytanie i opis rodziny. Losowe zadania bez powtórzeń w rundzie.">
 <title>Test FAMILY · Akademia małego odkrywcy · English Adventure 2</title>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="supplement.css">
 <style>
 :root{--ink:#30324c;--muted:#687088;--purple:#6750a4;--purple-dark:#47367d;--cream:#fffdf9;--line:#e8e3eb;--mint:#e3f6f0;--rose:#ffe5e2;--yellow:#fff1c6;--lilac:#eee8ff;--white:#fff;--shadow:0 18px 55px rgba(56,45,89,.09)}
 *{box-sizing:border-box}
@@ -119,6 +120,15 @@ h1 em,h2 em{font-style:normal;color:#8164b9}
 <section id="home" aria-labelledby="modes-heading">
   <h2 class="section-title" id="modes-heading">Wybierz swoją <em>misję!</em></h2>
   <p class="section-intro">Możesz zacząć od dowolnego zadania. W jednej rundzie wszystkie pytania będą inne. Nowa runda to nowe losowanie.</p>
+  <div class="family-study-route">
+    <h3>🌷 Ćwicz spokojnie — tak jak w książce</h3>
+    <p>Najpierw rozpoznaj osoby ze zdjęć, później spróbuj samodzielnie napisać słówka i zdania. Na koniec przeczytaj list i wyszukaj informacje. Każdy etap możesz powtórzyć tyle razy, ile potrzebujesz.</p>
+    <div class="route-points">
+      <div><strong>1 · Kto jest kim?</strong> Mama, tata, rodzeństwo, dziadkowie, ciocia, wujek i kuzynostwo.</div>
+      <div><strong>2 · Co mam, a czego nie mam?</strong> I've got… · I haven't got… · Have you got…?</div>
+      <div><strong>3 · Czytam i piszę</strong> Odpowiedzi Yes / No, list z tabelką i kilka zdań o rodzinie.</div>
+    </div>
+  </div>
   <div class="mode-grid">
     <button class="mode bg-lilac" data-mode="vocab" type="button"><span class="icon">🃏</span><strong>Rozpoznaj słówka</strong><small>Wybierz prawidłowe słowo po angielsku.</small><span class="meta">11 haseł</span></button>
     <button class="mode bg-mint" data-mode="spell" type="button"><span class="icon">✏️</span><strong>Napisz słówko</strong><small>Od „mama” do „kuzyn” — bez podpowiedzi.</small><span class="meta">11 haseł</span></button>
@@ -126,12 +136,15 @@ h1 em,h2 em{font-style:normal;color:#8164b9}
     <button class="mode bg-blue" data-mode="answer" type="button"><span class="icon">🎤</span><strong>Have you got…?</strong><small>Odpowiedz pisemnie: Yes / No.</small><span class="meta">10 pytań</span></button>
     <button class="mode bg-yellow" data-mode="read" type="button"><span class="icon">📖</span><strong>Czytam i rozumiem</strong><small>Trzy krótkie, wymyślone historie rodzinne.</small><span class="meta">9 pytań</span></button>
     <button class="mode bg-rose" data-mode="write" type="button"><span class="icon">💌</span><strong>My family</strong><small>Spróbuj samodzielnie napisać opis rodziny.</small><span class="meta">Pisanie tekstu</span></button>
+    <button class="mode bg-blue" data-extra="portraits" type="button"><span class="icon">📷</span><strong>Rodzinny album</strong><small>Rozpoznaj osoby i podpisz zdjęcia po angielsku.</small><span class="meta">11 zdjęć · słowa z testu</span></button>
+    <button class="mode bg-peach" data-extra="truth" type="button"><span class="icon">🔎</span><strong>Yes or No?</strong><small>Przeczytaj o rodzinie i oceń, czy zdania pasują.</small><span class="meta">8 zdań · jak w książce</span></button>
+    <button class="mode bg-mint" data-extra="letter" type="button"><span class="icon">✉️</span><strong>List i tabelka</strong><small>Wyszukaj imię, wiek, rodzinę i inne informacje w liście.</small><span class="meta">2 listy · ćwiczenie ze str. 17</span></button>
   </div>
   <div class="exam-promo">
     <div><strong>🏆 Próbny sprawdzian FAMILY</strong><p>14 zadań: pisownia, zdania, odpowiedzi i czytanie. Każde z 11 słów występuje jako hasło tylko raz.</p><div id="last-result" aria-live="polite"></div></div>
     <button type="button" id="start-exam">Rozpocznij test →</button>
   </div>
-  <aside class="note"><h3>📌 Mała ściąga przed testem</h3><p><code>I've got a sister.</code> — Mam siostrę. &nbsp; <code>I haven't got a brother.</code> — Nie mam brata.</p><p><code>Have you got an aunt?</code> — Czy masz ciocię? &nbsp; <code>Yes, I have.</code> / <code>No, I haven't.</code></p><p>Uwaga: piszemy <strong>an aunt</strong> i <strong>an uncle</strong>, ale <strong>a brother</strong> i <strong>a cousin</strong>. W ćwiczeniach możesz pomijać kropkę na końcu zdania.</p></aside>
+  <aside class="note"><h3>📌 Mała ściąga przed testem</h3><p><code>I've got a sister.</code> — Mam siostrę. &nbsp; <code>I haven't got a brother.</code> — Nie mam brata.</p><p><code>Have you got an aunt?</code> — Czy masz ciocię? &nbsp; <code>Yes, I have.</code> / <code>No, I haven't.</code></p><p>Uwaga: piszemy <strong>an aunt</strong> i <strong>an uncle</strong>, ale <strong>a brother</strong> i <strong>a cousin</strong>. W ćwiczeniach możesz pomijać kropkę na końcu zdania.</p><p><strong>Co jest obowiązkowe?</strong> 11 słów z wiadomości nauczyciela. <em>Big brother</em> i <em>baby sister</em> pochodzą z fotografowanych stron podręcznika, ale pojawiają się tylko jako dodatkowe przykłady do czytania — nie w dyktandzie słówek.</p></aside>
 </section>
 <section id="play" class="play" hidden aria-label="Ćwiczenie">
   <div class="play-shell">
@@ -246,12 +259,12 @@ function renderTask(){
  var head='<div class="counter">Zadanie '+n+' z '+total+(session.mode==='exam'?' · test próbny':'')+'</div><h2 class="question-title">'+esc(task.title)+'</h2><p class="question-sub">'+esc(task.subtitle)+'</p>';
  var body='';
  if(task.kind==='read'){
-  body='<div class="story" lang="en"><strong>📜 Historia do przeczytania</strong>'+esc(task.story)+'</div><div class="prompt-box"><div class="little">Pytanie</div><div class="polish" lang="en" style="font-size:25px">'+esc(task.prompt)+'</div></div>';
+  body='<div class="story" lang="en"><strong>📜 Historia do przeczytania</strong>'+esc(task.story)+'</div><div class="prompt-box"><div class="little">Pytanie</div><div class="polish" lang="pl" style="font-size:25px">'+esc(task.prompt)+'</div></div>';
  }else{
   body='<div class="prompt-box"><div class="little">'+(task.kind==='answer'?'Pytanie po angielsku':'Po polsku')+'</div><div class="polish" '+(task.kind==='answer'?'lang="en"':'')+'>'+esc(task.prompt)+'</div>'+(task.clue?'<div style="margin-top:12px;color:#7a6c94;font-size:14px">'+esc(task.clue)+'</div>':'')+'</div>';
  }
  if(task.kind==='choice'||task.kind==='read'){
-  body+='<div class="choice-grid">'+task.options.map(function(o){return '<button type="button" class="choice" data-choice="'+esc(o)+'" '+(task.kind==='read'?'lang="en"':'')+'>'+esc(o)+'</button>';}).join('')+'</div>';
+  body+='<div class="choice-grid">'+task.options.map(function(o){return '<button type="button" class="choice" data-choice="'+esc(o)+'" '+(task.kind==='read'?'lang="pl"':'')+'>'+esc(o)+'</button>';}).join('')+'</div>';
  }else{
   body+='<form class="answer-form" id="answer-form"><label for="typed" style="font-size:13px;font-weight:900;color:#655b85">Twoja odpowiedź po angielsku:</label><input id="typed" class="answer-field" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Napisz odpowiedź…" required maxlength="140" aria-describedby="feedback"><button class="primary" type="submit">Sprawdź odpowiedź ✓</button></form>';
  }
@@ -264,13 +277,13 @@ function answer(value,button){
  if(correct){
   if(session.attempts===0)session.score++;
   session.locked=true;fb.textContent=session.attempts===0?'🌟 Brawo! Dobra odpowiedź!':'👏 Udało się! Dobrze, że próbujesz dalej.';
-  fb.className='feedback visible good';lockQuestion(button);document.getElementById('show-answer').hidden=true;document.getElementById('listen-answer').hidden=false;document.getElementById('next').hidden=false;
+  fb.className='feedback visible good';lockQuestion(button);document.getElementById('show-answer').hidden=true;document.getElementById('listen-answer').hidden=session.deck[session.index].kind==='read';document.getElementById('next').hidden=false;
   return;
  }
  session.attempts++;
  if(button)button.classList.add('is-wrong');
  if(session.mode==='exam'){
-  session.locked=true;fb.textContent='Teraz zobacz prawidłową odpowiedź i zapamiętaj ją na przyszłość.';fb.className='feedback visible warn';reveal();lockQuestion();document.getElementById('listen-answer').hidden=false;document.getElementById('next').hidden=false;
+  session.locked=true;fb.textContent='Teraz zobacz prawidłową odpowiedź i zapamiętaj ją na przyszłość.';fb.className='feedback visible warn';reveal();lockQuestion();document.getElementById('listen-answer').hidden=session.deck[session.index].kind==='read';document.getElementById('next').hidden=false;
  }else{
   fb.textContent='Jeszcze nie. Możesz spróbować ponownie albo odsłonić odpowiedź.';fb.className='feedback visible warn';
   if(task.kind==='choice'||task.kind==='read'){if(button)button.disabled=true;}
@@ -287,7 +300,7 @@ function reveal(){
 }
 function showAnswer(){
  if(!session||session.locked)return;
- session.locked=true;reveal();lockQuestion();document.getElementById('show-answer').hidden=true;document.getElementById('listen-answer').hidden=false;document.getElementById('next').hidden=false;
+ session.locked=true;reveal();lockQuestion();document.getElementById('show-answer').hidden=true;document.getElementById('listen-answer').hidden=session.deck[session.index].kind==='read';document.getElementById('next').hidden=false;
  var fb=document.getElementById('feedback');fb.textContent='💡 Zapamiętaj odpowiedź. W nowej rundzie pojawi się ponownie.';fb.className='feedback visible info';
 }
 function save(key,value){try{localStorage.setItem(key,value);}catch(e){}}
@@ -301,7 +314,7 @@ function renderFinish(){
 }
 function renderWriting(){
  var draft=load('nea2-family-draft')||'';
- stage.innerHTML='<div class="counter">Twoja własna opowieść</div><h2 class="question-title">This is my family! 💌</h2><p class="question-sub">Napisz kilka zdań o <strong>swojej lub wymyślonej</strong> rodzinie. Nie musisz podawać prawdziwych imion. Możesz użyć słów mum, dad, sister, brother, aunt, uncle, cousin…</p><label for="story-input" style="display:block;font-size:14px;font-weight:900;margin:14px 0 9px">My family — mój tekst po angielsku</label><textarea class="write-area" id="story-input" spellcheck="false" placeholder="This is my family. I&#39;ve got…"></textarea><div class="button-row"><button class="primary" type="button" id="check-writing">Sprawdź listę kontrolną ✓</button><button class="secondary" type="button" id="example-writing">Pokaż przykład</button></div><p class="question-sub" style="margin-top:13px">Tekst zapisuje się tylko w tej przeglądarce. Samodzielna lista kontrolna nie sprawdza całej gramatyki.</p><div id="writing-result" aria-live="polite"></div>';
+ stage.innerHTML='<div class="counter">Twoja własna opowieść</div><h2 class="question-title">This is my family! 💌</h2><p class="question-sub">Napisz kilka zdań o <strong>swojej lub wymyślonej</strong> rodzinie. Nie musisz podawać prawdziwych imion. Możesz użyć słów mum, dad, sister, brother, aunt, uncle, cousin…</p><div class="family-study-route" style="margin:16px 0;padding:17px"><strong>✏️ Plan małego autora</strong><p>1. Zacznij od: <em>This is my family.</em></p><p>2. Napisz, kogo masz w rodzinie: <em>I&#39;ve got…</em></p><p>3. Jeśli pasuje do opowieści, napisz, kogo nie masz: <em>I haven&#39;t got…</em></p><p>4. Dodaj własne zdanie, np. <em>This is my mum.</em></p></div><label for="story-input" style="display:block;font-size:14px;font-weight:900;margin:14px 0 9px">My family — mój tekst po angielsku</label><textarea class="write-area" id="story-input" spellcheck="false" placeholder="This is my family. I&#39;ve got…"></textarea><div class="button-row"><button class="primary" type="button" id="check-writing">Sprawdź listę kontrolną ✓</button><button class="secondary" type="button" id="example-writing">Pokaż przykład</button></div><p class="question-sub" style="margin-top:13px">Tekst zapisuje się tylko w tej przeglądarce. Samodzielna lista kontrolna nie sprawdza całej gramatyki.</p><div id="writing-result" aria-live="polite"></div>';
  document.getElementById('story-input').value=draft;
 }
 function checkWriting(){
@@ -340,5 +353,6 @@ stage.addEventListener('click',function(ev){
 refreshLast();
 })();
 </script>
+<script defer src="supplement.js"></script>
 </body>
 </html>
