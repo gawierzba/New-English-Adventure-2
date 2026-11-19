@@ -67,7 +67,7 @@
         {id:'age',value:'seven',accepted:['seven','7']},
         {id:'hair',value:'red',accepted:['red','red hair']},
         {id:'eyes',value:'brown',accepted:['brown','brown eyes']},
-        {id:'family',value:'mum, dad, sister',accepted:['mum dad sister','mum and dad and sister','mum dad a sister','mum dad one sister']},
+        {id:'family',value:'mum, dad, sister',accepted:['mum dad sister','mum and dad and sister','mum dad a sister','mum dad one sister','mum dad sister cousin','mum and dad and sister cousin','mum dad a sister cousin']},
         {id:'pets',value:'a hamster',accepted:['hamster','a hamster','one hamster']}
       ]}
   ];
@@ -114,14 +114,12 @@
   function begin(mode){
     var collection;
     if(mode==='portraits')collection=shuffle(familyMembers);
-    else if(mode==='truth')collection=shuffle(profiles)[0].checks.map(function(pair){return {phrase:pair[0],correct:pair[1]?'Yes':'No'};});
+    else if(mode==='truth')collection=[];
     else collection=shuffle(letters).slice(0,2);
-    active={mode:mode,deck:collection,index:0,score:0,attempts:0,locked:false,
-      profile:mode==='truth'?null:null};
+    active={mode:mode,deck:collection,index:0,score:0,attempts:0,locked:false,profile:null};
     if(mode==='truth'){
-      var selected=profiles.find(function(p){return p.checks.some(function(q){return q[0]===collection[0].phrase;});});
-      /* Select one person and all statements from that person explicitly. */
-      selected=shuffle(profiles)[0];
+      /* Keep all questions in a round tied to one clearly identified character. */
+      var selected=shuffle(profiles)[0];
       active.profile=selected;
       active.deck=shuffle(selected.checks).map(function(q){return {phrase:q[0],correct:q[1]?'Yes':'No'};});
     }
