@@ -162,21 +162,21 @@ var WORDS=[
 var STORIES=[
  {text:"Hello! I'm Amy. This is my family. I've got a mum and a dad. I've got a brother. His name is Max. I haven't got a sister. My grandma is Sue. My friend is Mia.",
  qs:[
-  {q:'Has Amy got a sister?',opts:['Yes, she has.','No, she has not.','She has two sisters.'],correct:'No, she has not.'},
-  {q:'Who is Max?',opts:['Her brother.','Her dad.','Her granddad.'],correct:'Her brother.'},
-  {q:'Who is Mia?',opts:['Her aunt.','Her friend.','Her sister.'],correct:'Her friend.'}
+  {q:'Czy Amy ma siostrę?',opts:['Tak.','Nie.','Ma dwie siostry.'],correct:'Nie.'},
+  {q:'Kim jest Max?',opts:['Jej bratem.','Jej tatą.','Jej dziadkiem.'],correct:'Jej bratem.'},
+  {q:'Kim jest Mia?',opts:['Jej ciocią.','Jej przyjaciółką.','Jej siostrą.'],correct:'Jej przyjaciółką.'}
  ]},
  {text:"Hi! I'm Ben. I've got two sisters: Ella and Ruby. I haven't got a brother. My uncle is Tom. I've got a cousin. His name is Leo. I love my family!",
  qs:[
-  {q:'How many sisters has Ben got?',opts:['One.','Two.','Three.'],correct:'Two.'},
-  {q:'What is his uncle’s name?',opts:['Leo.','Tom.','Ben.'],correct:'Tom.'},
-  {q:'Who is Leo?',opts:['His cousin.','His brother.','His dad.'],correct:'His cousin.'}
+  {q:'Ile sióstr ma Ben?',opts:['Jedną.','Dwie.','Trzy.'],correct:'Dwie.'},
+  {q:'Jak nazywa się wujek Bena?',opts:['Leo.','Tom.','Ben.'],correct:'Tom.'},
+  {q:'Kim jest Leo?',opts:['Jego kuzynem.','Jego bratem.','Jego tatą.'],correct:'Jego kuzynem.'}
  ]},
  {text:"My name is Lily. I've got a grandma and a granddad. I've got an aunt. Her name is Anna. I haven't got an uncle. My friend is Josh. We are happy!",
  qs:[
-  {q:'Has Lily got an uncle?',opts:['Yes, she has.','No, she has not.','She has two uncles.'],correct:'No, she has not.'},
-  {q:'Who is Anna?',opts:['Her sister.','Her grandma.','Her aunt.'],correct:'Her aunt.'},
-  {q:'Has Lily got a grandma and a granddad?',opts:['Yes, she has.','No, she has not.','Only a granddad.'],correct:'Yes, she has.'}
+  {q:'Czy Lily ma wujka?',opts:['Tak.','Nie.','Ma dwóch wujków.'],correct:'Nie.'},
+  {q:'Kim jest Anna?',opts:['Jej siostrą.','Jej babcią.','Jej ciocią.'],correct:'Jej ciocią.'},
+  {q:'Czy Lily ma babcię i dziadka?',opts:['Tak, oboje.','Nie, żadnego z nich.','Tylko dziadka.'],correct:'Tak, oboje.'}
  ]}
 ];
 var MODE_NAMES={vocab:'Rozpoznaj słówka',spell:'Napisz słówko',sentence:"I've got / I haven't got",answer:'Have you got?',read:'Czytam i rozumiem',exam:'Próbny sprawdzian'};
@@ -208,7 +208,7 @@ function pickSentence(word,negative){
 function pickAnswer(word,yes){
  return {kind:'answer',title:'Odpowiedz całym zdaniem',subtitle:'Wyobraź sobie, że jesteś Nelą. Napisz odpowiedź po angielsku.',word:word,prompt:'Have you got '+word.art+' '+word.en+'?',clue:'W opowieści Nela '+(yes?'ma':'nie ma')+' '+word.acc+'.',correct:yes?'Yes, I have.':"No, I haven't."};
 }
-function storyTasks(s){return s.qs.map(function(q){return {kind:'read',title:'Przeczytaj i zaznacz odpowiedź',subtitle:'Najpierw przeczytaj historyjkę po angielsku.',story:s.text,prompt:q.q,options:shuffle(q.opts),correct:q.correct};});}
+function storyTasks(s){return s.qs.map(function(q){return {kind:'read',title:'Przeczytaj i zaznacz odpowiedź',subtitle:'Przeczytaj tekst po angielsku i wybierz odpowiedź po polsku.',story:s.text,prompt:q.q,options:shuffle(q.opts),correct:q.correct};});}
 function build(mode){
  if(mode==='vocab')return shuffle(WORDS).map(pickChoice);
  if(mode==='spell')return shuffle(WORDS).map(pickSpell);
