@@ -226,7 +226,7 @@ function build(mode){
 function view(which){
  var active=which==='home';home.hidden=!active;play.hidden=active;
  if(active){session=null;refreshLast();}
- document.getElementById('start').scrollIntoView({behavior:'smooth',block:'start'});
+ (active?document.getElementById('start'):play).scrollIntoView({behavior:'smooth',block:'start'});
 }
 function start(mode){
  if(mode==='write'){view('play');document.getElementById('play-tag').textContent='My family · własny opis';progressFill.style.width='0%';progress.setAttribute('aria-valuenow','0');renderWriting();return;}
@@ -255,7 +255,7 @@ function renderTask(){
  }else{
   body+='<form class="answer-form" id="answer-form"><label for="typed" style="font-size:13px;font-weight:900;color:#655b85">Twoja odpowiedź po angielsku:</label><input id="typed" class="answer-field" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Napisz odpowiedź…" required maxlength="140" aria-describedby="feedback"><button class="primary" type="submit">Sprawdź odpowiedź ✓</button></form>';
  }
- stage.innerHTML=head+body+'<div class="feedback" id="feedback" role="status" aria-live="polite"></div><div id="answer-key" hidden></div><div class="controls-bottom"><button type="button" class="secondary" id="show-answer">💡 Pokaż odpowiedź</button><button type="button" class="primary" id="next" hidden>'+(n===total?'Zobacz wynik →':'Następne zadanie →')+'</button></div>';
+ stage.innerHTML=head+body+'<div class="feedback" id="feedback" role="status" aria-live="polite"></div><div id="answer-key" hidden></div><div class="controls-bottom"><button type="button" class="secondary" id="show-answer">💡 Pokaż odpowiedź</button><button type="button" class="secondary" id="listen-answer" hidden>🔊 Posłuchaj</button><button type="button" class="primary" id="next" hidden>'+(n===total?'Zobacz wynik →':'Następne zadanie →')+'</button></div>';
  var input=document.getElementById('typed');if(input&&session.mode!=='exam')input.focus({preventScroll:true});
 }
 function answer(value,button){
@@ -264,13 +264,13 @@ function answer(value,button){
  if(correct){
   if(session.attempts===0)session.score++;
   session.locked=true;fb.textContent=session.attempts===0?'🌟 Brawo! Dobra odpowiedź!':'👏 Udało się! Dobrze, że próbujesz dalej.';
-  fb.className='feedback visible good';lockQuestion(button);document.getElementById('show-answer').hidden=true;document.getElementById('next').hidden=false;
+  fb.className='feedback visible good';lockQuestion(button);document.getElementById('show-answer').hidden=true;document.getElementById('listen-answer').hidden=false;document.getElementById('next').hidden=false;
   return;
  }
  session.attempts++;
  if(button)button.classList.add('is-wrong');
  if(session.mode==='exam'){
-  session.locked=true;fb.textContent='Teraz zobacz prawidłową odpowiedź i zapamiętaj ją na przyszłość.';fb.className='feedback visible warn';reveal();lockQuestion();document.getElementById('next').hidden=false;
+  session.locked=true;fb.textContent='Teraz zobacz prawidłową odpowiedź i zapamiętaj ją na przyszłość.';fb.className='feedback visible warn';reveal();lockQuestion();document.getElementById('listen-answer').hidden=false;document.getElementById('next').hidden=false;
  }else{
   fb.textContent='Jeszcze nie. Możesz spróbować ponownie albo odsłonić odpowiedź.';fb.className='feedback visible warn';
   if(task.kind==='choice'||task.kind==='read'){if(button)button.disabled=true;}
@@ -287,7 +287,7 @@ function reveal(){
 }
 function showAnswer(){
  if(!session||session.locked)return;
- session.locked=true;reveal();lockQuestion();document.getElementById('show-answer').hidden=true;document.getElementById('next').hidden=false;
+ session.locked=true;reveal();lockQuestion();document.getElementById('show-answer').hidden=true;document.getElementById('listen-answer').hidden=false;document.getElementById('next').hidden=false;
  var fb=document.getElementById('feedback');fb.textContent='💡 Zapamiętaj odpowiedź. W nowej rundzie pojawi się ponownie.';fb.className='feedback visible info';
 }
 function save(key,value){try{localStorage.setItem(key,value);}catch(e){}}
@@ -329,6 +329,7 @@ stage.addEventListener('click',function(ev){
  var b=ev.target.closest('button');if(!b)return;
  if(b.hasAttribute('data-choice')){answer(b.getAttribute('data-choice'),b);return;}
  if(b.id==='show-answer'){showAnswer();return;}
+ if(b.id==='listen-answer'&&session){speak(session.deck[session.index].correct);return;}
  if(b.id==='next'&&session){session.index++;renderTask();return;}
  if(b.id==='again'&&session){start(session.mode);return;}
  if(b.id==='go-home'){view('home');return;}
