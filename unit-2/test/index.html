@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f0ff">
+<meta name="description" content="Przygotowanie do testu Family — klasa 2. 11 słówek, pisanie, I've got, Have you got, czytanie i opis rodziny. Losowe zadania bez powtórzeń w rundzie.">
+<title>Test FAMILY · Akademia małego odkrywcy · English Adventure 2</title>
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#30324c;--muted:#687088;--purple:#6750a4;--purple-dark:#47367d;--cream:#fffdf9;--line:#e8e3eb;--mint:#e3f6f0;--rose:#ffe5e2;--yellow:#fff1c6;--lilac:#eee8ff;--white:#fff;--shadow:0 18px 55px rgba(56,45,89,.09)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#f4f0ff 0%,#fffaf3 360px,#fffdfb 100%);color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+button,input,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.6;cursor:default}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:4px solid #f6b65a;outline-offset:3px}
+.container{width:min(1070px,calc(100% - 34px));margin:auto}
+.skip{position:absolute;top:-90px;left:12px;background:#fff;padding:10px 16px;z-index:20}.skip:focus{top:10px}
+nav{border-bottom:1px solid #e8e1f4;background:rgba(255,255,255,.84)}
+.nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:11px;font-size:17px;font-weight:900;letter-spacing:-.6px;color:#51407f}.brand .brand-mark{display:grid;place-items:center;width:37px;height:37px;background:#ece4ff;border-radius:13px;font-size:20px}.brand span small{display:block;font-size:10px;letter-spacing:1.8px;color:#86809b;font-weight:800}
+.nav-links{display:flex;gap:10px;flex-wrap:wrap}.nav-links a{padding:10px 14px;border-radius:50px;background:#fff;border:1px solid #ede7f3;font-size:12px;font-weight:900}
+.hero{padding:64px 0 42px;position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:35px;align-items:center}
+.eyebrow{font-size:12px;font-weight:900;letter-spacing:2px;color:#8871bd;text-transform:uppercase}
+h1{font-size:clamp(42px,6.1vw,74px);letter-spacing:-3.5px;line-height:1.05;margin:18px 0;color:#35304b}
+h1 em,h2 em{font-style:normal;color:#8164b9}
+.hero p{font-size:17px;max-width:620px;color:#65677d}
+.hero-pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:25px}.hero-pills span{border:1px solid #e5deed;background:#fff;padding:7px 12px;border-radius:30px;font-size:12px;font-weight:800}
+.album-art{min-height:320px;position:relative;display:grid;place-items:center}
+.art-orbit{position:absolute;inset:19px;background:radial-gradient(circle,#f4daee 0%,#eadfff 58%,transparent 72%);border-radius:50%}
+.photo{width:142px;height:166px;padding:11px 11px 23px;background:#fff;border:2px solid #eee6ef;border-radius:12px;position:absolute;box-shadow:0 18px 32px rgba(81,61,100,.15);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px}
+.photo span{font-size:67px}.photo b{font-size:12px;letter-spacing:1.2px;color:#6d6490}
+.photo:nth-of-type(2){left:4%;top:13%;transform:rotate(-13deg);background:#fff9f0}.photo:nth-of-type(3){right:4%;top:8%;transform:rotate(10deg);background:#f0fff9}.photo:nth-of-type(4){left:31%;bottom:0;transform:rotate(3deg);background:#fff4fc}
+.art-spark{position:absolute;font-size:28px;color:#ffc268}.art-spark.a{left:23%;top:0}.art-spark.b{right:8%;bottom:0}
+.section-title{margin:25px 0 6px;text-align:center;font-size:clamp(25px,3.5vw,38px);letter-spacing:-1.3px;line-height:1.2}
+.section-intro{text-align:center;margin:0 auto 28px;color:#73758b;max-width:650px}
+.mode-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-bottom:32px}
+.mode{border:2px solid rgba(74,56,112,.09);border-radius:23px;box-shadow:0 7px 0 rgba(49,37,83,.055);text-align:left;padding:22px;min-height:188px;transition:transform .15s,box-shadow .15s;color:var(--ink)}
+.mode:hover{transform:translateY(-4px);box-shadow:0 12px 22px rgba(75,55,108,.12)}
+.mode strong{display:block;font-size:21px;margin:12px 0 5px;line-height:1.25;letter-spacing:-.5px}
+.mode small{display:block;font-size:13px;color:#595c74}
+.mode .meta{display:inline-block;font-size:11px;margin-top:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#575172}
+.mode .icon{font-size:32px}
+.bg-lilac{background:#eee7ff}.bg-mint{background:#d9f3e8}.bg-peach{background:#ffe7d8}.bg-blue{background:#e1efff}.bg-yellow{background:#fff0c9}.bg-rose{background:#ffe0ea}
+.exam-promo{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px 28px;border-radius:25px;background:#484077;color:#fff;margin:8px 0 28px;box-shadow:var(--shadow)}
+.exam-promo strong{font-size:23px;display:block}.exam-promo p{margin:4px 0 0;color:#e6e0ff;font-size:13px}
+.exam-promo button,.main-button{border:0;border-radius:16px;background:#ffc96c;color:#3b3150;font-weight:900;padding:15px 22px;white-space:nowrap}
+.note{background:#fff;border:1px solid #ece8f0;border-radius:22px;padding:22px;margin-bottom:42px}
+.note h3{margin:0 0 8px;font-size:17px}.note p{margin:8px 0;font-size:14px;color:#63647b}
+.note code{font-family:inherit;background:#f1ebff;border-radius:7px;padding:2px 6px;color:#5a428e}
+.play{padding:0 0 60px}
+.play-shell{max-width:830px;margin:0 auto;background:#fff;border:2px solid #e7e0f0;box-shadow:var(--shadow);border-radius:26px;overflow:hidden}
+.play-top{padding:18px 25px;background:#f2edff;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.play-tag{font-size:12px;color:#574783;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.play-top button{border:1px solid #d9ceec;background:white;border-radius:12px;padding:9px 12px;font-size:13px;font-weight:800}
+.progress-track{height:9px;background:#eeeaf4}.progress-track span{height:100%;background:linear-gradient(90deg,#71cdb3,#9277d5);display:block;transition:width .25s}
+.play-body{padding:clamp(21px,5vw,40px)}
+.counter{font-size:12px;color:#7b6e9b;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.question-title{font-size:clamp(24px,4.3vw,38px);line-height:1.22;letter-spacing:-1.1px;margin:14px 0 8px}
+.question-sub{color:#727488;margin:0 0 17px;font-size:14px}
+.prompt-box{background:#f4f0ff;border:1px solid #e7def9;border-radius:20px;padding:20px 24px;margin:16px 0}
+.prompt-box .polish{font-size:clamp(24px,4.4vw,39px);font-weight:900;color:#54428b;letter-spacing:-1px;line-height:1.2}
+.prompt-box .little{font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:900;color:#8e7fba;margin-bottom:6px}
+.story{background:#f0faf6;border:1px solid #d5eee3;border-left:6px solid #72c4b2;border-radius:17px;padding:22px 24px;margin:20px 0;font-size:17px;line-height:1.85}
+.story strong{display:block;font-size:11px;letter-spacing:1.5px;color:#4d8e7a;text-transform:uppercase;margin-bottom:8px}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.choice{background:#faf8ff;border:2px solid #e6e0f1;border-radius:15px;padding:16px;text-align:center;color:#484261;font-size:18px;font-weight:850;min-height:65px}
+.choice:hover:not(:disabled){background:#eee7ff;border-color:#bcb0e1}
+.choice.is-correct{background:#e1f6ec;border-color:#74c8a2}.choice.is-wrong{background:#ffe8e5;border-color:#f5a9a4}
+.answer-field{width:100%;border:2px solid #dad4e8;border-radius:16px;font-size:21px;padding:16px 18px;background:#fff}
+.answer-field:focus{border-color:#866bc5}
+.answer-form{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.primary{border:0;border-radius:13px;background:#6b54a6;color:#fff;font-weight:900;padding:13px 20px}
+.secondary{border:1px solid #dad3ec;border-radius:13px;background:#fff;color:#574781;font-weight:800;padding:12px 18px}
+.feedback{min-height:28px;margin-top:18px;padding:12px 15px;border-radius:13px;font-weight:800;font-size:15px;display:none}
+.feedback.visible{display:block}.feedback.good{background:#e5f6ee;color:#24634b}.feedback.warn{background:#fff0e8;color:#915038}.feedback.info{background:#f2eeff;color:#5c458b}
+.answer-key{background:#fff8e6;border-left:4px solid #e7b258;padding:13px 17px;margin-top:13px;border-radius:8px;font-weight:800}
+.controls-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+.controls-bottom .secondary{font-size:13px}.controls-bottom .primary{margin-left:auto}
+.finish{text-align:center;padding:12px 4px 8px}.finish .medal{font-size:68px}.finish h2{font-size:36px;letter-spacing:-1px;margin:8px 0}.finish .score{font-size:50px;font-weight:950;color:#6f56a8}.finish p{color:#666982;max-width:520px;margin:6px auto 20px}
+.footer{padding:30px 0 40px;border-top:1px solid #efe8f2;color:#8a8794;font-size:12px;text-align:center}
+.write-area{resize:vertical;width:100%;border:2px solid #ddd6e9;border-radius:17px;padding:15px 18px;min-height:170px;font-size:18px;line-height:1.7}
+.checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:15px 0}
+.checkitem{padding:12px;border-radius:12px;background:#f5f2f9;color:#6d6b7f;font-size:14px;font-weight:750}
+.checkitem.yes{background:#e3f6ef;color:#2e7058}
+.example{margin-top:15px;padding:16px;background:#f8f4ff;border-radius:12px;color:#655b81;font-size:14px}
+#last-result{font-size:12px;color:#69647f;margin-top:8px;min-height:17px}
+[hidden]{display:none!important}
+@media(max-width:760px){.hero{padding:40px 0 18px}.hero-grid{grid-template-columns:1fr}.album-art{display:none}.mode-grid{grid-template-columns:1fr 1fr}.mode{min-height:165px;padding:18px}.exam-promo{align-items:stretch;flex-direction:column}.nav-inner{min-height:65px}.brand{font-size:14px}.nav-links a{font-size:11px;padding:9px}}
+@media(max-width:480px){h1{letter-spacing:-2px}.mode-grid{grid-template-columns:1fr}.mode{min-height:0}.mode .meta{margin-top:5px}.choice-grid{grid-template-columns:1fr}.checklist{grid-template-columns:1fr}.play-top{padding:13px 16px}.brand span small{font-size:8px}.nav-links a:first-child{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media print{nav,.hero,.mode-grid,.exam-promo,.note,.footer,.play-top,.controls-bottom,.button-row{display:none!important}.play-shell{box-shadow:none;border:0}body{background:white}}
+</style>
+</head>
+<body>
+<a class="skip" href="#start">Przejdź do ćwiczeń</a>
+<nav aria-label="Nawigacja">
+  <div class="container nav-inner">
+    <a class="brand" href="../../index.html"><span class="brand-mark">✿</span><span>English Adventure 2<small>AKADEMIA ODKRYWCY</small></span></a>
+    <div class="nav-links"><a href="../">← Kraina rodziny</a><a href="../../index.html#mapa">Mapa przygód ↗</a></div>
+  </div>
+</nav>
+<main>
+<section class="hero" id="start">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">✦ Przed sprawdzianem · Unit 2 · My family</div>
+      <h1>Rodzinna misja.<br><em>Test FAMILY!</em></h1>
+      <p>Poćwicz słówka, pisanie całych zdań, pytania i czytanie. Zadania losują się w innej kolejności — każde hasło występuje tylko raz w danej rundzie.</p>
+      <div class="hero-pills"><span>✏️ Pisz samodzielnie</span><span>🔀 Bez powtórek w rundzie</span><span>🌟 Klasa 2</span></div>
+    </div>
+    <div class="album-art" aria-hidden="true"><div class="art-orbit"></div><div class="photo"><span>👩</span><b>MUM</b></div><div class="photo"><span>👨</span><b>DAD</b></div><div class="photo"><span>👧</span><b>SISTER</b></div><div class="art-spark a">✦</div><div class="art-spark b">✳</div></div>
+  </div>
+</section>
+<div class="container">
+<section id="home" aria-labelledby="modes-heading">
+  <h2 class="section-title" id="modes-heading">Wybierz swoją <em>misję!</em></h2>
+  <p class="section-intro">Możesz zacząć od dowolnego zadania. W jednej rundzie wszystkie pytania będą inne. Nowa runda to nowe losowanie.</p>
+  <div class="mode-grid">
+    <button class="mode bg-lilac" data-mode="vocab" type="button"><span class="icon">🃏</span><strong>Rozpoznaj słówka</strong><small>Wybierz prawidłowe słowo po angielsku.</small><span class="meta">11 haseł</span></button>
+    <button class="mode bg-mint" data-mode="spell" type="button"><span class="icon">✏️</span><strong>Napisz słówko</strong><small>Od „mama” do „kuzyn” — bez podpowiedzi.</small><span class="meta">11 haseł</span></button>
+    <button class="mode bg-peach" data-mode="sentence" type="button"><span class="icon">💬</span><strong>I've got…</strong><small>Pisz zdania: mam / nie mam, a / an.</small><span class="meta">10 zdań</span></button>
+    <button class="mode bg-blue" data-mode="answer" type="button"><span class="icon">🎤</span><strong>Have you got…?</strong><small>Odpowiedz pisemnie: Yes / No.</small><span class="meta">10 pytań</span></button>
+    <button class="mode bg-yellow" data-mode="read" type="button"><span class="icon">📖</span><strong>Czytam i rozumiem</strong><small>Trzy krótkie, wymyślone historie rodzinne.</small><span class="meta">9 pytań</span></button>
+    <button class="mode bg-rose" data-mode="write" type="button"><span class="icon">💌</span><strong>My family</strong><small>Spróbuj samodzielnie napisać opis rodziny.</small><span class="meta">Pisanie tekstu</span></button>
+  </div>
+  <div class="exam-promo">
+    <div><strong>🏆 Próbny sprawdzian FAMILY</strong><p>14 zadań: pisownia, zdania, odpowiedzi i czytanie. Każde z 11 słów występuje jako hasło tylko raz.</p><div id="last-result" aria-live="polite"></div></div>
+    <button type="button" id="start-exam">Rozpocznij test →</button>
+  </div>
+  <aside class="note"><h3>📌 Mała ściąga przed testem</h3><p><code>I've got a sister.</code> — Mam siostrę. &nbsp; <code>I haven't got a brother.</code> — Nie mam brata.</p><p><code>Have you got an aunt?</code> — Czy masz ciocię? &nbsp; <code>Yes, I have.</code> / <code>No, I haven't.</code></p><p>Uwaga: piszemy <strong>an aunt</strong> i <strong>an uncle</strong>, ale <strong>a brother</strong> i <strong>a cousin</strong>. W ćwiczeniach możesz pomijać kropkę na końcu zdania.</p></aside>
+</section>
+<section id="play" class="play" hidden aria-label="Ćwiczenie">
+  <div class="play-shell">
+    <div class="play-top"><span class="play-tag" id="play-tag">Ćwiczenie</span><button type="button" id="back">← Wybór misji</button></div>
+    <div class="progress-track" role="progressbar" aria-label="Postęp rundy" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><span id="progress-fill" style="width:0%"></span></div>
+    <div class="play-body" id="stage" aria-live="polite"></div>
+  </div>
+</section>
+</div>
+</main>
+<footer class="footer"><div class="container">Nieoficjalne, autorskie ćwiczenia na podstawie zakresu testu i zagadnień Unit 2. Bez logowania; zapis tekstu i ostatniego wyniku działa tylko w tej przeglądarce.</div></footer>
+<script>
+(function(){
+'use strict';
+var WORDS=[
+ {en:'mum',pl:'mama',acc:'mamę',art:'a',pic:'👩'},
+ {en:'dad',pl:'tata',acc:'tatę',art:'a',pic:'👨'},
+ {en:'sister',pl:'siostra',acc:'siostrę',art:'a',pic:'👧'},
+ {en:'brother',pl:'brat',acc:'brata',art:'a',pic:'👦'},
+ {en:'grandma',pl:'babcia',acc:'babcię',art:'a',pic:'👵'},
+ {en:'granddad',pl:'dziadek',acc:'dziadka',art:'a',pic:'👴'},
+ {en:'aunt',pl:'ciocia',acc:'ciocię',art:'an',pic:'👩‍🦰'},
+ {en:'uncle',pl:'wujek',acc:'wujka',art:'an',pic:'👨‍🦱'},
+ {en:'cousin',pl:'kuzyn / kuzynka',acc:'kuzyna lub kuzynkę',art:'a',pic:'🧒'},
+ {en:'family',pl:'rodzina',acc:'rodzinę',art:'a',pic:'👨‍👩‍👧'},
+ {en:'friend',pl:'przyjaciel / przyjaciółka',acc:'przyjaciela lub przyjaciółkę',art:'a',pic:'🤝'}
+];
+var STORIES=[
+ {text:"Hello! I'm Amy. This is my family. I've got a mum and a dad. I've got a brother. His name is Max. I haven't got a sister. My grandma is Sue. My friend is Mia.",
+ qs:[
+  {q:'Has Amy got a sister?',opts:['Yes, she has.','No, she has not.','She has two sisters.'],correct:'No, she has not.'},
+  {q:'Who is Max?',opts:['Her brother.','Her dad.','Her granddad.'],correct:'Her brother.'},
+  {q:'Who is Mia?',opts:['Her aunt.','Her friend.','Her sister.'],correct:'Her friend.'}
+ ]},
+ {text:"Hi! I'm Ben. I've got two sisters: Ella and Ruby. I haven't got a brother. My uncle is Tom. I've got a cousin. His name is Leo. I love my family!",
+ qs:[
+  {q:'How many sisters has Ben got?',opts:['One.','Two.','Three.'],correct:'Two.'},
+  {q:'What is his uncle’s name?',opts:['Leo.','Tom.','Ben.'],correct:'Tom.'},
+  {q:'Who is Leo?',opts:['His cousin.','His brother.','His dad.'],correct:'His cousin.'}
+ ]},
+ {text:"My name is Lily. I've got a grandma and a granddad. I've got an aunt. Her name is Anna. I haven't got an uncle. My friend is Josh. We are happy!",
+ qs:[
+  {q:'Has Lily got an uncle?',opts:['Yes, she has.','No, she has not.','She has two uncles.'],correct:'No, she has not.'},
+  {q:'Who is Anna?',opts:['Her sister.','Her grandma.','Her aunt.'],correct:'Her aunt.'},
+  {q:'Has Lily got a grandma and a granddad?',opts:['Yes, she has.','No, she has not.','Only a granddad.'],correct:'Yes, she has.'}
+ ]}
+];
+var MODE_NAMES={vocab:'Rozpoznaj słówka',spell:'Napisz słówko',sentence:"I've got / I haven't got",answer:'Have you got?',read:'Czytam i rozumiem',exam:'Próbny sprawdzian'};
+var home=document.getElementById('home'),play=document.getElementById('play'),stage=document.getElementById('stage');
+var progress=document.getElementById('progress'),progressFill=document.getElementById('progress-fill');
+var session=null;
+function shuffle(src){var a=src.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=a[i];a[i]=a[j];a[j]=tmp;}return a;}
+function esc(v){return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function normalize(v){return String(v||'').toLowerCase().replace(/[’‘ʼ]/g,"'").replace(/[.,!?]/g,'').replace(/\s+/g,' ').trim();}
+function accepted(answer,task){
+ var v=normalize(answer),target=normalize(task.correct);
+ if(v===target)return true;
+ if(task.kind==='sentence'){
+  if(v===target.replace("i've","i have"))return true;
+  if(v===target.replace("haven't","have not"))return true;
+ }
+ if(task.kind==='answer'&&v===target.replace("haven't","have not"))return true;
+ return false;
+}
+function pickChoice(word){
+ var options=shuffle([word.en].concat(shuffle(WORDS.filter(function(x){return x.en!==word.en;})).slice(0,3).map(function(x){return x.en;})));
+ return {kind:'choice',title:'Jak to jest po angielsku?',subtitle:'Wybierz jedno słowo.',word:word,prompt:word.pl,options:options,correct:word.en};
+}
+function pickSpell(word){return {kind:'spell',title:'Napisz po angielsku',subtitle:'Przepisz z pamięci, bez zaglądania do słownika.',word:word,prompt:word.pl,correct:word.en};}
+function pickSentence(word,negative){
+ var verb=negative?"I haven't got":"I've got";
+ return {kind:'sentence',title:'Ułóż całe zdanie',subtitle:negative?"Zacznij od: I haven't got…":"Zacznij od: I've got…",word:word,prompt:(negative?'Nie mam ':'Mam ')+word.acc+'.',correct:verb+' '+word.art+' '+word.en+'.'};
+}
+function pickAnswer(word,yes){
+ return {kind:'answer',title:'Odpowiedz całym zdaniem',subtitle:'Wyobraź sobie, że jesteś Nelą. Napisz odpowiedź po angielsku.',word:word,prompt:'Have you got '+word.art+' '+word.en+'?',clue:'W opowieści Nela '+(yes?'ma':'nie ma')+' '+word.acc+'.',correct:yes?'Yes, I have.':"No, I haven't."};
+}
+function storyTasks(s){return s.qs.map(function(q){return {kind:'read',title:'Przeczytaj i zaznacz odpowiedź',subtitle:'Najpierw przeczytaj historyjkę po angielsku.',story:s.text,prompt:q.q,options:shuffle(q.opts),correct:q.correct};});}
+function build(mode){
+ if(mode==='vocab')return shuffle(WORDS).map(pickChoice);
+ if(mode==='spell')return shuffle(WORDS).map(pickSpell);
+ if(mode==='sentence')return shuffle(WORDS.filter(function(w){return w.en!=='family';})).map(function(w,i){return pickSentence(w,i%2===1);});
+ if(mode==='answer')return shuffle(WORDS.filter(function(w){return w.en!=='family';})).map(function(w,i){return pickAnswer(w,i%2===0);});
+ if(mode==='read')return shuffle(STORIES).reduce(function(all,s){return all.concat(storyTasks(s));},[]);
+ if(mode==='exam'){
+  var p=shuffle(WORDS),fi=p.findIndex(function(w){return w.en==='family';});
+  if(fi>4){var t=p[0];p[0]=p[fi];p[fi]=t;}
+  var part1=p.slice(0,5).map(pickSpell),part2=p.slice(5,8).map(function(w,i){return pickSentence(w,i===1);}),part3=p.slice(8,11).map(function(w,i){return pickAnswer(w,i!==1);});
+  return shuffle(part1.concat(part2,part3)).concat(storyTasks(shuffle(STORIES)[0]));
+ }
+ return [];
+}
+function view(which){
+ var active=which==='home';home.hidden=!active;play.hidden=active;
+ if(active){session=null;refreshLast();}
+ document.getElementById('start').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function start(mode){
+ if(mode==='write'){view('play');document.getElementById('play-tag').textContent='My family · własny opis';progressFill.style.width='0%';progress.setAttribute('aria-valuenow','0');renderWriting();return;}
+ session={mode:mode,deck:build(mode),index:0,score:0,attempts:0,locked:false};
+ view('play');document.getElementById('play-tag').textContent=MODE_NAMES[mode]||mode;renderTask();
+}
+function speak(word){
+ if(!('speechSynthesis' in window))return;
+ try{window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(word);u.lang='en-GB';u.rate=.82;window.speechSynthesis.speak(u);}catch(e){}
+}
+function renderTask(){
+ if(!session)return;
+ if(session.index>=session.deck.length){renderFinish();return;}
+ var task=session.deck[session.index];session.attempts=0;session.locked=false;
+ var n=session.index+1,total=session.deck.length,percent=Math.round((n-1)/total*100);
+ progressFill.style.width=percent+'%';progress.setAttribute('aria-valuenow',String(percent));
+ var head='<div class="counter">Zadanie '+n+' z '+total+(session.mode==='exam'?' · test próbny':'')+'</div><h2 class="question-title">'+esc(task.title)+'</h2><p class="question-sub">'+esc(task.subtitle)+'</p>';
+ var body='';
+ if(task.kind==='read'){
+  body='<div class="story" lang="en"><strong>📜 Historia do przeczytania</strong>'+esc(task.story)+'</div><div class="prompt-box"><div class="little">Pytanie</div><div class="polish" lang="en" style="font-size:25px">'+esc(task.prompt)+'</div></div>';
+ }else{
+  body='<div class="prompt-box"><div class="little">'+(task.kind==='answer'?'Pytanie po angielsku':'Po polsku')+'</div><div class="polish" '+(task.kind==='answer'?'lang="en"':'')+'>'+esc(task.prompt)+'</div>'+(task.clue?'<div style="margin-top:12px;color:#7a6c94;font-size:14px">'+esc(task.clue)+'</div>':'')+'</div>';
+ }
+ if(task.kind==='choice'||task.kind==='read'){
+  body+='<div class="choice-grid">'+task.options.map(function(o){return '<button type="button" class="choice" data-choice="'+esc(o)+'" '+(task.kind==='read'?'lang="en"':'')+'>'+esc(o)+'</button>';}).join('')+'</div>';
+ }else{
+  body+='<form class="answer-form" id="answer-form"><label for="typed" style="font-size:13px;font-weight:900;color:#655b85">Twoja odpowiedź po angielsku:</label><input id="typed" class="answer-field" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Napisz odpowiedź…" required maxlength="140" aria-describedby="feedback"><button class="primary" type="submit">Sprawdź odpowiedź ✓</button></form>';
+ }
+ stage.innerHTML=head+body+'<div class="feedback" id="feedback" role="status" aria-live="polite"></div><div id="answer-key" hidden></div><div class="controls-bottom"><button type="button" class="secondary" id="show-answer">💡 Pokaż odpowiedź</button><button type="button" class="primary" id="next" hidden>'+(n===total?'Zobacz wynik →':'Następne zadanie →')+'</button></div>';
+ var input=document.getElementById('typed');if(input&&session.mode!=='exam')input.focus({preventScroll:true});
+}
+function answer(value,button){
+ if(!session||session.locked)return;
+ var task=session.deck[session.index],correct=accepted(value,task),fb=document.getElementById('feedback');
+ if(correct){
+  if(session.attempts===0)session.score++;
+  session.locked=true;fb.textContent=session.attempts===0?'🌟 Brawo! Dobra odpowiedź!':'👏 Udało się! Dobrze, że próbujesz dalej.';
+  fb.className='feedback visible good';lockQuestion(button);document.getElementById('show-answer').hidden=true;document.getElementById('next').hidden=false;
+  return;
+ }
+ session.attempts++;
+ if(button)button.classList.add('is-wrong');
+ if(session.mode==='exam'){
+  session.locked=true;fb.textContent='Teraz zobacz prawidłową odpowiedź i zapamiętaj ją na przyszłość.';fb.className='feedback visible warn';reveal();lockQuestion();document.getElementById('next').hidden=false;
+ }else{
+  fb.textContent='Jeszcze nie. Możesz spróbować ponownie albo odsłonić odpowiedź.';fb.className='feedback visible warn';
+  if(task.kind==='choice'||task.kind==='read'){if(button)button.disabled=true;}
+ }
+}
+function lockQuestion(chosen){
+ var buttons=stage.querySelectorAll('.choice');for(var i=0;i<buttons.length;i++){buttons[i].disabled=true;if(accepted(buttons[i].getAttribute('data-choice'),session.deck[session.index]))buttons[i].classList.add('is-correct');}
+ var inp=document.getElementById('typed'),form=document.getElementById('answer-form');
+ if(inp)inp.disabled=true;if(form){var btn=form.querySelector('button');if(btn)btn.disabled=true;}
+}
+function reveal(){
+ var task=session.deck[session.index],box=document.getElementById('answer-key');
+ box.hidden=false;box.className='answer-key';box.textContent='Poprawna odpowiedź: '+task.correct;
+}
+function showAnswer(){
+ if(!session||session.locked)return;
+ session.locked=true;reveal();lockQuestion();document.getElementById('show-answer').hidden=true;document.getElementById('next').hidden=false;
+ var fb=document.getElementById('feedback');fb.textContent='💡 Zapamiętaj odpowiedź. W nowej rundzie pojawi się ponownie.';fb.className='feedback visible info';
+}
+function save(key,value){try{localStorage.setItem(key,value);}catch(e){}}
+function load(key){try{return localStorage.getItem(key);}catch(e){return null;}}
+function refreshLast(){var s=load('nea2-family-test-last');document.getElementById('last-result').textContent=s?'Ostatni próbny sprawdzian: '+s:'';}
+function renderFinish(){
+ var s=session,pct=Math.round(s.score/s.deck.length*100);
+ progressFill.style.width='100%';progress.setAttribute('aria-valuenow','100');
+ if(s.mode==='exam')save('nea2-family-test-last',s.score+' / '+s.deck.length+' ('+pct+'%)');
+ stage.innerHTML='<div class="finish"><div class="medal" aria-hidden="true">'+(pct>=90?'🏆':pct>=60?'🌟':'💪')+'</div><h2>Misja zakończona!</h2><div class="score">'+s.score+' / '+s.deck.length+'</div><p>To liczba odpowiedzi poprawnych za pierwszym razem — <strong>nie ocena szkolna</strong>. Możesz bez końca ćwiczyć w nowej, przemieszanej rundzie.</p><div class="button-row" style="justify-content:center"><button type="button" class="primary" id="again">Jeszcze jedna runda ↻</button><button type="button" class="secondary" id="go-home">Wybierz inną misję</button>'+(s.mode==='exam'?'<button type="button" class="secondary" id="go-write">Napisz o rodzinie 💌</button>':'')+'</div></div>';
+}
+function renderWriting(){
+ var draft=load('nea2-family-draft')||'';
+ stage.innerHTML='<div class="counter">Twoja własna opowieść</div><h2 class="question-title">This is my family! 💌</h2><p class="question-sub">Napisz kilka zdań o <strong>swojej lub wymyślonej</strong> rodzinie. Nie musisz podawać prawdziwych imion. Możesz użyć słów mum, dad, sister, brother, aunt, uncle, cousin…</p><label for="story-input" style="display:block;font-size:14px;font-weight:900;margin:14px 0 9px">My family — mój tekst po angielsku</label><textarea class="write-area" id="story-input" spellcheck="false" placeholder="This is my family. I&#39;ve got…"></textarea><div class="button-row"><button class="primary" type="button" id="check-writing">Sprawdź listę kontrolną ✓</button><button class="secondary" type="button" id="example-writing">Pokaż przykład</button></div><p class="question-sub" style="margin-top:13px">Tekst zapisuje się tylko w tej przeglądarce. Samodzielna lista kontrolna nie sprawdza całej gramatyki.</p><div id="writing-result" aria-live="polite"></div>';
+ document.getElementById('story-input').value=draft;
+}
+function checkWriting(){
+ var text=document.getElementById('story-input').value.toLowerCase().replace(/[’‘ʼ]/g,"'").replace(/\s+/g,' '),found=WORDS.filter(function(w){return new RegExp('\\b'+w.en+'\\b','i').test(text);}).length;
+ var tests=[
+  [/this is my family/.test(text),'Początek: This is my family.'],
+  [/\bi(?:'ve| have) got\b/.test(text),'Zdanie: I’ve got…'],
+  [/\bi (?:haven't|have not) got\b/.test(text),'Zdanie: I haven’t got…'],
+  [found>=3,'Co najmniej 3 słowa o rodzinie'],
+  [text.split(/[.!?]+/).filter(function(p){return p.trim().length>3;}).length>=3,'Co najmniej 3 zdania']
+ ];
+ var html='<h3 style="margin-bottom:9px">Twoja lista kontrolna</h3><div class="checklist">'+tests.map(function(x){return '<div class="checkitem '+(x[0]?'yes':'')+'">'+(x[0]?'✓ ':'○ ')+x[1]+'</div>';}).join('')+'</div><p class="question-sub">To wskazówki, nie automatyczna ocena poprawności tekstu. Możesz opisać wymyśloną rodzinę i ćwiczyć dalej.</p>';
+ document.getElementById('writing-result').innerHTML=html;
+}
+function exampleWriting(){
+ var el=document.getElementById('writing-result');
+ el.innerHTML='<div class="example"><strong>Przykład o wymyślonej rodzinie:</strong><p lang="en">Hello! My name is Lily. This is my family. I’ve got a mum and a dad. I’ve got a brother. I haven’t got a sister. I’ve got a cousin. Her name is Mia. I love my family!</p>Spróbuj napisać własną wersję — nie musisz kopiować przykładu.</div>';
+}
+document.querySelectorAll('[data-mode]').forEach(function(b){b.addEventListener('click',function(){start(b.getAttribute('data-mode'));});});
+document.getElementById('start-exam').addEventListener('click',function(){start('exam');});
+document.getElementById('back').addEventListener('click',function(){view('home');});
+stage.addEventListener('submit',function(ev){if(ev.target.id!=='answer-form')return;ev.preventDefault();answer(document.getElementById('typed').value,null);});
+stage.addEventListener('input',function(ev){if(ev.target.id==='story-input')save('nea2-family-draft',ev.target.value);});
+stage.addEventListener('click',function(ev){
+ var b=ev.target.closest('button');if(!b)return;
+ if(b.hasAttribute('data-choice')){answer(b.getAttribute('data-choice'),b);return;}
+ if(b.id==='show-answer'){showAnswer();return;}
+ if(b.id==='next'&&session){session.index++;renderTask();return;}
+ if(b.id==='again'&&session){start(session.mode);return;}
+ if(b.id==='go-home'){view('home');return;}
+ if(b.id==='go-write'){start('write');return;}
+ if(b.id==='check-writing'){checkWriting();return;}
+ if(b.id==='example-writing'){exampleWriting();return;}
+});
+refreshLast();
+})();
+</script>
+</body>
+</html>
