@@ -101,7 +101,7 @@ body.show-key .key-sheet{display:block}
 <body>
 <header class="site-header">
   <nav class="container site-nav" aria-label="Nawigacja">
-    <a class="brand" href="../../"><span aria-hidden="true">✿</span> English Adventure 2</a>
+    <a class="brand" href="../../../"><span aria-hidden="true">✿</span> English Adventure 2</a>
     <a href="../" class="back">← Wróć do TEST FAMILY</a>
   </nav>
 </header>
@@ -217,6 +217,12 @@ function build(){
  var pictureWords=rest.slice(0,4).map(function(w){return {word:w,variant:Math.floor(Math.random()*8)};});
  var direct=rest.slice(4);
  var patterns=shuffle([true,true,false]);
+ /* Keep the friend example positive, while still practicing one negative sentence. */
+ var friendIndex=sentence.findIndex(function(w){return w.en==='friend';});
+ if(friendIndex>=0&&!patterns[friendIndex]){
+  var positiveIndex=patterns.findIndex(function(yes,i){return yes&&i!==friendIndex;});
+  if(positiveIndex>=0){patterns[friendIndex]=true;patterns[positiveIndex]=false;}
+ }
  var sentences=sentence.map(function(w,i){return {word:w,positive:patterns[i],polish:(patterns[i]?'Mam ':'Nie mam ')+w.acc+'.',english:(patterns[i]?"I've got ":"I haven't got ")+w.art+' '+w.en+'.'};});
  var q=shuffle(WORDS.filter(function(w){return ['sister','brother','aunt','uncle','cousin','friend','grandma','granddad'].includes(w.en);})).slice(0,4);
  var yes=shuffle([true,true,false,false]);
