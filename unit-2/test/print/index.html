@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f0ff">
+<meta name="description" content="Losowe, czarno-białe sprawdziany FAMILY dla klasy drugiej — wydruk A4, podgląd, klucz odpowiedzi.">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<title>Generator sprawdzianów FAMILY · English Adventure 2</title>
+<style>
+:root{--ink:#343047;--violet:#68539f;--mist:#eee9fa;--line:#ddd5e9}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#f0eaff,#fffaf3 480px);font-family:"Trebuchet MS",ui-rounded,system-ui,sans-serif;color:var(--ink);line-height:1.5}
+button,a{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #ffae48;outline-offset:3px}
+a{color:inherit;text-decoration:none}
+.site-header{background:rgba(255,255,255,.88);border-bottom:1px solid #e2dced}
+.container{width:min(1060px,calc(100% - 32px));margin-inline:auto}
+.site-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px}
+.brand{font-weight:900;color:#574582;letter-spacing:-.5px}.brand span{display:inline-grid;place-items:center;background:#eee7fe;border-radius:12px;width:35px;height:35px;margin-right:9px}
+.back{font-size:13px;font-weight:800;background:#fff;border:1px solid #e3dcec;padding:10px 14px;border-radius:20px}
+.intro{padding:48px 0 26px}.eyebrow{font-weight:900;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:#745fa6}
+h1{font-size:clamp(34px,5.2vw,58px);line-height:1.08;letter-spacing:-2px;margin:15px 0 14px}h1 em{font-style:normal;color:#7b62b9}
+.intro p{max-width:720px;color:#686479;font-size:16px;margin:0}
+.toolbar{background:#fff;border:1px solid #e4dcf1;box-shadow:0 14px 38px rgba(55,39,84,.09);padding:20px;border-radius:23px;margin:18px 0 16px}
+.toolbar-line{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.action{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:13px;border:1px solid #d8d0e9;background:#fff;color:#50406d;font-size:13px;font-weight:900;padding:13px 17px;min-height:44px}
+.action.primary{background:#614c98;color:white;border-color:#614c98}.action.sun{background:#ffcd79;color:#332941;border-color:#ffcd79}
+.action:hover{filter:brightness(.97)}.action:active{transform:translateY(1px)}
+.hint{font-size:12px;color:#706d7e;margin:13px 2px 0}.hint strong{color:#433a58}
+.status{font-weight:900;font-size:13px;color:#5d497d;padding:12px 0}
+.preview-label{display:flex;align-items:center;gap:12px;justify-content:space-between;margin:27px 0 11px;color:#6c627d;font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.preview-label b{color:#45385d}
+.paper{width:min(210mm,100%);margin:0 auto 20px;background:white;color:#111;border:1px solid #ddd9d6;box-shadow:0 12px 45px rgba(43,35,65,.10);padding:14mm 16mm;min-height:274mm;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.4}
+.paper-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding-bottom:9px;border-bottom:2px solid #222}
+.paper-kicker{font-size:10px;text-transform:uppercase;letter-spacing:1.4px;font-weight:700}
+.paper-top h2{font-size:24px;letter-spacing:.2px;margin:2px 0 3px;line-height:1.2}
+.paper-top p{font-size:11px;margin:0}.paper-code{border:1px solid #333;padding:7px 10px;min-width:90px;text-align:right;font-size:11px}
+.identity{display:flex;gap:18px;align-items:end;justify-content:space-between;margin:15px 0 13px}
+.identity span{border-bottom:1px solid #222;flex:1;padding-bottom:3px;min-height:22px;font-size:11px;color:#555}
+.identity span:first-child{flex:2.2}
+.paper-section{margin-top:18px;break-inside:avoid}
+.paper-section h3{display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid #999;padding:0 0 5px;margin:0 0 8px;font-size:14px;line-height:1.35}
+.paper-section h3 .number{font-size:13px;border:1.5px solid #111;border-radius:50%;width:22px;height:22px;display:inline-grid;place-items:center;flex-shrink:0}
+.paper-section .instruction{font-size:11px;margin:5px 0 10px;color:#333}
+.illustrated-words{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.illustrated-word{border:1px solid #555;padding:8px 5px 10px;border-radius:6px;min-height:120px;text-align:center}
+.illustrated-word svg{width:100%;height:69px;display:block}
+.illustrated-word .polish{font-weight:700;font-size:11px;line-height:1.2;min-height:18px}
+.writing-line{border-bottom:1px dotted #333;height:18px;margin-top:4px}
+.vocab-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:25px;row-gap:8px;margin-top:11px}
+.vocab-item{display:flex;align-items:center;gap:7px;font-size:12px;min-height:23px}
+.vocab-item .line{flex:1;min-width:35px;border-bottom:1px dotted #222;height:16px}
+.sentence-line{margin:13px 0 0;font-size:12px}
+.sentence-line .line{border-bottom:1px dotted #333;height:19px;margin-top:3px}
+.short-question{margin:10px 0 14px}
+.short-question>div{display:flex;align-items:center;gap:10px;font-size:12px;flex-wrap:wrap}
+.short-question .yesno{min-width:46px;font-size:12px;font-weight:700;border:1px solid #444;border-radius:6px;text-align:center;padding:3px 5px}
+.short-question .line{height:19px;border-bottom:1px dotted #333}
+.paper-footer{display:flex;justify-content:space-between;border-top:1px solid #bbb;margin-top:22px;padding-top:6px;color:#555;font-size:9px}
+.letter-card{border:1px solid #555;padding:12px 14px;border-radius:5px;line-height:1.55;font-size:11px;margin-top:8px;white-space:pre-line}
+.letter-card strong{display:block;border-bottom:1px solid #bbb;padding-bottom:4px;margin-bottom:5px;font-size:10px;letter-spacing:1px}
+.read-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:11px}
+.read-table th,.read-table td{border:1px solid #555;padding:6px 8px;height:30px;text-align:left}
+.read-table th:first-child{width:41%}.read-table th{font-weight:700}
+.big-writing-lines{margin-top:8px}
+.big-writing-lines .line{height:23px;border-bottom:1px dotted #444}
+.instruction-note{font-size:10px;margin-top:6px}
+.key-sheet{display:none}
+body.show-key .key-sheet{display:block}
+.answers-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:12px}
+.answers-table th,.answers-table td{border:1px solid #aaa;padding:7px 9px;vertical-align:top;text-align:left}
+.answers-table th{background:#f4f4f4}
+.key-section{margin:18px 0;break-inside:avoid}
+.key-section h3{font-size:14px;margin:0 0 7px;border-bottom:1px solid #aaa}
+.key-section p{margin:5px 0;font-size:12px}
+.key-score{border:1px solid #aaa;padding:12px;margin-top:18px}
+.site-footer{text-align:center;font-size:12px;color:#797383;padding:28px 20px 40px}
+@media(max-width:680px){.site-nav{min-height:62px}.brand{font-size:13px}.intro{padding:32px 0 14px}.paper{padding:12px;width:100%;min-height:0;font-size:10px}.paper-top h2{font-size:19px}.paper-top p{font-size:9px}.paper-code{font-size:9px;min-width:72px}.illustrated-words{grid-template-columns:repeat(2,minmax(0,1fr))}.illustrated-word{min-height:100px}.paper-section h3{font-size:12px}.identity{gap:7px}.letter-card{font-size:10px}.read-table{font-size:10px}}
+@page{size:A4;margin:11mm}
+@media print{
+ html,body{margin:0!important;padding:0!important;background:white!important;color:#000!important}
+ .site-header,.intro,.toolbar,.preview-label,.site-footer,.status{display:none!important}
+ .container{width:100%!important;margin:0!important}
+ #papers{display:block!important}
+ .paper{width:100%!important;min-height:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;margin:0!important;padding:0!important;color:#000!important;background:white!important;font-family:Arial,Helvetica,sans-serif!important;font-size:11px!important}
+ .paper-1{break-after:page;page-break-after:always}
+ .paper-2{break-after:auto}
+ .paper-section{break-inside:avoid}
+ .illustrated-words{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+ .illustrated-word{min-height:108px!important}
+ .key-sheet{display:none!important}
+ body.print-key #papers{display:none!important}
+ body.print-key .key-sheet{display:block!important;break-after:auto!important}
+ body.print-key .key-sheet .paper-top{margin-top:0}
+ .paper-footer{margin-top:16px}
+ .answers-table th{background:white!important}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="container site-nav" aria-label="Nawigacja">
+    <a class="brand" href="../../"><span aria-hidden="true">✿</span> English Adventure 2</a>
+    <a href="../" class="back">← Wróć do TEST FAMILY</a>
+  </nav>
+</header>
+<main>
+  <section class="container intro" aria-labelledby="heading">
+    <div class="eyebrow">✦ Unit 2 · My family · Klasa druga</div>
+    <h1 id="heading">Papierowa misja.<br><em>Losowy sprawdzian!</em></h1>
+    <p>Za każdym losowaniem zmieniają się słówka, rysunki, zdania, pytania i tekst do przeczytania. Druk jest prosty, czarno-biały i przygotowany na dwie strony A4.</p>
+  </section>
+  <section class="container toolbar" aria-label="Generator i drukowanie">
+    <div class="toolbar-line">
+      <button class="action sun" id="print-new" type="button">🖨️ Losuj i drukuj nowy</button>
+      <button class="action primary" id="regenerate" type="button">🔀 Wylosuj do podglądu</button>
+      <button class="action" id="print-current" type="button">📄 Drukuj ten zestaw</button>
+      <button class="action" id="print-key" type="button">🔑 Drukuj klucz</button>
+      <button class="action" id="toggle-key" type="button" aria-expanded="false" aria-controls="answer-sheet">Pokaż odpowiedzi</button>
+    </div>
+    <p class="hint">Naciśnięcie <strong>„Losuj i drukuj nowy”</strong> zawsze tworzy nowy sprawdzian, po czym otwiera drukowanie. Jeśli chcesz ponownie wydrukować ten sam zestaw, wybierz <strong>„Drukuj ten zestaw”</strong>. Z okna drukowania możesz też zapisać sprawdzian jako PDF. Nic nie wysyłamy na serwer.</p>
+  </section>
+  <div class="container status" id="generation-status" role="status" aria-live="polite"></div>
+  <div class="container preview-label"><span>Podgląd · strona 1 z 2</span><b>Czarno-biały · A4</b></div>
+  <div class="container" id="papers">
+    <article class="paper paper-1" id="worksheet-1" aria-label="Arkusz testu strona pierwsza"></article>
+    <div class="preview-label"><span>Podgląd · strona 2 z 2</span><b>Rozumienie tekstu i pisanie</b></div>
+    <article class="paper paper-2" id="worksheet-2" aria-label="Arkusz testu strona druga"></article>
+  </div>
+  <div class="container preview-label" id="answer-label" hidden><span>Klucz odpowiedzi · dla rodzica</span></div>
+  <div class="container">
+    <article class="paper key-sheet" id="answer-sheet" aria-label="Klucz odpowiedzi"></article>
+  </div>
+</main>
+<footer class="site-footer">Autorskie ćwiczenia do tematu FAMILY. Zestaw jest generowany w przeglądarce, bez logowania i bez powielania ilustracji z podręcznika.</footer>
+<script>
+(function(){
+'use strict';
+var WORDS=[
+ {en:'mum',pl:'mama',acc:'mamę',art:'a',look:'woman'},
+ {en:'dad',pl:'tata',acc:'tatę',art:'a',look:'man'},
+ {en:'sister',pl:'siostra',acc:'siostrę',art:'a',look:'girl'},
+ {en:'brother',pl:'brat',acc:'brata',art:'a',look:'boy'},
+ {en:'grandma',pl:'babcia',acc:'babcię',art:'a',look:'grandma'},
+ {en:'granddad',pl:'dziadek',acc:'dziadka',art:'a',look:'granddad'},
+ {en:'aunt',pl:'ciocia',acc:'ciocię',art:'an',look:'woman'},
+ {en:'uncle',pl:'wujek',acc:'wujka',art:'an',look:'man'},
+ {en:'cousin',pl:'kuzyn lub kuzynka',acc:'kuzyna lub kuzynkę',art:'a',look:'child'},
+ {en:'family',pl:'rodzina',acc:'rodzinę',art:'a',look:'family'},
+ {en:'friend',pl:'przyjaciel lub przyjaciółka',acc:'przyjaciela lub przyjaciółkę',art:'a',look:'friends'}
+];
+var RELATIVES=[
+ {en:'aunt',art:'an'},
+ {en:'uncle',art:'an'},
+ {en:'grandma',art:'a'},
+ {en:'granddad',art:'a'},
+ {en:'cousin',art:'a'}
+];
+var NAMES=['Mia','Leo','Lily','Ben','Ella','Max','Amy','Oliver','Nina','Sam'];
+var FRIEND_NAMES=['Alex','Jess','Zoe','Tom','Kate','Noah','Molly'];
+var current=null,lastSignature='';
+function shuffle(arr){
+ var a=arr.slice();
+ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
+ return a;
+}
+function choose(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function esc(v){return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function person(x,y,scale,type,style){
+ var old=type==='grandma'||type==='granddad',female=['woman','girl','grandma'].includes(type);
+ var child=['girl','boy','child'].includes(type);
+ var neck=child?47:51;
+ var hair=female?
+   '<path d="M27 32 Q21 0 50 8 Q77 4 73 35 L70 43 Q61 33 60 20 Q45 30 31 22Z" fill="#e6e6e6" stroke="#111" stroke-width="2"/>'+
+   (style%2?'<path d="M26 24 Q13 42 26 57" fill="none" stroke="#111" stroke-width="3"/>':'')
+   :'<path d="M29 27 Q24 4 47 7 Q70 3 73 27 L65 21 L56 19 L47 24 L39 18 L32 28Z" fill="#dedede" stroke="#111" stroke-width="2"/>';
+ if(old)hair='<path d="M25 29 Q21 5 49 6 Q75 3 75 29 L68 24 Q60 15 49 19 Q35 15 30 30Z" fill="#fff" stroke="#111" stroke-width="2"/>';
+ var glasses=old?'<g fill="none" stroke="#111" stroke-width="2"><circle cx="40" cy="37" r="8"/><circle cx="60" cy="37" r="8"/><path d="M48 35H52"/></g>':'';
+ var moustache=type==='granddad'?'<path d="M43 51 Q47 46 50 49 Q53 46 57 51" fill="none" stroke="#111" stroke-width="2"/>':'';
+ var accessory=style%3===0?'<path d="M36 59 L50 69 L64 59" fill="none" stroke="#111" stroke-width="1.5"/>':'';
+ return '<g transform="translate('+x+' '+y+') scale('+scale+')">'+
+ '<path d="M13 88 Q15 61 34 '+neck+' L66 '+neck+' Q85 61 87 88Z" fill="#fff" stroke="#111" stroke-width="2.5"/>'+
+ '<ellipse cx="50" cy="37" rx="21" ry="26" fill="#fff" stroke="#111" stroke-width="2.5"/>'+
+ hair+glasses+moustache+
+ '<circle cx="42" cy="38" r="1.7" fill="#111"/><circle cx="58" cy="38" r="1.7" fill="#111"/>'+
+ '<path d="M45 55 Q50 59 55 55" fill="none" stroke="#111" stroke-width="1.7" stroke-linecap="round"/>'+accessory+'</g>';
+}
+function picture(word,variant){
+ var t=word.look,s='<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Autorski szkic postaci rodzinnej">';
+ if(t==='family'){
+  s+=person(-2,8,.82,'woman',variant)+person(76,8,.82,'man',variant+1)+person(40,29,.76,'child',variant+2);
+ }else if(t==='friends'){
+  s+=person(0,8,.83,'child',variant)+person(77,8,.83,'girl',variant+1);
+  s+='<path d="M75 85 Q80 79 86 85" stroke="#111" fill="none" stroke-width="3"/>';
+ }else{
+  s+=person(37,3,1,t,variant);
+  if(t==='grandma'||t==='granddad')s+='<path d="M16 86 Q18 71 29 72" stroke="#111" stroke-width="2" fill="none"/>';
+ }
+ return s+'</svg>';
+}
+function makeLetter(){
+ var name=choose(NAMES),age=choose([7,8,9]);
+ var hasSibling=choose(['brother','sister']),noSibling=hasSibling==='brother'?'sister':'brother';
+ var r=shuffle(RELATIVES),hasRelative=r[0],noRelative=r[1];
+ var friend=choose(FRIEND_NAMES);
+ var text="Dear Friend,\nHello! I'm "+name+". I'm "+age+".\n"+
+ "I've got a mum and a dad. I've got a "+hasSibling+".\n"+
+ "I haven't got a "+noSibling+".\n"+
+ "I've got "+hasRelative.art+" "+hasRelative.en+". I haven't got "+noRelative.art+" "+noRelative.en+".\n"+
+ "My friend is "+friend+".\nHave you got a "+noSibling+"?\nLove,\n"+name;
+ return {name:name,age:age,hasSibling:hasSibling,noSibling:noSibling,hasRelative:hasRelative,noRelative:noRelative,friend:friend,text:text};
+}
+function build(){
+ var sentence=shuffle(WORDS.filter(function(w){return ['sister','brother','aunt','uncle','cousin','friend'].includes(w.en);})).slice(0,3);
+ var rest=shuffle(WORDS.filter(function(w){return !sentence.some(function(x){return x.en===w.en;});}));
+ var pictureWords=rest.slice(0,4).map(function(w){return {word:w,variant:Math.floor(Math.random()*8)};});
+ var direct=rest.slice(4);
+ var patterns=shuffle([true,true,false]);
+ var sentences=sentence.map(function(w,i){return {word:w,positive:patterns[i],polish:(patterns[i]?'Mam ':'Nie mam ')+w.acc+'.',english:(patterns[i]?"I've got ":"I haven't got ")+w.art+' '+w.en+'.'};});
+ var q=shuffle(WORDS.filter(function(w){return ['sister','brother','aunt','uncle','cousin','friend','grandma','granddad'].includes(w.en);})).slice(0,4);
+ var yes=shuffle([true,true,false,false]);
+ var questions=q.map(function(w,i){return {word:w,yes:yes[i],prompt:'Have you got '+w.art+' '+w.en+'?',answer:yes[i]?'Yes, I have.':"No, I haven't."};});
+ return {id:'F-'+Math.floor(10000+Math.random()*89999),pictures:pictureWords,direct:direct,sentences:sentences,questions:questions,letter:makeLetter()};
+}
+function signature(data){
+ return data.pictures.map(function(x){return x.word.en;}).join(',')+'|'+data.direct.map(function(x){return x.en;}).join(',')+'|'+data.sentences.map(function(x){return x.english;}).join(',')+'|'+data.questions.map(function(x){return x.answer+x.word.en;}).join(',')+'|'+data.letter.text;
+}
+function head(data,which){
+ return '<header class="paper-top"><div><div class="paper-kicker">ENGLISH ADVENTURE 2 · MY FAMILY</div><h2>Próbny sprawdzian FAMILY</h2><p>Klasa 2 · '+(which===1?'Słownictwo i zdania':'Pytania, czytanie i pisanie')+'</p></div>'+
+ '<div class="paper-code">Zestaw<br><strong>'+esc(data.id)+'</strong><br>Strona '+which+'/2</div></header>';
+}
+function section(number,title,points){
+ return '<section class="paper-section"><h3><span class="number">'+number+'</span><span>'+title+' <small style="font-weight:normal;white-space:nowrap">('+points+' pkt)</small></span></h3>';
+}
+function pageOne(d){
+ var html=head(d,1)+'<div class="identity"><span>Imię i nazwisko: .............................................................</span><span>Data: ...................</span></div>';
+ html+=section(1,'Obejrzyj rysunki. Napisz po angielsku, kto to jest.',4)+
+ '<p class="instruction">Pod rysunkiem masz krótką podpowiedź po polsku.</p><div class="illustrated-words">';
+ d.pictures.forEach(function(x,i){html+='<div class="illustrated-word">'+picture(x.word,x.variant)+
+ '<div class="polish">'+(i+1)+'. '+esc(x.word.pl)+'</div><div class="writing-line"></div></div>';});
+ html+='</div></section>';
+ html+=section(2,'Napisz te słowa po angielsku.',4)+'<div class="vocab-list">';
+ d.direct.forEach(function(w,i){html+='<div class="vocab-item"><strong>'+(i+1)+'.</strong> '+esc(w.pl)+': <span class="line"></span></div>';});
+ html+='</div></section>';
+ html+=section(3,'Przetłumacz całe zdania na angielski.',3)+
+ '<p class="instruction">Użyj I\'ve got… lub I haven\'t got… Pamiętaj o a / an.</p>';
+ d.sentences.forEach(function(s,i){html+='<div class="sentence-line"><strong>'+(i+1)+'.</strong> '+esc(s.polish)+'<div class="line"></div></div>';});
+ html+='</section>';
+ html+='<div class="paper-footer"><span>Wpisuj samodzielnie. Nie musisz się spieszyć!</span><span>FAMILY · '+esc(d.id)+' · 1/2</span></div>';
+ return html;
+}
+function pageTwo(d){
+ var l=d.letter;
+ var html=head(d,2);
+ html+=section(4,'Have you got…? Napisz pełną odpowiedź.',4)+
+ '<p class="instruction">Wyobraź sobie, że jesteś Nelą. Znak ✓ oznacza „tak”, znak ✕ oznacza „nie”. Odpowiadaj: Yes, I have. / No, I haven\'t.</p>';
+ d.questions.forEach(function(q,i){
+  html+='<div class="short-question"><div><strong>'+(i+1)+'.</strong><span>'+esc(q.prompt)+'</span><span class="yesno">'+(q.yes?'✓ TAK':'✕ NIE')+'</span></div><div class="line"></div></div>';
+ });
+ html+='</section>';
+ html+=section(5,'Przeczytaj list i uzupełnij tabelę.',5)+
+ '<p class="instruction">Informacje znajdziesz w angielskim liście. W tabeli wpisz krótkie odpowiedzi po angielsku.</p>'+
+ '<div class="letter-card"><strong>✉ A LETTER FROM A FRIEND</strong>'+esc(l.text)+'</div>'+
+ '<table class="read-table"><thead><tr><th>What? · O co pytamy?</th><th>Odpowiedź z listu</th></tr></thead><tbody>'+
+ '<tr><td>Name · imię</td><td></td></tr>'+
+ '<tr><td>How old? · wiek</td><td></td></tr>'+
+ '<tr><td>Brother or sister — has got · ma</td><td></td></tr>'+
+ '<tr><td>Brother or sister — hasn\'t got · nie ma</td><td></td></tr>'+
+ '<tr><td>Friend · imię przyjaciela</td><td></td></tr></tbody></table></section>';
+ html+=section(6,'Napisz 4–5 zdań o swojej lub wymyślonej rodzinie.',5)+
+ '<p class="instruction">Możesz użyć: This is my family. / I\'ve got… / I haven\'t got… / This is my…</p>'+
+ '<div class="big-writing-lines">'+Array(5).fill('<div class="line"></div>').join('')+'</div>'+
+ '<p class="instruction-note">To może być wymyślona rodzina. Nie musisz podawać prawdziwych imion.</p></section>';
+ html+='<div class="paper-footer"><span>Razem: 25 punktów. To ćwiczenie, nie ocena szkolna.</span><span>FAMILY · '+esc(d.id)+' · 2/2</span></div>';
+ return html;
+}
+function answers(d){
+ var html='<header class="paper-top"><div><div class="paper-kicker">DLA RODZICA LUB NAUCZYCIELA</div><h2>Klucz odpowiedzi</h2><p>Próbny sprawdzian FAMILY · '+esc(d.id)+'</p></div>'+
+ '<div class="paper-code"><strong>'+esc(d.id)+'</strong><br>Klucz</div></header>';
+ html+='<section class="key-section"><h3>1. Obrazki · 4 pkt</h3><p>';
+ html+=d.pictures.map(function(x,i){return (i+1)+'. <strong>'+esc(x.word.en)+'</strong>';}).join(' &nbsp; · &nbsp; ')+'</p></section>';
+ html+='<section class="key-section"><h3>2. Słownictwo · 4 pkt</h3><p>';
+ html+=d.direct.map(function(x,i){return (i+1)+'. <strong>'+esc(x.en)+'</strong>';}).join(' &nbsp; · &nbsp; ')+'</p></section>';
+ html+='<section class="key-section"><h3>3. Zdania · 3 pkt</h3><table class="answers-table"><tbody>';
+ d.sentences.forEach(function(x,i){html+='<tr><td style="width:36px">'+(i+1)+'.</td><td>'+esc(x.polish)+'</td><td><strong>'+esc(x.english)+'</strong></td></tr>';});
+ html+='</tbody></table></section>';
+ html+='<section class="key-section"><h3>4. Have you got…? · 4 pkt</h3><table class="answers-table"><tbody>';
+ d.questions.forEach(function(x,i){html+='<tr><td style="width:36px">'+(i+1)+'.</td><td>'+esc(x.prompt)+'</td><td><strong>'+esc(x.answer)+'</strong></td></tr>';});
+ html+='</tbody></table></section>';
+ var l=d.letter;
+ html+='<section class="key-section"><h3>5. List · 5 pkt</h3><table class="answers-table"><tbody>'+
+ '<tr><td>Name</td><td><strong>'+esc(l.name)+'</strong></td></tr>'+
+ '<tr><td>How old?</td><td><strong>'+l.age+'</strong> (lub '+(l.age===7?'seven':l.age===8?'eight':'nine')+')</td></tr>'+
+ '<tr><td>Has got — brother/sister</td><td><strong>'+esc(l.hasSibling)+'</strong></td></tr>'+
+ '<tr><td>Hasn\'t got — brother/sister</td><td><strong>'+esc(l.noSibling)+'</strong></td></tr>'+
+ '<tr><td>Friend</td><td><strong>'+esc(l.friend)+'</strong></td></tr></tbody></table></section>';
+ html+='<section class="key-section"><h3>6. Własny opis · do 5 pkt</h3>'+
+ '<p>Możliwe kryteria: (1) rozpoczęcie opisu, (2) poprawne zdanie z I\'ve got, (3) poprawne zdanie z I haven\'t got, (4) wykorzystanie słownictwa rodzinnego, (5) zrozumiały, samodzielny tekst. Dopuszczaj różne poprawne opisy, także wymyślonej rodziny.</p>'+
+ '<p><strong>Przykładowa odpowiedź:</strong> This is my family. I\'ve got a mum and a dad. I\'ve got a sister. I haven\'t got a brother. This is my grandma.</p></section>';
+ html+='<div class="key-score"><strong>Punktacja: 4 + 4 + 3 + 4 + 5 + 5 = 25 pkt.</strong><br>'+
+ '<small>Odpowiedzi równoważne znaczeniowo i poprawne gramatycznie również mogą zostać uznane. Nie jest to oficjalny arkusz szkoły ani podręcznika.</small></div>';
+ return html;
+}
+function generate(){
+ var attempt=0,trial,fingerprint;
+ do{trial=build();fingerprint=signature(trial);attempt++;}while(fingerprint===lastSignature&&attempt<15);
+ current=trial;lastSignature=fingerprint;
+ document.getElementById('worksheet-1').innerHTML=pageOne(current);
+ document.getElementById('worksheet-2').innerHTML=pageTwo(current);
+ document.getElementById('answer-sheet').innerHTML=answers(current);
+ document.getElementById('generation-status').textContent='Aktualny zestaw: '+current.id+' · 2 strony A4 · 25 punktów';
+ return current;
+}
+function printCurrent(isKey){
+ document.body.classList.toggle('print-key',Boolean(isKey));
+ window.print();
+}
+document.getElementById('regenerate').addEventListener('click',function(){generate();document.getElementById('papers').scrollIntoView({behavior:'smooth',block:'start'});});
+document.getElementById('print-new').addEventListener('click',function(){generate();printCurrent(false);});
+document.getElementById('print-current').addEventListener('click',function(){if(!current)generate();printCurrent(false);});
+document.getElementById('print-key').addEventListener('click',function(){if(!current)generate();printCurrent(true);});
+document.getElementById('toggle-key').addEventListener('click',function(){
+ var show=!document.body.classList.contains('show-key');
+ document.body.classList.toggle('show-key',show);
+ document.getElementById('answer-label').hidden=!show;
+ this.textContent=show?'Ukryj odpowiedzi':'Pokaż odpowiedzi';
+ this.setAttribute('aria-expanded',String(show));
+ if(show)document.getElementById('answer-sheet').scrollIntoView({behavior:'smooth',block:'start'});
+});
+window.addEventListener('afterprint',function(){document.body.classList.remove('print-key');});
+generate();
+})();
+</script>
+</body>
+</html>
